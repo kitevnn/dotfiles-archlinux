@@ -1,0 +1,47 @@
+* 需要手动安装的emacs包软件
+  + nerd-icons
+  + nerd-icons-completion
+  + nerd-icons-dired
+  + org
+  + avy
+  + browse-kill-ring
+  + company
+  + crux
+  + dashboard
+  + deadgrep
+  + dirvish
+  + dimmer
+  + format-all
+  + dumb-jump
+  + highlight-thing
+  + highlight-indentation
+  + aggressive-indent
+  + eglot
+  + move-text
+  + smartparens
+  + projectile
+  + project-explorer
+  + yasnippet
+  + yasnippet-snippets
+  + telephone-line
+  + centaur-tabs
+  + string-inflection
+  + vundo
+  + which-key
+
+* 通过 use-package 自动安装好的emacs包软件 (并且确实是自动安装的emacs包软件)
+  - nerd-icons
+  - nerd-icons-completion
+  - nerd-icons-dired
+  - doom-themes 
+  - restart-emacs
+  - (rime)
+
+* 也许漏装的emacs包软件
+  - eglot-booster
+
+    + 不用straight.el的安装做法: M-x package-vc-install https://github.com/jdtsmith/eglot-booster
+
+
+
+
