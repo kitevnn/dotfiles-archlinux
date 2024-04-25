@@ -1,0 +1,333 @@
+// -------------
+// | hex color |
+// -------------
+$bg:                #2C2C2C;
+$fg:                #C0CAF5;
+$wm:                #DCDCDC;
+$black:             #414868;
+$polybarbackground: #3A3A3A;
+$magenta:           #33CCFF;
+$archicon:          #B9DC92;
+$packages:          #73BA25;
+$termgreen:         #72D5A3;
+$termyellow:        #DFAF8F;
+$tmuxnormalblue:    #9AB8D7;
+$tmuxbrightblue:    #94BFF3;
+
+* {
+  all: unset;
+}
+
+tooltip {
+  background-color: $termyellow;
+  border: 2px solid $polybarbackground;
+  color: $polybarbackground;
+  border-radius: 4rem;
+  font-family: SauceCodeProNerdFontCompleteMono Nerd Font;
+  font-weight: Bold;
+  font-size: 1rem;
+}
+
+
+// ------------------
+// | widget-profile | 
+// ------------------
+.profile-card {
+  background-color: $bg;
+  border-radius: 3rem;
+  margin-top: 0.5rem;
+  margin-right: 2rem;
+  border: 1px solid $wm;
+}
+
+.profile-avator {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 12px;
+  min-width: 12px;
+  border-radius: 100%;
+  border: 1px solid rgba($termgreen, 0.3);
+  margin: 8px -3px 8px 13px;
+  margin-top: 7.5px;
+}
+
+.profile-host {
+  color: $tmuxbrightblue;
+  font-family: SauceCodeProNerdFontCompleteMono Nerd Font;
+  font-weight: 600;
+  font-size: 1.0rem;
+  padding: 0px 5px 4px 5px;
+  margin-top: 2.1px;
+}
+
+.profile-uptime {
+  color: $termgreen;
+  font-weight: 500;
+  font-family: SauceCodeProNerdFontCompleteMono Nerd Font;
+  font-size: 0.9rem;
+  margin-left: 0.4rem;
+  margin-right: 0.4rem;
+}
+
+.profile-btn {
+  margin-right: 0.36rem; 
+}
+
+.profile-btn-info {
+  font-family: "Material Design Icons Desktop";
+  font-size: 1rem;
+  color: $termyellow;
+  padding: 0 0.6rem 0 0.3rem;
+}
+
+
+// ---------------------
+// | widget-workspaces | 
+// ---------------------
+.ws-box {
+  background-color: $bg;
+  border-radius: 3rem;
+  margin-top: 0.5rem;
+  margin-bottom: 2.1rem;
+  padding: 0.6rem 1.1rem 0.5rem 1.1rem;
+  margin-left: -1.5rem;
+}
+.ws {
+  background-color: $bg;
+  border-radius: 3rem;
+}
+.ws-text {
+  background-color: $bg;
+  color: $termgreen;
+  font-size: 1.1rem;
+  margin-top: 0rem;
+  border-bottom: 1px solid $termyellow;
+}
+.ws-change-text {
+  background-color: $polybarbackground;
+  color: $termgreen;
+  font-size: 1.1rem;
+  margin-top: 0rem;
+  border-bottom: 1px solid $termyellow;
+}
+
+
+// ---------------
+// | widget-time | 
+// ---------------
+.time-box {
+  padding: 2rem 3rem 0rem 0rem;
+  padding-left: 21rem;
+  margin-top: -1.55rem;
+  margin-bottom: 2.3rem;
+  .timebox {
+    background-color: $polybarbackground;
+    border-radius: 3rem;
+    color: $wm;
+  }
+  .time {
+    margin: 0.4rem 1.0rem 0.4rem 1.0rem;
+    .content {
+      font-family: SauceCodeProNerdFontCompleteMono Nerd Font;
+      font-weight: 400;
+      font-size: 1rem;
+      color: $termgreen;
+      margin-top: 0.0rem;
+    }
+  }
+}
+
+
+// -------------------
+// | widget-infoarch | 
+// -------------------
+.infoarch {
+  border-radius: 3rem;
+  padding-bottom: 0rem;
+  margin-bottom: 2.3rem;
+  margin-left: -2.4rem;
+  margin-top: -0.8rem;
+}
+.pacman {
+  background-color: $polybarbackground;
+  color: $wm;
+  .pacman-icon {
+    font-family: Material Design Icons Desktop;
+    font-size: 0.9rem;
+    color: $termgreen;
+    margin-left: -0.4rem;
+  }
+  .pacman-info {
+    font-family: SauceCodeProNerdFontCompleteMono Nerd Font;
+    font-weight: Bold;
+    font-size: 0.9rem;
+  }
+  .pacman-updates-box {
+    background-color: $polybarbackground;
+    margin-left: -1.62rem;
+    .pacman-updates {
+      font-family: SauceCodeProNerdFontCompleteMono Nerd Font;
+      font-weight: Bold;
+      font-size: 0.9rem;
+      color: $wm;
+      transition: all 0.5s;
+    }
+    .pacman-updates:hover {
+      color: $termgreen;
+    }
+  }
+}
+.pacman-fetch-box {
+  background-color: $polybarbackground;
+  padding: 0rem 2rem 0rem 1rem;
+  border-radius: 3rem;
+  margin-top: 1.2rem;
+  color: $fg;
+  .opensuse-icon {
+    font-family: Material Design Icons Desktop;
+    font-size: 0.9rem;
+    color: $archicon;
+  }
+}
+.os-icon {
+  font-family: Material Design Icons Desktop;
+  font-size: 0.8rem;
+  color: $archicon;
+}
+.pkgs-icon {
+  font-family: Material Design Icons Desktop;
+  font-size: 0.8rem;
+  color: $packages;
+}
+.wm-icon {
+  font-family: Material Design Icons Desktop;
+  font-size: 0.8rem;
+  color: $magenta;
+}
+.os-text {
+  font-family: SauceCodeProNerdFontCompleteMono Nerd Font;
+  font-weight: Bold;
+  font-size: 0.95rem;
+  color: $wm;
+}
+.pkgs-text {
+  font-family: SauceCodeProNerdFontCompleteMono Nerd Font;
+  font-weight: Bold;
+  font-size: 0.95rem;
+  color: $wm;
+}
+.wm-text {
+  font-family: SauceCodeProNerdFontCompleteMono Nerd Font;
+  font-weight: Bold;
+  font-size: 0.95rem;
+  color: $wm;
+}
+
+
+
+// -----------
+// | patcher | 
+// -----------
+.launchermenu {
+  background-color: $bg;
+  border-radius: 1.0rem;
+  margin: 0.8rem 0.8rem;
+  min-width: 9rem;
+}
+.launcher-btn {
+  color: $black;
+  font-family: Material Design Icons Desktop;
+  font-size: 1.5rem;
+}
+.launcher-btn:hover {
+  color: $fg;
+  font-family: Material Design Icons Desktop;
+  font-size: 1.5rem;
+  text-shadow: 0 0 0.2rem $fg;
+}
+
+
+
+
+// ---------------------
+// | widget-systeminfo | 
+// ---------------------
+.systeminfo {
+  margin-left: 0rem;
+  margin-right: 0rem;
+}
+.systeminfo {
+  background-color: $polybarbackground;
+  border-radius: 3.0rem;
+  margin: 0.6rem 0.65rem;
+  min-width: 9rem;
+  padding: 0.4rem;
+  margin-bottom: 2rem;
+  margin-top: 0.55rem;
+  margin-left: 0.5rem;
+}
+
+.systeminfo-details {
+  background-color: $polybarbackground;
+  padding: 0.1rem 0.25rem 0.1rem 0.25rem;
+  border-radius: 3rem;
+  circular-progress {
+    padding: 0.4rem;
+    background-color: $polybarbackground;
+    &.temp {
+      color: $tmuxbrightblue;
+    }
+    &.cpu {
+      color: $termgreen;
+    }
+    &.ram {
+      color: $termyellow;
+    }
+    &.disk {
+      color: $termyellow;
+    }
+  }
+  .icon {
+    font-family: "SauceCodeProNerdFontCompleteMono Nerd Font";
+    font-size: 0.9rem;
+    padding: 0.2rem 0.6rem 0.2rem 0.6rem;
+  }
+}
+.temp-box {
+}
+.cpu-box {
+  margin-left: -0.4rem;
+}
+.ram-box {
+  margin-left: -0.5rem;
+}
+.disk-box {
+  margin-left: -0.9rem;
+}
+
+
+// eww的 [设置为dock，而不是设置floating widget] 的硬性限制: 想要设置dock，必须这样，没有原因。请看eww项目的源代码
+// 
+// (defwindow bar
+// 	:monitor 0
+// 	:geometry (geometry :anchor "top center")
+// 	:exclusive true	
+//  (box(label: text "最小minimal的dock"))
+
+.minimal-bar {
+  margin-bottom: -2.09rem;
+  margin-top: 0.1rem;
+
+  .left-bar {
+    margin-left: 0.8rem;
+  }
+
+  .middle-bar {
+    margin-left: 16.3rem;  // + 19.8rem
+  }
+
+  .right-bar {
+    margin-left: 41.3rem;  // - 41.8rem
+  }
+}

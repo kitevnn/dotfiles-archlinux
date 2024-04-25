@@ -1,0 +1,25 @@
+;; ----------------------------- ;;
+;; | widget-time组件: 查看时间 | ;;
+;; ----------------------------- ;;
+(defpoll date-hrs :interval "30s" "date | cut -c '31-35' | cut -c '4-5'")
+(defpoll date-min :interval "30s" "date | cut -c '31-35' | cut -c '1-2'")
+
+(defwidget widget-time []
+     (box :class "time-box"
+          (box :class "timebox"
+               :orientation "v"
+               :space-evenly "false"
+               :spacing 0
+               (time-menu-info))))
+
+(defwidget time-menu-info []
+    (box :class "time"
+         :orientation "v"
+         :space-evenly false
+         (box :orientation "h"
+              :space-evenly false
+              :halign "center"
+              :valign "center"
+              :hexpand true
+              (label :text "${date-min}:" :class "content")
+              (label :text "${date-hrs}" :class "content"))))
