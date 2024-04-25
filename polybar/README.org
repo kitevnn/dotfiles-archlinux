@@ -1,0 +1,9 @@
+* About polybar
+  
+   + I'm no longer using polybar under X11, I'm now in Hyprland (Wayland) using Eww as top bar.
+    
+     - 我不再在X11下使用polybar，我现在正处于Hyprland(Wayland)下使用Eww
+
+   + But if you're interested in using polybar under X11, perhaps this configuration file *config.ini* will help you out.
+    
+     - 但如果您对在X11下使用polybar很感兴趣，也许这份配置文件 *config.ini* 能够为您提供帮助
