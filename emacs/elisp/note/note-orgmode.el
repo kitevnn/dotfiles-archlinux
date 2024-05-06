@@ -1,7 +1,9 @@
 ;; 
-;; note-orgmode: Emacs最著名的一款笔记管理插件
+;; note-orgmode.el Emacs最著名的一款笔记管理插件
 ;; 
-
-(require 'org)
+(use-package org
+  :ensure t
+  :defer t)
 
 (provide 'note-orgmode)
+
