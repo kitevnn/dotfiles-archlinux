@@ -53,4 +53,24 @@
 (add-to-list 'auto-mode-alist '("\\.hs\\'"  . hs-mode))
 (add-to-list 'auto-mode-alist '("\\.el\\'"  . emacs-lisp-mode))
 
+;; 单行文本超出一定长度后自动虚拟换行显示(类似于set wrap)
+(add-hook 'text-mode-hook 'turn-on-visual-line-mode)
+
+;; 编码设置
+;; set coding config, last is highest priority.
+;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Recognize-Coding.html#Recognize-Coding
+;; (prefer-coding-system 'cp950)
+;; (prefer-coding-system 'gb2312)
+;; (prefer-coding-system 'cp936)
+;; (prefer-coding-system 'gb18030)
+;; (prefer-coding-system 'utf-16)
+;; (prefer-coding-system 'utf-8-dos)
+;; (prefer-coding-system 'utf-8-unix)
+(prefer-coding-system 'utf-8)
+
+;; 显示行号模式
+(global-display-line-numbers-mode 1)
+;; 设置相对行号
+(setq display-line-numbers-type 'relative)
+
 (provide 'init-basic)

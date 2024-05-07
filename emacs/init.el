@@ -7,15 +7,15 @@
              (expand-file-name 
                (concat user-emacs-directory "elisp/init")))
 
-;; -- custom/全局注入的好玩的elisp函数加载(fun-elisp-fn) --
-(add-to-list 'load-path
-             (expand-file-name 
-               (concat user-emacs-directory "elisp/custom/fun-elisp-fn")))
-
 ;; -- custom/活在Emacs即GTD(live-in-emacs) --
 (add-to-list 'load-path
              (expand-file-name 
                (concat user-emacs-directory "elisp/custom/live-in-emacs")))
+
+;; -- custom/好玩的elisp函数(fun-elisp) --
+(add-to-list 'load-path
+             (expand-file-name 
+               (concat user-emacs-directory "elisp/custom/fun-elisp")))
 
 ;; -- enhance/体验增强加载 --
 (add-to-list 'load-path
@@ -98,6 +98,7 @@
 
 ;; -- note/笔记相关加载 --
 (require 'note-orgmode)
+(require 'note-auctex)
 
 ;; -- enhance/体验增强加载 --
 (require 'plug-centaur-tabs)
@@ -105,6 +106,9 @@
 (require 'plug-which-key)
 (require 'plug-pair-smartparens)
 (require 'plug-filemanager-dirvish)
+(require 'plug-show-indentline)
+(require 'plug-show-keystroke)
+(require 'plug-undoredo-tree)
 
 ;; -- ui/装饰相关加载(theme) --
 (require 'theme-dark)
@@ -125,11 +129,16 @@
 
 ;; -- prog/编程相关加载(modes) --
 (require 'plug-rust-mode)
+(require 'plug-go-mode)
 
 ;; -- prog/编程相关加载(treesitter) --
 (require 'plug-treesitter)
 
+;; -- custom/活在Emacs即GTD(live-in-emacs) --
+(require 'plug-pdftools)
 
+;; -- custom/好玩的elisp函数(fun-elisp) --
+(require 'defun-for-fun)
 
 
 
@@ -151,7 +160,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(dirvish tree-sitter tree-sitter-langs rust-mode smartparens company eglot-booster yasnippet yasnippet-snippets flycheck eglot telephone-line spaceline spaceline-all-the-icons dashboard nano-theme restart-emacs centaur-tabs nerd-icons-dired nerd-icons-completion nerd-icons))
+   '(keycast pdf-tools auctex go-mode vundo undo-tree highlight-indent-guides dirvish tree-sitter tree-sitter-langs rust-mode smartparens company eglot-booster yasnippet yasnippet-snippets eglot telephone-line spaceline spaceline-all-the-icons dashboard nano-theme restart-emacs centaur-tabs nerd-icons-dired nerd-icons-completion nerd-icons))
  '(package-vc-selected-packages
    '((eglot-booster :vc-backend Git :url "https://github.com/jdtsmith/eglot-booster"))))
 (custom-set-faces

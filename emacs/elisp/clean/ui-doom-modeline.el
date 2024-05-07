@@ -8,7 +8,7 @@
   (doom-modeline-mode 1)
 
   ;; 基本设置
-  (setq doom-modeline-height 18)
+  (setq doom-modeline-height 15)
   (setq doom-modeline-bar-width 4)
   (setq doom-modeline-hud nil)
   (setq doom-modeline-window-width-limit 85)

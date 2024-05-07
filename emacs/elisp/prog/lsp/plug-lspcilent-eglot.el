@@ -11,9 +11,9 @@
 	:config	(eglot-booster-mode))
 
 ;; eglot-diagnose依赖的包: flycheck
-(use-package flycheck
-             :ensure t
-             :defer t)
+;; (use-package flycheck
+;;              :ensure t
+;;              :defer t)
 
 ;; eglot用法
 ;; - 代码行动     :    eglot-code-actions
