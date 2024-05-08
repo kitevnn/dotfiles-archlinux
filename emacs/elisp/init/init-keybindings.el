@@ -96,4 +96,7 @@
 ;; -- org相关 --
 (global-set-key (kbd "C-c h o")        'org-preview-html-mode)      ;; 开启org的html预览模式
 
+;; -- ansi-term相关 --
+(global-set-key (kbd "C-c t o")        'ansi-term)                  ;; 开启ansi-term终端模拟器
+
 (provide 'init-keybindings)
