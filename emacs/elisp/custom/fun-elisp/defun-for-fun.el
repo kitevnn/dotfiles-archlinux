@@ -14,4 +14,12 @@
   (interactive)
   (previous-line 5))
 
+;; 软空格: 保证每次TAB都是2个字符宽度的整数倍单位
+(defun tab-stops-generate (&optional width max)
+  "Return a sequence suitable for `tab-stop-list'."
+  (let* ((max-column (or max 200))
+         (tab-width (or width tab-width))
+         (count (/ max-column tab-width)))
+    (number-sequence tab-width (* tab-width count) tab-width)))
+
 (provide 'defun-for-fun)

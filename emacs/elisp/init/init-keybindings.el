@@ -72,8 +72,8 @@
 ;; -- 移动光标 --
 ;; 移动到顶部，可以通过 M-g g + 移动到的目标行(M-x goto-line + 移动到的目标行) 来完成
 ;; 移动到底部，可以通过 M-g g + 移动到的目标行(M-x goto-line + 移动到的目标行) 来完成
-(global-set-key (kbd "M-n")            'move-next-five-line)  ;; 光标向下移动5行
-(global-set-key (kbd "M-p")            'move-prev-five-line)  ;; 光标向上移动5行
+(global-set-key (kbd "M-n")            'move-next-five-line)        ;; 光标向下移动5行
+(global-set-key (kbd "M-p")            'move-prev-five-line)        ;; 光标向上移动5行
 
 ;; -- eglot相关 --
 (global-set-key (kbd "C-c s o")        'flymake-show-diagnostic)    ;; 通过flymake(built-in)，给eglot提供diagnostic诊断信息
@@ -92,5 +92,8 @@
 (global-set-key (kbd "M-x")            'helm-M-x)                   ;; 用helm的M-x，代替了原生的M-x(比Emacs 29.3的M-x，多了历史history-commands的功能)
 (global-set-key (kbd "C-x r b")        'helm-filtered-bookmarks)    ;; 用helm的helm-filtered-bookmarks，代替原生的filtered-bookmarks
 (global-set-key (kbd "C-x C-f")        'helm-find-files)            ;; 用helm的helm-find-files，代替原生的find-files
+
+;; -- org相关 --
+(global-set-key (kbd "C-c h o")        'org-preview-html-mode)      ;; 开启org的html预览模式
 
 (provide 'init-keybindings)

@@ -91,6 +91,12 @@
 ;; -- icon/图标加载 --
 (require 'icon-nerdfont)
 
+;; -- custom/活在Emacs即GTD(live-in-emacs) --
+(require 'plug-pdftools)
+
+;; -- custom/好玩的elisp函数(fun-elisp) --
+(require 'defun-for-fun)
+
 ;; -- init/初始化加载 --
 (require 'init-elpa)
 (require 'init-basic)
@@ -135,11 +141,8 @@
 ;; -- prog/编程相关加载(treesitter) --
 (require 'plug-treesitter)
 
-;; -- custom/活在Emacs即GTD(live-in-emacs) --
-(require 'plug-pdftools)
 
-;; -- custom/好玩的elisp函数(fun-elisp) --
-(require 'defun-for-fun)
+
 
 
 
@@ -161,7 +164,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(magit keycast pdf-tools auctex go-mode vundo undo-tree highlight-indent-guides dirvish tree-sitter tree-sitter-langs rust-mode smartparens company eglot-booster yasnippet yasnippet-snippets eglot telephone-line spaceline spaceline-all-the-icons dashboard nano-theme restart-emacs centaur-tabs nerd-icons-dired nerd-icons-completion nerd-icons))
+   '(org-preview-html magit keycast pdf-tools auctex go-mode vundo undo-tree highlight-indent-guides dirvish tree-sitter tree-sitter-langs rust-mode smartparens company eglot-booster yasnippet yasnippet-snippets eglot telephone-line spaceline spaceline-all-the-icons dashboard nano-theme restart-emacs centaur-tabs nerd-icons-dired nerd-icons-completion nerd-icons))
  '(package-vc-selected-packages
    '((eglot-booster :vc-backend Git :url "https://github.com/jdtsmith/eglot-booster"))))
 (custom-set-faces

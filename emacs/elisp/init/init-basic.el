@@ -73,4 +73,10 @@
 ;; 设置相对行号
 (setq display-line-numbers-type 'relative)
 
+;; 软空格
+(setq-default indent-tabs-mode nil)
+(setq tab-width 2)
+(setq tab-stop-list (tab-stops-generate))
+
+
 (provide 'init-basic)
