@@ -82,8 +82,8 @@
 (global-set-key (kbd "C-c s g")        'flymake-goto-diagnostic)    ;; 前往diagnostic诊断信息
 (global-set-key (kbd "C-c s c")        'eglot-code-actions)         ;; 进行代码行动
 (global-set-key (kbd "C-c s r")        'eglot-rename)               ;; 重命名相同名称的symbol符号
-;; (global-set-key (kbd "M-.")         'xref-find-definitions)      ;; 寻找definitions定义(默认xref快捷键: M-.)
-;; (global-set-key (kbd "M-?")         'xref-find-references)       ;; 寻找references引用(默认xref快捷键: M-?)
+;; (global-set-key (kbd "M-.")          'xref-find-definitions)     ;; 寻找definitions定义(默认xref快捷键: M-.)
+;; (global-set-key (kbd "M-?")          'xref-find-references)      ;; 寻找references引用(默认xref快捷键: M-?)
 (global-set-key (kbd "C-c g d")        'eglot-find-declaration)     ;; 寻找declaration声明
 (global-set-key (kbd "C-c g i")        'eglot-find-implementation)  ;; 寻找implementation执行
 (global-set-key (kbd "C-c g t")        'eglot-find-typeDefinition)  ;; 寻找typeDefinition类型定义
