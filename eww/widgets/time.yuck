@@ -23,3 +23,4 @@
               :hexpand true
               (label :text "${date-min}:" :class "content")
               (label :text "${date-hrs}" :class "content"))))
+
