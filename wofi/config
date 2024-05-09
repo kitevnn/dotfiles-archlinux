@@ -2,4 +2,4 @@ x = 504px
 y = 240px
 key_up = Ctrl-p
 key_down = Ctrl-n
-key_exit = Ctrl-[
+key_exit = Ctrl-g

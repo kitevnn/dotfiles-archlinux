@@ -43,9 +43,9 @@ window {
 #text {
   margin: 5px;
   border: none;
-  color: #fff;
+  color: #fff;   // DCDCDC is also ok.
   border-radius: 1rem;
-  text-shadow: 0 0 2.4px #DCDCDC;
+  text-shadow: 0 0 2.4px #DCDCDC;  // 辉光效果（很不错了个人感觉
 }
 
 #entry.activatable #text {
@@ -62,8 +62,9 @@ window {
 }
 
 #entry:selected {
-  background-color: #72D5A3;
+  background-color: #72D5A3;  // 60b48a is also ok.
   color: #000000;
+  // text-shadow: 0 0 2.4px #2e8b57;  // 个人认为，selected的不要加辉光效果，不然感觉好像被泼了一层粉一样（
   border-radius: 1rem;
   margin-left: 5px;
   margin-right: 5px;
