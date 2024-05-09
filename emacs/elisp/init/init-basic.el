@@ -78,5 +78,9 @@
 (setq tab-width 2)
 (setq tab-stop-list (tab-stops-generate))
 
+;; 透明背景
+;; (setq default-frame-alist '((width . 90)
+;;                             (height . 50)
+;;                             (alpha-background . 81)))
 
 (provide 'init-basic)

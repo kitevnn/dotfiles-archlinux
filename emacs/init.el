@@ -116,6 +116,7 @@
 (require 'plug-show-keystroke)
 (require 'plug-undoredo-tree)
 (require 'plug-quicksearch-helm)
+(require 'plug-git-magit)
 
 ;; -- ui/装饰相关加载(theme) --
 (require 'theme-dark)
@@ -157,12 +158,15 @@
 
 
 
+
+
 ;; -- 某次打开GNU Emacs 29.3后，自动append添加上的 --
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(org-agenda-files nil)
  '(package-selected-packages
    '(org-preview-html magit keycast pdf-tools auctex go-mode vundo undo-tree highlight-indent-guides dirvish tree-sitter tree-sitter-langs rust-mode smartparens company eglot-booster yasnippet yasnippet-snippets eglot telephone-line spaceline spaceline-all-the-icons dashboard nano-theme restart-emacs centaur-tabs nerd-icons-dired nerd-icons-completion nerd-icons))
  '(package-vc-selected-packages
