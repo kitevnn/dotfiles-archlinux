@@ -99,16 +99,4 @@
 ;; -- ansi-term相关 --
 (global-set-key (kbd "C-c t o")        'ansi-term)                  ;; 开启ansi-term终端模拟器
 
-;; -- buffer相关 --
-(global-set-key (kbd "C-x C-b")        'ibuffer)                    ;; 用ibuffer(built-in)代替原生的C-x C-b
-
-;; -- 软屏蔽相关 --
-(global-unset-key (kbd "C-\\"))                                     ;; 软屏蔽emacs-rime，原本C-\绑定的是 toggle-input-method 
-                                                                    ;;      > 因为现在发现用系统的fcitx5也是可以的
-                                                                    ;;      > 可能只是我个人养成习惯了
-                                                                    ;;      > 但必须要说的是
-                                                                    ;;      > 狗哥做的emacs-rime与佛振的rime确实很厉害
-                                                                    ;; 
-(global-unset-key (kbd "C-z"))                                      ;; 软屏蔽suspend-emacs，(在emacs-GUI下重新启动要M-!来打开同步版的Shell，然后输入%emacs来恢复启动)
-
 (provide 'init-keybindings)
