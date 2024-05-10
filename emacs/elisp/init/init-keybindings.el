@@ -9,11 +9,15 @@
 ;; -- 切换theme主题管理 --
 (global-set-key (kbd "C-c d 1")
                 (lambda () (interactive)
+                  (disable-theme  'nano-light)
                   (disable-theme  'ample)
+                  (disable-theme  'bliss)
                   (load-theme     'ample-flat t)))
 (global-set-key (kbd "C-c d 2")
                 (lambda () (interactive)
+                  (disable-theme  'nano-light)
                   (disable-theme  'ample-flat)
+                  (disable-theme  'bliss)                  
                   (load-theme     'ample t)))
 (global-set-key (kbd "C-c d 3")
                 (lambda () (interactive)
@@ -25,6 +29,7 @@
                 (lambda () (interactive)
                   (disable-theme  'ample)
                   (disable-theme  'ample-flat)
+                  (disable-theme  'bliss)
                   (load-theme     'nano-light t)))
 
 ;; -- 窗口window管理 --

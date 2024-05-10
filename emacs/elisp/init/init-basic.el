@@ -83,4 +83,12 @@
 ;;                             (height . 50)
 ;;                             (alpha-background . 81)))
 
+;; 自定义恢复文件配置(Auto saving.....done)
+(setq backup-directory-alist `(("." . "~/.config/emacs/saves/")))     ;; 统一设置恢复文件的保存目录，而不污染当前同级目录
+(setq backup-by-copying t)                                            ;; 设置保存形式
+(setq delete-old-versions t
+  kept-new-versions 6
+  kept-old-versions 2
+  version-control t)                                                  ;; 设置保存版本控制
+
 (provide 'init-basic)
