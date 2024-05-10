@@ -167,7 +167,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(org-agenda-files
-   '("/home/une/桌面/back/archlinux/blog/BTWIUSEARCH/emacs/EMACS-USAGE-用法.org"))
+   '())
  '(package-selected-packages
    '(bliss-theme org-preview-html magit keycast pdf-tools auctex go-mode vundo undo-tree highlight-indent-guides dirvish tree-sitter tree-sitter-langs rust-mode smartparens company eglot-booster yasnippet yasnippet-snippets eglot telephone-line spaceline spaceline-all-the-icons dashboard nano-theme restart-emacs centaur-tabs nerd-icons-dired nerd-icons-completion nerd-icons))
  '(package-vc-selected-packages
