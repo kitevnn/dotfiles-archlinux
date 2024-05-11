@@ -91,4 +91,12 @@
   kept-old-versions 2
   version-control t)                                                  ;; 设置保存版本控制
 
+;; AUCTeX相关
+(setq-default TeX-engine 'xetex)                                      ;; 更改AUCTeX的渲染引擎从pdflatex到xelatex
+(setq-default TeX-PDF-mode t)                                         ;; PDF输出
+(setq TeX-view-program-selection '((output-pdf "PDF Tools"))          ;; pdf-tools(20240429.407)作为pdf-viewer
+      TeX-source-correlate-start-server t)
+(add-hook 'TeX-after-compilation-finished-functions                   ;; AUCTeX(14.0.3.2024-03-17)
+          #'TeX-revert-document-buffer)
+
 (provide 'init-basic)

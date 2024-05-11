@@ -38,7 +38,7 @@
                                  (registers   . "e")))
 
   ;; 设置item的信息(字符串替换)
-  (setq dashboard-item-names '(("Recent Files:"             . "最近打开文件")
+  (setq dashboard-item-names '(("Recent Files:"               . "最近打开文件")
                                ("Bookmarks:"                  . "最近打开书签")
                                ("Agenda for today:"           . "今天日程安排")
                                ("Agenda for the coming week:" . "下周日程安排")))

@@ -28,6 +28,11 @@
                                       (disable-theme  'nano-light)
                                       (disable-theme  'ample-flat)
                                       (disable-theme  'ample)
+                                      (enable-theme   'bliss)))
+  (run-at-time "00:00" (* 60 60 24) (lambda ()
+                                      (disable-theme  'nano-light)
+                                      (disable-theme  'ample-flat)
+                                      (disable-theme  'ample)
                                       (enable-theme   'bliss))))
 
 (provide 'theme-dark)
