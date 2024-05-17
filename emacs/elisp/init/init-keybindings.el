@@ -3,8 +3,13 @@
 ;; 
 
 ;; -- 全局Buffer管理 --
-(global-set-key (kbd "C-c <up>")         'next-buffer)
-(global-set-key (kbd "C-c <down>")       'previous-buffer)
+(global-set-key (kbd "C-c C-<up>")         'next-buffer)
+(global-set-key (kbd "C-c C-<down>")       'previous-buffer)
+
+;; -- plug-centaur-tabs.el 局部Buffer管理 --
+(global-set-key (kbd "C-c C-<left>")       'centaur-tabs-backward)
+(global-set-key (kbd "C-c C-<right>")      'centaur-tabs-forward)
+(global-set-key (kbd "C-c C-<return>")     'centaur-tabs--create-new-tab)
 
 ;; -- 切换theme主题管理 --
 (global-set-key (kbd "C-c d 1")
@@ -42,11 +47,11 @@
                 (lambda () (interactive)                     
                   (kill-buffer "初始页")                     
                   (delete-other-windows)))                   
-(global-set-key (kbd "C-c w f")                               ;; 向右(forward)分屏的1个当前buffer
+(global-set-key (kbd "C-c w <right>")                         ;; 向右(forward)分屏的1个当前buffer
                 (lambda () (interactive)                      ;;    > 只有 split-window-right
                   (split-window-right)                        ;;    > 只有 split-window-below
                   (windmove-right)))                         
-(global-set-key (kbd "C-c w n")                               ;; 向下(next)分屏的1个当前buffer
+(global-set-key (kbd "C-c w <down>")                          ;; 向下(next)分屏的1个当前buffer
                 (lambda () (interactive)                      ;;    > 只有 split-window-right
                   (split-window-below)                        ;;    > 只有 split-window-below
                   (windmove-down)))
@@ -63,11 +68,6 @@
 
 ;; -- package.el 管理packages --
 ;; (global-set-key (kbd "M-f")           'list-packages)
-
-;; -- plug-centaur-tabs.el 局部Buffer管理 --
-(global-set-key (kbd "C-c <left>")       'centaur-tabs-backward)
-(global-set-key (kbd "C-c <right>")      'centaur-tabs-forward)
-(global-set-key (kbd "C-c o")            'centaur-tabs--create-new-tab)
 
 ;; -- plug-restart-emacs.el 重启GNU Emacs --
 (global-set-key (kbd "M-r")              'restart-emacs)      ;; 原本M-r绑定的是 move-to-window-line-top-bottom
@@ -121,5 +121,8 @@
                                                                     ;;      > 狗哥做的emacs-rime与佛振的rime确实很厉害
                                                                     ;; 
 (global-unset-key (kbd "C-z"))                                      ;; 软屏蔽suspend-emacs，(在emacs-GUI下重新启动要M-!来打开同步版的Shell，然后输入%emacs来恢复启动)
+
+;; -- magit相关 --
+(global-set-key (kbd "C-c g o")        'magit)
 
 (provide 'init-keybindings)

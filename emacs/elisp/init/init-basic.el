@@ -99,4 +99,7 @@
 (add-hook 'TeX-after-compilation-finished-functions                   ;; AUCTeX(14.0.3.2024-03-17)
           #'TeX-revert-document-buffer)
 
+;; 1行80个字符
+(setq-default fill-column 80)
+
 (provide 'init-basic)

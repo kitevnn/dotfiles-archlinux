@@ -83,7 +83,6 @@
 
 
 
-
 ;; 
 ;; 初始化加载模块
 ;; 
@@ -141,6 +140,7 @@
 
 ;; -- prog/编程相关加载(treesitter) --
 (require 'plug-treesitter)
+
 
 
 

@@ -12,7 +12,7 @@
   :init 
   ;; 设置buffer基本状态
   (setq centaur-tabs-style "box"
-        centaur-tabs-height 16
+        centaur-tabs-height 13  ;; 16
         centaur-tabs-set-icons t
         centaur-tabs-plain-icons t
         centaur-tabs-gray-out-icons 'buffer)

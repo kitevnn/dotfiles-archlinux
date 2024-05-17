@@ -13,4 +13,5 @@
                                       (disable-theme  'ample)
                                       (disable-theme  'ample-flat)
                                       (enable-theme   'nano-light))))
+
 (provide 'theme-light)
