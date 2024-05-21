@@ -128,3 +128,9 @@ vim.cmd([[
   hi IndentBlanklineIndent5 ctermfg=yellow guifg=yellow
   hi IndentBlanklineIndent6 ctermfg=yellow guifg=yellow
 ]])
+
+-- control the color of inlay hint in Neovim 0.10.0
+vim.api.nvim_set_hl(0, "LspReferenceText", { fg = "#709080" })
+vim.api.nvim_set_hl(0, "LspReferenceRead", { fg = "#709080" })
+vim.api.nvim_set_hl(0, "LspReferenceWrite", { fg = "#709080" })
+vim.api.nvim_set_hl(0, "LspInlayHint", { fg = "#709080" })

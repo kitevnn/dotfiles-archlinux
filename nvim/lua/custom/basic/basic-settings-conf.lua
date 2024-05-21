@@ -37,7 +37,7 @@ vim.cmd([[
 ]])
 
 -- 建议使用 folke/noice.nvim 来代替 options.cmdheight=0 来让底下的bar不要那么抬得那么高
--- options.cmdheight = 0
+options.cmdheight = 0
 
 -- for neovide.
 -- options.guifont = "SauceCodeProNerdFontCompleteMono\ Nerd\ Font\ SemiBold"
