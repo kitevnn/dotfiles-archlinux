@@ -2,8 +2,7 @@
 -- [[  basic-settings-conf  ]]: neovim的基本设置
 --
 
-local options=vim.o
-options.t_Co = 256
+local options = vim.o
 options.tabstop = 2
 options.softtabstop = 2
 options.shiftwidth = 2
@@ -12,10 +11,11 @@ options.hlsearch = true
 options.incsearch = true
 options.smartcase = true
 options.tw = 0
-options.endcoding = "utf-8"
 options.cursorline = true
 options.cursorlineopt = "number"
 options.number = true
+-- options.t_Co = 256
+-- options.endcoding = "utf-8"
 
 -- autocmd设置
 vim.cmd([[au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=markdown nofoldenable]])
@@ -40,4 +40,4 @@ vim.cmd([[
 -- options.cmdheight = 0
 
 -- for neovide.
--- options.guifont = "SauceCodeProNerdFontCompleteMono\ Nerd\ Font\ SemiBold"  
+-- options.guifont = "SauceCodeProNerdFontCompleteMono\ Nerd\ Font\ SemiBold"

@@ -42,6 +42,7 @@ _M.setup()
 -- [[  Neovim Something Require  ]]
 --
 -- require LanguageServer: 由于我个人的配置原因，如果要引入LS配置文件，就必须要在 lazy.vim 后面(否则报错)，也就是现在的:42行处，手动配置，进行require引入。
+require('custom.lsp.ls-settings')
 require('custom.lsp.ls-clangd')
 require('custom.lsp.ls-rustanalyzer')
 require('custom.lsp.ls-gopls')
@@ -50,4 +51,3 @@ require('custom.lsp.ls-gopls')
 
 -- require neovide
 -- require('custom.neovide.neovide-conf')
-
