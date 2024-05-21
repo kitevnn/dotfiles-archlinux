@@ -12,7 +12,7 @@
   :init 
   ;; 设置buffer基本状态
   (setq centaur-tabs-style "box"
-        centaur-tabs-height 13  ;; 16
+        centaur-tabs-height 9  ;; 16
         centaur-tabs-set-icons t
         centaur-tabs-plain-icons t
         centaur-tabs-gray-out-icons 'buffer)
@@ -46,6 +46,6 @@
 )
 
 ;; 设置buffer的字体
-(centaur-tabs-change-fonts "SauceCodeProNerdFontCompleteMono Nerd Font" 140)
+(centaur-tabs-change-fonts "SauceCodeProNerdFontCompleteMono Nerd Font" 90)
 
 (provide 'plug-centaur-tabs)

@@ -15,7 +15,7 @@
 
 ;; 设置字体，字体大小 = 140 / 10 = 15pt
 (set-face-attribute 'default nil 
-                    :height 140
+                    :height 90
                     :font "SauceCodeProNerdFontCompleteMono Nerd Font")
 
 ;; 内置的emacs做到vim的C-d的补全
@@ -25,7 +25,7 @@
 (add-hook 'prog-mode 'hs-minor-mode)
 
 ;; 展示行号
-(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+;; (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 ;; 禁用Messages与scratch的Buffer
 (setq-default message-log-max nil)
