@@ -69,9 +69,9 @@
 (prefer-coding-system 'utf-8)
 
 ;; 显示行号模式
-(global-display-line-numbers-mode 1)
+;; (global-display-line-numbers-mode 1)
 ;; 设置相对行号
-(setq display-line-numbers-type 'relative)
+;; (setq display-line-numbers-type 'relative)
 
 ;; 软空格
 (setq-default indent-tabs-mode nil)

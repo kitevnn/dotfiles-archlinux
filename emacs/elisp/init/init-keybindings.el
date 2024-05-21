@@ -122,6 +122,11 @@
                                                                     ;; 
 (global-unset-key (kbd "C-z"))                                      ;; 软屏蔽suspend-emacs，(在emacs-GUI下重新启动要M-!来打开同步版的Shell，然后输入%emacs来恢复启动)
 
+;; -- deadgrep相关 --
+(global-set-key (kbd "C-c r o")           'deadgrep)
+;; (define-key deadgrep-mode-map (kbd "M-n") 'deadgrep-forward-filename)
+;; (define-key deadgrep-mode-map (kbd "M-p") 'deadgrep-backward-filename)
+
 ;; -- magit相关 --
 (global-set-key (kbd "C-c g o")        'magit)
 
