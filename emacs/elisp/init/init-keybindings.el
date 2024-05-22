@@ -72,8 +72,6 @@
 ;; -- plug-restart-emacs.el 重启GNU Emacs --
 (global-set-key (kbd "M-r")              'restart-emacs)      ;; 原本M-r绑定的是 move-to-window-line-top-bottom
 
-;; -- 老色批客户端eglot --
-(global-set-key (kbd "M-s")              'eglot)
 
 ;; -- 文件管理器dirvish --
 (global-set-key (kbd "C-c d o")          'dirvish-side)
@@ -87,17 +85,18 @@
 (global-set-key (kbd "M-p")            'move-prev-five-line)        ;; 光标向上移动5行
 
 ;; -- eglot相关 --
-(global-set-key (kbd "C-c s o")        'flymake-show-diagnostic)    ;; 通过flymake(built-in)，给eglot提供diagnostic诊断信息
-(global-set-key (kbd "C-c s n")        'flymake-goto-next-error)    ;; 前往下一个错误(会用波浪线来展示错误的)
-(global-set-key (kbd "C-c s p")        'flymake-goto-prev-error)    ;; 前往上一个错误(会用波浪线来展示错误的)
-(global-set-key (kbd "C-c s g")        'flymake-goto-diagnostic)    ;; 前往diagnostic诊断信息
-(global-set-key (kbd "C-c s c")        'eglot-code-actions)         ;; 进行代码行动
-(global-set-key (kbd "C-c s r")        'eglot-rename)               ;; 重命名相同名称的symbol符号
-;; (global-set-key (kbd "M-.")         'xref-find-definitions)      ;; 寻找definitions定义(默认xref快捷键: M-.)
-;; (global-set-key (kbd "M-?")         'xref-find-references)       ;; 寻找references引用(默认xref快捷键: M-?)
-(global-set-key (kbd "C-c g d")        'eglot-find-declaration)     ;; 寻找declaration声明
-(global-set-key (kbd "C-c g i")        'eglot-find-implementation)  ;; 寻找implementation执行
-(global-set-key (kbd "C-c g t")        'eglot-find-typeDefinition)  ;; 寻找typeDefinition类型定义
+(global-set-key (kbd "C-c e o")        'eglot)
+(global-set-key (kbd "C-c e s")        'flymake-show-diagnostic)    ;; 通过flymake(built-in)，给eglot提供diagnostic诊断信息
+(global-set-key (kbd "C-c e n")        'flymake-goto-next-error)    ;; 前往下一个错误(会用波浪线来展示错误的)
+(global-set-key (kbd "C-c e p")        'flymake-goto-prev-error)    ;; 前往上一个错误(会用波浪线来展示错误的)
+(global-set-key (kbd "C-c e g")        'flymake-goto-diagnostic)    ;; 前往diagnostic诊断信息
+(global-set-key (kbd "C-c e c")        'eglot-code-actions)         ;; 进行代码行动
+(global-set-key (kbd "C-c e r")        'eglot-rename)               ;; 重命名相同名称的symbol符号
+(global-set-key (kbd "C-c e f d")      'xref-find-definitions)      ;; 寻找来源(放在哪一行内)definitions定义(默认xref快捷键: M-.)
+(global-set-key (kbd "C-c e f g d")    'eglot-find-declaration)     ;; 寻找declaration声明
+(global-set-key (kbd "C-c e f r")      'xref-find-references)       ;; 寻找出处(放在哪个文件内)references引用(默认xref快捷键: M-?)
+(global-set-key (kbd "C-c e f i")      'eglot-find-implementation)  ;; 寻找implementation执行
+(global-set-key (kbd "C-c e f t")      'eglot-find-typeDefinition)  ;; 寻找typeDefinition类型定义
 
 ;; -- helm相关 -- 
 (global-set-key (kbd "M-x")            'helm-M-x)                   ;; 用helm的M-x，代替了原生的M-x(比Emacs 29.3的M-x，多了历史history-commands的功能)
