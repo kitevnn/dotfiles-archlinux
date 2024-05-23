@@ -129,4 +129,8 @@
 ;; -- magit相关 --
 (global-set-key (kbd "C-c g o")        'magit)
 
+;; -- org-agenda相关 --
+(global-set-key (kbd "C-c a")          'org-agenda)
+
+
 (provide 'init-keybindings)
