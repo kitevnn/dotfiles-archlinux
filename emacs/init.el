@@ -106,7 +106,7 @@
 (require 'note-auctex)
 
 ;; -- enhance/体验增强加载 --
-(require 'plug-centaur-tabs)
+(require 'plug-buffer-centaur-tabs)
 (require 'plug-restart-emacs)
 (require 'plug-which-key)
 (require 'plug-pair-smartparens)
@@ -168,7 +168,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(deadgrep bliss-theme org-preview-html magit keycast pdf-tools auctex go-mode vundo undo-tree highlight-indent-guides dirvish tree-sitter tree-sitter-langs rust-mode smartparens company eglot-booster yasnippet yasnippet-snippets eglot telephone-line spaceline spaceline-all-the-icons dashboard nano-theme restart-emacs centaur-tabs nerd-icons-dired nerd-icons-completion nerd-icons))
+   '(fancy-narrow fancy-battery deadgrep bliss-theme org-preview-html magit keycast pdf-tools auctex go-mode vundo undo-tree highlight-indent-guides dirvish tree-sitter tree-sitter-langs rust-mode smartparens company eglot-booster yasnippet yasnippet-snippets eglot telephone-line spaceline spaceline-all-the-icons dashboard nano-theme restart-emacs centaur-tabs nerd-icons-dired nerd-icons-completion nerd-icons))
  '(package-vc-selected-packages
    '((eglot-booster :vc-backend Git :url "https://github.com/jdtsmith/eglot-booster"))))
 (custom-set-faces
@@ -177,3 +177,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(put 'narrow-to-region 'disabled nil)

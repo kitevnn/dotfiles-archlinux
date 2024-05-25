@@ -3,28 +3,16 @@
 ;; 
 
 ;; -- 全局Buffer管理 --
-(global-set-key (kbd "C-c C-<up>")         'next-buffer)
-(global-set-key (kbd "C-c C-<down>")       'previous-buffer)
+(global-set-key (kbd "C-c h p")         'next-buffer)
+(global-set-key (kbd "C-c h n")         'previous-buffer)
 
-;; -- plug-centaur-tabs.el 局部Buffer管理 --
-(global-set-key (kbd "C-c C-<left>")       'centaur-tabs-backward)
-(global-set-key (kbd "C-c C-<right>")      'centaur-tabs-forward)
-(global-set-key (kbd "C-c C-<return>")     'centaur-tabs--create-new-tab)
+;; -- 局部Buffer管理 --
+(global-set-key (kbd "C-c h b")         'centaur-tabs-backward)
+(global-set-key (kbd "C-c h f")         'centaur-tabs-forward)
+(global-set-key (kbd "C-c h o")         'centaur-tabs--create-new-tab)
 
 ;; -- 切换theme主题管理 --
 (global-set-key (kbd "C-c d 1")
-                (lambda () (interactive)
-                  (disable-theme  'nano-light)
-                  (disable-theme  'ample)
-                  (disable-theme  'bliss)
-                  (load-theme     'ample-flat t)))
-(global-set-key (kbd "C-c d 2")
-                (lambda () (interactive)
-                  (disable-theme  'nano-light)
-                  (disable-theme  'ample-flat)
-                  (disable-theme  'bliss)                  
-                  (load-theme     'ample t)))
-(global-set-key (kbd "C-c d 3")
                 (lambda () (interactive)
                   (disable-theme  'nano-light)
                   (disable-theme  'ample)
@@ -38,7 +26,7 @@
                   (load-theme     'nano-light t)))
 
 ;; -- 窗口window管理 --
-(global-set-key (kbd "C-c w l")                               ;; 开启向右分屏的1个空白初始页
+(global-set-key (kbd "C-c w l")                              ;; 开启向右分屏的1个空白初始页
                 (lambda () (interactive)                     
                   (split-window-right)                       
                   (windmove-right)                           
@@ -105,6 +93,10 @@
 
 ;; -- org相关 --
 (global-set-key (kbd "C-c h o")        'org-preview-html-mode)      ;; 开启org的html预览模式
+(global-set-key (kbd "C-c C-x C-.")    'org-metaright)              ;; 用 C-z C-x C-. 替代原本的 Meta+<right>
+(global-set-key (kbd "C-c C-x C-,")    'org-metaleft)               ;; 用 C-z C-x C-, 替代原本的 Meta+<left>
+(global-set-key (kbd "C-c C-x C-=")    'org-shiftright)             ;; 用 C-z C-x C-= 替代原本的 Shift+<right>
+(global-set-key (kbd "C-c C-x C--")    'org-shiftleft)              ;; 用 C-z C-x C-- 替代原本的 Shift+<left>
 
 ;; -- ansi-term相关 --
 (global-set-key (kbd "C-c t o")        'ansi-term)                  ;; 开启ansi-term终端模拟器

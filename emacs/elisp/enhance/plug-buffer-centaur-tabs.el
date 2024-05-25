@@ -48,4 +48,4 @@
 ;; 设置buffer的字体
 (centaur-tabs-change-fonts "SauceCodeProNerdFontCompleteMono Nerd Font" 90)
 
-(provide 'plug-centaur-tabs)
+(provide 'plug-buffer-centaur-tabs)

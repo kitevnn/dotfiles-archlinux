@@ -3,10 +3,9 @@
 ;; 
 
 (use-package telephone-line
-             :ensure t
-             
-             :init
-             (setq telephone-line-primary-left-separator       'telephone-line-identity-left)
-             (telephone-line-mode 1))
+  :ensure t
+  :init
+  (setq telephone-line-primary-left-separator       'telephone-line-identity-left)  
+  (telephone-line-mode 1))
 
 (provide 'ui-line)
