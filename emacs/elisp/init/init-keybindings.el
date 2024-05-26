@@ -3,13 +3,13 @@
 ;; 
 
 ;; -- 全局Buffer管理 --
-(global-set-key (kbd "C-c h p")         'next-buffer)
-(global-set-key (kbd "C-c h n")         'previous-buffer)
+(global-set-key (kbd "C-c t p")         'next-buffer)
+(global-set-key (kbd "C-c t n")         'previous-buffer)
 
 ;; -- 局部Buffer管理 --
-(global-set-key (kbd "C-c h b")         'centaur-tabs-backward)
-(global-set-key (kbd "C-c h f")         'centaur-tabs-forward)
-(global-set-key (kbd "C-c h o")         'centaur-tabs--create-new-tab)
+(global-set-key (kbd "C-c t b")         'centaur-tabs-backward)
+(global-set-key (kbd "C-c t f")         'centaur-tabs-forward)
+(global-set-key (kbd "C-c t o")         'centaur-tabs--create-new-tab)
 
 ;; -- 切换theme主题管理 --
 (global-set-key (kbd "C-c d 1")
