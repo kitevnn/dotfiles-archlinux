@@ -39,7 +39,8 @@
 (global-set-key (kbd "C-c k")            'delete-window)      ;; kill掉当前光标所在的window
 
 ;; -- 选区MarkSet管理 --
-(global-set-key (kbd "C-c v")            'set-mark-command)   ;; 进入MarkSet(开始框选)
+(global-set-key (kbd "C-c v")            'set-mark-command)         ;; 进入MarkSet(单行选择)
+(global-set-key (kbd "C-c SPC")          'rectangle-mark-mode)      ;; 进入MarkSet(矩形选择)
 
 ;; -- emacs-mode-style 分屏 --
 (global-set-key (kbd "C-c f")            'windmove-right)     ;; emacs-mode-style 分屏
