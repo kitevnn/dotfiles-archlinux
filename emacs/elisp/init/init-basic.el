@@ -11,7 +11,7 @@
 (scroll-bar-mode -1)
 
 ;; 快速恢复window
-;; (winner-mode 0)   ;; 设置为0，防止与切换buffer的快捷键冲突
+;; (winner-mode 0)   ; 设置为0，防止与切换buffer的快捷键冲突
 
 ;; 设置字体，字体大小 = 140 / 10 = 15pt
 (set-face-attribute 'default nil 
@@ -48,7 +48,7 @@
 (add-to-list 'auto-mode-alist '("\\.cpp\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.cc\\'"  . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.c\\'"   . c-mode))
-(add-to-list 'auto-mode-alist '("\\.rs\\'"  . rust-mode)) ;; rust-mode需要从elpa源里安装
+(add-to-list 'auto-mode-alist '("\\.rs\\'"  . rust-mode))  ; rust-mode需要从elpa源里安装
 (add-to-list 'auto-mode-alist '("\\.go\\'"  . go-mode))
 (add-to-list 'auto-mode-alist '("\\.hs\\'"  . hs-mode))
 (add-to-list 'auto-mode-alist '("\\.el\\'"  . emacs-lisp-mode))
@@ -84,19 +84,19 @@
 ;;                             (alpha-background . 81)))
 
 ;; 自定义恢复文件配置(Auto saving.....done)
-(setq backup-directory-alist `(("." . "~/.config/emacs/saves/")))     ;; 统一设置恢复文件的保存目录，而不污染当前同级目录
-(setq backup-by-copying t)                                            ;; 设置保存形式
+(setq backup-directory-alist `(("." . "~/.config/emacs/saves/")))     ; 统一设置恢复文件的保存目录，而不污染当前同级目录
+(setq backup-by-copying t)                                            ; 设置保存形式
 (setq delete-old-versions t
   kept-new-versions 6
   kept-old-versions 2
-  version-control t)                                                  ;; 设置保存版本控制
+  version-control t)                                                  ; 设置保存版本控制
 
 ;; AUCTeX相关
-(setq-default TeX-engine 'xetex)                                      ;; 更改AUCTeX的渲染引擎从pdflatex到xelatex
-(setq-default TeX-PDF-mode t)                                         ;; PDF输出
-(setq TeX-view-program-selection '((output-pdf "PDF Tools"))          ;; pdf-tools(20240429.407)作为pdf-viewer
+(setq-default TeX-engine 'xetex)                                      ; 更改AUCTeX的渲染引擎从pdflatex到xelatex
+(setq-default TeX-PDF-mode t)                                         ; PDF输出
+(setq TeX-view-program-selection '((output-pdf "PDF Tools"))          ; pdf-tools(20240429.407)作为pdf-viewer
       TeX-source-correlate-start-server t)
-(add-hook 'TeX-after-compilation-finished-functions                   ;; AUCTeX(14.0.3.2024-03-17)
+(add-hook 'TeX-after-compilation-finished-functions                   ; AUCTeX(14.0.3.2024-03-17)
           #'TeX-revert-document-buffer)
 
 ;; 1行80个字符

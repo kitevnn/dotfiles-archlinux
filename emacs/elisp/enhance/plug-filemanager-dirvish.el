@@ -11,7 +11,7 @@
   ;; dirvish的其它设置
   :init
   (setq dirvish-mode-line-format '(:left (sort symlink) :right (omit yank index))
-        dirvish-mode-line-height 9  ;; 可能是缓存的问题，这里设置了高度为18后，telephone-line的高度，与dirvish-mode的高度就对准对齐了。(我自己实在也不知道为啥-_-)
+        dirvish-mode-line-height 9  ; 可能是缓存的问题，这里设置了高度为18后，telephone-line的高度，与dirvish-mode的高度就对准对齐了。(我自己实在也不知道为啥-_-)
         dirvish-header-line-height 9
         delete-by-moving-to-trash t
         dired-listing-switches "-l --almost-all --human-readable --group-directories-first --no-group"))

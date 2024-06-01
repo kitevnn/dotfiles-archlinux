@@ -3,9 +3,9 @@
 ;; 
 
 ;; M-x list-packages
-;; - nerd-icons               (installed)     ;; 本体
-;; - nerd-icons-completion    (installed)     ;; nerd-icons-completion是C-d补全时，也能显示出nf-icon
-;; - nerd-icons-dired         (installed)     ;; nerd-icons-dired是C-x d展示dired时，也能显示出nf-icon
+;; - nerd-icons               (installed)     ; 本体
+;; - nerd-icons-completion    (installed)     ; nerd-icons-completion是C-d补全时，也能显示出nf-icon
+;; - nerd-icons-dired         (installed)     ; nerd-icons-dired是C-x d展示dired时，也能显示出nf-icon
 ;; - nerd-icons-ibuffer
 ;; - nerd-icons-ivy-rich
 ;; - nerd-icons-corfu
