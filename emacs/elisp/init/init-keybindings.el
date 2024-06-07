@@ -93,7 +93,7 @@
 (global-set-key (kbd "C-c C-x C--")      'org-shiftleft)                ; 用 C-z C-x C-- 替代原本的 Shift+<left>
                                                                         
 ;; -- ansi-term相关 --                                                  
-;; (global-set-key (kbd "C-c t o")       'ansi-term)                    ; 开启ansi-term终端模拟器
+(global-set-key (kbd "C-c t o o o")      'ansi-term)                    ; 开启ansi-term终端模拟器
                                                                         
 ;; -- buffer相关 --                                                     
 (global-set-key (kbd "C-x C-b")          'ibuffer)                      ; 用ibuffer(built-in)代替原生的C-x C-b
