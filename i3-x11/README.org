@@ -1,0 +1,14 @@
+* install
+** Package
+| application       | package |
+|-------------------+---------|
+| wallpaper manager | feh     |
+| bar               | eww-x11 |
+| composition       | picom   |
+| gaps              | i3-gaps |
+
+** Install
+#+begin_src sh
+#~ pacman -S feh eww-x11 picom i3-gaps i3
+#+end_src
+

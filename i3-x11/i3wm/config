@@ -1,0 +1,112 @@
+# 设置Super键为i3-wm起始键
+set $mod Mod4
+
+# 设置字体
+font pango:SauceCodeProNerdFontCompleteMono Nerd Font SemiBold 9
+
+# 自启动服务
+exec --no-startup-id dex --autostart --environment i3
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id nm-applet
+exec_always fcitx5
+exec_always eww daemon
+exec_always eww open bar
+exec_always picom
+exec setxkbmap -option "ctrl:nocaps"
+set $refresh_i3status killall -SIGUSR1 i3status
+
+# feh壁纸
+exec --no-startup-id feh --bg-fill "/path/to/your/favorite/wallpaper.jpg"
+
+# 鼠标绑定
+## 通过Super + Mouse_L/R，来拖动floating window到别的位置
+floating_modifier $mod
+tiling_drag modifier titlebar
+
+# 按键绑定
+## 媒体键配置
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+## 常规键配置
+bindsym $mod+Return exec alacritty
+bindsym $mod+O exec alacritty
+bindsym $mod+BackSpace kill
+bindsym $mod+I exec firefox
+bindsym $mod+G exec emacs
+bindsym $mod+M exec rofi
+## 更改光标焦点
+bindsym $mod+b focus left
+bindsym $mod+n focus down
+bindsym $mod+p focus up
+bindsym $mod+f focus right
+## 移动窗口位置
+bindsym $mod+Shift+B move left
+bindsym $mod+Shift+N move down
+bindsym $mod+Shift+P move up
+bindsym $mod+Shift+F move right
+## 窗口全屏
+bindsym $mod+E fullscreen toggle
+## 窗口平铺浮动切换
+bindsym $mod+t floating toggle
+## 窗口平铺浮动切换
+bindsym $mod+shift+t focus mode_toggle
+## 窗口节点控制
+bindsym $mod+a focus parent
+bindsym $mod+d focus child
+
+# 工作区设置
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+bindsym $mod+Ctrl+1 move container to workspace number $ws1
+bindsym $mod+Ctrl+2 move container to workspace number $ws2
+bindsym $mod+Ctrl+3 move container to workspace number $ws3
+bindsym $mod+Ctrl+4 move container to workspace number $ws4
+bindsym $mod+Ctrl+5 move container to workspace number $ws5
+bindsym $mod+Ctrl+6 move container to workspace number $ws6
+bindsym $mod+Ctrl+7 move container to workspace number $ws7
+bindsym $mod+Ctrl+8 move container to workspace number $ws8
+bindsym $mod+Ctrl+9 move container to workspace number $ws9
+bindsym $mod+Ctrl+0 move container to workspace number $ws10
+
+# 重新加载i3
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+q exec "i3-nagbar -t warning -m '真的要退出i3-wm吗？(´・ω・｀)' -B '是的，我要退出' 'i3-msg exit'"
+
+# 调整window大小
+bindsym $mod+w mode "resize"
+mode "resize" {
+        bindsym b resize shrink width 10 px or 10 ppt
+        bindsym n resize grow height 10 px or 10 ppt
+        bindsym p resize shrink height 10 px or 10 ppt
+        bindsym f resize grow width 10 px or 10 ppt
+        bindsym $mod+w mode "default"
+}
+
+# 主题及美观调整
+gaps inner 6
+gaps top 39
+
+# 自动隐藏窗口标题
+for_window [class="^.*"] border pixel 0
+
