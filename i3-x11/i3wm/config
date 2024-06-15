@@ -36,6 +36,8 @@ bindsym $mod+BackSpace kill
 bindsym $mod+I exec firefox
 bindsym $mod+G exec emacs
 bindsym $mod+M exec rofi
+bindsym $mod+A exec spectacle
+bindsym $mod+J layout toggle split
 ## 更改光标焦点
 bindsym $mod+b focus left
 bindsym $mod+n focus down
@@ -52,9 +54,6 @@ bindsym $mod+E fullscreen toggle
 bindsym $mod+t floating toggle
 ## 窗口平铺浮动切换
 bindsym $mod+shift+t focus mode_toggle
-## 窗口节点控制
-bindsym $mod+a focus parent
-bindsym $mod+d focus child
 
 # 工作区设置
 set $ws1 "1"
@@ -77,6 +76,8 @@ bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
+bindsym $mod+Left workspace prev_on_output;
+bindsym $mod+Right workspace next_on_output;
 bindsym $mod+Ctrl+1 move container to workspace number $ws1
 bindsym $mod+Ctrl+2 move container to workspace number $ws2
 bindsym $mod+Ctrl+3 move container to workspace number $ws3
@@ -89,8 +90,8 @@ bindsym $mod+Ctrl+9 move container to workspace number $ws9
 bindsym $mod+Ctrl+0 move container to workspace number $ws10
 
 # 重新加载i3
-bindsym $mod+Shift+c reload
-bindsym $mod+Shift+r restart
+bindsym $mod+c reload
+bindsym $mod+r restart
 bindsym $mod+q exec "i3-nagbar -t warning -m '真的要退出i3-wm吗？(´・ω・｀)' -B '是的，我要退出' 'i3-msg exit'"
 
 # 调整window大小
@@ -109,4 +110,3 @@ gaps top 39
 
 # 自动隐藏窗口标题
 for_window [class="^.*"] border pixel 0
-
