@@ -16,7 +16,7 @@ exec setxkbmap -option "ctrl:nocaps"
 set $refresh_i3status killall -SIGUSR1 i3status
 
 # feh壁纸
-exec --no-startup-id feh --bg-fill "/path/to/your/favorite/wallpaper.jpg"
+exec --no-startup-id feh --bg-fill "/home/une/.wallpaper/20220518085627.jpg"
 
 # 鼠标绑定
 ## 通过Super + Mouse_L/R，来拖动floating window到别的位置
@@ -92,7 +92,6 @@ bindsym $mod+Ctrl+0 move container to workspace number $ws10
 # 重新加载i3
 bindsym $mod+c reload
 bindsym $mod+r restart
-bindsym $mod+q exec "i3-nagbar -t warning -m '真的要退出i3-wm吗？(´・ω・｀)' -B '是的，我要退出' 'i3-msg exit'"
 
 # 调整window大小
 bindsym $mod+w mode "resize"
@@ -107,6 +106,13 @@ mode "resize" {
 # 主题及美观调整
 gaps inner 6
 gaps top 39
+
+# i3启动关闭
+mode "exit: [l]ogout, [r]eboot, [s]hutdown" {
+  bindsym q exec i3-msg exit
+  bindsym Ctrl+g mode "default"
+}
+bindsym $mod+q mode "exit: q"
 
 # 自动隐藏窗口标题
 for_window [class="^.*"] border pixel 0
