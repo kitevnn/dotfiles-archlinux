@@ -46,5 +46,4 @@ With one `C-u' prefix, insert output following an arrow"
 ;;     > 由于我自己org-mode懒加载了，所以设置这个配置会出错。(解决做法: 要想在org-mode里也可以这样eval-buffer的格式化输出，最好还是 [不懒加载org-mode])
 ;; (define-key org-mode-map (kbd "C-c C-x C-e") 'org-clock-modify-effort-estimate)
 
-
 (provide 'defun-for-fun)

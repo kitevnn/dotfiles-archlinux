@@ -49,6 +49,13 @@
       dashboard-set-heading-icons t 
       dashboard-set-file-icons t)
 
+  ;; 数量设置
+  (setq dashboard-items '((recents   . 10)
+                        (bookmarks   . 5)
+                        (projects    . 5)
+                        (agenda      . 5)
+                        (registers   . 5)))
+
   ;; 默认启动dashboard
   (dashboard-open))
 

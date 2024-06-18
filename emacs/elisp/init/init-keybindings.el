@@ -48,6 +48,10 @@
 (global-set-key (kbd "C-c n")            'windmove-down)                ; emacs-mode-style 分屏
 (global-set-key (kbd "C-c p")            'windmove-up)                  ; emacs-mode-style 分屏
 
+;; -- scroll-other-window 滚动屏幕 --
+(global-set-key (kbd "M-_")              'scroll-other-window)          ; M-<prior>
+(global-set-key (kbd "M-+")              'scroll-other-window-down)     ; M-<next>
+
 ;; -- package.el 管理packages --
 ;; (global-set-key (kbd "M-f")           'list-packages)
 
@@ -67,18 +71,20 @@
 (global-set-key (kbd "M-p")              'move-prev-five-line)          ; 光标向上移动5行
 
 ;; -- eglot相关 --
-(global-set-key (kbd "C-c e o")          'eglot)
-(global-set-key (kbd "C-c e s")          'flymake-show-diagnostic)      ; 通过flymake(built-in)，给eglot提供diagnostic诊断信息
-(global-set-key (kbd "C-c e n")          'flymake-goto-next-error)      ; 前往下一个错误(会用波浪线来展示错误的)
-(global-set-key (kbd "C-c e p")          'flymake-goto-prev-error)      ; 前往上一个错误(会用波浪线来展示错误的)
-(global-set-key (kbd "C-c e g")          'flymake-goto-diagnostic)      ; 前往diagnostic诊断信息
-(global-set-key (kbd "C-c e c")          'eglot-code-actions)           ; 进行代码行动
-(global-set-key (kbd "C-c e r")          'eglot-rename)                 ; 重命名相同名称的symbol符号
-(global-set-key (kbd "C-c e f d")        'xref-find-definitions)        ; 寻找来源(放在哪一行内)definitions定义(默认xref快捷键: M-.)
-(global-set-key (kbd "C-c e f g d")      'eglot-find-declaration)       ; 寻找declaration声明
-(global-set-key (kbd "C-c e f r")        'xref-find-references)         ; 寻找出处(放在哪个文件内)references引用(默认xref快捷键: M-?)
-(global-set-key (kbd "C-c e f i")        'eglot-find-implementation)    ; 寻找implementation执行
-(global-set-key (kbd "C-c e f t")        'eglot-find-typeDefinition)    ; 寻找typeDefinition类型定义
+(global-set-key (kbd "C-c e o")          'eglot)                        ; 开启
+(global-set-key (kbd "C-c e r")          'eglot-reconnect)              ; 重连
+(global-set-key (kbd "C-c e s")          'eglot-shutdown)               ; 关闭
+(global-set-key (kbd "C-c e d s")        'flymake-show-diagnostic)      ; 通过flymake(built-in)，给eglot提供diagnostic诊断信息
+(global-set-key (kbd "C-c e d n")        'flymake-goto-next-error)      ; 前往下一个错误(会用波浪线来展示错误的)
+(global-set-key (kbd "C-c e d p")        'flymake-goto-prev-error)      ; 前往上一个错误(会用波浪线来展示错误的)
+(global-set-key (kbd "C-c e d g")        'flymake-goto-diagnostic)      ; 前往diagnostic诊断信息
+(global-set-key (kbd "C-c e d c")        'eglot-code-actions)           ; 进行代码行动
+(global-set-key (kbd "C-c e d r")        'eglot-rename)                 ; 重命名相同名称的symbol符号
+(global-set-key (kbd "C-c e d f d")      'eglot-find-declaration)       ; 寻找declaration声明
+(global-set-key (kbd "C-c e d f x")      'xref-find-definitions)        ; 寻找来源(放在哪一行内)definitions定义(默认xref快捷键: M-.)
+(global-set-key (kbd "C-c e d f r")      'xref-find-references)         ; 寻找出处(放在哪个文件内)references引用(默认xref快捷键: M-?)
+(global-set-key (kbd "C-c e d f i")      'eglot-find-implementation)    ; 寻找implementation执行
+(global-set-key (kbd "C-c e d f t")      'eglot-find-typeDefinition)    ; 寻找typeDefinition类型定义
                                                                         
 ;; -- helm相关 --                                                       
 (global-set-key (kbd "M-x")              'helm-M-x)                     ; 用helm的M-x，代替了原生的M-x(比Emacs 29.3的M-x，多了历史history-commands的功能)

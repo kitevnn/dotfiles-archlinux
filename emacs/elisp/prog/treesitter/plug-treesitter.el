@@ -33,7 +33,6 @@
              (rust-mode     .    tree-sitter-mode)
              (rust-mode     .    tree-sitter-hl-mode))
 
-
 (use-package tree-sitter-langs
              :ensure t)
 
