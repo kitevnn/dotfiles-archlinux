@@ -41,13 +41,13 @@ vnoremap("[w", ":m'>-2<CR>gv=gv")
 nnoremap('<leader>il', '<cmd>IBLDisable<CR>');
 
 -- lsp
-nnoremap('<leader>pl', '<cmd>LspStart texlab<CR>')
+nnoremap('<leader>pt', '<cmd>LspStart texlab<CR>')
 nnoremap('<leader>pc', '<cmd>LspStart clangd<CR>')
-nnoremap('<leader>pa', '<cmd>LspStart lua_ls<CR>')
+nnoremap('<leader>pl', '<cmd>LspStart lua_ls<CR>')
 nnoremap('<leader>pg', '<cmd>LspStart gopls<CR>')
-nnoremap('<leader>pt', '<cmd>LspStart typst-lsp<CR>')
 nnoremap('<leader>pr', '<cmd>LspStart rust_analyzer<CR>')
 nnoremap('<leader>l', '<cmd>LspStop<CR>');
+-- nnoremap('<leader>pt', '<cmd>LspStart typst-lsp<CR>')
 
 -- lsp command
 nnoremap('<leader>ot', '<cmd>TexlabBuild<CR>')
