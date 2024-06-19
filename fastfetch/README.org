@@ -1,0 +1,12 @@
+* README
+
+** i3wm
+[[file:i3wm-screenshot.png][i3wm-with-fastfetch]]
+
+** Hyprland
+[[file:hyprland-screenshot.png][hyprland-with-fastfetch]]
+
+And the terminal font is the patched SauceCodePro. it can be fetched from [[https://github.com/ryanoasis/nerd-fonts][ryanoasis/nerd-fonts]].
+
+
+
