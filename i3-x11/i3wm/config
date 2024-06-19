@@ -35,7 +35,8 @@ bindsym $mod+O exec alacritty
 bindsym $mod+BackSpace kill
 bindsym $mod+I exec firefox
 bindsym $mod+G exec emacs
-bindsym $mod+M exec rofi
+bindsym $mod+L exec rofi -show window
+bindsym $mod+M exec rofi -show drun
 bindsym $mod+A exec spectacle
 bindsym $mod+J layout toggle split
 ## 更改光标焦点
