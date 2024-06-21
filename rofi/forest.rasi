@@ -1,0 +1,94 @@
+/******************************************************************************
+ * ROFI Color theme: forest
+ * User: kitevnn
+ ******************************************************************************/
+
+
+/*                 */
+/* global settings */
+/*                 */
+* {
+    font: "SauceCodeProNerdFontCompleteMono Nerd Font 12";
+    scrollbar: true;
+    
+    forest-selected-text-shadow: #2E8B57;
+    forest-selected:             #72D5A3;
+    forest-box-border:           #60B48A;
+    forest-box-background:       #2C2C2C;
+    forest-orange:               #DFAF8F;
+    forest-black:                #000000;
+    forest-input:                #3A3A3A;
+    forest-white:                #FFFFFF;
+    forest-text-color:           #DCDCDC;
+    text-color:                  @forest-text-color;
+    background-color:            rgba ( 0, 0, 0, 0 % );
+}
+#window {
+    background-color: @forest-box-background;
+    border:           3px;
+    padding:          2px;
+    border-radius:    12px;
+    border-color:     @forest-box-border;
+}
+
+
+/*                  */
+/* element settings */
+/*                  */
+#element {
+    border:  0;
+    padding: 3px 0px 3px 18px;
+    background-color: @forest-box-background;
+}
+#element.normal {
+    text-color:       @forest-white;
+}    
+#element.selected {
+    text-color:       @forest-selected;
+    background-color: @forest-selected-text-shadow;
+}
+#element.alternate {
+    text-color:       @forest-white;
+}
+
+
+/*                */
+/* input settings */
+/*                */
+#case-indicator {
+    spacing:    0;
+    text-color: @forest-box-background;
+}
+#entry {
+    spacing:    0;
+    text-color: @forest-box-background;
+}
+#prompt {
+    spacing:    0;
+    text-color: @forest-box-background;    
+}
+#textbox-prompt-colon {
+    expand:     false;
+    str:        ":";
+    margin:     0px 0.3em 0em 0em ;
+    text-color: @forest-black;
+}
+
+
+/*              */
+/* bar settings */
+/*               */
+#inputbar {
+    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
+}
+#inputbar {
+    spacing:    0;
+    background-color: @forest-orange;
+    padding:    1px;
+    border-radius: 12px 12px 0px 0px;
+}
+#scrollbar {
+    background-color: @forest-input;
+    width:         3px;
+    border-radius: 6px;
+}
