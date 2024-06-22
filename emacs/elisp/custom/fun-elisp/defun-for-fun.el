@@ -14,6 +14,26 @@
   (interactive)
   (previous-line 5))
 
+;; 当前窗口向上5个单位的elisp函数
+(defun resize-top-five-unit ()
+  (interactive)
+  (shrink-window 5))
+
+;; 当前窗口向下5个单位的elisp函数
+(defun resize-bottom-five-unit ()
+  (interactive)
+  (enlarge-window 5))
+
+;; 当前窗口向左5个单位的elisp函数
+(defun resize-left-five-unit ()
+  (interactive)
+  (shrink-window-horizontally 5))
+
+;; 当前窗口向右5个单位的elisp函数
+(defun resize-right-five-unit ()
+  (interactive)
+  (enlarge-window-horizontally 5))
+
 ;; 软空格: 保证每次TAB都是2个字符宽度的整数倍单位
 (defun tab-stops-generate (&optional width max)
   "Return a sequence suitable for `tab-stop-list'."
