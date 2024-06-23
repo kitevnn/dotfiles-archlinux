@@ -108,3 +108,6 @@ nnoremap('M', '<cmd>NvimTreeToggle<CR><C-w>l')
 -- paste
 nnoremap('<leader>e', '<cmd>set paste<CR>')
 nnoremap('<leader>E', '<cmd>set nopaste<CR>')
+
+-- term
+nnoremap('<leader>tt', '<cmd>FloatermToggle<CR>')
