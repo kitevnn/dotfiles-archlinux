@@ -5,6 +5,7 @@
 -- see [:h nvim-cmp] for help.
 return {
   'hrsh7th/nvim-cmp',
+  -- InsertEnter to VimEnter
   event = "InsertEnter",
   dependencies = {
     'neovim/nvim-lspconfig',
@@ -206,32 +207,32 @@ return {
       })
     }
 
-    require("lspconfig")['texlab'].setup {
-      capabilities = capabilities,
-      vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float),
-      vim.keymap.set('n', '[d', vim.diagnostic.goto_prev),
-      vim.keymap.set('n', ']d', vim.diagnostic.goto_next),
-      vim.keymap.set('n', '<leader>pq', vim.diagnostic.setloclist),
-      vim.api.nvim_create_autocmd('LspAttach', {
-        group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-        callback = function(ev)
-          vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
-          local opts = { buffer = ev.buf }
-
-          -- new
-          vim.keymap.set('n', 'gh', vim.lsp.buf.hover, opts)
-          vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-          vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-          vim.keymap.set('n', 'gk', vim.lsp.buf.signature_help, opts)
-          vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-          vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-          vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
-          vim.keymap.set('n', '<leader>ft', function()
-            vim.lsp.buf.format { async = true }
-          end, opts)
-        end,
-      })
-    }
+    -- require("lspconfig")['texlab'].setup {
+    --   capabilities = capabilities,
+    --   vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float),
+    --   vim.keymap.set('n', '[d', vim.diagnostic.goto_prev),
+    --   vim.keymap.set('n', ']d', vim.diagnostic.goto_next),
+    --   vim.keymap.set('n', '<leader>pq', vim.diagnostic.setloclist),
+    --   vim.api.nvim_create_autocmd('LspAttach', {
+    --     group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+    --     callback = function(ev)
+    --       vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+    --       local opts = { buffer = ev.buf }
+    --
+    --       -- new
+    --       vim.keymap.set('n', 'gh', vim.lsp.buf.hover, opts)
+    --       vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    --       vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    --       vim.keymap.set('n', 'gk', vim.lsp.buf.signature_help, opts)
+    --       vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    --       vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+    --       vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
+    --       vim.keymap.set('n', '<leader>ft', function()
+    --         vim.lsp.buf.format { async = true }
+    --       end, opts)
+    --     end,
+    --   })
+    -- }
 
     require("lspconfig")['lua_ls'].setup {
       capabilities = capabilities,

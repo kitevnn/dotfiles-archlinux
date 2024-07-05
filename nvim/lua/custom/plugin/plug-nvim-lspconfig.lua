@@ -8,6 +8,7 @@ return {
     'neovim/nvim-lspconfig',
     config = function()
     end,
-    event = "InsertEnter",
+    -- InsertEnter to VimEnter
+    event = "VimEnter",
   }
 }

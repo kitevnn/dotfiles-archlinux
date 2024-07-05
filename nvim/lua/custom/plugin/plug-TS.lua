@@ -19,7 +19,7 @@ return {
           "query",
 
           -- [NEW! see :TSInstallInfo for the formatting-LS info.]
-          "latex", -- bibtex Recommendation
+          -- "latex", -- bibtex Recommendation
 
         },
         -- Install parsers synchronously (only applied to `ensure_installed`)
@@ -54,6 +54,6 @@ return {
         },
       }
     end,
-    event = "InsertEnter", -- BufReadPre / BufRead.
+    event = "BufReadPre", -- InsertEnter / BufReadPre / BufRead.
   }
 }

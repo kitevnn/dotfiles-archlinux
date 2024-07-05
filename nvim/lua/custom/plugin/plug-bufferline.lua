@@ -19,6 +19,6 @@ return {
         },
       })
     end,
-    event = "InsertEnter",
+    event = "VimEnter",
   }
 }
