@@ -54,8 +54,8 @@
 ;; -- resize-left-five-unit 调整屏幕 --
 (global-set-key (kbd "M--")              'resize-top-five-unit)         ; 当前窗口向上调整5个单位 ; negative-argument
 (global-set-key (kbd "M-=")              'resize-bottom-five-unit)      ; 当前窗口向下调整5个单位 ; count-words-region
-(global-set-key (kbd "M-[")              'resize-left-five-unit)        ; 当前窗口向左调整5个单位
-(global-set-key (kbd "M-]")              'resize-right-five-unit)       ; 当前窗口向右调整5个单位
+(global-set-key (kbd "M-9")              'resize-left-five-unit)        ; 当前窗口向左调整5个单位
+(global-set-key (kbd "M-0")              'resize-right-five-unit)       ; 当前窗口向右调整5个单位
 
 ;; -- package.el 管理packages --
 ;; (global-set-key (kbd "M-f")           'list-packages)
