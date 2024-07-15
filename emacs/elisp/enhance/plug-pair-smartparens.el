@@ -3,6 +3,6 @@
 ;; 
 (use-package smartparens
              :ensure t
-             :hook (prog-mode text-mode markdown-mode))
+             :hook (prog-mode text-mode))
 
 (provide 'plug-pair-smartparens)
