@@ -10,6 +10,7 @@
 (global-set-key (kbd "C-c t b")         'centaur-tabs-backward)
 (global-set-key (kbd "C-c t f")         'centaur-tabs-forward)
 (global-set-key (kbd "C-c t c")         'centaur-tabs--create-new-tab)
+(global-set-key (kbd "C-c t j")         'centaur-tabs-ace-jump)
 
 ;; -- 切换theme主题管理 --
 (global-set-key (kbd "C-c d 1")
