@@ -39,3 +39,23 @@ bright.magenta     = "#EC93D3"
 bright.cyan        = "#93E0E3"
 bright.white       = "#FFFFFF"
 
+[keyboard]
+bindings = [
+  { mods = "Alt | Shift", key = "P", action = "ScrollPageUp" },
+  { mods = "Alt | Shift", key = "N", action = "ScrollPageDown" },
+  { mods = "Alt | Shift", key = "W", action = "Copy" },        
+  { mods = "Alt | Shift", key = "Y", action = "Paste" },
+  { mods = "Alt | Shift", key = "S", action = "SearchForward" },
+  { mods = "Alt | Shift", key = "R", action = "SearchBackward" },
+  { mods = "Alt | Shift", key = "V", action = "ToggleViMode" },
+  { mods = "Alt | Shift", key = "G", action = "SearchCancel" },
+  { mods = "Control", key = "F", mode = "Vi", action = "Right" },
+  { mods = "Control", key = "B", mode = "Vi", action = "Left" },
+  { mods = "Control", key = "N", mode = "Vi", action = "Down" },
+  { mods = "Control", key = "P", mode = "Vi", action = "Up" },
+  { mods = "Control", key = "A", mode = "Vi", action = "First" },
+  { mods = "Control", key = "E", mode = "Vi", action = "Last" },
+  { mods = "Control", key = "G", mode = "Vi", action = "ToggleNormalSelection" },
+  { mods = "Alt", key = "F", mode = "Vi", action = "SemanticRight" },
+  { mods = "Alt", key = "B", mode = "Vi", action = "SemanticLeft" },
+]
