@@ -69,5 +69,5 @@
                           :halign "start"
                           (label :class "wm-text"
                                  :halign "start"
-                                 :text "Hyprland"))))))
+                                 :text "i3wm-x11"))))))
 
