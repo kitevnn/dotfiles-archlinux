@@ -1,0 +1,194 @@
+% Created 2024-10-04 Friday 21:58
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{fontspec}
+\setmainfont{Noto Serif CJK TC}
+\setsansfont{Noto Sans CJK TC}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 31.0.50 (Org mode 9.7.9)}, 
+ pdflang={English}}
+\begin{document}
+
+\begin{titlepage}
+  \begin{center}
+    \vspace*{1cm} \textbf{说明文档} \vspace{0.5cm} dotfiles配置文件说
+    明\vspace{1.5cm} \\ \textbf{une} \vfill dotfiles配置文件说明\vspace{0.8cm}
+    \\ 2024-10-04 \\ \LaTeX \\ \vspace{0.6cm} 感谢GNU Emacs 与 AUCTeX \\ 因为这让进行\LaTeX{}的编写变得极为轻松
+  \end{center}
+\end{titlepage}
+
+\tableofcontents
+
+\section{dotfiles配置文件说明}
+
+\subsection{常用工具}
+\begin{center}
+  \begin{tabular}{|c|c|}
+    \hline
+    工具 & 说明 \\
+    \hline
+    桌面环境 & KDE plasma 6 \\ 
+    窗口管理器 & i3wm(X11) \\
+    窗口bar条 & eww \\
+    壁纸管理器 & feh \\  
+    主力编辑器 & GNU Emacs \\
+    备用编辑器 & vim \\
+    终端模拟器 & alacritty \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\subsection{次要工具}
+我的意思是这些工具并不是我个人在过去的半年里常用的。 \\ 但如果您想要参考的话，也
+可以参考一下。毕竟我自己也是参考别人的。
+\begin{center}
+  \begin{tabular}{|c|c|}
+    \hline
+    工具 & 说明 \\
+    \hline  
+    桌面服务器 & Wayland \\
+    窗口管理器 & Hyprland \\
+    所用编辑器 & neovim \\
+    终端复用器 & tmux \\ 
+    \hline
+  \end{tabular}  
+\end{center}
+
+\newpage{}
+\section{常用工具快捷键说明}
+\subsection{i3wm(X11)}
+\begin{center}
+  \begin{tabular}{|c|l|l|}
+    \hline
+    \multicolumn{2}{|c|}{个人常用快捷键} & 说明 \\   
+    \hline
+    Super & R & 重启i3wm \\      
+    Super & E & 窗口全屏 \\
+    Super & A & 窗口截图(使用KDE截图工具spectacle) \\
+    Super & W & 调整窗口(首次按下调整，再次按下完成调整，用FBNP调窗口大小) \\
+    Super & I & 打开浏览器(默认Firefox) \\        
+    Super & O & 打开终端模拟器alacritty \\  
+    Super & RET & 打开终端模拟器alacritty \\
+    Super & F & 光标移动到右边窗口 \\
+    Super & B & 光标移动到左边窗口 \\
+    Super & N & 光标移动到下边窗口 \\
+    Super & P & 光标移动到上边窗口 \\
+    Super & Meta(Alt) + F & 当前窗口，与右边窗口对调 \\
+    Super & Meta(Alt) + B & 当前窗口，与左边窗口对调 \\
+    Super & Meta(Alt) + N & 当前窗口，与下边窗口对调 \\
+    Super & Meta(Alt) + P & 当前窗口，与上边窗口对调 \\
+    \hline
+  \end{tabular}  
+\end{center}
+
+\newpage{}
+\subsection{GNU Emacs}
+\begin{center}
+  \textbf{其中，C为Ctrl，M为Meta(Alt), S为Shift}
+\end{center}
+\begin{flushleft}
+  个人常用快捷键(需添加此仓库里的Emacs配置才能用的快捷键)
+\end{flushleft}
+\begin{left}
+  \begin{tabular}{|c|l|l|}
+    \hline
+    \multicolumn{2}{|c|}{个人常用快捷键} & 说明 \\ 
+    \hline
+    C-c & v & 进入选区模式 \\
+    C-c & g o & 打开Magit \\
+    C-c & t o o o & 打开ansi-term \\
+    C-c & e o & 打开eglot \\
+    C-c & f & 光标跳转到右边窗口 \\
+    C-c & b & 光标跳转到左边窗口 \\
+    C-c & n & 光标跳转到下边窗口 \\
+    C-c & p & 光标跳转到上边窗口 \\
+    C-c & k & 删除当前光标所在窗口 \\
+    C-c & d o & 打开dirvish \\
+    M & n & 当前光标向下5行 \\
+    M & p & 当前光标向上5行 \\
+    M & 9 & 当前光标所在窗口水平缩小 \\
+    M & 0 & 当前光标所在窗口水平扩大 \\
+    M & - & 当前光标所在窗口垂直缩小 \\
+    M & + & 当前光标所在窗口垂直扩大 \\            
+    \hline
+  \end{tabular}  
+\end{left}
+\newpage{}
+\begin{flushleft}
+  默认Emacs快捷键(直接就能用的快捷键)
+\end{flushleft}
+\begin{left}
+  \begin{tabular}{|c|l|l|}
+    \hline
+    \multicolumn{2}{|c|}{默认Emacs快捷键} & 说明 \\
+    \hline
+    \textbf{C-h} & \textbf{b} & \textbf{查看当前所属mode的快捷键用法(最好的了解某个mode的最佳实践用法)} \\
+    \textbf{C-h} & \textbf{v} & \textbf{查看当前GNU Emacs(lisp机)的某个变量具体运行情况} \\    
+    C & f & 光标向右1格位置 \\ 
+    C & b & 光标向左1格位置 \\ 
+    C & n & 光标向下1格位置 \\ 
+    C & p & 光标向上1格位置 \\
+    C & a & 光标移动到当前行line开头 \\
+    C & e & 光标移动到当前行line结尾 \\
+    M & f & 光标向右1个词义位置 \\
+    M & b & 光标向左1个词义位置 \\
+    M & n & 光标向下1个词义位置 \\
+    M & p & 光标向上1个词义位置 \\
+    M & a & 光标移动到当前自然段paragraph开头 \\
+    M & e & 光标移动到当前自然段paragraph结尾 \\    
+    M & w & 进入选区模式后，按下来复制文本 \\
+    C & w & 进入选区模式后，按下来剪贴文本 \\
+    C & y & 在复制文本或剪贴文本后，按下来粘贴文本 \\
+    M & y & 打开kill-ring，并在交互式菜单里使用C-n与C-p选择要粘贴的文本 \\
+    C & d & 向后删除光标所在的1个字符 \\
+    C & k & 向后删除光标当前行line所有Buffer(并放进kill-ring中) \\
+    M & k & 向后删除光标当前自然段paragraph所有Buffer(并放进kill-ring中) \\
+    C & j & 向下开辟一行文本并移动光标，同时尽可能满足缩进 \\
+    C & BS & 向前删除光标所在的1个词义(并放进kill-ring中，仅在Emacs GUI可用) \\    
+    M-S & , & 光标跳转到最上方 \\
+    M-S & . & 光标跳转到最下方 \\
+    C-x & 1 & 只保留当前光标所在窗口并删除其他窗口 \\
+    C-x & 2 & 当前窗口向下分屏 \\
+    C-x & 3 & 当前窗口向右分屏 \\
+    C-x & k & 删除当前光标所属Buffer \\
+    C-x & n n & 当前编辑窗口narrow来提高专注力(narrow与widen) \\
+    C-x & n w & 当前编辑窗口widen来还原显示原来的文本(narrow与widen) \\
+    C-x & 8 RET & 交互式菜单输入特殊字符(就像vim的C-k一样) \\
+    \hline    
+  \end{tabular}  
+\end{left}
+
+\newpage{}
+\subsection{vim}
+\begin{flushleft}
+  vim个人常用快捷键(\textbf{未完待续})
+\end{flushleft}
+\begin{left}
+  \begin{tabular}{|c|l|l|}
+    \hline
+    \multicolumn{2}{|c|}{个人常用快捷键} & 说明 \\ 
+    \hline
+    
+    \hline
+  \end{tabular}  
+\end{left}
+
+\end{document}
+

@@ -3,3 +3,7 @@
 ** 💡 MEME
 
 [[./MEME/EmacsTheTrueEditor.png]]
+
+** 📰 doc
+
+[[file:emacs/doc/dotfiles.pdf]]
