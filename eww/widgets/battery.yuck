@@ -1,6 +1,6 @@
-;; -------------------------------- ;;
-;; | widget-battery: 查看电池容量 | ;;
-;; -------------------------------- ;;
+; --------------------------------
+; | widget-battery: 查看电池容量 
+; --------------------------------
 (defpoll bat0 :interval "120s" "./scripts/battery-percentage.sh")
 
 (defwidget widget-battery []

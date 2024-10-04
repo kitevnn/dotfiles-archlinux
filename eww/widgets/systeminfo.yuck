@@ -1,29 +1,29 @@
-;; -------------------------------------------------------------------------- ;;
-;; |  widget-systeminfo组件先决条件: 获得关于cpu的运行温度。                | ;;
-;; -------------------------------------------------------------------------- ;;
-;; -------------------------------------------------------------------------- ;;
-;; |  关于eww logs频繁报错的原因，是因为搜:value data此处代码               | ;;
-;; |  我在挖坑时(defwidget systeminfo-details [data icon css tip])          | ;;
-;; |  没有为data该f64数据类型，的default value默认值导致的                  | ;;
-;; |  不影响使用，因为后面通过systeminfo-details填上了                      | ;;
-;; |  有报错洁癖的话，可以不加载cpu该widget小组件                           | ;;
-;; |                                                                        | ;; 
-;; |  不加载cpu该widget小组件: 例子                                         | ;;
-;; |                                                                        | ;;
-;; |  (defwidget systeminfo []               (defwidget systeminfo []       | ;;
-;; |       (box :class "systeminfo"               (box :class "systeminfo"  | ;;
-;; |            :spacing 8                             :spacing 8           | ;;
-;; |            (temp)                                 (temp)               | ;;
-;; |            (cpu)                   →                                   | ;;
-;; |            (ram)                                  (ram)                | ;;
-;; |            (disk)))                               (disk)))             | ;;
-;; |                                                                        | ;;
-;; -------------------------------------------------------------------------- ;;
+; --------------------------------------------------------------------------
+; |  widget-systeminfo组件先决条件: 获得关于cpu的运行温度。                
+; --------------------------------------------------------------------------
+; --------------------------------------------------------------------------
+; |  关于eww logs频繁报错的原因，是因为搜:value data此处代码               
+; |  我在挖坑时(defwidget systeminfo-details [data icon css tip])      
+; |  没有为data该f64数据类型，的default value默认值导致的                 
+; |  不影响使用，因为后面通过systeminfo-details填上了                    
+; |  有报错洁癖的话，可以不加载cpu该widget小组件                         
+; |                                                                 
+; |  不加载cpu该widget小组件: 例子                                    
+; |                                                                        
+; |  (defwidget systeminfo []               (defwidget systeminfo []       
+; |       (box :class "systeminfo"               (box :class "systeminfo"  
+; |            :spacing 8                             :spacing 8           
+; |            (temp)                                 (temp)               
+; |            (cpu)                   →                                  
+; |            (ram)                                  (ram)                
+; |            (disk)))                               (disk)))             
+; |                                                                        
+; --------------------------------------------------------------------------
 (defpoll temp :interval "5s" "./scripts/cpu-temp.sh")
 
-;; ------------------------------------------------- ;;
-;; |  widget-systeminfo组件: 查看系统信息的小组件  | ;;
-;; ------------------------------------------------- ;;
+; -------------------------------------------------
+; |  widget-systeminfo组件: 查看系统信息的小组件 
+; -------------------------------------------------
 (defwidget widget-systeminfo []
      (box :class "systeminfo-box"
           :orientation "v"
@@ -34,10 +34,10 @@
 (defwidget systeminfo []
      (box :class "systeminfo"
           :spacing 8
-          (temp)    ;; cpu温度
-          (cpu)     ;; cpu利用率
-          (ram)     ;; 内存使用率
-          (disk)))  ;; (用EWW_DISK查看 / 目录的磁盘使用量信息)
+          (temp)    ; cpu温度
+          (cpu)     ; cpu利用率
+          (ram)     ; 内存使用率
+          (disk)))  ; (用EWW_DISK查看 / 目录的磁盘使用量信息)
        
 (defwidget cpu [] 
      (box :class "cpu-box"

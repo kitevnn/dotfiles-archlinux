@@ -1,8 +1,8 @@
 (defpoll packages :interval "2h" "pacman -Q | wc -l")
 
-;; ----------------------------------------- ;;
-;; | widget-infoarch组件: 系统基本概要信息 | ;;
-;; ----------------------------------------- ;;
+; -----------------------------------------
+; | widget-infoarch组件: 系统基本概要信息 
+; -----------------------------------------
 (defwidget widget-infoarch []
      (box :class "infoarch"
           :orientation "h"

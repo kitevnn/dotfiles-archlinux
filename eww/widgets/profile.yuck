@@ -1,11 +1,11 @@
-(defpoll date-month :interval "43200s" "date | cut -c '10-13'")
+(defpoll date-month :interval "43200s" "date | cut -c '9-13'")
 (defpoll date-day :interval "43200s" "date | cut -c '15-19'")
 (defpoll username-who-am-i :interval "24h" "whoami")
 (defvar AVATOR "./assets/avator.png")
 
-;; -------------------------------------------------- ;;
-;; | widget-profile组件: 查看个人档案与本机运行时间 | ;;
-;; -------------------------------------------------- ;;
+; --------------------------------------------------
+; | widget-profile组件: 查看个人档案与本机运行时间
+; --------------------------------------------------
 (defwidget widget-profile []
      (box :orientation "v"
           :space-evenly "false"
