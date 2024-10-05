@@ -123,7 +123,7 @@
 (require 'theme-light)
 
 ;; -- ui/装饰相关加载(decorate) --
-(require 'ui-line)
+; (require 'ui-line)
 (require 'ui-dashboard)
 
 ;; -- prog/编程相关加载(lsp) --
@@ -164,9 +164,14 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(rtags cmake-ide fancy-narrow fancy-battery deadgrep bliss-theme org-preview-html magit keycast pdf-tools auctex go-mode vundo undo-tree highlight-indent-guides dirvish tree-sitter tree-sitter-langs rust-mode smartparens company eglot-booster yasnippet yasnippet-snippets eglot telephone-line spaceline spaceline-all-the-icons dashboard nano-theme restart-emacs centaur-tabs nerd-icons-dired nerd-icons-completion nerd-icons))
+   '(auctex bliss-theme centaur-tabs company dashboard deadgrep dirvish
+            eglot-booster go-mode helm highlight-indent-guides keycast magit
+            nano-theme nerd-icons nerd-icons-completion nerd-icons-dired
+            pdf-tools restart-emacs rust-mode smartparens tree-sitter-langs
+            vundo yasnippet-snippets))
  '(package-vc-selected-packages
-   '((eglot-booster :vc-backend Git :url "https://github.com/jdtsmith/eglot-booster"))))
+   '((eglot-booster :vc-backend Git :url
+                    "https://github.com/jdtsmith/eglot-booster"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

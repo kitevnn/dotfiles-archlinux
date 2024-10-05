@@ -10,7 +10,7 @@
   ;; 设置dashboard的基本信息
   :init
   (setq dashboard-banner-logo-title "p😭q 真正的编辑器: GNU Emacs"                ; Set the title
-        dashboard-startup-banner    'logo
+        dashboard-startup-banner    'logo                                         ; Set dashboard logo
         dashboard-center-content t                                                ; Content is not centered by default. To center, set
         dashboard-vertically-center-content t                                     ; vertically center content
         dashboard-show-shortcuts nil)                                             ; To disable shortcut "jump" indicators for each section, set
