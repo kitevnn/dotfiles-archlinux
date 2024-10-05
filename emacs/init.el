@@ -157,10 +157,6 @@
 
 
 
-
-
-
-
 ;; -- 某次打开GNU Emacs 29.3后，自动append添加上的 --
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
