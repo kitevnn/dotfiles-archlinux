@@ -1,0 +1,86 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{fontspec}
+\setmainfont{Noto Serif CJK TC}
+\setsansfont{Noto Sans CJK TC}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 31.0.50 (Org mode 9.7.11)}, 
+ pdflang={English}}
+
+% 使用 code 环境给文本上底色
+\usepackage{listings, color}
+\definecolor{verbgray}{gray}{0.9}
+\lstnewenvironment{code}{%
+  \lstset{backgroundcolor=\color{verbgray},
+    frame=single,
+    framerule=0pt,
+    basicstyle=\ttfamily,
+    columns=fullflexible}}{}
+\definecolor{shadecolor}{rgb}{.9,.9,.9}
+
+\begin{document}
+
+\begin{titlepage}
+  \begin{center}
+    \vspace*{1cm} \textbf{说明文档} \vspace{0.5cm} : 安装要注意的地
+    方\vspace{1.5cm} \\ \textbf{une} \vfill 安装要注意的地方\vspace{0.8cm} \\
+    \date{\today} \\ \LaTeX \\ \vspace{0.6cm} 感谢GNU Emacs 与 AUCTeX \\ 因为这让
+    进行\LaTeX{}的编写变得极为轻松
+  \end{center}
+\end{titlepage}
+
+\tableofcontents
+
+\newpage{}
+\section{环境说明}
+此配置环境均在X11桌面服务器下运行
+\section{工具安装}
+\subsection{eww}
+由于eww作者建议说
+\begin{code}
+  Rather than with your system package manager
+  I strongly recommend installing it using rustup.
+\end{code}
+加之作者勤快的更新速度，因此还是建议自己编译
+\\ \\
+\textbf{那么编译困难吗？} \\
+\textbf{答: 不难，只要使用的发行版是最新版archlinux，就一定有编译出eww的依赖库}
+\\ \\
+我们先去下载Rustup
+\begin{code}
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+\end{code}
+\\ \\ 
+然后克隆作者的仓库并进行编译
+\begin{code}
+  git clone https://github.com/elkowar/eww cd eww
+  cargo build --release --no-default-features --features x11
+\end{code}
+\\ \\ 
+最后设置软连接
+\begin{code}
+  cd target/release
+  chomd +x ./eww
+  sudo ln -s ./eww /usr/bin/eww
+\end{code}
+\\ \\
+
+\newpage{}
+
+\end{document}

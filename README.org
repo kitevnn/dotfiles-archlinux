@@ -7,3 +7,7 @@
 ** 📰 doc
 
 [[file:./doc/dotfiles.pdf]]
+
+** 📰 desc
+
+[[file:doc/configdesc.pdf]]
