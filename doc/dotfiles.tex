@@ -24,18 +24,31 @@
  pdfsubject={},
  pdfcreator={Emacs 31.0.50 (Org mode 9.7.9)}, 
  pdflang={English}}
+
+% 使用 code 环境给文本上底色
+\usepackage{listings, color}
+\definecolor{verbgray}{gray}{0.9}
+\lstnewenvironment{code}{%
+  \lstset{backgroundcolor=\color{verbgray},
+    frame=single,
+    framerule=0pt,
+    basicstyle=\ttfamily,
+    columns=fullflexible}}{}
+\definecolor{shadecolor}{rgb}{.9,.9,.9}
+
 \begin{document}
 
 \begin{titlepage}
   \begin{center}
-    \vspace*{1cm} \textbf{说明文档} \vspace{0.5cm} dotfiles配置文件说
+    \vspace*{1cm} \textbf{说明文档} \vspace{0.5cm} : dotfiles配置文件说
     明\vspace{1.5cm} \\ \textbf{une} \vfill dotfiles配置文件说明\vspace{0.8cm}
-    \\ 2024-10-04 \\ \LaTeX \\ \vspace{0.6cm} 感谢GNU Emacs 与 AUCTeX \\ 因为这让进行\LaTeX{}的编写变得极为轻松
+    \\ 2024-10-05 \\ \LaTeX \\ \vspace{0.6cm} 感谢GNU Emacs 与 AUCTeX \\ 因为这让进行\LaTeX{}的编写变得极为轻松
   \end{center}
 \end{titlepage}
 
 \tableofcontents
 
+\newpage{}
 \section{dotfiles配置文件说明}
 
 \subsection{常用工具}
@@ -57,7 +70,7 @@
 
 \subsection{次要工具}
 我的意思是这些工具并不是我个人在过去的半年里常用的。 \\ 但如果您想要参考的话，也
-可以参考一下。毕竟我自己也是参考别人的。
+可以参考一下具体的配置文件。毕竟我自己也是参考别人的。
 \begin{center}
   \begin{tabular}{|c|c|}
     \hline
@@ -100,9 +113,47 @@
 
 \newpage{}
 \subsection{GNU Emacs}
-\begin{center}
-  \textbf{其中，C为Ctrl，M为Meta(Alt), S为Shift}
-\end{center}
+全部插件
+\begin{code}
+  % GNU Emacs 31.0.50
+  % for editing
+  (use-package package)
+  (use-package dashboard)  
+  (use-package telephone-line)
+  (use-package nano-theme)
+  (use-package bliss-theme)
+  (use-package restart-emacs)      
+  (use-package nerd-icons-dired)
+  (use-package nerd-icons-completion)
+  (use-package nerd-icons)
+  (use-package pdf-tools)  
+  (use-package which-key)
+  (use-package dirvish)
+  (use-package org)
+  (use-package auctex)  
+  (use-package magit)  
+
+  % for programing
+  (use-package company)
+  (use-package vundo)
+  (use-package highlight-indent-guides)
+  (use-package deadgrep)
+  (use-package centaur-tabs)
+  (use-package flycheck)
+  (use-package eglot)      
+  (use-package eglot-booster)   ; via git-vc-installing
+  (use-package smartparens)
+  (use-package yasnippet)
+  (use-package yasnippet-snippets)
+  (use-package helm)
+  (use-package keycast)
+  (use-package tree-sitter-langs)
+  (use-package tree-sitter)
+  (use-package rust-mode)
+  (use-package go-mode)
+\end{code}
+
+\newpage{}
 \begin{flushleft}
   个人常用快捷键(需添加此仓库里的Emacs配置才能用的快捷键)
 \end{flushleft}
@@ -126,10 +177,14 @@
     M & 9 & 当前光标所在窗口水平缩小 \\
     M & 0 & 当前光标所在窗口水平扩大 \\
     M & - & 当前光标所在窗口垂直缩小 \\
-    M & + & 当前光标所在窗口垂直扩大 \\            
+    M & + & 当前光标所在窗口垂直扩大 \\
+    M & r & 重启Emacs \\                
     \hline
   \end{tabular}  
 \end{left}
+\begin{flushleft}
+\textbf{其中，C为Ctrl，M为Meta(Alt), S为Shift}  
+\end{flushleft}
 \newpage{}
 \begin{flushleft}
   默认Emacs快捷键(直接就能用的快捷键)
@@ -174,21 +229,79 @@
     \hline    
   \end{tabular}  
 \end{left}
+\begin{flushleft}
+\textbf{其中，C为Ctrl，M为Meta(Alt), S为Shift}  
+\end{flushleft}
 
 \newpage{}
 \subsection{vim}
+全部插件 
+\begin{code}
+  % Vi IMproved 9.1
+  Plug 'jiangmiao/auto-pairs'
+  Plug 'ryanoasis/vim-devicons'
+  Plug 'Yggdroot/indentLine'
+  Plug 'mhinz/vim-signify'
+  Plug 'prabirshrestha/asyncomplete.vim'
+\end{code}
+
 \begin{flushleft}
-  vim个人常用快捷键(\textbf{未完待续})
+  vim个人常用快捷键
 \end{flushleft}
 \begin{left}
   \begin{tabular}{|c|l|l|}
     \hline
     \multicolumn{2}{|c|}{个人常用快捷键} & 说明 \\ 
     \hline
-    
+    normal & leader leader + n & 更换为habamax主题 \\
+    normal & leader leader + d & 更换为delek主题 \\
+    normal & J & 当前向下移动5行 \\
+    normal & K & 当前向上移动5行 \\
+    normal & S & 保存文件 \\
+    normal & Q & 退出编辑 \\
+    normal & leader + q & 强制退出编辑 \\
+    normal & sj & 向下分屏 \\
+    normal & sk & 向上分屏 \\
+    normal & sh & 向左分屏 \\
+    normal & sl & 向右分屏 \\
+    normal & up & 向上调整窗口 \\
+    normal & down & 向下调整窗口 \\
+    normal & left & 向左调整窗口 \\
+    normal & right & 向右调整窗口 \\
+    normal & leader + r & 重新加载.vimrc配置文件 \\
+    normal & [ + w & 当前行与上行位置对调 \\ 
+    normal & ] + w & 当前行与下行位置对调 \\
+    normal & leader + e & 开启拼写模式 \\
+    normal & leader + E & 关闭拼写模式 \\
+    normal & leader + I & 键入插件名来PlugInstall安装插件 \\
+    normal & leader + I & 键入插件名来PlugInstall安装插件 \\
+    normal & M & 在左边窗口打开文件管理器 \\
+    normal & C-e & 输入特殊二义字符 \\
+    normal & leader + md & 查看二义字符输入方法 \\
+    terminal & ESC ESC & 在终端模式下从编辑模式切换到普通模式 \\    
     \hline
   \end{tabular}  
 \end{left}
 
-\end{document}
+\newpage{}
+\subsection{alacritty}
+\begin{flushleft}
+  alacritty个人常用快捷键
+\end{flushleft}
+\begin{left}
+  \begin{tabular}{|c|l|l|}
+    \hline
+    \multicolumn{2}{|c|}{个人常用快捷键} & 说明 \\ 
+    \hline
+    M-S & n & 向上滚屏 \\
+    M-S & p & 向下滚屏 \\
+    M-S & v & 进入选区模式 \\
+    M-S & y & 粘贴剪贴板文本 \\
+    \hline
+  \end{tabular}  
+\end{left}
+\begin{flushleft}
+\textbf{其中，C为Ctrl，M为Meta(Alt), S为Shift}  
+\end{flushleft}
 
+\end{document}

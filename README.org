@@ -6,4 +6,4 @@
 
 ** 📰 doc
 
-[[file:emacs/doc/dotfiles.pdf]]
+[[file:./doc/dotfiles.pdf]]
