@@ -11,12 +11,12 @@ exec --no-startup-id nm-applet
 exec_always fcitx5
 exec_always eww daemon
 exec_always eww open bar
-exec_always picom
+exec_always picom --backend glx
 exec setxkbmap -option "ctrl:nocaps"
 set $refresh_i3status killall -SIGUSR1 i3status
 
 # feh壁纸
-exec --no-startup-id feh --bg-fill "path/to/your/favorite/wallpaper.png"
+exec --no-startup-id feh --bg-fill "/home/une/桌面/my/20220518085627.jpg"
 
 # 鼠标绑定
 ## 通过Super + Mouse_L/R，来拖动floating window到别的位置
