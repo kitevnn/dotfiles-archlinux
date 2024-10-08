@@ -1,30 +1,29 @@
 ;; 
-;; note-orgmode.el Emacs最著名的一款笔记管理插件
+;; org"开发" note-orgmode.el
 ;; 
 (use-package org
   :ensure t
-  :defer t)
+  :defer nil)
+  
+(org-babel-do-load-languages 
+  'org-babel-load-languages 
+  '((latex . t)))  ; org-babel 能加载 LaTeX
 
+;; orgmode行间公式查看中文
+; from https://emacs-china.org/t/emacs-org-mode-inline-latex/27450
+(add-to-list 'org-preview-latex-process-alist
+        	     '(xelatex-chinese
+        	       :programs ("xelatex" "convert")
+        	       :description "XeLaTeX with Chinese support dvi > png"
+        	       :message "you need to install the programs: xelatex and divpng."
+        	       :image-input-type "pdf"
+        	       :image-output-type "png"
+        	       :image-size-adjust (1.7 . 1.6)
+        	       :latex-header "\\documentclass[11pt]{standalone}\n\\usepackage{fontspec}\n\\setmainfont{Noto Serif CJK TC}\\setsansfont{Noto Sans CJK TC}\n\\usepackage[usenames]{color}\n\\usepackage{amsmath}\n\\pagestyle{empty}" ;; pagestyle{empty} 是必须的
+        	       :latex-compiler ("xelatex -interaction nonstopmode -output-directory %o %f")
+        	       :image-converter ("convert -density 150 %f %O")))
 
-
-;; org-mode inline latex的utf-8字符相关
-;; 按理来说，应该是可以的，但折腾了一下午仍然不能在inline latex的equtation环境下输入utf-8字符
-; (add-to-list 'org-preview-latex-process-alist
-;              '(xelatex-chinese
-;                :programs ("xelatex" "convert")
-;                :description "XeLaTeX with Chinese support dvi > png"
-;                :message "You need to install the programs: xelatex and ImageMagick."
-;                :image-input-type "pdf"
-;                :image-output-type "png"
-;                :image-size-adjust (1.7 . 1.6)
-;                :latex-header "\\documentclass[preview]{standalone}\n\\usepackage{ctex}\n\\usepackage{amsmath}\n\\usepackage{graphicx}\n\\pagestyle{empty}" ;; 使用 ctex 包支持中文
-;                :latex-compiler ("xelatex -interaction nonstopmode -output-directory %o %f")
-;                :image-converter ("convert -density 150 %f -quality 90 %O")))
-
-;; 设置默认的预览过程
-; (setq org-preview-latex-default-process 'xelatex-chinese)
-
+(setq org-preview-latex-default-process 'xelatex-chinese)  ; 设置默认的预览过程
 
 
 (provide 'note-orgmode)
-

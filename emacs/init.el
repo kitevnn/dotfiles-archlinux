@@ -1,181 +1,140 @@
 ;; 
-;; 初始化加载目录
+;; 
+;; init.el 启动入口文件
+;; 
 ;; 
 
-;; -- init/初始化加载 --
-(add-to-list 'load-path
-             (expand-file-name 
-               (concat user-emacs-directory "elisp/init")))
-
-;; -- custom/活在Emacs即GTD(live-in-emacs) --
-(add-to-list 'load-path
-             (expand-file-name 
-               (concat user-emacs-directory "elisp/custom/live-in-emacs")))
-
-;; -- custom/好玩的elisp函数(fun-elisp) --
-(add-to-list 'load-path
-             (expand-file-name 
-               (concat user-emacs-directory "elisp/custom/fun-elisp")))
-
-;; -- enhance/体验增强加载 --
-(add-to-list 'load-path
-             (expand-file-name 
-               (concat user-emacs-directory "elisp/enhance")))
-
-;; -- icons/图标加载 --
-(add-to-list 'load-path
-             (expand-file-name 
-               (concat user-emacs-directory "elisp/icons")))
-
-;; -- note/笔记相关加载 --
-(add-to-list 'load-path
-             (expand-file-name 
-               (concat user-emacs-directory "elisp/note")))
-
-;; -- prog/编程相关加载(format) --
-(add-to-list 'load-path
-             (expand-file-name 
-               (concat user-emacs-directory "elisp/prog/format")))
-
-;; -- prog/编程相关加载(lsp) --
-(add-to-list 'load-path
-             (expand-file-name 
-               (concat user-emacs-directory "elisp/prog/lsp")))
-
-;; -- prog/编程相关加载(snippets) --
-(add-to-list 'load-path
-             (expand-file-name 
-               (concat user-emacs-directory "elisp/prog/snippets")))
-
-;; -- prog/编程相关加载(completions) --
-(add-to-list 'load-path
-             (expand-file-name 
-               (concat user-emacs-directory "elisp/prog/completions")))
-
-;; -- prog/编程相关加载(modes) --
-(add-to-list 'load-path
-             (expand-file-name 
-               (concat user-emacs-directory "elisp/prog/modes")))
-
-;; -- prog/编程相关加载(treesitter) --
-(add-to-list 'load-path
-             (expand-file-name 
-               (concat user-emacs-directory "elisp/prog/treesitter")))
-
-;; -- ui/装饰相关加载(theme) --
-(add-to-list 'load-path
-             (expand-file-name 
-               (concat user-emacs-directory "elisp/ui/theme")))
-
-;; -- ui/装饰相关加载(decorate) --
-(add-to-list 'load-path
-             (expand-file-name 
-               (concat user-emacs-directory "elisp/ui/decorate")))
-
-
-
-
-
-
-
-
-
-
+;; 
+;; 关于源
+;; 
+(use-package package
+  :init 
+  (setq package-archives 
+        '(("melpa" . "https://melpa.org/packages/")
+          ("gnu" . "https://elpa.gnu.org/packages/")))
+  (setq package-enable-at-startup nil)
+  (setq use-package-expand-minimally t
+        use-package-verbose t)
+  :autoload
+  (package-initialize))
 
 
 ;; 
-;; 初始化加载模块
+;; add-to-list
 ;; 
+;; 关于add-to-list的加载配置目录
+(add-to-list 'load-path
+             (expand-file-name 
+              (concat user-emacs-directory "elisp/custom")))
+(add-to-list 'load-path
+             (expand-file-name 
+              (concat user-emacs-directory "elisp/init")))
+(add-to-list 'load-path
+             (expand-file-name 
+              (concat user-emacs-directory "elisp/ui/theme")))
+(add-to-list 'load-path
+             (expand-file-name 
+              (concat user-emacs-directory "elisp/ui/icon")))
+(add-to-list 'load-path
+             (expand-file-name 
+              (concat user-emacs-directory "elisp/ui/decorate")))
+(add-to-list 'load-path
+             (expand-file-name 
+              (concat user-emacs-directory "elisp/enhance")))
+(add-to-list 'load-path
+             (expand-file-name 
+              (concat user-emacs-directory "elisp/note")))
+(add-to-list 'load-path
+             (expand-file-name 
+              (concat user-emacs-directory "elisp/zprogramming/snips")))
+(add-to-list 'load-path
+             (expand-file-name 
+              (concat user-emacs-directory "elisp/zprogramming/cmp")))
+(add-to-list 'load-path
+             (expand-file-name 
+              (concat user-emacs-directory "elisp/zprogramming/lsp")))
+(add-to-list 'load-path
+             (expand-file-name 
+              (concat user-emacs-directory "elisp/zprogramming/ts")))
+(add-to-list 'load-path
+             (expand-file-name 
+              (concat user-emacs-directory "elisp/key")))
+;; 关于add-to-list的模式识别
+(add-to-list 'auto-mode-alist '("\\.el\\'"  . emacs-lisp-mode))  ; 根据文件后缀自动设置mode
 
-;; -- icon/图标加载 --
-(require 'icon-nerdfont)
-
-;; -- custom/活在Emacs即GTD(live-in-emacs) --
-(require 'plug-pdftools)
-
-;; -- custom/好玩的elisp函数(fun-elisp) --
-(require 'defun-for-fun)
-
-;; -- init/初始化加载 --
-(require 'init-elpa)
+;;
+;; require
+;; 
+;; 关于 require 的 custom 加载配置
+(require 'custom-fn)
+;; 关于 require 的 init 加载配置
 (require 'init-basic)
-(require 'init-keybindings)
-
-;; -- note/笔记相关加载 --
-(require 'note-orgmode)
+;; 关于 require 的 ui 加载配置
+(require 'ui-theme-light)
+(require 'ui-icon-icons)
+(require 'ui-decorate-dashboard)
+;; 关于 require 的 enhance 加载配置
+(require 'enhance-cdlatex)
+(require 'enhance-deadgrep)
+(require 'enhance-dirvish)
+(require 'enhance-helm)
+(require 'enhance-indentline)
+(require 'enhance-keystroke)
+(require 'enhance-magit)
+(require 'enhance-restart)
+(require 'enhance-smartparens)
+(require 'enhance-tabs)
+(require 'enhance-unre)
+(require 'enhance-pdftools)
+;; 关于 require 的 note 加载配置
 (require 'note-auctex)
-
-;; -- enhance/体验增强加载 --
-(require 'plug-buffer-centaur-tabs)
-(require 'plug-restart-emacs)
-(require 'plug-which-key)
-(require 'plug-pair-smartparens)
-(require 'plug-filemanager-dirvish)
-(require 'plug-show-indentline)
-(require 'plug-show-keystroke)
-(require 'plug-undoredo-tree)
-(require 'plug-quicksearch-helm)
-(require 'plug-git-magit)
-(require 'plug-rg-deadgrep)
-
-;; -- ui/装饰相关加载(theme) --
-(require 'theme-dark)
-(require 'theme-light)
-
-;; -- ui/装饰相关加载(decorate) --
-; (require 'ui-line)
-(require 'ui-dashboard)
-
-;; -- prog/编程相关加载(lsp) --
-(require 'plug-lspcilent-eglot)
-
-;; -- prog/编程相关加载(snippets) --
-(require 'plug-snip-yasnippet)
-
-;; -- prog/编程相关加载(completions) --
-(require 'plug-cmp-company)
-
-;; -- prog/编程相关加载(modes) --
-(require 'plug-rust-mode)
-(require 'plug-go-mode)
-
-;; -- prog/编程相关加载(treesitter) --
-(require 'plug-treesitter)
+(require 'note-orgmode)
+;; 关于 require 的 zprogramming 加载配置
+(require 'zprogramming-cmp-company)
+(require 'zprogramming-lsp-eglot)
+(require 'zprogramming-ts-treesitter)
+;; 关于 require 的 key 加载配置
+(require 'key-keybindings)
 
 
+;;
+;; add-hook
+;;
+;; 关于add-hook的钩子设置
+(add-hook 'prog-mode 'hs-minor-mode)                        ; 折叠展开
+(add-hook 'after-init-hook (lambda () 
+    (when (get-buffer "*scratch*")
+      (kill-buffer "*scratch*") 
+    (when (get-buffer "*Messages*") 
+      (kill-buffer "*Messages*")))))                        ; 禁用Messages与scratch
+(add-hook 'text-mode-hook 'turn-on-visual-line-mode)        ; 单行文本超出一定长度后自动虚拟换行显示(类似于set wrap)
+(add-hook 'TeX-after-compilation-finished-functions         ; AUCTeX(14.0.3.2024-03-17)
+          #'TeX-revert-document-buffer)
 
 
+;; 添加主题的哈希到安全主题列表
+(add-to-list 'custom-safe-themes "e7820b899036ae7e966dcaaec29fd6b87aef253748b7de09e74fdc54407a7a02")
+(load-theme 'nano-light t)
 
 
-
-
-
-
-
-
-
-
-
-
-;; -- 某次打开GNU Emacs 29.3后，自动append添加上的 --
+;; 自动append加上的
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("e7820b899036ae7e966dcaaec29fd6b87aef253748b7de09e74fdc54407a7a02" default))
+ '(custom-safe-themesdefault
+   '("e7820b899036ae7e966dcaaec29fd6b87aef253748b7de09e74fdc54407a7a02" default))
  '(package-selected-packages
-   '(auctex bliss-theme centaur-tabs company dashboard deadgrep dirvish
-            eglot-booster go-mode helm highlight-indent-guides keycast magit
-            nano-theme nerd-icons nerd-icons-completion nerd-icons-dired
-            pdf-tools restart-emacs rust-mode smartparens tree-sitter-langs
-            vundo yasnippet-snippets))
- '(package-vc-selected-packages
-   '((eglot-booster :vc-backend Git :url
-                    "https://github.com/jdtsmith/eglot-booster"))))
+   '(auctex cdlatex centaur-tabs company dashboard deadgrep dirvish eglot helm
+            highlight-indent-guides keycast magit nano-theme
+            nerd-icons-completion nerd-icons-dired org pdf-tools restart-emacs
+            smartparens tree-sitter-langs vundo yasnippet-snippets)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-(put 'narrow-to-region 'disabled nil)
