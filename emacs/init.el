@@ -111,7 +111,8 @@
 (add-hook 'TeX-after-compilation-finished-functions         ; AUCTeX(14.0.3.2024-03-17)
           #'TeX-revert-document-buffer)
 (add-hook 'org-mode-hook #'org-cdlatex-mode)                ; 在org-mode使用OCDL(这是OCDL而不是CDL)
-(add-hook 'LaTeX-mode-hook #'cdlatex-mode)              ; 在LaTeX-mode使用OCDL(这是OCDL而不是CDL)
+(add-hook 'LaTeX-mode-hook #'cdlatex-mode)                  ; 在LaTeX-mode使用OCDL(这是OCDL而不是CDL)
+(add-hook 'org-mode-hook #'valign-mode)                     ; 在org-mode使用valign对齐不等宽字体
 
 ;; 添加主题的哈希到安全主题列表
 (add-to-list 'custom-safe-themes "e7820b899036ae7e966dcaaec29fd6b87aef253748b7de09e74fdc54407a7a02")
@@ -128,9 +129,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(cdlatex-command-alist
-   '(("te" "\\insert text{}" "\\text{?}" cdlatex-position-cursor nil nil t)))
- '(cdlatex-math-modify-alist nil)
  '(custom-safe-themes
    '("e7820b899036ae7e966dcaaec29fd6b87aef253748b7de09e74fdc54407a7a02" default))
  '(custom-safe-themesdefault
@@ -139,7 +137,7 @@
    '(auctex cdlatex centaur-tabs company dashboard deadgrep dirvish eglot helm
             highlight-indent-guides keycast magit nano-theme
             nerd-icons-completion nerd-icons-dired org pdf-tools restart-emacs
-            smartparens tree-sitter-langs vundo yasnippet-snippets)))
+            smartparens tree-sitter-langs valign vundo yasnippet-snippets)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
