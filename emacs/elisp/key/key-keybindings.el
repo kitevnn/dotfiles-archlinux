@@ -17,7 +17,7 @@
 (global-set-key (kbd "C-c t j")         'centaur-tabs-ace-jump)               ; 跳转到特定Buffer
                                                                                
 ;; 主题管理                                                                    
-(global-set-key (kbd "C-c l 1")         'toggle-light-theme)                   ; 切换主题到nano-light
+(global-set-key (kbd "C-c l 1")         'custom-toggle-light-theme)           ; 切换主题到nano-light
                                                                                
 ;; 窗口管理                                                                    
 (global-set-key (kbd "C-c k")           'delete-window)                       ; 关闭当前窗口
@@ -31,10 +31,10 @@
 (global-set-key (kbd "C-c SPC")         'rectangle-mark-mode)                 ; 进入矩形选区
                                                                        
 ;; 调整屏幕
-(global-set-key (kbd "M--")             'resize-top-five-unit)                ; 当前窗口向上调整5个单位
-(global-set-key (kbd "M-=")             'resize-bottom-five-unit)             ; 当前窗口向下调整5个单位
-(global-set-key (kbd "M-9")             'resize-left-five-unit)               ; 当前窗口向左调整5个单位
-(global-set-key (kbd "M-0")             'resize-right-five-unit)              ; 当前窗口向右调整5个单位
+(global-set-key (kbd "M--")             'custom-resize-top-five-unit)         ; 当前窗口向上调整5个单位
+(global-set-key (kbd "M-=")             'custom-resize-bottom-five-unit)      ; 当前窗口向下调整5个单位
+(global-set-key (kbd "M-9")             'custom-resize-left-five-unit)        ; 当前窗口向左调整5个单位
+(global-set-key (kbd "M-0")             'custom-resize-right-five-unit)       ; 当前窗口向右调整5个单位
 
 ;; 重启GNU Emacs
 (global-set-key (kbd "M-r")             'restart-emacs)                       ; 重启GNU Emacs
@@ -45,8 +45,8 @@
 (global-set-key (kbd "C-c d g")         'dirvish)                             ; 全局打开dirvish
                                                                               
 ;; 移动光标                                                                   
-(global-set-key (kbd "M-n")             'move-next-five-lines)                ; 光标向下移动5行
-(global-set-key (kbd "M-p")             'move-prev-five-lines)                ; 光标向上移动5行
+(global-set-key (kbd "M-n")             'custom-move-next-five-lines)         ; 光标向下移动5行
+(global-set-key (kbd "M-p")             'custom-move-prev-five-lines)         ; 光标向上移动5行
                                                                               
 ;; 关于eglot                                                                  
 (global-set-key (kbd "C-c e o")         'eglot)                               ; 开启
@@ -98,10 +98,10 @@
 (global-set-key (kbd "C-c C-z C-f")     'down-list)                           ; 向下一组括号
                                                                                
 ;; 关于lisp计算子
-(define-key emacs-lisp-mode-map (kbd "C-c C-x C-e") 'eval-elisp-sexp)         ; C-cxe快速计算lisp式子
+(define-key emacs-lisp-mode-map (kbd "C-c C-x C-e") 'custom-eval-elisp-sexp)  ; C-cxe快速计算lisp式子
 
 ;; 关于编辑增强
-(global-set-key (kbd "C-<down>")                    'duplicate-line)          ; 复制当前行到下一行并保持光标水平位置不变
+(global-set-key (kbd "C-<down>")                    'custom-duplicate-line)   ; 复制当前行到下一行并保持光标水平位置不变
 
 
 (provide 'key-keybindings)

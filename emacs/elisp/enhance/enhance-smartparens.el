@@ -6,10 +6,6 @@
 (use-package smartparens
   :ensure t
   :defer nil
-  :hook (prog-mode text-mode org-mode LaTeX-mode)
-  :after tex-site
-  :bind (:map cdlatex-mode-map
-              ("<tab>" . cdlatex-tab)))
-
+  :hook (prog-mode text-mode LaTeX-mode))
 
 (provide 'enhance-smartparens)

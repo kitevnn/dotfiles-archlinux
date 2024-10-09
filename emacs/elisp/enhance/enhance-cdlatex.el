@@ -4,12 +4,12 @@
 (use-package cdlatex
   :ensure t
   :defer nil
-  :hook
-  (LaTeX-mode-hook . cdlatex-mode)
-  (org-mode-hook . cdlatex-mode)
+  :after tex-site
+  :bind (:map cdlatex-mode-map
+              ("<tab>" . cdlatex-tab))
   :init 
-  (setq cdlatex-paired-parens "$([{\\[")
-  (setq cdlatex-paired-pairs "$\["))
+  (setq cdlatex-paired-parens "")
+  (setq cdlatex-use-dollar-to-ensure-math nil))
 
 
 (provide 'enhance-cdlatex)
