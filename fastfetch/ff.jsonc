@@ -77,10 +77,6 @@
             "keyColor": "blue"
         },
         {
-            "type": "terminalfont",
-            "format": "{/2}{-}{/}{2}{?3} {3}{?}"
-        },
-        {
             "type": "cpu",
             "key": "󱪈",
             "keyColor": "blue"
