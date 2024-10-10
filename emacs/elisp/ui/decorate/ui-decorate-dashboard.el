@@ -1,6 +1,6 @@
-;;
+;; ===============================================
 ;; 欢迎界面 ui-decorate-dashboard.el
-;;
+;; ===============================================
 (use-package dashboard
   :ensure t
   :config
@@ -37,6 +37,8 @@
   ;; 设置item的信息(字符串替换)
   (setq dashboard-item-names '(("Recent Files:"               . "最近打开文件")
                                ("Bookmarks:"                  . "最近打开书签")
+                               ("Registers:"                  . "最近注册会议")
+                               ("Projects:"                   . "最近打开工程")
                                ("Agenda for today:"           . "今天日程安排")
                                ("Agenda for the coming week:" . "下周日程安排")))
 

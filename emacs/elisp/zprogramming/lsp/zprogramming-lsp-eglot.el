@@ -1,16 +1,24 @@
-;; 
+;; ===============================================
 ;; LSP客户端: zprogramming-lsp-eglot.el 
-;; 
+;; ===============================================
 (use-package eglot
              :ensure t
              :defer t)
 
-;; 给eglot加速的包
-(use-package eglot-booster
-	:after eglot
-	:config	(eglot-booster-mode))
 
+;; ===============================================
+;; 给eglot加速的包
+;; + 前端: eglot-booster
+;; + 后端: emacs-lsp-booster要自己编译到PATH里
+;; ===============================================
+; (use-package eglot-booster
+; 	:after eglot
+; 	:config	(eglot-booster-mode))
+
+
+;; ===============================================
 ;; eglot用法
+;; ===============================================
 ; 代码行动  eglot-code-actions
 ; 打开补全  completion-at-point
 ; 诊断信息  依赖flycheck
