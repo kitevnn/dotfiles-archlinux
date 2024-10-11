@@ -62,68 +62,33 @@
 
 
 ;; ===============================================
-;; 关于require与provide1
+;; 关于require与provide
 ;; ===============================================
-(require 'custom-fn)
-(require 'init-basic)
-(require 'ui-theme-light)
-(require 'ui-icon-icons)
-(require 'ui-decorate-dashboard)
-(require 'enhance-cdlatex)
-(require 'enhance-deadgrep)
-(require 'enhance-dirvish)
-(require 'enhance-indentline)
-(require 'enhance-keystroke)
-(require 'enhance-magit)
-(require 'enhance-restart)
-(require 'enhance-smartparens)
-(require 'enhance-tabs)
-(require 'enhance-unre)
-(require 'enhance-pdftools)
-(require 'enhance-minibuffer)
-(require 'enhance-corfu)
-(require 'note-auctex)
-(require 'note-orgmode)
+(require 'custom-fn)                    ; 自定义函数
+(require 'init-basic)                   ; 基本设置
+(require 'ui-theme-light)              
+(require 'ui-icon-icons)               
+(require 'ui-decorate-dashboard)        ; ui设置
+(require 'enhance-cdlatex)             
+(require 'enhance-deadgrep)            
+(require 'enhance-dirvish)             
+(require 'enhance-indentline)          
+(require 'enhance-keystroke)           
+(require 'enhance-magit)               
+(require 'enhance-restart)             
+(require 'enhance-smartparens)         
+(require 'enhance-tabs)                
+(require 'enhance-unre)                
+(require 'enhance-pdftools)            
+(require 'enhance-minibuffer)          
+(require 'enhance-corfu)                ; 编辑增强           
+(require 'note-auctex)                 
+(require 'note-orgmode)                 ; 笔记相关
 (require 'zprogramming-lsp-eglot)
-(require 'zprogramming-ts-treesitter)
-(require 'key-keybindings)
-
-
-;; ===============================================
-;; 添加主题的哈希到安全主题列表
-;; ===============================================
-(add-to-list 'custom-safe-themes "e7820b899036ae7e966dcaaec29fd6b87aef253748b7de09e74fdc54407a7a02")
-(load-theme 'nano-light t)
-
-
-;; ===============================================
-;; corfu的图标
-;; ===============================================
-(add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter)
-
-
-;; ===============================================
-;; 关于add-hook钩子
-;; ===============================================
-;; 关于add-hook的钩子设置
-(add-hook 'prog-mode 'hs-minor-mode)                        ; 折叠展开
-(add-hook 'after-init-hook (lambda () 
-    (when (get-buffer "*scratch*")
-      (kill-buffer "*scratch*") 
-    (when (get-buffer "*Messages*") 
-      (kill-buffer "*Messages*")))))                        ; 禁用Messages与scratch
-(add-hook 'text-mode-hook 'turn-on-visual-line-mode)        ; 单行文本超出一定长度后自动虚拟换行显示(类似于set wrap)
-(add-hook 'TeX-after-compilation-finished-functions         ; AUCTeX(14.0.3.2024-03-17)
-          #'TeX-revert-document-buffer)
-(add-hook 'org-mode-hook #'org-cdlatex-mode)                ; 在org-mode使用OCDL(这是OCDL而不是CDL)
-(add-hook 'LaTeX-mode-hook #'cdlatex-mode)                  ; 在LaTeX-mode使用OCDL(这是OCDL而不是CDL)
-(add-hook 'org-mode-hook #'valign-mode)                     ; 在org-mode使用valign对齐不等宽字体
-
-
-;; ===============================================
-;; 关于require与provide2
-;; ===============================================
-(require 'custom-after)
+(require 'zprogramming-ts-treesitter)   ; 编程相关
+(require 'key-keybindings)              ; 按键绑定
+(require 'custom-hooks)                 ; 钩子设置
+(require 'custom-after)                 ; 必须要加载的设置
 
 
 ;; ===============================================
@@ -134,10 +99,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("e7820b899036ae7e966dcaaec29fd6b87aef253748b7de09e74fdc54407a7a02" default))
- '(custom-safe-themesdefault
-   '("e7820b899036ae7e966dcaaec29fd6b87aef253748b7de09e74fdc54407a7a02" default))
  '(package-selected-packages
    '(auctex cape cdlatex centaur-tabs company consult corfu dashboard deadgrep
             dirvish eglot embark embark-consult highlight-indent-guides keycast

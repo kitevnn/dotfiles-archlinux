@@ -25,4 +25,9 @@
   (set-face-attribute 'corfu-current nil :background "#b5ffd1" :foreground "#37474f"))
 
 
+;; ===============================================
+;; corfu图标设置
+;; ===============================================
+(add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter)
+
 (provide 'enhance-corfu)
