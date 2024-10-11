@@ -17,8 +17,15 @@
         corfu-auto-delay 0.2
         corfu-auto-prefix 1
         corfu-on-exact-match nil)
-  :init
-  (global-corfu-mode))
+  :hook 
+  ((LaTeX-mode . corfu-mode)
+   (shell-mode . corfu-mode)
+   (eshell-mode . corfu-mode)))
+
+
+;; ===============================================
+;; corfu弹出窗口颜色设置
+;; ===============================================
 (with-eval-after-load 'corfu
   (set-face-attribute 'corfu-default nil :background "#ffffff")
   (set-face-attribute 'corfu-border nil :background "#37474f")  
@@ -28,6 +35,8 @@
 ;; ===============================================
 ;; corfu图标设置
 ;; ===============================================
-(add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter)
+(with-eval-after-load 'corfu
+  (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
+
 
 (provide 'enhance-corfu)
