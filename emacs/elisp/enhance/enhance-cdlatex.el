@@ -16,6 +16,8 @@
     '(("Bm" "" "\\begin{Bmatrix} ? \\end{Bmatrix}" cdlatex-position-cursor nil nil t)
       ("vm" "" "\\begin{vmatrix} ? \\end{vmatrix}" cdlatex-position-cursor nil nil t)
       ("bm" "" "\\begin{bmatrix} ? \\end{bmatrix}" cdlatex-position-cursor nil nil t)
+      ("ve" "" "\\vert{} ?" cdlatex-position-cursor nil t t)
+      ("or" "" "\\overrightarrow{?}" cdlatex-position-cursor nil t t)
       ("ii" "" "\\textit{?}" cdlatex-position-cursor nil t t)
       ("bb" "" "\\textbf{?}" cdlatex-position-cursor nil t t))))
 

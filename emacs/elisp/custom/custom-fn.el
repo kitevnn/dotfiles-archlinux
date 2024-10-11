@@ -1,49 +1,53 @@
-;;
+;; ===============================================
 ;; 自定义 custom-fn.el
-;;
+;; ===============================================
 
+;; ===============================================
 ;; 切换主题
+;; ===============================================
 (defun custom-toggle-light-theme ()
   "切换主题到nano-light"
   (lambda () (interactive)    
     (load-theme     'nano-light t)))
 
 
+;; ===============================================
 ;; 光标移动
+;; ===============================================
 (defun custom-move-next-five-lines ()
   "光标向下移动5行"
   (interactive)
   (next-line 5))
-
 (defun custom-move-prev-five-lines ()
   "光标向上移动5行"
   (interactive)
   (previous-line 5))
 
 
+;; ===============================================
 ;; 窗口移动
+;; ===============================================
 (defun custom-resize-top-five-unit ()
   "当前窗口向上5个单位"
   (interactive)
   (shrink-window 5))
-
 (defun custom-resize-bottom-five-unit ()
   "当前窗口向下5个单位"
   (interactive)
   (enlarge-window 5))
-
 (defun custom-resize-left-five-unit ()
   "当前窗口向左5个单位"
   (interactive)
   (shrink-window-horizontally 5))
-
 (defun custom-resize-right-five-unit ()
   "当前窗口向右5个单位"
   (interactive)
   (enlarge-window-horizontally 5))
 
 
+;; ===============================================
 ;; 软空格: 保证每次TAB都是2个字符宽度的整数倍单位
+;; ===============================================
 (defun custom-tab-stops-generate (&optional width max)
   "Return a sequence suitable for `tab-stop-list'."
   (let* ((max-column (or max 200))
@@ -56,7 +60,9 @@
 (setq tab-stop-list (custom-tab-stops-generate))
 
 
+;; ===============================================
 ;; lisp相关
+;; ===============================================
 (defun custom-eval-elisp-sexp ()
   "C-cxe快速计算lisp式子，来源于emacs-tw"
   (interactive)
@@ -70,7 +76,9 @@
              (insert (format "%s%S" " => " OUTPUT)))))))
 
 
+;; ===============================================
 ;; 自动添加文本
+;; ===============================================
 (defun custom-my-org-add-latex-header ()
   (interactive)
   (goto-char (point-min))
@@ -83,8 +91,10 @@
   '(define-key org-mode-map (kbd "C-c C-x C-f") 'custom-my-org-add-latex-header))
 
 
+;; ===============================================
 ;; 编辑增强
 ;; from https://stackoverflow.com/a/998472
+;; ===============================================
 (defun custom-duplicate-line (arg)
   "Duplicate current line, leaving point in lower line."
   (interactive "*p")  

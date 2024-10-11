@@ -7,8 +7,8 @@
 ;; ===============================================
 (defun custom-insert-inline-OCDL ()
   (interactive)
-  (insert "\\[")
-  (save-excursion (insert "\\]")))
+  (insert "\\[ ")
+  (save-excursion (insert " \\]")))
 (defun custom-insert-bra-OCDL ()
   (interactive)
   (insert "(")
