@@ -1,5 +1,5 @@
 ;; ===============================================
-;; 字体图标 ui-icon-icons.el
+;; 图标设置 ui-icon-nerdfont.el
 ;; ===============================================
 (use-package nerd-icons
   :ensure t
@@ -20,4 +20,4 @@
   (dired-mode . nerd-icons-dired-mode))
 
 
-(provide 'ui-icon-icons)
+(provide 'ui-icon-nerdfont)

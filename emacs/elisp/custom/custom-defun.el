@@ -1,6 +1,7 @@
 ;; ===============================================
-;; 自定义 custom-fn.el
+;; 自定义 custom-defun.el
 ;; ===============================================
+
 
 ;; ===============================================
 ;; 切换主题
@@ -115,4 +116,4 @@
   (next-line arg))  ; put the point in the lowest line and return
 
 
-(provide 'custom-fn)
+(provide 'custom-defun)

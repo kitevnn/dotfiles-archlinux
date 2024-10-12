@@ -1,6 +1,7 @@
 ;; ===============================================
-;; 关于add-hook钩子设置
+;; 钩子配置 hooks-hook.el
 ;; ===============================================
+
 
 ;; ===============================================
 ;; 编程类钩子hook
@@ -30,4 +31,4 @@
 (add-hook 'LaTeX-mode-hook #'tree-sitter-mode)              ; 在LaTeX-mode使用ts
 
 
-(provide 'custom-hooks)
+(provide 'hooks-hook)

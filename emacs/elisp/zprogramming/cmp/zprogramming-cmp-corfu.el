@@ -39,4 +39,4 @@
   (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
 
 
-(provide 'enhance-corfu)
+(provide 'zprogramming-cmp-corfu)

@@ -21,4 +21,30 @@
       ("ii" "" "\\textit{?}" cdlatex-position-cursor nil t t)
       ("bb" "" "\\textbf{?}" cdlatex-position-cursor nil t t))))
 
+(defun custom-insert-inline-OCDL ()
+  (interactive)
+  (insert "\\[ ")
+  (save-excursion (insert " \\]")))
+(eval-after-load 'org
+  '(define-key org-cdlatex-mode-map (kbd "$")   'custom-insert-inline-OCDL))
+(defun custom-insert-bra-OCDL ()
+  (interactive)
+  (insert "(")
+  (save-excursion (insert ")")))
+(eval-after-load 'org
+   '(define-key org-cdlatex-mode-map (kbd "(")   'custom-insert-bra-OCDL))
+(defun custom-insert-sq-bra-OCDL ()
+  (interactive)
+  (insert "[")
+  (save-excursion (insert "]")))
+(eval-after-load 'org
+   '(define-key org-cdlatex-mode-map (kbd "[")   'custom-insert-sq-bra-OCDL))
+(defun custom-insert-curly-bra-OCDL ()
+  (interactive)
+  (insert "{")
+  (save-excursion (insert "}")))
+(eval-after-load 'org
+   '(define-key org-cdlatex-mode-map (kbd "{")   'custom-insert-curly-bra-OCDL))
+
+
 (provide 'enhance-cdlatex)
