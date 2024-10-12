@@ -154,13 +154,11 @@
 
 
 ;; ===============================================
-;; 关于minibuffer
+;; 关于helm
 ;; ===============================================
-(global-set-key (kbd "C-s")                              'consult-line)                               ; 用vertico-orderless-marginalia-embark-consult优化默认的正向搜索C-s
-(global-set-key (kbd "C-c c m")                          'consult-imenu)                              ; 用vertico-orderless-marginalia-embark-consult优化默认的跳转定义
-(global-set-key (kbd "C-c c g")                          'consult-ripgrep)                            ; 用vertico-orderless-marginalia-embark-consult优化默认的抓取文本
-(global-set-key (kbd "C-c c r")                          'consult-recent-file)                        ; 用vertico-orderless-marginalia-embark-consult查看最近的打开文件
-(global-set-key (kbd "C-c c b")                          'consult-bookmark)                           ; 用vertico-orderless-marginalia-embark-consult查看最近的打开书签
+(global-set-key (kbd "M-x")                              'helm-M-x)                                   ; 还是习惯了helm啊..
+(global-set-key (kbd "C-x r b")                          'helm-filtered-bookmarks)                    ; 还是习惯了helm啊..
+(global-set-key (kbd "C-x C-f")                          'helm-find-files)                            ; 还是习惯了helm啊..
 
 
 ;; ===============================================
@@ -171,11 +169,11 @@
 (define-key pdf-view-mode-map (kbd "s")                  'pdf-view-scroll-up-or-next-page)            ; PDFView向下滚动
 (define-key pdf-view-mode-map (kbd "w")                  'pdf-view-scroll-down-or-previous-page)      ; PDFView向上滚动
 (require 'pdf-annot)
-(define-key pdf-annot-minor-mode-map (kbd "C-c C-a `") 'pdf-annot-delete)                             ; PDFView删除批注
-(define-key pdf-annot-minor-mode-map (kbd "C-c C-a 1") 'pdf-annot-add-highlight-markup-annotation)    ; PDFView高亮
-(define-key pdf-annot-minor-mode-map (kbd "C-c C-a 2") 'pdf-annot-add-underline-markup-annotation)    ; PDFView下划线
-(define-key pdf-annot-minor-mode-map (kbd "C-c C-a 3") 'pdf-annot-add-squiggly-markup-annotation)     ; PDFView波浪下划线
-(define-key pdf-annot-minor-mode-map (kbd "C-c C-a 5") 'pdf-annot-add-text-annotation)                ; PDFView文本批注
+(define-key pdf-annot-minor-mode-map (kbd "C-c C-a `")   'pdf-annot-delete)                           ; PDFView删除批注
+(define-key pdf-annot-minor-mode-map (kbd "C-c C-a 1")   'pdf-annot-add-highlight-markup-annotation)  ; PDFView高亮
+(define-key pdf-annot-minor-mode-map (kbd "C-c C-a 2")   'pdf-annot-add-underline-markup-annotation)  ; PDFView下划线
+(define-key pdf-annot-minor-mode-map (kbd "C-c C-a 3")   'pdf-annot-add-squiggly-markup-annotation)   ; PDFView波浪下划线
+(define-key pdf-annot-minor-mode-map (kbd "C-c C-a 5")   'pdf-annot-add-text-annotation)              ; PDFView文本批注
 
 
 (provide 'key-keybindings)

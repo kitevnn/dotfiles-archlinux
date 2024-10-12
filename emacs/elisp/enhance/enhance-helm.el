@@ -1,11 +1,9 @@
-;;
-;; 快速搜索插件 enhance-helm.el
-;;
+;; ===============================================
+;; 大而全搜索工具 enhance-helm.el
+;; ===============================================
 (use-package helm
   :ensure t
-  :defer nil
-  :init
-  (helm-mode 1))
+  :defer nil)
 
 
 (provide 'enhance-helm)

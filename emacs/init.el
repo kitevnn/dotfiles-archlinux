@@ -80,7 +80,7 @@
 (require 'enhance-tabs)                
 (require 'enhance-unre)                
 (require 'enhance-pdftools)            
-(require 'enhance-minibuffer)          
+(require 'enhance-helm)
 (require 'enhance-corfu)                ; 编辑增强           
 (require 'note-auctex)                 
 (require 'note-orgmode)                 ; 笔记相关
@@ -100,11 +100,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(auctex cape cdlatex centaur-tabs company consult corfu dashboard deadgrep
-            dirvish eglot embark embark-consult highlight-indent-guides keycast
-            magit marginalia nano-theme nerd-icons-completion nerd-icons-corfu
-            nerd-icons-dired orderless org pdf-tools restart-emacs smartparens
-            tree-sitter-langs valign vertico vundo wfnames yasnippet-snippets))
+   '(auctex cape cdlatex centaur-tabs company corfu dashboard deadgrep dirvish
+            eglot helm highlight-indent-guides keycast magit nano-theme
+            nerd-icons-completion nerd-icons-corfu nerd-icons-dired org
+            pdf-tools restart-emacs smartparens tree-sitter-langs valign vertico
+            vundo wfnames yasnippet-snippets))
  '(package-vc-selected-packages
    '((eglot-booster :vc-backend Git :url
                     "https://github.com/jdtsmith/eglot-booster"))))
