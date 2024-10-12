@@ -4,10 +4,10 @@
 
 [[./MEME/EmacsTheTrueEditor.png]]
 
-** 📰 doc
+** 📰 一些负责任的话
 
-[[file:./doc/dotfiles.pdf]]
+请真的不要滥抄我个人的配置，很负责任地说这并不是说劝退什么的
 
-** 📰 desc
+更加重要的原因，只是因为符合个人习惯的不一定会适合您的习惯
 
-[[file:doc/configdesc.pdf]]
+可以推荐您先观看一下 [[https://www.youtube.com/shorts/GObdGWzbqao][daily tsoding - one thing every programming must have]] 这个视频
