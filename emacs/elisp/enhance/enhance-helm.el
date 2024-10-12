@@ -5,5 +5,13 @@
   :ensure t
   :defer nil)
 
+;; ===============================================
+;; from r/emacs tuhdo lean helm window
+;; ===============================================
+(setq helm-display-header-line nil) ;; t by default
+(setq helm-autoresize-max-height 30)
+(setq helm-autoresize-min-height 30)
+(helm-autoresize-mode 1)
+
 
 (provide 'enhance-helm)
