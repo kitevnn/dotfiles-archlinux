@@ -17,10 +17,9 @@
         corfu-auto-delay 0.2
         corfu-auto-prefix 1
         corfu-on-exact-match nil)
-  :hook 
-  ((LaTeX-mode . corfu-mode)
-   (shell-mode . corfu-mode)
-   (eshell-mode . corfu-mode)))
+  :hook
+  ((shell-mode . corfu-mode)
+  (eshell-mode . corfu-mode)))
 
 
 ;; ===============================================

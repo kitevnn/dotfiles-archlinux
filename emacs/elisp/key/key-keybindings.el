@@ -80,9 +80,15 @@
 ;; ===============================================
 ;; 关于eglot
 ;; ===============================================
-(global-set-key (kbd "C-c e o")                          'eglot)                                      ; 开启
-(global-set-key (kbd "C-c e r")                          'eglot-reconnect)                            ; 重连
-(global-set-key (kbd "C-c e s")                          'eglot-shutdown)                             ; 关闭
+(global-set-key (kbd "C-c c o")                          'corfu-mode)                                 ; 开启corfu轻量补全框架
+
+
+;; ===============================================
+;; 关于eglot
+;; ===============================================
+(global-set-key (kbd "C-c e o")                          'eglot)                                      ; 开启eglot语言服务客户端
+(global-set-key (kbd "C-c e r")                          'eglot-reconnect)                            ; 重连eglot语言服务客户端
+(global-set-key (kbd "C-c e s")                          'eglot-shutdown)                             ; 关闭eglot语言服务客户端
 (global-set-key (kbd "C-c e d s")                        'flymake-show-diagnostic)                    ; 通过flymake(built-in)，给eglot提供diagnostic诊断信息
 (global-set-key (kbd "C-c e d n")                        'flymake-goto-next-error)                    ; 前往下一个错误(会用波浪线来展示错误的)
 (global-set-key (kbd "C-c e d p")                        'flymake-goto-prev-error)                    ; 前往上一个错误(会用波浪线来展示错误的)
@@ -99,7 +105,7 @@
 ;; ===============================================
 ;; 关于ansi-term
 ;; ===============================================
-(global-set-key (kbd "C-c t o o o")                      'ansi-term)                                  ; 开启ansi-term终端模拟器
+(global-set-key (kbd "C-c t o o o")                      'eshell)                                     ; 开启eshell终端模拟器
 
 
 ;; ===============================================
