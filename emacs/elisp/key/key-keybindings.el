@@ -165,6 +165,7 @@
 (global-set-key (kbd "M-x")                              'helm-M-x)                                   ; 还是习惯了helm啊..
 (global-set-key (kbd "C-x r b")                          'helm-filtered-bookmarks)                    ; 还是习惯了helm啊..
 (global-set-key (kbd "C-x C-f")                          'helm-find-files)                            ; 还是习惯了helm啊..
+(global-set-key (kbd "M-y")                              'helm-show-kill-ring)                        ; 还是习惯了helm啊..
 
 
 ;; ===============================================
