@@ -3,7 +3,9 @@
 ;; ===============================================
 (use-package helm
   :ensure t
-  :defer nil)
+  :defer nil
+  :init
+  (helm-mode 1))
 
 ;; ===============================================
 ;; from r/emacs tuhdo lean helm window
