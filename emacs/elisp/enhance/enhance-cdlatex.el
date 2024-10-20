@@ -19,7 +19,10 @@
       ("ve" "" "\\vert{} ?" cdlatex-position-cursor nil t t)
       ("or" "" "\\overrightarrow{?}" cdlatex-position-cursor nil t t)
       ("ii" "" "\\textit{?}" cdlatex-position-cursor nil t t)
-      ("bb" "" "\\textbf{?}" cdlatex-position-cursor nil t t))))
+      ("bb" "" "\\textbf{?}" cdlatex-position-cursor nil t t)
+      ("intl" "" "\\int_{?}^{} dx" cdlatex-position-cursor nil nil t)      
+      ("iintl" "" "\\iint\\limits_{D}^{} ? d\\sigma" cdlatex-position-cursor nil nil t)
+      ("iiintl" "" "\\iiint\\limits_{\\Omega}^{} ? dv" cdlatex-position-cursor nil nil t))))      
 
 (defun custom-insert-inline-OCDL ()
   (interactive)
