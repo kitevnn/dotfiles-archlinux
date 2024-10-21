@@ -20,6 +20,7 @@
       ("or" "" "\\overrightarrow{?}" cdlatex-position-cursor nil t t)
       ("ii" "" "\\textit{?}" cdlatex-position-cursor nil t t)
       ("bb" "" "\\textbf{?}" cdlatex-position-cursor nil t t)
+      ("liml" "" "\\lim_{x \\to ?}" cdlatex-position-cursor nil nil t)      
       ("intl" "" "\\int_{?}^{} dx" cdlatex-position-cursor nil nil t)      
       ("iintl" "" "\\iint\\limits_{D}^{} ? d\\sigma" cdlatex-position-cursor nil nil t)
       ("iiintl" "" "\\iiint\\limits_{\\Omega}^{} ? dv" cdlatex-position-cursor nil nil t))))      
