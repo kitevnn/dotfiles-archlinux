@@ -20,10 +20,14 @@
       ("or" "" "\\overrightarrow{?}" cdlatex-position-cursor nil t t)
       ("ii" "" "\\textit{?}" cdlatex-position-cursor nil t t)
       ("bb" "" "\\textbf{?}" cdlatex-position-cursor nil t t)
-      ("liml" "" "\\lim_{x \\to ?}" cdlatex-position-cursor nil nil t)      
+      ("liml" "" "\\lim_{x \\to ?}" cdlatex-position-cursor nil nil t)
+      ("ointl" "" "\\oint_{\\Gamma}^{} ? ds" cdlatex-position-cursor nil nil t)      
       ("intl" "" "\\int_{?}^{} dx" cdlatex-position-cursor nil nil t)      
       ("iintl" "" "\\iint\\limits_{D}^{} ? d\\sigma" cdlatex-position-cursor nil nil t)
-      ("iiintl" "" "\\iiint\\limits_{\\Omega}^{} ? dv" cdlatex-position-cursor nil nil t))))      
+      ("iiintl" "" "\\iiint\\limits_{\\Omega}^{} ? dv" cdlatex-position-cursor nil nil t)))
+
+  ;; cdlatex的`补全
+  (setq cdlatex-math-symbol-alist '((112 ("" "\\pi")) (33 ("" "\\neq")))))
 
 (defun custom-insert-inline-OCDL ()
   (interactive)

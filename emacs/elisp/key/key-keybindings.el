@@ -140,6 +140,7 @@
 ;; ===============================================
 (global-set-key (kbd "C-=")                              'custom-duplicate-line)                      ; 复制当前行到下一行并保持光标水平位置不变
 (global-set-key (kbd "C-\\")                             'embark-act)                                 ; 增强原始工作流embark
+(global-set-key (kbd "C-s")                              'consult-line)                               ; C-s搜索
 
 
 ;; ===============================================
@@ -157,15 +158,6 @@
 (define-key org-mode-map (kbd "C-c C-x C-,")             'org-metaleft)                               ; 用 C-z C-x C-, 替代原本的 Meta+<left>
 (define-key org-mode-map (kbd "C-c C-x C-=")             'org-shiftright)                             ; 用 C-z C-x C-= 替代原本的 Shift+<right>
 (define-key org-mode-map (kbd "C-c C-x C--")             'org-shiftleft)                              ; 用 C-z C-x C-- 替代原本的 Shift+<left>
-
-
-;; ===============================================
-;; 关于helm
-;; ===============================================
-(global-set-key (kbd "M-x")                              'helm-M-x)                                   ; 还是习惯了helm啊..
-(global-set-key (kbd "C-x r b")                          'helm-filtered-bookmarks)                    ; 还是习惯了helm啊..
-(global-set-key (kbd "C-x C-f")                          'helm-find-files)                            ; 还是习惯了helm啊..
-(global-set-key (kbd "M-y")                              'helm-show-kill-ring)                        ; 还是习惯了helm啊..
 
 
 ;; ===============================================
