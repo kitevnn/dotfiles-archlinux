@@ -27,7 +27,7 @@
       ("iiintl" "" "\\iiint\\limits_{\\Omega}^{} ? dv" cdlatex-position-cursor nil nil t)))
 
   ;; cdlatex的`补全
-  (setq cdlatex-math-symbol-alist '((112 ("" "\\pi")) (33 ("" "\\neq")))))
+  (setq cdlatex-math-symbol-alist '((112 ("" "\\pi")) (33 ("" "" "\\neq")))))
 
 (defun custom-insert-inline-OCDL ()
   (interactive)
