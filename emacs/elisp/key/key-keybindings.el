@@ -140,7 +140,7 @@
 ;; ===============================================
 (global-set-key (kbd "C-=")                              'custom-duplicate-line)                      ; 复制当前行到下一行并保持光标水平位置不变
 (global-set-key (kbd "C-\\")                             'embark-act)                                 ; 增强原始工作流embark
-(global-set-key (kbd "C-s")                              'consult-line)                               ; C-s搜索
+(global-set-key (kbd "M-s")                              'consult-line)                               ; C-s搜索
 
 
 ;; ===============================================
