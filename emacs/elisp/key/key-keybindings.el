@@ -158,6 +158,7 @@
 (define-key org-mode-map (kbd "C-c C-x C-,")             'org-metaleft)                               ; 用 C-z C-x C-, 替代原本的 Meta+<left>
 (define-key org-mode-map (kbd "C-c C-x C-=")             'org-shiftright)                             ; 用 C-z C-x C-= 替代原本的 Shift+<right>
 (define-key org-mode-map (kbd "C-c C-x C--")             'org-shiftleft)                              ; 用 C-z C-x C-- 替代原本的 Shift+<left>
+(define-key org-mode-map (kbd "C-c C-x C-v")             'custom-toggle-inline-images-with-valign)    ; 用 C-z C-x C-v 避免valign-mode造成的对齐卡顿来预览图片
 
 
 ;; ===============================================
@@ -174,5 +175,13 @@
 (define-key pdf-annot-minor-mode-map (kbd "C-c C-a 3")   'pdf-annot-add-squiggly-markup-annotation)   ; PDFView波浪下划线
 (define-key pdf-annot-minor-mode-map (kbd "C-c C-a 5")   'pdf-annot-add-text-annotation)              ; PDFView文本批注
 
+
+;; ===============================================
+;; 关于Dashboard
+;; ===============================================
+(define-key dashboard-mode-map       (kbd "p")           'dashboard-previous-line)
+(define-key dashboard-mode-map       (kbd "n")           'dashboard-next-line)
+(define-key dashboard-mode-map       (kbd "j")           nil)
+(define-key dashboard-mode-map       (kbd "k")           nil)
 
 (provide 'key-keybindings)

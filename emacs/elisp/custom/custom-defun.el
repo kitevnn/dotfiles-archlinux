@@ -116,4 +116,18 @@
   (next-line arg))  ; put the point in the lowest line and return
 
 
+;; ===============================================
+;; 在org-mode下避免valign-mode造成的卡顿问题
+;; from chatGPT 4o
+;; ===============================================
+(defun custom-toggle-inline-images-with-valign ()
+  (interactive)
+  (if (bound-and-true-p valign-mode)
+      (progn
+        (valign-mode -1)
+        (org-toggle-inline-images)
+        (valign-mode 1))
+    (org-toggle-inline-images)))
+
+
 (provide 'custom-defun)
