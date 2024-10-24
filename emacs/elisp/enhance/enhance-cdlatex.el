@@ -21,7 +21,7 @@
       ("ii" "" "\\textit{?}" cdlatex-position-cursor nil t t)
       ("bb" "" "\\textbf{?}" cdlatex-position-cursor nil t t)
       ("xl" "" "\\xleftarrow[?]{}" cdlatex-position-cursor nil nil t)      
-      ("xr" "" "\\xrightarrow[?]{}" cdlatex-position-cursor nil nil t)      
+      ("xr" "" "\\xrightarrow[?]{}" cdlatex-position-cursor nil nil t)
       ("liml" "" "\\lim_{x \\to ?}" cdlatex-position-cursor nil nil t)      
       ("ointl" "" "\\oint_{\\Gamma}^{} ? ds" cdlatex-position-cursor nil nil t)
       ("oiintl" "" "\\iint\\limits_{\\Sigma}^{} ? dS" cdlatex-position-cursor nil nil t)      
@@ -30,7 +30,7 @@
       ("iiintl" "" "\\iiint\\limits_{\\Omega}^{} ? dv" cdlatex-position-cursor nil nil t)))
 
   ;; cdlatex的`补全
-  (setq cdlatex-math-symbol-alist '((112 ("" "\\pi")) (33 ("" "" "\\neq")))))
+  (setq cdlatex-math-symbol-alist '((112 ("" "\\pi")) (33 ("" "" "\\neq")) (46 ("\\cdot" "\\cdots")))))
 
 (defun custom-insert-inline-OCDL ()
   (interactive)
