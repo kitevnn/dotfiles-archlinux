@@ -29,6 +29,8 @@
 (add-hook 'LaTeX-mode-hook #'cdlatex-mode)                  ; 在LaTeX-mode使用OCDL(这是OCDL而不是CDL)
 (add-hook 'org-mode-hook #'valign-mode)                     ; 在org-mode使用valign对齐不等宽字体
 (add-hook 'LaTeX-mode-hook #'tree-sitter-mode)              ; 在LaTeX-mode使用ts
-
+(add-hook 'org-mode-hook
+          (lambda ()
+            (add-hook 'post-command-hook 'custom-org-table-with-cdlatex)))
 
 (provide 'hooks-hook)
