@@ -13,6 +13,8 @@
 ;; ===============================================
 (global-set-key (kbd "C-c t p")                          'next-buffer)                                ; 跳转到下一个全局Buffer
 (global-set-key (kbd "C-c t n")                          'previous-buffer)                            ; 跳转到上一个全局Buffer
+(global-set-key (kbd "C-c C-x C-<down>")                 'next-buffer)                                ; 跳转到下一个全局Buffer
+(global-set-key (kbd "C-c C-x C-<up>")                   'previous-buffer)                            ; 跳转到上一个全局Buffer
 
 
 ;; ===============================================
@@ -20,6 +22,8 @@
 ;; ===============================================
 (global-set-key (kbd "C-c t b")                          'centaur-tabs-backward)                      ; 跳转到上一个局部Buffer
 (global-set-key (kbd "C-c t f")                          'centaur-tabs-forward)                       ; 跳转到下一个局部Buffer
+(global-set-key (kbd "C-c C-x C-<left>")                 'centaur-tabs-backward)                      ; 跳转到上一个局部Buffer
+(global-set-key (kbd "C-c C-x C-<right>")                'centaur-tabs-forward)                       ; 跳转到下一个局部Buffer
 (global-set-key (kbd "C-c t c")                          'centaur-tabs--create-new-tab)               ; 创建新的Buffer
 (global-set-key (kbd "C-c t j")                          'centaur-tabs-ace-jump)                      ; 跳转到特定Buffer
 
