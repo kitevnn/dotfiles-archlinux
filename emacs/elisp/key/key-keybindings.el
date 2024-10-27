@@ -163,9 +163,6 @@
 (define-key org-mode-map (kbd "C-c C-x C-=")             'org-shiftright)                             ; 用 C-z C-x C-= 替代原本的 Shift+<right>
 (define-key org-mode-map (kbd "C-c C-x C--")             'org-shiftleft)                              ; 用 C-z C-x C-- 替代原本的 Shift+<left>
 (define-key org-mode-map (kbd "C-c C-x C-v")             'custom-toggle-inline-images-with-valign)    ; 用 C-z C-x C-v 避免valign-mode造成的对齐卡顿来预览图片
-(define-key org-mode-map (kbd "C-l")                     'org-cycle)                                  ; 通过解耦org-mode快捷键
-(define-key org-mode-map (kbd "TAB")                     'cdlatex-tab)                                ; 来使用cdlatex的TAB来补全
-(define-key org-mode-map (kbd "C-<tab>")                 'org-table-next-field)                       ; 从而防止单元格内容不会因org-cycle而被新插入的字符org-self-insert-command而覆盖
 
 
 ;; ===============================================

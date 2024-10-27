@@ -29,6 +29,9 @@
 (add-hook 'LaTeX-mode-hook #'cdlatex-mode)                                   ; 在LaTeX-mode使用OCDL(这是OCDL而不是CDL)
 (add-hook 'org-mode-hook #'valign-mode)                                      ; 在org-mode使用valign对齐不等宽字体
 (add-hook 'LaTeX-mode-hook #'tree-sitter-mode)                               ; 在LaTeX-mode使用ts
+(add-hook 'org-mode-hook
+          (lambda ()
+            (add-hook 'post-command-hook 'custom-org-table-with-cdlatex)))   ; 仅在org-table上下文范围内使用cdlatex的TAB来补全来防止单元格内容不会因org-cycle而被新插入的字符org-self-insert-command而覆盖
 
 
 (provide 'hooks-hook)

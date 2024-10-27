@@ -130,4 +130,16 @@
     (org-toggle-inline-images)))
 
 
+;; ===============================================
+;; 重量级更新: 解耦org-cycle与cdlatex-tab的快捷键
+;; from chatGPT 4o
+;; ===============================================
+(defun custom-org-table-with-cdlatex ()
+  (if (org-at-table-p)
+      (progn
+        (local-set-key (kbd "TAB")     'cdlatex-tab)
+        (local-set-key (kbd "C-<tab>") 'org-table-next-field))
+      (local-set-key (kbd "TAB")       'org-cycle)))
+
+
 (provide 'custom-defun)
