@@ -130,15 +130,4 @@
     (org-toggle-inline-images)))
 
 
-;; ===============================================
-;; 在org-table下使用cdlatex按下TAB避免覆盖单元格
-;; 重量级更新 from chatGPT 4o
-;; ===============================================
-(defun custom-org-table-with-cdlatex ()
-  (when (org-at-table-p)
-    (local-set-key (kbd "TAB")     nil)
-    (local-set-key (kbd "TAB")     'cdlatex-tab)
-    (local-set-key (kbd "C-<tab>") 'org-table-next-field)))
-
-
 (provide 'custom-defun)
