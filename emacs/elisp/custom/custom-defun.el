@@ -142,4 +142,21 @@
       (local-set-key (kbd "TAB")       'org-cycle)))
 
 
+;; ==============================================
+;; 关于PDFView
+;; ==============================================
+(defun custom-move-prev-ten-pages ()
+  "pdf向上翻10页"
+  (interactive)
+  (pdf-view-previous-page-command 10))
+(defun custom-move-next-ten-pages ()
+  "pdf向下翻10页"
+  (interactive)
+  (pdf-view-next-page-command 10))
+(defun custom-pdf-view-mode-hook-with-yas ()
+  "禁用 yasnippet"
+  (yas-minor-mode -1))
+
+
+
 (provide 'custom-defun)

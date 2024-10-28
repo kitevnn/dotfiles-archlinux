@@ -20,7 +20,7 @@
                                                                             
                                                                             
 ;; ===============================================                          
-;; 笔记文本org/LaTeX/text的钩子hook                                         
+;; 笔记文本org/LaTeX-PS/text的钩子hook                                         
 ;; ===============================================                          
 (add-hook 'text-mode-hook 'turn-on-visual-line-mode)                         ; 单行文本超出一定长度后自动虚拟换行显示(类似于set wrap)
 (add-hook 'TeX-after-compilation-finished-functions                          ; AUCTeX(14.0.3.2024-03-17)
@@ -32,6 +32,7 @@
 (add-hook 'org-mode-hook
           (lambda ()
             (add-hook 'post-command-hook 'custom-org-table-with-cdlatex)))   ; 仅在org-table上下文范围内使用cdlatex的TAB来补全来防止单元格内容不会因org-cycle而被新插入的字符org-self-insert-command而覆盖
+(add-hook 'pdf-view-mode-hook 'custom-pdf-view-mode-hook-with-yas)           ; 在PDFView里禁用yasnippet
 
 
 (provide 'hooks-hook)

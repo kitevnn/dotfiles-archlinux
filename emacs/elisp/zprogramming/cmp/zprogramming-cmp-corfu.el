@@ -19,8 +19,9 @@
         corfu-on-exact-match nil)
   :hook
   ((shell-mode . corfu-mode)
-  (eshell-mode . corfu-mode)))
-
+  (eshell-mode . corfu-mode)
+  (LaTeX-mode  . corfu-mode)
+  (latex-mode  . corfu-mode)))
 
 ;; ===============================================
 ;; corfu弹出窗口颜色设置
@@ -29,7 +30,6 @@
   (set-face-attribute 'corfu-default nil :background "#ffffff")
   (set-face-attribute 'corfu-border nil :background "#37474f")  
   (set-face-attribute 'corfu-current nil :background "#b5ffd1" :foreground "#37474f"))
-
 
 ;; ===============================================
 ;; corfu图标设置
