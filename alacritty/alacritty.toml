@@ -1,5 +1,4 @@
-# [general]
-working_directory = "/home/une/桌面/back/archlinux/check"
+general.working_directory = "/home/une/桌面/back/archlinux/check"
 
 [font]
 size = 12
