@@ -20,6 +20,7 @@
       ("or" "" "\\overrightarrow{?}" cdlatex-position-cursor nil t t)
       ("ii" "" "\\textit{?}" cdlatex-position-cursor nil t t)
       ("bb" "" "\\textbf{?}" cdlatex-position-cursor nil t t)
+      ("cb" "" "\\colorbox{yellow}{?}" cdlatex-position-cursor nil t t)
       ("xl" "" "\\xleftarrow[?]{}" cdlatex-position-cursor nil nil t)      
       ("xr" "" "\\xrightarrow[?]{}" cdlatex-position-cursor nil nil t)
       ("liml" "" "\\lim_{x \\to ?}" cdlatex-position-cursor nil nil t)      
