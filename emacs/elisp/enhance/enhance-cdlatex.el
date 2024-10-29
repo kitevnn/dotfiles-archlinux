@@ -11,7 +11,9 @@
   (setq cdlatex-paired-parens "")
   (setq cdlatex-use-dollar-to-ensure-math nil)
 
+  ;; ===============================================
   ;; cdlatex的TAB补全
+  ;; ===============================================
   (setq cdlatex-command-alist
     '(("Bm" "" "\\begin{Bmatrix} ? \\end{Bmatrix}" cdlatex-position-cursor nil nil t)
       ("vm" "" "\\begin{vmatrix} ? \\end{vmatrix}" cdlatex-position-cursor nil nil t)
@@ -54,9 +56,15 @@
       ("oiintls" "" "\\oiint\\limits_{\\Sigma} ? d" cdlatex-position-cursor nil nil t)
       ("oiintlo" "" "\\oiint\\limits_{\\Omega} ? d" cdlatex-position-cursor nil nil t)))
 
+  ;; ===============================================
   ;; cdlatex的`补全
+  ;; ===============================================
   (setq cdlatex-math-symbol-alist '((112 ("" "\\pi")) (33 ("" "" "\\neq")) (46 ("\\cdot" "\\cdots")))))
 
+
+;; ===============================================
+;; cdlatex的括号匹配
+;; ===============================================
 (defun custom-insert-inline-OCDL ()
   (interactive)
   (insert "\\[ ")

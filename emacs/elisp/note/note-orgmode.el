@@ -4,15 +4,27 @@
 (use-package org
   :ensure t
   :defer nil)
-  
+ 
+
+;; ===============================================
+;; org-babel 能加载 LaTeX
+;; ===============================================
 (org-babel-do-load-languages 
   'org-babel-load-languages 
-  '((latex . t)))  ; org-babel 能加载 LaTeX
+  '((latex . t)))
 
+
+;; ===============================================
+;; valign 虚拟对齐
+;; ===============================================
 (use-package valign
   :ensure t
   :defer nil)
 
+
+;; ===============================================
+;; org-mode 添加 lataex-header
+;; ===============================================
 (setq org-format-latex-header "\\documentclass{article}
                                \\usepackage[usenames]{color}
                                [DEFAULT-PACKAGES]

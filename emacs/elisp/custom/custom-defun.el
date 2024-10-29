@@ -138,7 +138,7 @@
   (if (org-at-table-p)
       (progn
         (local-set-key (kbd "TAB")     'cdlatex-tab)
-        (local-set-key (kbd "C-<tab>") 'org-table-next-field))
+        (local-set-key (kbd "C-l")     'org-table-next-field))
       (local-set-key (kbd "TAB")       'org-cycle)))
 
 
@@ -157,6 +157,22 @@
   "禁用 yasnippet"
   (yas-minor-mode -1))
 
+
+;; ==============================================
+;; 关于eshell
+;; ==============================================
+(defun custom-eshell-prompt ()
+    "设置eshell的prompt的前景色"
+    (interactive)
+    (set-face-attribute 'eshell-prompt nil :foreground "#673ab7"))
+(defun custom-reset-eshell-font-size ()
+  "将非eshell的buffer的字体大小设置回 90%"
+  (when (not (eq major-mode 'eshell-mode))
+    (centaur-tabs-mode 1)
+    (set-face-attribute 'default nil :height 90)))
+(defun custom-eshell-withcentaur-tabs-mode ()
+  "在进入 eshell 模式时关闭 centaur-tabs-mode"
+  (centaur-tabs-mode -1))
 
 
 (provide 'custom-defun)

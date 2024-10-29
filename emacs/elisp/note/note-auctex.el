@@ -6,12 +6,16 @@
   :defer t
   
   :init
+  ;; ===============================================
   ;; AUCTeX相关
+  ;; ===============================================
   (setq-default TeX-engine 'xetex)                                      ; 更改AUCTeX的渲染引擎从pdflatex到xelatex
   (setq-default TeX-command-default "LatexMk")                          ; 使用 latexmk
   (setq latexmk-command "latexmk -pdf -xelatex")                        ; 指定 latexmk 使用 XeLaTeX
 
+  ;; ===============================================
   ;; 建议添加的
+  ;; ===============================================
   (setq-default TeX-master nil)
   (setq TeX-parse-selt t)
 
