@@ -36,6 +36,7 @@
 (require 'ui-decorate-dashboard)
 (require 'note-auctex)
 (require 'note-orgmode)
+(require 'note-orgroam)
 (require 'zprogramming-cmp-corfu)
 (require 'zprogramming-lsp-eglot)
 (require 'zprogramming-snips-yasnippet)
@@ -57,8 +58,8 @@
    '(auctex cdlatex centaur-tabs corfu dashboard dirvish embark-consult helm
             highlight-indent-guides keycast magit marginalia nano-theme
             nerd-icons-completion nerd-icons-corfu nerd-icons-dired orderless
-            pdf-tools restart-emacs smartparens tree-sitter-langs valign vertico
-            vundo yasnippet-snippets)))
+            org-roam org-roam-ui pdf-tools restart-emacs smartparens
+            tree-sitter-langs valign vertico vundo yasnippet-snippets)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

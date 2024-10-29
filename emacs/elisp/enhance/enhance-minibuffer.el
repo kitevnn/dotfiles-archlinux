@@ -22,7 +22,9 @@
 
 (use-package embark
   :ensure t
-  :defer nil)
+  :defer nil
+  :init
+  (setq prefix-help-command 'embark-prefix-help-command))
 (use-package embark-consult
   :ensure t
   :defer nil)

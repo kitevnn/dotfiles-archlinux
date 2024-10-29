@@ -3,12 +3,9 @@
 ;; ===============================================
 (use-package dirvish
   :ensure t
-  :defer t)
-
-(use-package dirvish
+  :defer t
   :init
   (dirvish-override-dired-mode)
-  (dirvish-peek-mode)
   (dirvish-side-follow-mode)
   (setq dirvish-mode-line-format '(:left (sort symlink) :right (omit yank index))
         dirvish-mode-line-height 16

@@ -145,6 +145,7 @@
 (global-set-key (kbd "C-=")                              'custom-duplicate-line)                      ; 复制当前行到下一行并保持光标水平位置不变
 (global-set-key (kbd "C-\\")                             'embark-act)                                 ; 增强原始工作流embark
 (global-set-key (kbd "M-s")                              'consult-line)                               ; C-s搜索
+(global-set-key (kbd "C-c C-x C-h")                      'embark-prefix-help-command)                 ; prefix快捷键
 
 
 ;; ===============================================
@@ -163,6 +164,18 @@
 (define-key org-mode-map (kbd "C-c C-x C-=")             'org-shiftright)                             ; 用 C-z C-x C-= 替代原本的 Shift+<right>
 (define-key org-mode-map (kbd "C-c C-x C--")             'org-shiftleft)                              ; 用 C-z C-x C-- 替代原本的 Shift+<left>
 (define-key org-mode-map (kbd "C-c C-x C-v")             'custom-toggle-inline-images-with-valign)    ; 用 C-z C-x C-v 避免valign-mode造成的对齐卡顿来预览图片
+
+
+;; ===============================================
+;; 关于org-roam
+;; ===============================================
+(define-key org-mode-map (kbd "C-c j f")                 'org-roam-node-find)                         ; 寻找笔记地图节点
+(define-key org-mode-map (kbd "C-c j a")                 'org-roam-node-insert)                       ; 创建笔记地图节点
+(define-key org-mode-map (kbd "C-c j n")                 'org-roam-capture)                           ; 创建笔记地图节点
+(define-key org-mode-map (kbd "C-c j t")                 'org-roam-buffer-toggle)                     ; 切换笔记地图节点
+(define-key org-mode-map (kbd "C-c j o")                 'org-roam-ui-mode)                           ; 打开笔记地图
+(define-key org-mode-map (kbd "C-c j i")                 'org-roam-open)                              ; 打开笔记地图
+(define-key org-mode-map (kbd "C-c j d")                 'org-roam-dailies-map)                       ; 打开日记菜单
 
 
 ;; ===============================================
