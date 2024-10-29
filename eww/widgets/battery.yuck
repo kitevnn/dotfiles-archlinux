@@ -1,14 +1,14 @@
-; --------------------------------
-; | widget-battery: 查看电池容量 
-; --------------------------------
+;; ===============================================
+;; 查看电池容量: widget-battery.yuck
+;; ===============================================
 (defpoll bat0 :interval "120s" "./scripts/battery-percentage.sh")
 
 (defwidget widget-battery []
-                (box :class "battery-box"
-                     :orientation "v"
-                     :space-evenly "false"
-                     :spacing 0
-                     (bat)))
+           (box :class "battery-box"
+                :orientation "v"
+                :space-evenly "false"
+                :spacing 0
+                (bat)))
 
 (defwidget bat []
            (box :class "battery-inner-box"
@@ -19,4 +19,5 @@
                      :halign "center"
                      :valign "center"
                      :hexpand true
-                     (label :text "${bat0} " :class "bat-content"))))
+                     (label :text "${bat0} "
+                            :class "bat-content"))))

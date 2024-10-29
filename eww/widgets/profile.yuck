@@ -3,9 +3,9 @@
 (defpoll username-who-am-i :interval "24h" "whoami")
 (defvar AVATOR "./assets/avator.png")
 
-; --------------------------------------------------
-; | widget-profile组件: 查看个人档案与本机运行时间
-; --------------------------------------------------
+;; ===============================================
+;; 用户信息: widget-profile.yuck
+;; ===============================================
 (defwidget widget-profile []
      (box :orientation "v"
           :space-evenly "false"
@@ -14,39 +14,37 @@
 
 (defwidget profile []
 	   (box :class "profile-card"
-     :orientation "v"
-     :space-evenly "false"
-     (box :space-evenly "false"
-             :hexpand true
-             :orientation "h"
-             :spacing "6"
-             (box :style "background-image: url('${AVATOR}');"
-                  :class "profile-avator"
-                  :halign "center")
-                  (box :orientation "h"
-                       :space-evenly "false"
-                       :hexpand true
-                       (box :class "profile-host"
-                            :halign "start"
-                            (label :text username-who-am-i))
-                       (box :class "profile-uptime"
-                            :halign "start"
-                            (label :text date-month)
-                            (label :text date-day)))
-                  (box :orientation "h"
-                       :class "profile-btn"
-                       :space-evenly "false"
-                       :spacing 0
-                       :valign "center"
-                       :halign "start"
-                       :hexpand false
-                       (eventbox :cursor "pointer"
-                          (button :class "profile-btn-info" 
-                                  :tooltip "锁屏: 点我这里是没反应的，因为我都没写命令下去_(:з」∠)_"
-                                  :onclick "" "󱅞"))
-                       (eventbox :cursor "pointer"
-                          (button :class "profile-btn-info" 
-                                  :tooltip "注销: 点我这里是没反应的，因为我都没写命令下去_(:з」∠)_"
-                                  :onclick "" "󰍃"))))))
-
-
+                :orientation "v"
+                :space-evenly "false"
+                              (box :space-evenly "false"
+                                   :hexpand true
+                                   :orientation "h"
+                                   :spacing "6"
+                                            (box :style "background-image: url('${AVATOR}');"
+                                                 :class "profile-avator"
+                                                 :halign "center")
+                                            (box :orientation "h"
+                                                 :space-evenly "false"
+                                                 :hexpand true
+                                            (box :class "profile-host"
+                                                 :halign "start"
+                                                 (label :text username-who-am-i))
+                                            (box :class "profile-uptime"
+                                                 :halign "start"
+                                                 (label :text date-month)
+                                                 (label :text date-day)))
+                                            (box :orientation "h"
+                                                 :class "profile-btn"
+                                                 :space-evenly "false"
+                                                 :spacing 0
+                                                 :valign "center"
+                                                 :halign "start"
+                                                 :hexpand false
+                                                 (eventbox :cursor "pointer"
+                                                    (button :class "profile-btn-info" 
+                                                            :tooltip "锁屏: 点我是没反应的，因为我都没写命令下去_(:з」∠)_"
+                                                            :onclick "" "󱅞"))
+                                                 (eventbox :cursor "pointer"
+                                                    (button :class "profile-btn-info" 
+                                                            :tooltip "注销: 点我是没反应的，因为我都没写命令下去_(:з」∠)_"
+                                                            :onclick "" "󰍃"))))))

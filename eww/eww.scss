@@ -1,6 +1,4 @@
-// -------------
-// | hex color |
-// -------------
+// hex-color
 $bg:                #2C2C2C;
 $fg:                #C0CAF5;
 $wm:                #DCDCDC;
@@ -28,10 +26,7 @@ tooltip {
   font-size: 1rem;
 }
 
-
-// ------------------
-// | widget-profile | 
-// ------------------
+// widget-profile
 .profile-card {
   background-color: $bg;
   border-radius: 3rem;
@@ -81,10 +76,7 @@ tooltip {
   padding: 0 0.6rem 0 0.3rem;
 }
 
-
-// ---------------------
-// | widget-workspaces | 
-// ---------------------
+// widget-workspaces
 .ws-box {
   background-color: $bg;
   border-radius: 3rem;
@@ -112,10 +104,7 @@ tooltip {
   border-bottom: 1px solid $termyellow;
 }
 
-
-// ---------------
-// | widget-time | 
-// ---------------
+// widget-time
 .time-box {
   padding: 2rem 3rem 0rem 0rem;
   padding-left: 21rem;
@@ -138,10 +127,7 @@ tooltip {
   }
 }
 
-
-// -------------------
-// | widget-infoarch | 
-// -------------------
+// widget-infoarch
 .infoarch {
   border-radius: 3rem;
   padding-bottom: 0rem;
@@ -224,11 +210,7 @@ tooltip {
   color: $wm;
 }
 
-
-
-// -----------
-// | patcher | 
-// -----------
+// patcher
 .launchermenu {
   background-color: $bg;
   border-radius: 1.0rem;
@@ -247,12 +229,7 @@ tooltip {
   text-shadow: 0 0 0.2rem $fg;
 }
 
-
-
-
-// ---------------------
-// | widget-systeminfo | 
-// ---------------------
+// widget-systeminfo
 .systeminfo {
   margin-left: 0rem;
   margin-right: 0rem;
@@ -306,15 +283,6 @@ tooltip {
   margin-left: -0.9rem;
 }
 
-
-// eww的 [设置为dock，而不是设置floating widget] 的硬性限制: 想要设置dock，必须这样，没有原因。请看eww项目的源代码
-// 
-// (defwindow bar
-// 	:monitor 0
-// 	:geometry (geometry :anchor "top center")
-// 	:exclusive true	
-//  (box(label: text "最小minimal的dock"))
-
 .minimal-bar {
   margin-bottom: -2.09rem;
   margin-top: 0.1rem;
@@ -324,18 +292,15 @@ tooltip {
   }
 
   .middle-bar {
-    margin-left: 15.3rem;  // + 19.8rem
+    margin-left: 15.3rem;
   }
 
   .right-bar {
-    margin-left: 30.3rem;  // - 41.8rem
+    margin-left: 30.3rem;
   }
 }
 
-
-// ------------------
-// | widget-battery |
-// ------------------
+// widget-battery
 .battery-box {
     font-family: SauceCodeProNerdFontCompleteMono Nerd Font;
     margin-top: 8.5px;

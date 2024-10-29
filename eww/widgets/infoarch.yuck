@@ -1,23 +1,23 @@
 (defpoll packages :interval "2h" "pacman -Q | wc -l")
 
-; -----------------------------------------
-; | widget-infoarch组件: 系统基本概要信息 
-; -----------------------------------------
+;; ===============================================
+;; 系统概要信息: widget-infoarch.yuck
+;; ===============================================
 (defwidget widget-infoarch []
-     (box :class "infoarch"
-          :orientation "h"
-          :space-evenly "false"
-          :spacing 7
-          (infoarchuse)))
+           (box :class "infoarch"
+                :orientation "h"
+                :space-evenly "false"
+                :spacing 7
+                (infoarchuse)))
 
 (defwidget infoarchuse []
-      (box :orientation "h"
-	         :space-evenly "false"
-	         :spacing 7
+           (box :orientation "h"
+                :space-evenly "false"
+	        :spacing 7
            (box :orientation "h"
                 :space-evenly "false"
                 :class "pacman-fetch-box"
-                :spacing 8
+                :spacing 8                
                 (box :space-evenly "false"
                      (box :orientation "h"
                           :spacing 3
@@ -25,7 +25,7 @@
                           :style "margin-left: 10px;"
                           (label :class "os-icon" 
                                  :halign "start"
-                                 :text "🏹")))
+                                 :text "🏹")))                                 
                 (label :class "os-text"
                        :halign "start"
                        :text "Archlinux")
@@ -34,40 +34,38 @@
                           :spacing 3
                           :halign "end"
                           :style "margin-left: 10px;"
-                              (label :class "pkgs-icon"
-                                     :halign "start"
-                                     :text "󰏖")))
-
+                                 (label :class "pkgs-icon"
+                                        :halign "start"
+                                        :text "󰏖")))
                 (label :class "pkgs-text"
                        :halign "start"
-                       :tooltip "本机包总数 ${packages} 个(・∀・)"  
+                       :tooltip "包总数有 ${packages} 个"  
                        :text packages)
                 (box :orientation "h"
                      :class "pacman"
                      :hexpand true
-                           (label :halign "start"
-                                  :class "pacman-icon"
-                                  :text "→")
-                                      (box :class "pacman-updates-box"
-                                           :space-evenly "false"
-                                           (eventbox :cursor "pointer"
-                                                     (button :class "pacman-updates"
-                                                             :halign "start"
-                                                             :tooltip "点我这里是没反应的，因为我都没写命令下去_(:з」∠)_"  
-                                                             :onclick "" "享受自由吧")))) ;; 有没有什么关于archlinux很搞笑的中文梗？
+                     (label :halign "start"
+                            :class "pacman-icon"
+                            :text "→")
+                     (box :class "pacman-updates-box"
+                          :space-evenly "false"
+                                        (eventbox :cursor "pointer"
+                                                  (button :class "pacman-updates"
+                                                          :halign "start"
+                                                          :tooltip "点我是没反应的，因为我都没写命令下去_(:з」∠)_"  
+                                                           :onclick "" "BYTHEWAY"))))
                 (box :space-evenly "false"
                      (box :orientation "h"
                           :spacing 3
                           :halign "end"
                           :style "margin-left: 10px;"
-                          (label :class "wm-icon"
-                                 :halign "start"
-                                 :text "󱪳")))
+                                 (label :class "wm-icon"
+                                        :halign "start"
+                                        :text "󱪳")))
                 (box :space-evenly "false"
                      (box :orientation "h"
                           :spacing 3
                           :halign "start"
-                          (label :class "wm-text"
-                                 :halign "start"
-                                 :text "i3wm-x11"))))))
-
+                                  (label :class "wm-text"
+                                         :halign "start"
+                                         :text "i3wm-x11"))))))

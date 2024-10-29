@@ -1,44 +1,20 @@
+;; ==============================================================================================
+;; 用法
+;; + eww daemon     开启守护进程来建立持续化连接
+;; + eww windows"   列举可用的窗口
+;; + eww open bar"  打开bar(widget-profile/time/infoarch/systeminfo/battery)
+;; + eww close bar" 关闭bar
+;; + eww kill"      结束守护进程来断开持续化连接
+;; + eww logs"      查看运行日志
+;; ==============================================================================================
 (include "widgets/profile.yuck")
 (include "widgets/time.yuck")
 (include "widgets/infoarch.yuck")
 (include "widgets/systeminfo.yuck")
 (include "widgets/battery.yuck")
 
-
-; ------------------------------------------------------------------------------------------------
-; | 用法Usage                                                                                     
-; |                                                                                              
-; |        打开您的个人最喜爱的终端(比如alacritty)                                               
-; |              > 输入 "eww daemon"    开启eww守护进程，建立持续化连接_(:з」∠)_                 
-; |              > 输入 "eww windows"   列举可用的defwindow( >﹏<。)                           
-; |              > 输入 "eww open bar"  打开bar(・∀・)                                        
-; |              > 输入 "eww close bar" 关闭bar(・∀・)                                        
-; |              > 输入 "eww kill"      结束eww守护进程，关闭持续化连接_(:з」∠)_                
-; |              > 输入 "eww logs"      查看eww的运行日志(・∀・)                               
-; |                                                                                        
-; |        偷偷声明一下                                                                     
-; |              > ItWorkForMe, ItWorkForMe, ItWorkForMe。                                
-; |              > 我个人只有一台1920×1080笔记本屏幕，与外接的1台1920×1080外接显示器            
-; |              > 加上我个人对css/scss的熟悉程度并不熟练                                    
-; |              > 因此如果在 "eww open bar" 后，若出现了一些很夸张的排版混乱                 
-; |              > 也许是很正常的_(:з」∠)_rz，望谅解，望谅解(╥_╥)                          
-; |              > 如果您不嫌弃的话，大可到 ~/.config/eww/eww.scss 此处修改样式代码(´・ω・｀)
-; |              > 不过还是提醒一下，此文件是代码屎山，望您能做好一定的心理准备( >﹏<。)        
-; |                                                                                   
-; ------------------------------------------------------------------------------------------------
-
-
-; ----------------------------------------------
-; | bar窗口: 内含                        
-; |                widget-profile      
-; |                widget-time         
-; |                widget-infoarch     
-; |                widget-systeminfo   
-; |                widget-battery      
-; | 组件的窗口                          
-; ----------------------------------------------
 (defwindow bar :monitor 0
-	             :geometry (geometry :anchor "top center"
+               :geometry (geometry :anchor "top center"
                                    :x "0%"
                                    :y "0%"
                                    :height "20px")
@@ -47,20 +23,15 @@
                (minimal-bar))
 
 (defwidget minimal-bar []
-     (box :class "minimal-bar"
-          :orientation "h"
-          :space-evenly "false"
-          :spacing "4"
-
-          (box :class "left-bar"
-               (widget-profile)
-          )
-          (box :class "middle-bar"
-               (widget-time)
-               (widget-infoarch)
-          )
-          (box :class "right-bar"
-               (widget-battery)          
-               (widget-systeminfo)
-          )))
-
+           (box :class "minimal-bar"
+                :orientation "h"
+                :space-evenly "false"
+                :spacing "4"
+           (box :class "left-bar"
+                (widget-profile))
+           (box :class "middle-bar"
+                (widget-time)
+                (widget-infoarch))
+           (box :class "right-bar"
+                (widget-battery)          
+                (widget-systeminfo))))

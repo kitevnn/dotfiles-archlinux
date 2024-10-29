@@ -1,80 +1,57 @@
-; --------------------------------------------------------------------------
-; |  widget-systeminfo组件先决条件: 获得关于cpu的运行温度。                
-; --------------------------------------------------------------------------
-; --------------------------------------------------------------------------
-; |  关于eww logs频繁报错的原因，是因为搜:value data此处代码               
-; |  我在挖坑时(defwidget systeminfo-details [data icon css tip])      
-; |  没有为data该f64数据类型，的default value默认值导致的                 
-; |  不影响使用，因为后面通过systeminfo-details填上了                    
-; |  有报错洁癖的话，可以不加载cpu该widget小组件                         
-; |                                                                 
-; |  不加载cpu该widget小组件: 例子                                    
-; |                                                                        
-; |  (defwidget systeminfo []               (defwidget systeminfo []       
-; |       (box :class "systeminfo"               (box :class "systeminfo"  
-; |            :spacing 8                             :spacing 8           
-; |            (temp)                                 (temp)               
-; |            (cpu)                   →                                  
-; |            (ram)                                  (ram)                
-; |            (disk)))                               (disk)))             
-; |                                                                        
-; --------------------------------------------------------------------------
 (defpoll temp :interval "5s" "./scripts/cpu-temp.sh")
 
-; -------------------------------------------------
-; |  widget-systeminfo组件: 查看系统信息的小组件 
-; -------------------------------------------------
+;; ===============================================
+;; 系统信息: widget-systeminfo.yuck
+;; ===============================================
 (defwidget widget-systeminfo []
-     (box :class "systeminfo-box"
-          :orientation "v"
-          :space-evenly "false"
-          :spacing 7
-          (systeminfo)))
+           (box :class "systeminfo-box"
+                :orientation "v"
+                :space-evenly "false"
+                :spacing 7
+                (systeminfo)))
 
 (defwidget systeminfo []
-     (box :class "systeminfo"
-          :spacing 8
-          (temp)    ; cpu温度
-          (cpu)     ; cpu利用率
-          (ram)     ; 内存使用率
-          (disk)))  ; (用EWW_DISK查看 / 目录的磁盘使用量信息)
+           (box :class "systeminfo"
+                :spacing 8
+                (temp)
+                (cpu)
+                (ram)
+                (disk)))
        
-(defwidget cpu [] 
-     (box :class "cpu-box"
-         (systeminfo-details :css "cpu"
-                          :tip "处理器 ${round(EWW_CPU.avg,0)}%"
-                          :data "${round(EWW_CPU.avg, 0)}"
-                          :icon "")))  ;; 󰍛
+(defwidget cpu []
+           (box :class "cpu-box"
+                (systeminfo-details :css "cpu"
+                                    :tip "处理器 ${round(EWW_CPU.avg,0)}%"
+                                    :data "${round(EWW_CPU.avg, 0)}"
+                                    :icon "")))
 
-(defwidget ram [] 
-     (box :class "ram-box"
-         (systeminfo-details :css "ram"
-         :tip "已用内存 ${round(EWW_RAM.used_mem / 1048576, 2)}MB"
-         :data {round(EWW_RAM.used_mem_perc, 0)}
-         :icon "󰄨")))   ;; ""
+(defwidget ram []
+           (box :class "ram-box"
+                       (systeminfo-details :css "ram"
+                                           :tip "已用内存 ${round(EWW_RAM.used_mem / 1048576, 2)}MB"
+                                           :data {round(EWW_RAM.used_mem_perc, 0)}
+                                           :icon "󰄨")))
          
-(defwidget disk [] 
-     (box :class "disk-box"
-          (systeminfo-details :css "disk"
-                           :tip "硬盘 ${round(EWW_DISK["/"].used_perc, 2)}%"
-                           :data {round(EWW_DISK["/"].used_perc, 0)}
-                           :icon "")))  ;; "
+(defwidget disk []
+           (box :class "disk-box"
+                       (systeminfo-details :css "disk"
+                                           :tip "硬盘 ${round(EWW_DISK["/"].used_perc, 2)}%"
+                                           :data {round(EWW_DISK["/"].used_perc, 0)}
+                                           :icon "")))
 
-(defwidget temp [] 
-     (box :class "temp-box"
-          (systeminfo-details :css "temp"
-                           :tip "CPU温度 ${temp}°C"
-                           :data temp
-                           :icon "")))
+(defwidget temp []
+           (box :class "temp-box"
+                       (systeminfo-details :css "temp"
+                                           :tip "CPU温度 ${temp}°C"
+                                           :data temp
+                                           :icon "")))
 
-
-(defwidget systeminfo-details [data icon css tip] 
-     (box :class "systeminfo-details" 
-          (circular-progress :class css
-                             :value data  
-                             :thickness 3
-                             :tooltip tip
-                             (overlay :valign "center"
-                                      (label :class "icon" 
-                                             :text icon)))))   ;; 󰾩
-
+(defwidget systeminfo-details [data icon css tip]
+           (box :class "systeminfo-details" 
+                       (circular-progress :class css
+                                          :value data  
+                                          :thickness 3
+                                          :tooltip tip
+                                                   (overlay :valign "center"
+                                                            (label :class "icon" 
+                                                                   :text icon)))))
