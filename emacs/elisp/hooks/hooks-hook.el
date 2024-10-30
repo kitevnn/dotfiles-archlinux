@@ -46,4 +46,12 @@
                         (remove-hook 'window-configuration-change-hook 'custom-eshell-mode-hook)))))
 
 
+;; ===============================================
+;; 关于telega
+;; ===============================================
+(add-hook 'telega-load-hook
+          (lambda ()
+            (define-key global-map (kbd "C-c u") telega-prefix-map)))
+
+
 (provide 'hooks-hook)

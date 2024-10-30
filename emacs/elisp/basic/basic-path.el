@@ -35,6 +35,9 @@
 (add-to-list 'load-path
              (expand-file-name 
               (concat user-emacs-directory "elisp/ui/decorate")))
+(add-to-list 'load-path
+             (expand-file-name 
+              (concat user-emacs-directory "elisp/ui/modeline")))
 ;; ===============================================
 ;; 关于笔记路径
 ;; ===============================================
@@ -68,6 +71,12 @@
 (add-to-list 'load-path
              (expand-file-name 
               (concat user-emacs-directory "elisp/hooks")))
+;; ===============================================
+;; 关于instant-messaging(IM)设置
+;; ===============================================
+(add-to-list 'load-path
+             (expand-file-name 
+              (concat user-emacs-directory "elisp/im")))
 
 
 (provide 'basic-path)

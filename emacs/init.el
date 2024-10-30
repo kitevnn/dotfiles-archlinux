@@ -34,6 +34,7 @@
 (require 'ui-icon-nerdfont)
 (require 'ui-theme-light)
 (require 'ui-decorate-dashboard)
+(require 'ui-modeline-bar)
 (require 'note-auctex)
 (require 'note-orgmode)
 (require 'note-orgroam)
@@ -41,6 +42,7 @@
 (require 'zprogramming-lsp-eglot)
 (require 'zprogramming-snips-yasnippet)
 (require 'zprogramming-ts-treesitter)
+(require 'im-telega)
 (require 'key-keybindings)
 
 ;; ===============================================
