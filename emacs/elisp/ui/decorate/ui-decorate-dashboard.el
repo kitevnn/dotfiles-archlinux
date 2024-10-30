@@ -35,20 +35,13 @@
   (setq dashboard-navigation-cycle t)
   (setq dashboard-heading-shorcut-format " [%s]")
   (setq dashboard-item-shortcuts '((recents   . "r")
-                                 (bookmarks   . "m")
-                                 (projects    . "p")
-                                 (agenda      . "a")
-                                 (registers   . "e")))
+                                 (bookmarks   . "m")))
 
   ;; ===============================================
   ;; 设置item的信息(字符串替换)
   ;; ===============================================
   (setq dashboard-item-names '(("Recent Files:"               . "最近打开文件")
-                               ("Bookmarks:"                  . "最近打开书签")
-                               ("Registers:"                  . "最近注册会议")
-                               ("Projects:"                   . "最近打开工程")
-                               ("Agenda for today:"           . "今天日程安排")
-                               ("Agenda for the coming week:" . "下周日程安排")))
+                               ("Bookmarks:"                  . "最近打开书签")))
 
   ;; ===============================================
   ;; 图标设置
@@ -62,10 +55,7 @@
   ;; 数量设置
   ;; ===============================================
   (setq dashboard-items '((recents   . 10)
-                        (bookmarks   . 5)
-                        (projects    . 5)
-                        (agenda      . 5)
-                        (registers   . 5)))
+                        (bookmarks   . 10)))
 
   ;; ===============================================
   ;; 默认启动dashboard
