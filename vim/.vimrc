@@ -1,6 +1,6 @@
-" +-----------------------+
-" |	      settings        |
-" +-----------------------+
+" 
+" settings
+" 
 set t_Co=256
 set tabstop=2
 set softtabstop=2
@@ -36,9 +36,9 @@ set jumpoptions=stack
 syntax on
 autocmd FileType json set conceallevel=0
 
-" +-----------------------+
-" |	    colorscheme       |
-" +-----------------------+
+" 
+" colorscheme
+" 
 nnoremap <leader><leader>n :colorscheme habamax<CR>
 nnoremap <leader><leader>d :colorscheme delek<CR>
 colorscheme habamax
@@ -55,9 +55,9 @@ highlight LineNr ctermfg=238
 :augroup END
 highlight CursorLineNr ctermfg=179
 
-" +-----------------------+
-" |	     keymapping       |
-" +-----------------------+
+" 
+" keymapping
+" 
 map J 5j
 map K 5k
 nnoremap S :w<CR>
@@ -85,27 +85,25 @@ inoremap <C-e> <C-k>
 nnoremap <leader>md :h digraph-table<CR>
 cnoremap <expr> %% getcmdtype()==':'?expand('%:h').'/':'%%'
 
-" +-----------------------+
-" |        macros         |
-" +-----------------------+
+" 
+" macros
+" 
 let @g="a<br /> \<ESC>"
 let @r="i<br /> \<CR>\<ESC>"
 let @c="```placeholder```\<ESC>bi\<CR>\<CR>\<ESC>kkel"
 
-" +-----------------------+
-" |	       patch          |
-" +-----------------------+
+" 
+" patch
+" 
 if has("patch-8.1.1564")
   set signcolumn=number
 else
   set signcolumn=yes
 endif
 
-" +-----------------------+
-" |	       plugin         |
-" +-----------------------+
-
-
+" 
+" plugin
+" 
 call plug#begin()
    " [jiangmiao/auto-pairs]
    Plug 'jiangmiao/auto-pairs'
@@ -120,7 +118,7 @@ call plug#begin()
    let g:indentLine_char_list=['|']
    nnoremap <leader>il :<C-u>IndentLinesToggle<CR>
 
-   " [mhinz/vim-signify] -- gitsigns
+   " [mhinz/vim-signify]
    Plug 'mhinz/vim-signify'
    highlight SignifySignAdd ctermfg=green cterm=NONE
    highlight SignifySignDelete ctermfg=red cterm=NONE
@@ -128,7 +126,7 @@ call plug#begin()
    nnoremap <leader>gj <Plug>(signify-next-hunk)
    nnoremap <leader>gk <Plug>(signify-prev-hunk)
   
-   " [prabirshrestha/asyncomplete.vim] -- async's ins-cmp in vim
+   " [prabirshrestha/asyncomplete.vim]
    Plug 'prabirshrestha/asyncomplete.vim'
    inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
    inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
