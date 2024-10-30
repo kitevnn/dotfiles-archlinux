@@ -9,8 +9,6 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 exec_always fcitx5
-exec_always eww daemon
-exec_always eww open bar
 exec_always picom --backend glx
 exec setxkbmap -option "ctrl:nocaps"
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -107,8 +105,7 @@ mode "resize" {
 }
 
 # 主题及美观调整
-gaps inner 6
-gaps top 39
+gaps inner 9
 
 # 自动隐藏窗口标题
 for_window [class="^.*"] border pixel 0
