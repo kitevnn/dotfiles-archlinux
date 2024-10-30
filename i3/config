@@ -105,7 +105,7 @@ mode "resize" {
 }
 
 # 主题及美观调整
-gaps inner 9
+gaps inner 8
 
 # 自动隐藏窗口标题
 for_window [class="^.*"] border pixel 0
