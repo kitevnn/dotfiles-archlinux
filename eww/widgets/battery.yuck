@@ -2,6 +2,7 @@
 ;; 查看电池容量: widget-battery.yuck
 ;; ===============================================
 (defpoll bat0 :interval "120s" "./scripts/battery-percentage.sh")
+(defpoll weather0 :interval "43200s" "./scripts/weather.sh")
 
 (defwidget widget-battery []
            (box :class "battery-box"
@@ -19,5 +20,5 @@
                      :halign "center"
                      :valign "center"
                      :hexpand true
-                     (label :text "${bat0} "
+                     (label :text "${weather0}°C${bat0}  "
                             :class "bat-content"))))

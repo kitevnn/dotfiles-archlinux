@@ -165,14 +165,16 @@
     "设置eshell的prompt的前景色"
     (interactive)
     (set-face-attribute 'eshell-prompt nil :foreground "#673ab7"))
-(defun custom-reset-eshell-font-size ()
-  "将非eshell的buffer的字体大小设置回 90%"
-  (when (not (eq major-mode 'eshell-mode))
-    (centaur-tabs-mode 1)
-    (set-face-attribute 'default nil :height 90)))
 (defun custom-eshell-withcentaur-tabs-mode ()
-  "在进入 eshell 模式时关闭 centaur-tabs-mode"
-  (centaur-tabs-mode -1))
+    (local-set-key (kbd "M--")     'custom-move-prev-five-lines)         ; 在eshell向上移动5行            
+    (local-set-key (kbd "M-=")     'custom-move-next-five-lines)         ; 在eshell向下移动5行
+    (local-set-key (kbd "M-l")     'eshell/clear)                        ; 清空 eshell
+    (local-set-key (kbd "M-j")     'eshell-list-history)                 ; 展开历史命令
+    (local-set-key (kbd "C-c C-j") 'corfu-mode))                         ; 手动关闭corfu
+(defun custom-eshell-mode-hook ()
+  (custom-eshell-prompt)
+  (custom-eshell-withcentaur-tabs-mode)
+  (message "Window configuration changed!"))
 
 
 (provide 'custom-defun)

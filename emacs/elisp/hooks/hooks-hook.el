@@ -39,20 +39,11 @@
 ;; 壳eshell的钩子hook
 ;; ===============================================
 (add-hook 'eshell-mode-hook
-          (lambda ()            
-            (custom-eshell-prompt)
-            (set-face-attribute 'default nil :height 300)
-            (local-set-key (kbd "M--") 'custom-move-prev-five-lines)         ; 在eshell向上移动5行            
-            (local-set-key (kbd "M-=") 'custom-move-next-five-lines)         ; 在eshell向下移动5行
-            (local-set-key (kbd "M-l") 'eshell/clear)                        ; 清空 eshell
-            (local-set-key (kbd "M-j") 'eshell-list-history)))               ; 展开历史命令
-
-
-;; ===============================================
-;; 窗口window的钩子hook
-;; ===============================================
-(add-hook 'eshell-mode-hook 'custom-eshell-withcentaur-tabs-mode)
-(add-hook 'window-configuration-change-hook 'custom-reset-eshell-font-size)
+          (lambda ()
+            (add-hook 'window-configuration-change-hook 'custom-eshell-mode-hook)
+            (add-hook 'kill-buffer-hook
+                      (lambda ()
+                        (remove-hook 'window-configuration-change-hook 'custom-eshell-mode-hook)))))
 
 
 (provide 'hooks-hook)

@@ -283,6 +283,25 @@ tooltip {
   margin-left: -0.9rem;
 }
 
+// widget-battery
+.battery-box {
+    font-family: SauceCodeProNerdFontCompleteMono Nerd Font;
+    margin-top: 8.5px;
+    margin-bottom: 10px;    
+    margin-left: 3.0rem;
+}
+
+.battery-inner-box {
+    background-color: $polybarbackground;
+    font-family: SauceCodeProNerdFontCompleteMono Nerd Font;
+    color: $termgreen;
+    border-radius: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-right: 3px;
+}
+
+// minimal-bar
 .minimal-bar {
   margin-bottom: -2.09rem;
   margin-top: 0.1rem;
@@ -296,24 +315,6 @@ tooltip {
   }
 
   .right-bar {
-    margin-left: 30.3rem;
+    margin-left: 31.3rem;
   }
-}
-
-// widget-battery
-.battery-box {
-    font-family: SauceCodeProNerdFontCompleteMono Nerd Font;
-    margin-top: 8.5px;
-    margin-bottom: 10px;    
-    margin-left: 6.5rem;
-}
-
-.battery-inner-box {
-    background-color: $polybarbackground;
-    font-family: SauceCodeProNerdFontCompleteMono Nerd Font;
-    color: $termgreen;
-    border-radius: 12px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    margin-right: 3px;
 }
