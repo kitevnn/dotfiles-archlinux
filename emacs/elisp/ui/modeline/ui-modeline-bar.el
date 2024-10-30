@@ -1,18 +1,6 @@
 ;; ===============================================
 ;; 关于mode-line
 ;; ===============================================
-
-;% (defun update-mode-line-with-scripts-output ()
-;%   (let ((calendar-month-output (string-trim (shell-command-to-string "/home/une/.config/emacs/elisp/ui/modeline/calendar-month.sh"))))
-;%     (setq global-mode-string
-;%           (list calendar-month-output)))
-;% 
-;% 
-;% ;; 定时更新模式行
-;%   (run-at-time "0 sec" 43200 'update-mode-line-with-scripts-output)
-;; ===============================================
-;; 关于mode-line
-;; ===============================================
 (defvar modeline-output-calendar-month "")        ; 定义全局变量来存储输出
 (defvar modeline-output-calendar-day "")          ; 定义全局变量来存储输出
 (defvar modeline-output-time-hour "")             ; 定义全局变量来存储输出
@@ -77,14 +65,13 @@
               modeline-output-distribution              
               "   "
               modeline-output-cpu-temperature              
-              "°C   ."
+              "°C  ."
               modeline-output-disk-usage
-              "  󰄨 "
+              " 󰄨 "
               modeline-output-ram-usage
-              "G "
               " 󰏖 "
               modeline-output-pacman-packages)))
-              
+
 
 ;; ===============================================
 ;; 定时更新每个脚本
@@ -106,7 +93,4 @@
 (run-at-time "0 sec" 60 'update-modeline-with-all-scripts)
 
 
-(provide 'ui-modeline-bar)  
-
-
-
+(provide 'ui-modeline-bar)
