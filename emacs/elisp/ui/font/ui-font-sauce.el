@@ -9,7 +9,6 @@
                     :height 90
                     :font "SauceCodeProNerdFontCompleteMono Nerd Font")
 
-
 ;; ===============================================
 ;; 设置buffer的字体
 ;; ===============================================
