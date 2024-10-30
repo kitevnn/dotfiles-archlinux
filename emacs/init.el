@@ -60,7 +60,7 @@
    '(auctex cdlatex centaur-tabs corfu dashboard dirvish embark-consult helm
             highlight-indent-guides keycast magit marginalia nano-theme
             nerd-icons-completion nerd-icons-corfu nerd-icons-dired orderless
-            org-roam org-roam-ui pdf-tools restart-emacs smartparens
+            org-roam-ui pdf-tools restart-emacs smartparens telega
             tree-sitter-langs valign vertico vundo yasnippet-snippets)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
