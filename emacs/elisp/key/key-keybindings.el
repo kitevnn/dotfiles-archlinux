@@ -175,7 +175,6 @@
 (define-key org-mode-map (kbd "C-c j n")                 'org-roam-capture)                           ; 创建笔记地图节点
 (define-key org-mode-map (kbd "C-c j t")                 'org-roam-buffer-toggle)                     ; 切换笔记地图节点
 (define-key org-mode-map (kbd "C-c j o")                 'org-roam-ui-mode)                           ; 打开笔记地图
-(define-key org-mode-map (kbd "C-c j i")                 'org-roam-open)                              ; 打开笔记地图
 (define-key org-mode-map (kbd "C-c j d")                 'org-roam-dailies-map)                       ; 打开日记菜单
 
 
@@ -208,7 +207,12 @@
 ;; ===============================================
 ;; 关于eaf
 ;; ===============================================
-(global-set-key (kbd "C-c e o")                          'custom-eaf-open-browser)                   ; 打开eaf-browser
+(global-set-key (kbd "C-c e d")                          'custom-eaf-open-browser-homepage)          ; 打开eaf-browser指定网址
+(global-set-key (kbd "C-c e s")                          'custom-eaf-open-browser-soundcloud)        ; 打开eaf-browser指定网址
+(global-set-key (kbd "C-c e b")                          'custom-eaf-open-browser-bilibili)          ; 打开eaf-browser指定网址
+(global-set-key (kbd "C-c e p")                          'custom-eaf-open-browser-pan)               ; 打开eaf-browser指定网址
+(global-set-key (kbd "C-c e r")                          'custom-eaf-open-browser-org-roam)          ; 打开eaf-browser指定网址
+(global-set-key (kbd "C-c e v")                          'custom-eaf-open-browser-proxy)             ; 打开eaf-browser指定网址
 
 
 ;; ===============================================
