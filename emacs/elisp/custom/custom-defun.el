@@ -177,4 +177,12 @@
   (message "Window configuration changed!"))
 
 
+;; ==============================================
+;; 关于eaf
+;; ==============================================
+(defun custom-eaf-open-browser ()
+  (interactive)
+  (eaf-open-browser "https://duckduckgo.com"))
+
+
 (provide 'custom-defun)

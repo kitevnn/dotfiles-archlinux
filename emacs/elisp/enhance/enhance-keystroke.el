@@ -1,5 +1,5 @@
 ;; ===============================================
-;; 展示按键: enhance-keystroke.el
+;; 展示按键 enhance-keystroke.el
 ;; ===============================================
 (use-package keycast
   :ensure t

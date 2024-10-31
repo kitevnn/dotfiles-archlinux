@@ -1,5 +1,5 @@
 ;; ===============================================
-;; LSP客户端: zprogramming-lsp-eglot.el 
+;; LSP客户端 zprogramming-lsp-eglot.el 
 ;; ===============================================
 (use-package eglot
              :ensure t

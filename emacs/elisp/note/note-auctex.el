@@ -1,5 +1,5 @@
 ;; ===============================================
-;; note-auctex.el: AUCTeX(LaTeX-mode的LaTeX/P)
+;; LaTeX编写 note-auctex.el
 ;; ===============================================
 (use-package auctex
   :ensure t

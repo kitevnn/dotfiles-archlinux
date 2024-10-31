@@ -1,5 +1,5 @@
 ;; ===============================================
-;; 迷你显示菜单: enhance-minibuffer.el
+;; 迷你显示菜单 enhance-minibuffer.el
 ;; ===============================================
 (use-package vertico
   :ensure t

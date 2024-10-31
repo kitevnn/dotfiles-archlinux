@@ -1,5 +1,5 @@
 ;; ===============================================
-;; 关于mode-line
+;; mode-line设置 ui-modeline-bar.el
 ;; ===============================================
 (defvar modeline-output-calendar-month "")        ; 定义全局变量来存储输出
 (defvar modeline-output-calendar-day "")          ; 定义全局变量来存储输出
@@ -58,14 +58,14 @@
 
 (defun update-modeline-with-all-scripts ()
   (setq global-mode-string 
-        (list "  󰃯 "
+        (list "   󰃯 "
               modeline-output-calendar-month
               modeline-output-calendar-day
               "  "
               modeline-output-time-hour
               ":"
               modeline-output-time-minute
-              "    ."
+              "     ."
               modeline-output-battery-percentage
               "  "
               modeline-output-distribution              
@@ -77,7 +77,7 @@
               modeline-output-ram-usage
               " 󰏖 "
               modeline-output-pacman-packages
-              "   󰫕 "
+              "   "
               modeline-output-weather-situation)))
 
 

@@ -7,10 +7,10 @@ weather_location2=$(cat /home/une/.config/emacs/archive/weather | sed -n '38p' |
 
 case $weather_situation in
   Sunny)
-    echo "晴朗 $weather_temperature°C $weather_location1, $weather_location2"
+    echo "󰫕 晴朗 $weather_temperature°C $weather_location1, $weather_location2"
     ;;
   Clear)
-    echo "晴朗 $weather_temperature°C $weather_location1, $weather_location2"
+    echo "󰫕 明朗 $weather_temperature°C $weather_location1, $weather_location2"
     ;;
   PartlyCloud)
     echo "部分多云 $weather_temperature°C $weather_location1, $weather_location2"
@@ -19,7 +19,7 @@ case $weather_situation in
     echo "大多多云 $weather_temperature°C $weather_location1, $weather_location2"
     ;;
   Rain)
-    echo "雨 $weather_temperature°C $weather_location1, $weather_location2"
+    echo "󰖖 雨 $weather_temperature°C $weather_location1, $weather_location2"
     ;;
   Thunderstorm)
     echo "雷暴 $weather_temperature°C $weather_location1, $weather_location2"

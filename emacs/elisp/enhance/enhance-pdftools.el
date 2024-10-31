@@ -1,5 +1,5 @@
 ;; ===============================================
-;; PDF工具 enhance-pdftools
+;; PDF工具 enhance-pdftools.el
 ;; ===============================================
 (use-package pdf-tools
   :ensure t

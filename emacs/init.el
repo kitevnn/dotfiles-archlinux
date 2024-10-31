@@ -43,6 +43,7 @@
 (require 'zprogramming-snips-yasnippet)
 (require 'zprogramming-ts-treesitter)
 (require 'im-telega)
+(require 'sitelisp-eaf)
 (require 'key-keybindings)
 
 ;; ===============================================
@@ -60,7 +61,7 @@
    '(auctex cdlatex centaur-tabs corfu dashboard dirvish embark-consult helm
             highlight-indent-guides keycast magit marginalia nano-theme
             nerd-icons-completion nerd-icons-corfu nerd-icons-dired orderless
-            org-roam-ui pdf-tools restart-emacs smartparens telega
+            org-roam-ui pdf-tools pkg-info restart-emacs s smartparens telega
             tree-sitter-langs valign vertico vundo yasnippet-snippets)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

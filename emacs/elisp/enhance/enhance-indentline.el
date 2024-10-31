@@ -1,5 +1,5 @@
 ;; ===============================================
-;; 缩进线: enhance-indentline.el 
+;; 缩进线 enhance-indentline.el 
 ;; ===============================================
 (use-package highlight-indent-guides
              :ensure t
