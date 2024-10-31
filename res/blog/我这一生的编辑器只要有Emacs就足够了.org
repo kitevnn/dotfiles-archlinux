@@ -1,0 +1,136 @@
+* 我这一生的编辑器只要有Emacs就够了
+
+** 0. 特别感谢
+特别感谢
++ [[https://www.gnu.org/][gnu.org]]
++ [[https://alpha.gnu.org/][alpha.gnu.org]]
++ [[https://github.com/emacs-eaf/emacs-application-framework][eaf作者deepinCEO老王]]
++ [[https://emacs-china.org/][Emacs China道友]]
++ [[https://chatgpt.com/][chatGPT 4o mini]]
+
+*在这里，我真的十分感谢各位作者们！* ♥️
+
+*感谢！* 🙏
+
+** 1. 展示效果
+
+
+** 2. 安装流程
+
+_声明🧬: 我不一定能保证能完美重现配置，因为有些内容有可能是会随时间而逐步更新的。如果有问题请善于 [使用搜索引擎]、[阅读说明文档]、[询问chatGPT]、[EmacsChina道友交流] 等等_
+
+*** (1) 从源码编译一个GNU Emacs
+
+如果您跟我使用的也是ArchLinux的话，而且也安装了 ~emacs 或 emacs-git~ 需要先 ~sudo pacman -R emacs 或 sudo pacman -R emacs-git~ 再进行下一步。当然您也可以保留。
+
+首先在 [[https://alpha.gnu.org/gnu/emacs/pretest/][alpha.gnu.org]] 这里下载最新版本的 GNU Emacs
+
+然后为了让现版本(20241031)的eaf-browser，能够 "focus window"，所以我们要加入 ~--with-x-toolkit=gtk3~ 编译参数来让eaf-browser获得支持
+
+所以在下载并解压的 GNU Emacs 文件夹内，使用命令行先加入编译参数
+
+#+begin_src sh
+  # 首先，这里是GNU Emacs 30.0.92默认编译参数
+  ./configure --sysconfdir=/etc --prefix=/usr --libexecdir=/usr/lib --with-tree-sitter --localstatedir=/var --with-cairo --disable-build-details --with-harfbuzz --with-libsystemd --with-modules 'CFLAGS=-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=3 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection         -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -g -ffile-prefix-map=/build/emacs/src=/usr/src/debug/emacs -flto=auto' 'LDFLAGS=-Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now          -Wl,-z,pack-relative-relocs -flto=auto'
+
+  # 为了让eaf-browser(20241031)获得 "focus window" 的支持
+  # 我们需要加入 --with-x-toolkit=gtk3 的编译选项
+  ./configure --sysconfdir=/etc --prefix=/usr --libexecdir=/usr/lib --with-tree-sitter --localstatedir=/var --with-cairo --disable-build-details --with-harfbuzz --with-libsystemd --with-modules --with-x-toolkit=gtk3 'CFLAGS=-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=3 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection         -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -g -ffile-prefix-map=/build/emacs/src=/usr/src/debug/emacs -flto=auto' 'LDFLAGS=-Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now          -Wl,-z,pack-relative-relocs -flto=auto'
+#+end_src
+
+OK，然后稍微等待一下，就可以 make 了
+
+#+begin_src sh
+  # 构建二进制文件
+  make 
+
+  # 安装到系统指定路径下
+  sudo make install
+#+end_src
+
+*** (2) 安装eaf
+**** I. 安装包管理器
+
+***** i. paru
+
+paru是用Rust编写的，所以使用paru。当然用Go写的yay也是可以的，它们两者的功能都是充当AUR助手。
+
+#+begin_src sh
+  cd ~/.
+  mkdir -p .paru
+  git clont https://aur.archlinux.org/paru.git
+  cd paru
+  makepkg -si
+
+  # 然后等待并且一直Y下去就行了
+#+end_src
+
+***** ii. pip
+
+如果您同样也是使用Arch Linux的话，可以通过 ~sudo pacman -S python-pip~ 来安装 pip
+
+#+begin_src sh
+  # 安装pip(python包管理器)
+  sudo pacman -S python-pip
+
+  # 原因是因为后续在eaf里 [一定！] 会有两个包安装不了
+  # 我们需要安装 sexpdata 与 epc 两个包
+  # pip install sexpdata --break-system-packages
+  # pip install epc --break-system-packages  
+#+end_src
+
+**** II. 安装eaf
+
+***** i. 下载eaf
+如果您也是从Emacs 29.3(我自己开始使用29.3起的话，大概2024年今年4月份左右吧)开始使用的话，可以在 ~~/.config/emacs/init.el~ 此处配置，所以遵循一定的命名规范的安装方法是
+
+#+begin_src sh
+  git clone --depth=1 -b master https://github.com/emacs-eaf/emacs-application-framework.git ~/.config/emacs/site-lisp/emacs-application-framework/
+
+  # 到时候需添加这一行，来识别放在site-lisp第三方的eaf
+  # 如果是初上手的话，直接将下行字符全部添加在 [~/.config/emacs/init.el] 下就行了
+  (add-to-list 'load-path "~/.config/emacs/site-lisp/emacs-application-framework/")
+#+end_src
+
+所以如果您是Emacs近年来的老用户的话，比如说从Emacs 24开始时候起的话(我只是举个例哈！)，所以遵循一定的命名规范的安装方法是
+
+#+begin_src sh
+  git clone --depth=1 -b master https://github.com/emacs-eaf/emacs-application-framework.git ~/.emacs.d/site-lisp/emacs-application-framework/
+
+  # 到时候需添加这一行，来识别放在site-lisp第三方的eaf。
+  # 如果是初上手的话，直接将下行字符全部添加在 [~/.emacs.d/init.el] 下就行了
+  (add-to-list 'load-path "~/.emacs.d/site-lisp/emacs-application-framework/")  
+#+end_src
+
+***** ii. 执行eaf
+
+#+begin_src sh
+  # 直接安装
+  ./install-eaf.py
+
+  # 并在27个选项中，选择您自己想要的eaf(emacs-application-framework)应用
+  # 像我自己的话，只选择了eaf-browser，然后记得一定要 (require 'eaf)与(require 'eaf-你自己打算安装的eaf应用的名称)
+  # 然后 [一定！] 会有两个包安装不了，所以我们之前安装的pip就派上了用场
+  pip install sexpdata --break-system-packages  # --break-system-packages 此flag必须加，如果只在 venv 虚拟环境里，是识别不了这个包的，这是我自己尝试过的。
+  pip install epc --break-system-packages       # --break-system-packages 此flag必须加，如果只在 venv 虚拟环境里，是识别不了这个包的，这是我自己尝试过的。  
+#+end_src
+
+***** iii. 配置eaf
+
+#+begin_src elisp
+  ; 在您的加入了 (add-to-list 'load-path "~/.emacs.d/site-lisp/emacs-application-framework/") 此行代码的文件处
+  ; 有可能是 [~/.config/emacs/init.el] 或有可能是 [~/.emacs.d/init.el] 或有可能是 [如果您有设置了load-path的地方]
+  ; 
+  ; 这得看您自己是
+  ;   git clone --depth=1 -b master https://github.com/emacs-eaf/emacs-application-framework.git [~/.config/emacs/ 这个路径下] site-lisp/emacs-application-framework/
+  ; 还是  
+  ;   git clone --depth=1 -b master https://github.com/emacs-eaf/emacs-application-framework.git [~/.emacs.d/ 这个路径下] site-lisp/emacs-application-framework/
+  ;
+  ; 然后我们加入
+  (require 'eaf)
+  (require 'eaf-browser)  
+#+end_src
+
+如果一切没问题的话，应该来说就没问题了，最后执行 ~M-x eaf-open-browswer~ 打开 ~您想要打开的网址测试一下~
+
+如果有问题的话，可以到 ~*message buffer~ 处查看提示信息。
