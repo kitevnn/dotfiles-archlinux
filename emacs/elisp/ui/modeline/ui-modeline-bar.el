@@ -11,6 +11,7 @@
 (defvar modeline-output-cpu-temperature "")       ; 定义全局变量来存储输出
 (defvar modeline-output-ram-usage "")             ; 定义全局变量来存储输出
 (defvar modeline-output-pacman-packages "")       ; 定义全局变量来存储输出
+(defvar modeline-output-weather-situation "")     ; 定义全局变量来存储输出
 
 
 ;; ===============================================
@@ -48,6 +49,11 @@
   (setq modeline-output-cpu-temperature (string-trim (shell-command-to-string "/home/une/.config/emacs/elisp/ui/modeline/cpu-temperature.sh"))))
 (defun update-modeline-output-ram-usage ()
   (setq modeline-output-ram-usage (string-trim (shell-command-to-string "/home/une/.config/emacs/elisp/ui/modeline/ram-usage.sh"))))
+;; ===============================================
+;; 关于当地天气
+;; ===============================================
+(defun update-modeline-output-weather-situation ()
+  (setq modeline-output-weather-situation (string-trim (shell-command-to-string "/home/une/.config/emacs/elisp/ui/modeline/weather-situation.sh"))))
 
 
 (defun update-modeline-with-all-scripts ()
@@ -55,22 +61,24 @@
         (list "  󰃯 "
               modeline-output-calendar-month
               modeline-output-calendar-day
-              "   "
+              "  "
               modeline-output-time-hour
               ":"
               modeline-output-time-minute
-              "   ."
+              "    ."
               modeline-output-battery-percentage
-              "   "
+              "  "
               modeline-output-distribution              
-              "   "
+              "    "
               modeline-output-cpu-temperature              
               "°C  ."
               modeline-output-disk-usage
               " 󰄨 "
               modeline-output-ram-usage
               " 󰏖 "
-              modeline-output-pacman-packages)))
+              modeline-output-pacman-packages
+              "   󰫕 "
+              modeline-output-weather-situation)))
 
 
 ;; ===============================================
@@ -85,7 +93,8 @@
 (run-at-time "0 sec" 86400 'update-modeline-output-disk-usage)          ; 每1天更新一次磁盘使用量信息
 (run-at-time "0 sec" 15    'update-modeline-output-cpu-temperature)     ; 每15秒更新一次CPU温度信息
 (run-at-time "0 sec" 15    'update-modeline-output-ram-usage)           ; 每15秒更新一次内存使用量信息
-(run-at-time "0 sec" 43200 'update-modeline-output-pacman-packages)     ; 每12小时更新一次包使用量
+(run-at-time "0 sec" 43200 'update-modeline-output-pacman-packages)     ; 每12小时更新一次包总数信息
+(run-at-time "0 sec" 43200 'update-modeline-output-weather-situation)   ; 每12小时更新一次当前天气信息
 
 ;; ===============================================
 ;; 定时更新模式行，设置为每分钟检查一次

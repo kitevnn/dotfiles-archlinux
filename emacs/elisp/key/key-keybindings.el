@@ -110,6 +110,7 @@
 ;; 关于eshell
 ;; ===============================================
 (global-set-key (kbd "C-c t o")                          'eshell)                                     ; 开启eshell终端模拟器
+(global-set-key (kbd "C-c t u")                          'ansi-term)                                  ; 开启ansi-term终端模拟器
 
 
 ;; ===============================================
