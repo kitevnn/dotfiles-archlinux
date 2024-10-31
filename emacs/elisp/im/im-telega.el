@@ -3,7 +3,9 @@
 ;; ===============================================
 (use-package telega
   :ensure t
-  :defer t)
+  :defer t
+  :init
+  (setq telega-avatar-workaround-gaps-for '(return t)))
 
 (use-package visual-fill-column
   :ensure t
