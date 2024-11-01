@@ -213,12 +213,19 @@
 (global-set-key (kbd "C-c e p")                          'custom-eaf-open-browser-pan)               ; 打开eaf-browser指定网址
 (global-set-key (kbd "C-c e r")                          'custom-eaf-open-browser-org-roam)          ; 打开eaf-browser指定网址
 (global-set-key (kbd "C-c e v")                          'custom-eaf-open-browser-proxy)             ; 打开eaf-browser指定网址
+(global-set-key (kbd "C-c e o ")                         'custom-open-url-from-track-file-with-descriptions)       ; 打开eaf-browser交互式菜单下的网址
 
 
 ;; ===============================================
-;; 关于eaf
+;; 关于telega
 ;; ===============================================
 (global-set-key (kbd "C-c t e")                          'telega)                                    ; 打开telega
 
+
+;; ===============================================
+;; 关于theme
+;; ===============================================
+(global-set-key (kbd "C-c t 1")                          'custom-load-theme-light)                   ; 切换为亮色light主题
+(global-set-key (kbd "C-c t 2")                          'custom-load-theme-dark)                    ; 切换为暗色dark主题
 
 (provide 'key-keybindings)

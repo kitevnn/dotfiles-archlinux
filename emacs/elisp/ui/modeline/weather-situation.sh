@@ -13,30 +13,30 @@ case $weather_situation in
     echo "󰫕 明朗 $weather_temperature°C $weather_location1, $weather_location2"
     ;;
   PartlyCloud)
-    echo "部分多云 $weather_temperature°C $weather_location1, $weather_location2"
+    echo "󰖕 部分多云 $weather_temperature°C $weather_location1, $weather_location2"
     ;;
   Overcast)
-    echo "大多多云 $weather_temperature°C $weather_location1, $weather_location2"
+    echo "󰖐 大多多云 $weather_temperature°C $weather_location1, $weather_location2"
     ;;
   Rain)
-    echo "󰖖 雨 $weather_temperature°C $weather_location1, $weather_location2"
+    echo "󰖗 雨 $weather_temperature°C $weather_location1, $weather_location2"
     ;;
   Thunderstorm)
-    echo "雷暴 $weather_temperature°C $weather_location1, $weather_location2"
+    echo "󰖓 雷暴 $weather_temperature°C $weather_location1, $weather_location2"
     ;;
   Mist)
-    echo "雾气 $weather_temperature°C $weather_location1, $weather_location2"
+    echo "󰹮 雾气 $weather_temperature°C $weather_location1, $weather_location2"
     ;;
   Fog)
-    echo "烟雾 $weather_temperature°C $weather_location1, $weather_location2"
+    echo "󰖞 烟雾 $weather_temperature°C $weather_location1, $weather_location2"
     ;;
   Drizzle)
-    echo "毛毛细雨 $weather_temperature°C $weather_location1, $weather_location2"
+    echo "󰖗 毛毛细雨 $weather_temperature°C $weather_location1, $weather_location2"
     ;;
   Showers)
-    echo "阵雨 $weather_temperature°C $weather_location1, $weather_location2"
+    echo "󰖖 阵雨 $weather_temperature°C $weather_location1, $weather_location2"
     ;;
   Haze)
-    echo "阴霾 $weather_temperature°C $weather_location1, $weather_location2"
+    echo "󰢘 阴霾 $weather_temperature°C $weather_location1, $weather_location2"
     ;;
 esac

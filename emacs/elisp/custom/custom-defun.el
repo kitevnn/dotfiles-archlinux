@@ -205,5 +205,64 @@
   (interactive)
   (eaf-open-browser "http://localhost:2017"))
 
+(defun custom-open-url-from-track-file-with-descriptions ()
+  "Open a URL from the track file with descriptions."
+  (interactive)
+  (let ((track-file "~/.config/emacs/archive/track")
+        (url-descriptions '()))
+    ;; 读取文件内容并存入 url-descriptions 列表
+    (with-temp-buffer
+      (insert-file-contents track-file)
+      (dolist (line (split-string (buffer-string) "\n" t))
+        (let* ((parts (split-string line " | " t))
+               (url (car parts))             ; 使用 car
+               (description (cadr parts)))   ; 使用 cadr
+          (when url
+            (push (cons description url) url-descriptions)))))
+    ;; 让用户选择一个网址
+    (let* ((choices (mapcar (lambda (entry) (format "%s - %s" (car entry) (cdr entry))) url-descriptions))
+           (selected (completing-read "Select a URL: " choices))
+           (selected-url (cdr (assoc selected (mapcar (lambda (entry) (cons (format "%s - %s" (car entry) (cdr entry)) (cdr entry))) url-descriptions)))))
+      ;; 调用 eaf-open-browser 打开选中的网址
+      (eaf-open-browser selected-url))))
+(defun custom-eaf-open-url-from-track-file ()
+  "Open a URL from the track file."
+  (interactive)
+  (let ((track-file "~/.config/emacs/archive/track")
+        (urls '()))
+    ;; 读取文件内容并存入 urls 列表
+    (with-temp-buffer
+      (insert-file-contents track-file)
+      (setq urls (split-string (buffer-string) "\n" t)))
+    ;; 让用户选择一个URL网址
+    (let ((selected-url (completing-read "Select a URL-Track " urls)))
+      ;; 调用 eaf-open-browser 打开选中的URL网址
+      (eaf-open-browser selected-url))))
+
+
+;; ==============================================
+;; 关于theme
+;; ==============================================
+(defun custom-load-theme-light ()
+  "切换为亮色light主题"
+  (interactive)
+  (disable-theme 'bliss)
+  (load-theme 'nano-light)
+  (set-face-attribute 'vertico-current nil :background "#b5ffd1")
+  (with-eval-after-load 'corfu
+    (set-face-attribute 'corfu-default nil :background "#ffffff")
+    (set-face-attribute 'corfu-border nil :background "#37474f")
+    (set-face-attribute 'corfu-current nil :background "#cfd8dc" :foreground "#37474f")))
+(defun custom-load-theme-dark ()
+  "切换为暗色dark主题"
+  (interactive)
+  (disable-theme 'nano-light)
+  (load-theme 'bliss)
+  (set-face-attribute 'vertico-current nil :background "#b5ffd1")
+  (with-eval-after-load 'corfu
+    (set-face-attribute 'corfu-default nil :background "#673ab7") ;
+    (set-face-attribute 'corfu-border nil :background "#37474f")
+    (set-face-attribute 'corfu-current nil :background "#6a0c9a" :foreground "#64fbc8")))
+
 
 (provide 'custom-defun)
