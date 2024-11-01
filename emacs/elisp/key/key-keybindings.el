@@ -43,6 +43,10 @@
 (global-set-key (kbd "C-z b")                            'windmove-left)                             ; 光标跳转到左边窗口
 (global-set-key (kbd "C-z n")                            'windmove-down)                             ; 光标跳转到下边窗口
 (global-set-key (kbd "C-z p")                            'windmove-up)                               ; 光标跳转到上边窗口
+(global-set-key (kbd "C-z <right>")                      'windmove-right)                            ; 光标跳转到右边窗口
+(global-set-key (kbd "C-z <left>")                       'windmove-left)                             ; 光标跳转到左边窗口
+(global-set-key (kbd "C-z <down>")                       'windmove-down)                             ; 光标跳转到下边窗口
+(global-set-key (kbd "C-z <up>")                         'windmove-up)                               ; 光标跳转到上边窗口
 
 
 ;; ===============================================
