@@ -215,4 +215,10 @@
 (global-set-key (kbd "C-c t e")                          'telega)                                    ; 打开telega
 
 
+;; ===============================================
+;; 关于telega
+;; ===============================================
+(global-set-key (kbd "C-c C-x C-o")                      'custom-eaf-open-browser-command)           ; 使用eaf-browser打开minibuffer
+
+
 (provide 'key-keybindings)

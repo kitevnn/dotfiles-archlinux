@@ -212,6 +212,16 @@
   "打开本地代理"
   (interactive)
   (eaf-open-browser "http://localhost:2017"))
+(defun custom-eaf-open-browser-chat-gpt ()
+  "打开chatGPT"
+  (interactive)
+  (eaf-open-browser "https://chatgpt.com"))
+(defun custom-eaf-open-browser-command ()
+  (interactive)
+  (let ((input (read-string "Input command: " "custom-eaf-open-browser-")))
+    (if (string-prefix-p "custom-eaf-open-browser-" input)
+        (call-interactively (intern input))
+      (message "Invalid command"))))
 
 
 ;; ==============================================
