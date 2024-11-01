@@ -1,5 +1,21 @@
-# 
-# [ PS1 Prompt ]
 #
-export PS1="\[\e[0;30;104m\]  [\A] \[\e[0m\]\[\e[7;93;104m\]\[\e[0m\]\[\e[0;30;103m\] 󰌢 \u\[\e[0m\]\[\e[0;30;103m\]@\[\e[0m\]\[\e[0;30;103m\]\h \[\e[0m\]\[\e[7;36;103m\]\[\e[0m\]\[\e[0;30;46m\] 󰟐 \W/ \[\e[0m\]\[\e[0;36;40m\]\[\e[0m\]   "
+# ~/.bash_profile
+#
+# [[ -f ~/.bashrc ]] && . ~/.bashrc
 
+export EMACS="/home/une/.config/emacs"
+export dotfiles="/home/une/桌面/back/archlinux/dotfiles/dotfiles-archlinux"
+export learn="/home/une/桌面/back/archlinux/learn"
+export check="/home/une/桌面/back/archlinux/check"
+export books="/home/une/桌面/back/archlinux/books"
+export blog="/home/une/桌面/back/archlinux/blog/BTWIUSEARCH"
+export pic="/home/une/图片/屏幕截图"
+export todo="/home/une/桌面/back/archlinux/todo/archlinux"
+export oam="/home/une/桌面/back/archlinux/orgroam"
+export math="/home/une/桌面/back/archlinux/learn/math/png"
+export EL="/home/une/.config/emacs/elisp"
+export USAGE="/home/une/桌面/back/archlinux/learn/emacs"
+export rb="/home/une/桌面/back/archlinux/check/rubb"
+export tgm="/home/une/.telega/cache/music"
+
+. "$HOME/.cargo/env"

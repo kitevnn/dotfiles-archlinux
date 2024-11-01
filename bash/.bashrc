@@ -18,4 +18,5 @@ alias ff='fastfetch --load-config ~/.config/fastfetch/ff.jsonc'
 alias grep='grep --color=auto'
 alias caps='setxkbmap -option "ctrl:nocaps"'
 alias ge='export EDITOR="vim"'
+alias ra='ranger'
 source ~/.bash_profile
