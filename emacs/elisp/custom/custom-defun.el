@@ -260,7 +260,9 @@
   (set-face-attribute 'rime-preedit-face nil
                       :height 90                    
                       :foreground "#ffffff"
-                      :background "#90a4ae")  
+                      :background "#90a4ae")
+  (setq dashboard-startup-banner "/home/une/.wallpaper/dashboard-zoom-out-light.png")
+  (dashboard-refresh-buffer)
   (with-eval-after-load 'corfu
     (set-face-attribute 'corfu-default nil :background "#ffffff")
     (set-face-attribute 'corfu-border nil :background "#37474f")
@@ -302,6 +304,8 @@
                       :height 90
                       :background "#444444"
                       :foreground "#64fbc8")
+  (setq dashboard-startup-banner "/home/une/.wallpaper/dashboard-zoom-out-dark.png")
+  (dashboard-refresh-buffer)
   (with-eval-after-load 'corfu
     (set-face-attribute 'corfu-default nil :background "#673ab7")
     (set-face-attribute 'corfu-border nil :background "#37474f")

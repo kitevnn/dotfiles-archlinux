@@ -10,11 +10,11 @@
   ;; 设置dashboard的基本信息
   ;; ========================================
   :init
-  (setq dashboard-banner-logo-title "p😭q 真正的编辑器: GNU Emacs"                  ; Set the title
-        dashboard-startup-banner    "/home/une/.wallpaper/dashboard-zoom-out.png" ; Set the logo
-        dashboard-center-content t                                                ; Content is not centered by default. To center, set
-        dashboard-vertically-center-content t                                     ; vertically center content
-        dashboard-show-shortcuts nil)                                             ; To disable shortcut "jump" indicators for each section, set
+  (setq dashboard-banner-logo-title "p😭q 真正的编辑器: GNU Emacs"
+        dashboard-startup-banner    "/home/une/.wallpaper/dashboard-zoom-out-light.png"
+        dashboard-center-content t
+        dashboard-vertically-center-content t
+        dashboard-show-shortcuts nil)
 
   ;; ========================================
   ;; 设置要展示的dashboard信息
@@ -46,8 +46,8 @@
   ;; ========================================
   ;; 图标设置
   ;; ========================================
-  (setq dashboard-display-icons-p t                                               ; display icons on both GUI and terminal
-      dashboard-icon-type 'nerd-icons                                             ; use `nerd-icons' package
+  (setq dashboard-display-icons-p t
+      dashboard-icon-type 'nerd-icons
       dashboard-set-heading-icons t 
       dashboard-set-file-icons t)
 
