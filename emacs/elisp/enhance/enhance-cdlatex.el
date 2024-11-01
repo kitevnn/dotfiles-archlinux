@@ -1,6 +1,6 @@
-;; ===============================================
+;; ========================================
 ;; 快速输入数学符号 enhance-cdlatex.el
-;; ===============================================
+;; ========================================
 (use-package cdlatex
   :ensure t
   :defer nil
@@ -11,9 +11,9 @@
   (setq cdlatex-paired-parens "")
   (setq cdlatex-use-dollar-to-ensure-math nil)
 
-  ;; ===============================================
+  ;; ========================================
   ;; cdlatex的TAB补全
-  ;; ===============================================
+  ;; ========================================
   (setq cdlatex-command-alist
     '(("Bm" "" "\\begin{Bmatrix} ? \\end{Bmatrix}" cdlatex-position-cursor nil nil t)
       ("vm" "" "\\begin{vmatrix} ? \\end{vmatrix}" cdlatex-position-cursor nil nil t)
