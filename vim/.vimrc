@@ -2,9 +2,6 @@
 " settings
 " 
 set t_Co=256
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
 set expandtab
 set hlsearch
 set incsearch
@@ -24,9 +21,6 @@ set belloff=all
 set nrformats=
 set wildmenu
 set history=200
-set autoindent
-set indentexpr=
-set foldmethod=indent
 set foldlevel=99
 set laststatus=0
 set autochdir
@@ -35,6 +29,12 @@ set conceallevel=0
 set jumpoptions=stack
 syntax on
 autocmd FileType json set conceallevel=0
+" set tabstop=2
+" set softtabstop=2
+" set shiftwidth=2
+" set autoindent
+" set indentexpr=
+" set foldmethod=indent
 
 " 
 " colorscheme
