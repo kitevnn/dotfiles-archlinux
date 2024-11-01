@@ -37,11 +37,11 @@
 ;; ===============================================
 ;; 窗口管理
 ;; ===============================================
-(global-set-key (kbd "C-c k")                            'delete-window)                              ; 关闭当前窗口
-(global-set-key (kbd "C-c f")                            'windmove-right)                             ; 光标跳转到右边窗口
-(global-set-key (kbd "C-c b")                            'windmove-left)                              ; 光标跳转到左边窗口
-(global-set-key (kbd "C-c n")                            'windmove-down)                              ; 光标跳转到下边窗口
-(global-set-key (kbd "C-c p")                            'windmove-up)                                ; 光标跳转到上边窗口
+(global-set-key (kbd "C-c C-x C-k")                      'delete-window)                              ; 关闭当前窗口
+(global-set-key (kbd "C-c C-x C-f")                      'windmove-right)                             ; 光标跳转到右边窗口
+(global-set-key (kbd "C-c C-x C-b")                      'windmove-left)                              ; 光标跳转到左边窗口
+(global-set-key (kbd "C-c C-x C-n")                      'windmove-down)                              ; 光标跳转到下边窗口
+(global-set-key (kbd "C-c C-x C-p")                      'windmove-up)                                ; 光标跳转到上边窗口
 
 
 ;; ===============================================
@@ -213,7 +213,6 @@
 (global-set-key (kbd "C-c e p")                          'custom-eaf-open-browser-pan)               ; 打开eaf-browser指定网址
 (global-set-key (kbd "C-c e r")                          'custom-eaf-open-browser-org-roam)          ; 打开eaf-browser指定网址
 (global-set-key (kbd "C-c e v")                          'custom-eaf-open-browser-proxy)             ; 打开eaf-browser指定网址
-(global-set-key (kbd "C-c e o ")                         'custom-open-url-from-track-file-with-descriptions)       ; 打开eaf-browser交互式菜单下的网址
 
 
 ;; ===============================================

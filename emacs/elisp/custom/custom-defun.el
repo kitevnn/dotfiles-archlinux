@@ -205,40 +205,6 @@
   (interactive)
   (eaf-open-browser "http://localhost:2017"))
 
-(defun custom-open-url-from-track-file-with-descriptions ()
-  "Open a URL from the track file with descriptions."
-  (interactive)
-  (let ((track-file "~/.config/emacs/archive/track")
-        (url-descriptions '()))
-    ;; 读取文件内容并存入 url-descriptions 列表
-    (with-temp-buffer
-      (insert-file-contents track-file)
-      (dolist (line (split-string (buffer-string) "\n" t))
-        (let* ((parts (split-string line " | " t))
-               (url (car parts))             ; 使用 car
-               (description (cadr parts)))   ; 使用 cadr
-          (when url
-            (push (cons description url) url-descriptions)))))
-    ;; 让用户选择一个网址
-    (let* ((choices (mapcar (lambda (entry) (format "%s - %s" (car entry) (cdr entry))) url-descriptions))
-           (selected (completing-read "Select a URL: " choices))
-           (selected-url (cdr (assoc selected (mapcar (lambda (entry) (cons (format "%s - %s" (car entry) (cdr entry)) (cdr entry))) url-descriptions)))))
-      ;; 调用 eaf-open-browser 打开选中的网址
-      (eaf-open-browser selected-url))))
-(defun custom-eaf-open-url-from-track-file ()
-  "Open a URL from the track file."
-  (interactive)
-  (let ((track-file "~/.config/emacs/archive/track")
-        (urls '()))
-    ;; 读取文件内容并存入 urls 列表
-    (with-temp-buffer
-      (insert-file-contents track-file)
-      (setq urls (split-string (buffer-string) "\n" t)))
-    ;; 让用户选择一个URL网址
-    (let ((selected-url (completing-read "Select a URL-Track " urls)))
-      ;; 调用 eaf-open-browser 打开选中的URL网址
-      (eaf-open-browser selected-url))))
-
 
 ;; ==============================================
 ;; 关于theme
