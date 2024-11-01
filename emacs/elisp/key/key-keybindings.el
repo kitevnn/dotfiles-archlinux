@@ -70,9 +70,9 @@
 ;; ===============================================
 ;; 文件管理器dirvish
 ;; ===============================================
-(global-set-key (kbd "C-z d o")                          'dirvish-side)                               ; 左侧打开dirvish
-(global-set-key (kbd "C-z d q")                          'dirvish-quit)                               ; 退出关闭dirvish
-(global-set-key (kbd "C-z d g")                          'dirvish)                                    ; 全局打开dirvish
+(global-set-key (kbd "C-c d o")                          'dirvish-side)                               ; 左侧打开dirvish
+(global-set-key (kbd "C-c d q")                          'dirvish-quit)                               ; 退出关闭dirvish
+(global-set-key (kbd "C-c d g")                          'dirvish)                                    ; 全局打开dirvish
 
 
 ;; ===============================================
@@ -161,11 +161,11 @@
 ;; ===============================================
 (define-key org-mode-map (kbd "C-c C-x C-0")             'valign-mode)                                ; 切换valign-mode
 (define-key org-mode-map (kbd "C-c C-x C-a")             'org-agenda)                                 ; 当前文件放进org议题内
-(define-key org-mode-map (kbd "C-c C-x C-.")             'org-metaright)                              ; 用 C-z C-x C-. 替代原本的 Meta+<right>
-(define-key org-mode-map (kbd "C-c C-x C-,")             'org-metaleft)                               ; 用 C-z C-x C-, 替代原本的 Meta+<left>
-(define-key org-mode-map (kbd "C-c C-x C-=")             'org-shiftright)                             ; 用 C-z C-x C-= 替代原本的 Shift+<right>
-(define-key org-mode-map (kbd "C-c C-x C--")             'org-shiftleft)                              ; 用 C-z C-x C-- 替代原本的 Shift+<left>
-(define-key org-mode-map (kbd "C-c C-x C-v")             'custom-toggle-inline-images-with-valign)    ; 用 C-z C-x C-v 避免valign-mode造成的对齐卡顿来预览图片
+(define-key org-mode-map (kbd "C-c C-x C-.")             'org-metaright)                              ; 用 C-c C-x C-. 替代原本的 Meta+<right>
+(define-key org-mode-map (kbd "C-c C-x C-,")             'org-metaleft)                               ; 用 C-c C-x C-, 替代原本的 Meta+<left>
+(define-key org-mode-map (kbd "C-c C-x C-=")             'org-shiftright)                             ; 用 C-c C-x C-= 替代原本的 Shift+<right>
+(define-key org-mode-map (kbd "C-c C-x C--")             'org-shiftleft)                              ; 用 C-c C-x C-- 替代原本的 Shift+<left>
+(define-key org-mode-map (kbd "C-c C-x C-v")             'custom-toggle-inline-images-with-valign)    ; 用 C-c C-x C-v 避免valign-mode造成的对齐卡顿来预览图片
 
 
 ;; ===============================================
