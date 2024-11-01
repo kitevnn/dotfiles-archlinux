@@ -24,6 +24,39 @@
 
 
 ;; ========================================
+;; 为posframe添加face颜色(默认主题nano-light)
+;; ========================================
+(set-face-attribute 'rime-candidate-num-face nil
+                    :height 90                    
+                    :foreground "#90a4ae")
+(set-face-attribute 'rime-code-face nil
+                    :height 90                    
+                    :background "#37474f"
+                    :foreground "#ffffff")
+(set-face-attribute 'rime-comment-face nil
+                    :height 90
+                    :foreground "#374f4f")
+(set-face-attribute 'rime-cursor-face nil
+                    :height 90
+                    :foreground "#ffffff"
+                    :background "#37474f")
+(set-face-attribute 'rime-default-face nil
+                    :height 90
+                    :foreground "#37474f"
+                    :background "#eceff1")
+(set-face-attribute 'rime-highlight-candidate-face nil
+                    :height 90                    
+                    :foreground "#673ab7")
+(set-face-attribute 'rime-indicator-dim-face nil
+                    :height 90                                        
+                    :foreground "#37474f")
+(set-face-attribute 'rime-preedit-face nil
+                    :height 90                    
+                    :foreground "#ffffff"
+                    :background "#90a4ae")
+
+
+;; ========================================
 ;; corfu弹出窗口颜色设置
 ;; ========================================
 (with-eval-after-load 'corfu

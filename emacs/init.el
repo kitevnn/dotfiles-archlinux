@@ -29,6 +29,7 @@
 (require 'enhance-restart)
 (require 'enhance-smartparens)
 (require 'enhance-tabs)
+(require 'enhance-rime)
 (require 'ui-font-sauce)
 (require 'ui-icon-nerdfont)
 (require 'ui-theme-light)
@@ -63,10 +64,11 @@
      "e7820b899036ae7e966dcaaec29fd6b87aef253748b7de09e74fdc54407a7a02" default))
  '(package-selected-packages
    '(auctex bliss-theme cdlatex centaur-tabs corfu dashboard dirvish embark-consult
-            helm highlight-indent-guides keycast magit marginalia nano-theme
-            nerd-icons-completion nerd-icons-corfu nerd-icons-dired orderless
-            org-roam-ui pdf-tools pkg-info restart-emacs s smartparens telega
-            tree-sitter-langs valign vertico yasnippet-snippets)))
+            helm highlight-indent-guides keycast liberime magit marginalia
+            nano-theme nerd-icons-completion nerd-icons-corfu nerd-icons-dired
+            orderless org-roam-ui pdf-tools pkg-info restart-emacs rime s
+            smartparens telega tree-sitter-langs valign vertico
+            yasnippet-snippets)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

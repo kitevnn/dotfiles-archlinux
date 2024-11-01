@@ -233,6 +233,34 @@
   (load-theme 'nano-light)
   (set-face-attribute 'vertico-current nil :background "#b5ffd1")
   (set-face-attribute 'tab-line nil :background "#ffffff")
+  (set-face-attribute 'rime-candidate-num-face nil
+                      :height 90                    
+                      :foreground "#90a4ae")
+  (set-face-attribute 'rime-code-face nil
+                      :height 90                    
+                      :background "#37474f"
+                      :foreground "#ffffff")
+  (set-face-attribute 'rime-comment-face nil
+                      :height 90
+                      :foreground "#374f4f")
+  (set-face-attribute 'rime-cursor-face nil
+                      :height 90
+                      :foreground "#ffffff"
+                      :background "#37474f")
+  (set-face-attribute 'rime-default-face nil
+                      :height 90
+                      :foreground "#37474f"
+                      :background "#eceff1")
+  (set-face-attribute 'rime-highlight-candidate-face nil
+                      :height 90                    
+                      :foreground "#673ab7")
+  (set-face-attribute 'rime-indicator-dim-face nil
+                      :height 90                                        
+                      :foreground "#37474f")
+  (set-face-attribute 'rime-preedit-face nil
+                      :height 90                    
+                      :foreground "#ffffff"
+                      :background "#90a4ae")  
   (with-eval-after-load 'corfu
     (set-face-attribute 'corfu-default nil :background "#ffffff")
     (set-face-attribute 'corfu-border nil :background "#37474f")
@@ -243,7 +271,37 @@
   (disable-theme 'nano-light)
   (load-theme 'bliss)
   (set-face-attribute 'vertico-current nil :background "#31343e")
-  (set-face-attribute 'tab-line nil :background "#191919")        
+  (set-face-attribute 'tab-line nil :background "#191919")
+  (set-face-attribute 'rime-candidate-num-face nil
+                      :height 90
+                      :foreground "#c5c8c6")
+  (set-face-attribute 'rime-code-face nil
+                      :height 90
+                      :background "#444444"
+                      :foreground "#64fbc8")
+  (set-face-attribute 'rime-comment-face nil
+                      :height 90
+                      :foreground "#c5c8c6")
+  (set-face-attribute 'rime-cursor-face nil
+                      :height 90
+                      :foreground "#b5ffd1")
+  (set-face-attribute 'rime-default-face nil
+                      :height 90
+                      :foreground "#64fbc8"
+                      :background "#191919")
+  (set-face-attribute 'rime-highlight-candidate-face nil
+                      :height 90
+                                        ; ffea00
+                                        ; f6eb61
+                                        ; ffd700
+                      :foreground "#ffc300")  
+  (set-face-attribute 'rime-indicator-dim-face nil
+                      :height 90
+                      :foreground "#c5c8c6")
+  (set-face-attribute 'rime-preedit-face nil
+                      :height 90
+                      :background "#444444"
+                      :foreground "#64fbc8")
   (with-eval-after-load 'corfu
     (set-face-attribute 'corfu-default nil :background "#673ab7")
     (set-face-attribute 'corfu-border nil :background "#37474f")

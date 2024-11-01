@@ -38,15 +38,15 @@
 ;; ========================================
 ;; 窗口管理
 ;; ========================================
-(global-set-key (kbd "C-c C-z C-k")                      'delete-window)                             ; 关闭当前窗口
-(global-set-key (kbd "C-c C-z C-f")                      'windmove-right)                            ; 光标跳转到右边窗口
-(global-set-key (kbd "C-c C-z C-b")                      'windmove-left)                             ; 光标跳转到左边窗口
-(global-set-key (kbd "C-c C-z C-n")                      'windmove-down)                             ; 光标跳转到下边窗口
-(global-set-key (kbd "C-c C-z C-p")                      'windmove-up)                               ; 光标跳转到上边窗口
-(global-set-key (kbd "C-c C-z C-<right>")                'windmove-right)                            ; 光标跳转到右边窗口
-(global-set-key (kbd "C-c C-z C-<left>")                 'windmove-left)                             ; 光标跳转到左边窗口
-(global-set-key (kbd "C-c C-z C-<down>")                 'windmove-down)                             ; 光标跳转到下边窗口
-(global-set-key (kbd "C-c C-z C-<up>")                   'windmove-up)                               ; 光标跳转到上边窗口
+(global-set-key (kbd "C-z C-z C-k")                      'delete-window)                             ; 关闭当前窗口
+(global-set-key (kbd "C-z C-z C-f")                      'windmove-right)                            ; 光标跳转到右边窗口
+(global-set-key (kbd "C-z C-z C-b")                      'windmove-left)                             ; 光标跳转到左边窗口
+(global-set-key (kbd "C-z C-z C-n")                      'windmove-down)                             ; 光标跳转到下边窗口
+(global-set-key (kbd "C-z C-z C-p")                      'windmove-up)                               ; 光标跳转到上边窗口
+(global-set-key (kbd "C-z C-z C-<right>")                'windmove-right)                            ; 光标跳转到右边窗口
+(global-set-key (kbd "C-z C-z C-<left>")                 'windmove-left)                             ; 光标跳转到左边窗口
+(global-set-key (kbd "C-z C-z C-<down>")                 'windmove-down)                             ; 光标跳转到下边窗口
+(global-set-key (kbd "C-z C-z C-<up>")                   'windmove-up)                               ; 光标跳转到上边窗口
 
 
 ;; ========================================
@@ -210,6 +210,12 @@
 ;; 关于telega
 ;; ========================================
 (global-set-key (kbd "C-c C-x C-1")                      'custom-eaf-open-browser-command)           ; 使用eaf-browser打开minibuffer
+
+
+;; ========================================
+;; 关于输入法
+;; ========================================
+(global-set-key (kbd "C-SPC")                            'toggle-input-method)                       ; 切换输入法
 
 
 (provide 'key-keybindings)

@@ -20,10 +20,11 @@
         corfu-on-exact-match nil)
 
   :hook
-  ((shell-mode . corfu-mode)
-  (eshell-mode . corfu-mode)
-  (LaTeX-mode  . corfu-mode)
-  (latex-mode  . corfu-mode)))
+  ((shell-mode      . corfu-mode)
+  (eshell-mode      . corfu-mode)
+  (LaTeX-mode       . corfu-mode)
+  (latex-mode       . corfu-mode)
+  (emacs-lisp-mode  . corfu-mode)))
 
 
 ;; ========================================
