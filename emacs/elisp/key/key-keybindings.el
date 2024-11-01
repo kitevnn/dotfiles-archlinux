@@ -95,20 +95,20 @@
 ;; ===============================================
 ;; 关于eglot
 ;; ===============================================
-(global-set-key (kbd "C-c l o")                          'eglot)                                      ; 开启eglot语言服务客户端
-(global-set-key (kbd "C-c l r")                          'eglot-reconnect)                            ; 重连eglot语言服务客户端
-(global-set-key (kbd "C-c l s")                          'eglot-shutdown)                             ; 关闭eglot语言服务客户端
-(global-set-key (kbd "C-c l d s")                        'flymake-show-diagnostic)                    ; 通过flymake(built-in)，给eglot提供diagnostic诊断信息
-(global-set-key (kbd "C-c l d n")                        'flymake-goto-next-error)                    ; 前往下一个错误(会用波浪线来展示错误的)
-(global-set-key (kbd "C-c l d p")                        'flymake-goto-prev-error)                    ; 前往上一个错误(会用波浪线来展示错误的)
-(global-set-key (kbd "C-c l d g")                        'flymake-goto-diagnostic)                    ; 前往diagnostic诊断信息
-(global-set-key (kbd "C-c l d c")                        'eglot-code-actions)                         ; 进行代码行动
-(global-set-key (kbd "C-c l d r")                        'eglot-rename)                               ; 重命名相同名称的symbol符号
-(global-set-key (kbd "C-c l d f d")                      'eglot-find-declaration)                     ; 寻找declaration声明
-(global-set-key (kbd "C-c l d f x")                      'xref-find-definitions)                      ; 寻找来源(放在哪一行内)definitions定义(默认xref快捷键: M-.)
-(global-set-key (kbd "C-c l d f r")                      'xref-find-references)                       ; 寻找出处(放在哪个文件内)references引用(默认xref快捷键: M-?)
-(global-set-key (kbd "C-c l d f i")                      'eglot-find-implementation)                  ; 寻找implementation执行
-(global-set-key (kbd "C-c l d f t")                      'eglot-find-typeDefinition)                  ; 寻找typeDefinition类型定义
+(global-set-key (kbd "C-c e o")                          'eglot)                                      ; 开启eglot语言服务客户端
+(global-set-key (kbd "C-c e r")                          'eglot-reconnect)                            ; 重连eglot语言服务客户端
+(global-set-key (kbd "C-c e s")                          'eglot-shutdown)                             ; 关闭eglot语言服务客户端
+(global-set-key (kbd "C-c e d s")                        'flymake-show-diagnostic)                    ; 通过flymake(built-in)，给eglot提供diagnostic诊断信息
+(global-set-key (kbd "C-c e d n")                        'flymake-goto-next-error)                    ; 前往下一个错误(会用波浪线来展示错误的)
+(global-set-key (kbd "C-c e d p")                        'flymake-goto-prev-error)                    ; 前往上一个错误(会用波浪线来展示错误的)
+(global-set-key (kbd "C-c e d g")                        'flymake-goto-diagnostic)                    ; 前往diagnostic诊断信息
+(global-set-key (kbd "C-c e d c")                        'eglot-code-actions)                         ; 进行代码行动
+(global-set-key (kbd "C-c e d r")                        'eglot-rename)                               ; 重命名相同名称的symbol符号
+(global-set-key (kbd "C-c e d f d")                      'eglot-find-declaration)                     ; 寻找declaration声明
+(global-set-key (kbd "C-c e d f x")                      'xref-find-definitions)                      ; 寻找来源(放在哪一行内)definitions定义(默认xref快捷键: M-.)
+(global-set-key (kbd "C-c e d f r")                      'xref-find-references)                       ; 寻找出处(放在哪个文件内)references引用(默认xref快捷键: M-?)
+(global-set-key (kbd "C-c e d f i")                      'eglot-find-implementation)                  ; 寻找implementation执行
+(global-set-key (kbd "C-c e d f t")                      'eglot-find-typeDefinition)                  ; 寻找typeDefinition类型定义
 
 
 ;; ===============================================
@@ -207,19 +207,6 @@
 (define-key dashboard-mode-map       (kbd "n")           'dashboard-next-line)
 (define-key dashboard-mode-map       (kbd "j")           nil)
 (define-key dashboard-mode-map       (kbd "k")           nil)
-
-
-;; ===============================================
-;; 关于eaf
-;; ===============================================
-(global-set-key (kbd "C-c e d")                          'custom-eaf-open-browser-homepage)           ; 打开eaf-browser指定网址
-(global-set-key (kbd "C-c e s")                          'custom-eaf-open-browser-soundcloud)         ; 打开eaf-browser指定网址
-(global-set-key (kbd "C-c e b")                          'custom-eaf-open-browser-bilibili)           ; 打开eaf-browser指定网址
-(global-set-key (kbd "C-c e p")                          'custom-eaf-open-browser-pan)                ; 打开eaf-browser指定网址
-(global-set-key (kbd "C-c e r")                          'custom-eaf-open-browser-org-roam)           ; 打开eaf-browser指定网址
-(global-set-key (kbd "C-c e v")                          'custom-eaf-open-browser-proxy)              ; 打开eaf-browser指定网址
-(global-set-key (kbd "C-c e g")                          'custom-eaf-open-browser-github)             ; 打开eaf-browser指定网址
-(global-set-key (kbd "C-c e c")                          'custom-eaf-open-browser-emacs-china)        ; 打开eaf-browser指定网址
 
 
 ;; ===============================================
