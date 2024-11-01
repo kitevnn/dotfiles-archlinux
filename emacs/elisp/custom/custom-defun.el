@@ -215,6 +215,7 @@
   (disable-theme 'bliss)
   (load-theme 'nano-light)
   (set-face-attribute 'vertico-current nil :background "#b5ffd1")
+  (set-face-attribute 'tab-line nil :background "#ffffff")
   (with-eval-after-load 'corfu
     (set-face-attribute 'corfu-default nil :background "#ffffff")
     (set-face-attribute 'corfu-border nil :background "#37474f")
@@ -224,9 +225,10 @@
   (interactive)
   (disable-theme 'nano-light)
   (load-theme 'bliss)
-  (set-face-attribute 'vertico-current nil :background "#b5ffd1")
+  (set-face-attribute 'vertico-current nil :background "#31343e")
+  (set-face-attribute 'tab-line nil :background "#191919")        
   (with-eval-after-load 'corfu
-    (set-face-attribute 'corfu-default nil :background "#673ab7") ;
+    (set-face-attribute 'corfu-default nil :background "#673ab7")
     (set-face-attribute 'corfu-border nil :background "#37474f")
     (set-face-attribute 'corfu-current nil :background "#6a0c9a" :foreground "#64fbc8")))
 

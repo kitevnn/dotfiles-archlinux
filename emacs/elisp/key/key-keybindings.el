@@ -29,19 +29,20 @@
 
 
 ;; ===============================================
-;; 主题管理
+;; 关于theme
 ;; ===============================================
-(global-set-key (kbd "C-c l 1")                          'custom-toggle-light-theme)                  ; 切换主题到nano-light
+(global-set-key (kbd "C-c t 1")                          'custom-load-theme-light)                   ; 切换为亮色light主题
+(global-set-key (kbd "C-c t 2")                          'custom-load-theme-dark)                    ; 切换为暗色dark主题
 
 
 ;; ===============================================
 ;; 窗口管理
 ;; ===============================================
-(global-set-key (kbd "C-c C-x C-k")                      'delete-window)                              ; 关闭当前窗口
-(global-set-key (kbd "C-c C-x C-f")                      'windmove-right)                             ; 光标跳转到右边窗口
-(global-set-key (kbd "C-c C-x C-b")                      'windmove-left)                              ; 光标跳转到左边窗口
-(global-set-key (kbd "C-c C-x C-n")                      'windmove-down)                              ; 光标跳转到下边窗口
-(global-set-key (kbd "C-c C-x C-p")                      'windmove-up)                                ; 光标跳转到上边窗口
+(global-set-key (kbd "C-z k")                            'delete-window)                             ; 关闭当前窗口
+(global-set-key (kbd "C-z f")                            'windmove-right)                            ; 光标跳转到右边窗口
+(global-set-key (kbd "C-z b")                            'windmove-left)                             ; 光标跳转到左边窗口
+(global-set-key (kbd "C-z n")                            'windmove-down)                             ; 光标跳转到下边窗口
+(global-set-key (kbd "C-z p")                            'windmove-up)                               ; 光标跳转到上边窗口
 
 
 ;; ===============================================
@@ -69,9 +70,9 @@
 ;; ===============================================
 ;; 文件管理器dirvish
 ;; ===============================================
-(global-set-key (kbd "C-c d o")                          'dirvish-side)                               ; 左侧打开dirvish
-(global-set-key (kbd "C-c d q")                          'dirvish-quit)                               ; 退出关闭dirvish
-(global-set-key (kbd "C-c d g")                          'dirvish)                                    ; 全局打开dirvish
+(global-set-key (kbd "C-z d o")                          'dirvish-side)                               ; 左侧打开dirvish
+(global-set-key (kbd "C-z d q")                          'dirvish-quit)                               ; 退出关闭dirvish
+(global-set-key (kbd "C-z d g")                          'dirvish)                                    ; 全局打开dirvish
 
 
 ;; ===============================================
@@ -82,7 +83,7 @@
 
 
 ;; ===============================================
-;; 关于eglot
+;; 关于corfu
 ;; ===============================================
 (global-set-key (kbd "C-c c o")                          'corfu-mode)                                 ; 开启corfu轻量补全框架
 
@@ -170,12 +171,12 @@
 ;; ===============================================
 ;; 关于org-roam
 ;; ===============================================
-(define-key org-mode-map (kbd "C-c j f")                 'org-roam-node-find)                         ; 寻找笔记地图节点
-(define-key org-mode-map (kbd "C-c j a")                 'org-roam-node-insert)                       ; 创建笔记地图节点
-(define-key org-mode-map (kbd "C-c j n")                 'org-roam-capture)                           ; 创建笔记地图节点
-(define-key org-mode-map (kbd "C-c j t")                 'org-roam-buffer-toggle)                     ; 切换笔记地图节点
-(define-key org-mode-map (kbd "C-c j o")                 'org-roam-ui-mode)                           ; 打开笔记地图
-(define-key org-mode-map (kbd "C-c j d")                 'org-roam-dailies-map)                       ; 打开日记菜单
+(define-key org-mode-map (kbd "C-c n f")                 'org-roam-node-find)                         ; 寻找笔记地图节点
+(define-key org-mode-map (kbd "C-c n a")                 'org-roam-node-insert)                       ; 创建笔记地图节点
+(define-key org-mode-map (kbd "C-c n n")                 'org-roam-capture)                           ; 创建笔记地图节点
+(define-key org-mode-map (kbd "C-c n t")                 'org-roam-buffer-toggle)                     ; 切换笔记地图节点
+(define-key org-mode-map (kbd "C-c n o")                 'org-roam-ui-mode)                           ; 打开笔记地图
+(define-key org-mode-map (kbd "C-c n d")                 'org-roam-dailies-map)                       ; 打开日记菜单
 
 
 ;; ===============================================
@@ -220,11 +221,5 @@
 ;; ===============================================
 (global-set-key (kbd "C-c t e")                          'telega)                                    ; 打开telega
 
-
-;; ===============================================
-;; 关于theme
-;; ===============================================
-(global-set-key (kbd "C-c t 1")                          'custom-load-theme-light)                   ; 切换为亮色light主题
-(global-set-key (kbd "C-c t 2")                          'custom-load-theme-dark)                    ; 切换为暗色dark主题
 
 (provide 'key-keybindings)
