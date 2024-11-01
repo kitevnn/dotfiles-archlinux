@@ -192,6 +192,14 @@
   "打开B站"
   (interactive)
   (eaf-open-browser "https://www.bilibili.com"))
+(defun custom-eaf-open-browser-github ()
+  "打开github"
+  (interactive)
+  (eaf-open-browser "https://github.com"))
+(defun custom-eaf-open-browser-emacs-china ()
+  "打开emacs-china"
+  (interactive)
+  (eaf-open-browser "https://emacs-china.org"))
 (defun custom-eaf-open-browser-pan ()
   "打开度盘"
   (interactive)

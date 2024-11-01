@@ -212,12 +212,14 @@
 ;; ===============================================
 ;; 关于eaf
 ;; ===============================================
-(global-set-key (kbd "C-c e d")                          'custom-eaf-open-browser-homepage)          ; 打开eaf-browser指定网址
-(global-set-key (kbd "C-c e s")                          'custom-eaf-open-browser-soundcloud)        ; 打开eaf-browser指定网址
-(global-set-key (kbd "C-c e b")                          'custom-eaf-open-browser-bilibili)          ; 打开eaf-browser指定网址
-(global-set-key (kbd "C-c e p")                          'custom-eaf-open-browser-pan)               ; 打开eaf-browser指定网址
-(global-set-key (kbd "C-c e r")                          'custom-eaf-open-browser-org-roam)          ; 打开eaf-browser指定网址
-(global-set-key (kbd "C-c e v")                          'custom-eaf-open-browser-proxy)             ; 打开eaf-browser指定网址
+(global-set-key (kbd "C-c e d")                          'custom-eaf-open-browser-homepage)           ; 打开eaf-browser指定网址
+(global-set-key (kbd "C-c e s")                          'custom-eaf-open-browser-soundcloud)         ; 打开eaf-browser指定网址
+(global-set-key (kbd "C-c e b")                          'custom-eaf-open-browser-bilibili)           ; 打开eaf-browser指定网址
+(global-set-key (kbd "C-c e p")                          'custom-eaf-open-browser-pan)                ; 打开eaf-browser指定网址
+(global-set-key (kbd "C-c e r")                          'custom-eaf-open-browser-org-roam)           ; 打开eaf-browser指定网址
+(global-set-key (kbd "C-c e v")                          'custom-eaf-open-browser-proxy)              ; 打开eaf-browser指定网址
+(global-set-key (kbd "C-c e g")                          'custom-eaf-open-browser-github)             ; 打开eaf-browser指定网址
+(global-set-key (kbd "C-c e c")                          'custom-eaf-open-browser-emacs-china)        ; 打开eaf-browser指定网址
 
 
 ;; ===============================================
