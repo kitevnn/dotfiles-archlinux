@@ -95,7 +95,7 @@
 (run-at-time "0 sec" 15    'update-modeline-output-cpu-temperature)     ; 每15秒更新一次CPU温度信息
 (run-at-time "0 sec" 15    'update-modeline-output-ram-usage)           ; 每15秒更新一次内存使用量信息
 (run-at-time "0 sec" 43200 'update-modeline-output-pacman-packages)     ; 每12小时更新一次包总数信息
-(run-at-time "0 sec" 43200 'update-modeline-output-weather-situation)   ; 每12小时更新一次当前天气信息
+(run-at-time "0 sec" 1800  'update-modeline-output-weather-situation)   ; 每30分钟更新一次当前天气信息
 
 ;; ========================================
 ;; 定时更新模式行，设置为每分钟检查一次
