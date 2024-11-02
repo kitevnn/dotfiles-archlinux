@@ -65,10 +65,9 @@
  '(package-selected-packages
    '(auctex bliss-theme cdlatex centaur-tabs corfu dashboard deadgrep dirvish
             embark-consult highlight-indent-guides keycast magit marginalia
-            nano-theme nerd-icons-completion nerd-icons-corfu nerd-icons-dired
-            orderless org-roam-ui pdf-tools pkg-info restart-emacs rime
-            smartparens telega tree-sitter-langs valign vertico
-            yasnippet-snippets)))
+            nano-theme nerd-icons-corfu nerd-icons-dired orderless org-roam-ui
+            pdf-tools pkg-info restart-emacs rime smartparens telega
+            tree-sitter-langs valign vertico yasnippet-snippets)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

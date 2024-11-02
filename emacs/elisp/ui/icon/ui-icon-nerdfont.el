@@ -9,11 +9,6 @@
   :ensure t
   :init)
 
-(use-package nerd-icons-completion
-  :ensure t
-  :config
-  (nerd-icons-completion-mode))
-
 (use-package nerd-icons-dired
   :ensure t
   :hook
