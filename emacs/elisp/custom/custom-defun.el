@@ -207,7 +207,7 @@
 (defun custom-eaf-open-browser-org-roam ()
   "打开本地ORUI"
   (interactive)
-  (eaf-open-browser "http://localhost:35091"))
+  (eaf-open-browser "http://localhost:35901"))
 (defun custom-eaf-open-browser-proxy ()
   "打开本地代理"
   (interactive)
