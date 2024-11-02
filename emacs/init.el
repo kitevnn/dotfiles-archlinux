@@ -63,10 +63,10 @@
      "3001510be1be4a38508ff07633e97b810c0a52c6fa2f4c7153d22cc7596d9172"
      "e7820b899036ae7e966dcaaec29fd6b87aef253748b7de09e74fdc54407a7a02" default))
  '(package-selected-packages
-   '(auctex bliss-theme cdlatex centaur-tabs corfu dashboard dirvish embark-consult
-            helm highlight-indent-guides keycast liberime magit marginalia
+   '(auctex bliss-theme cdlatex centaur-tabs corfu dashboard deadgrep dirvish
+            embark-consult highlight-indent-guides keycast magit marginalia
             nano-theme nerd-icons-completion nerd-icons-corfu nerd-icons-dired
-            orderless org-roam-ui pdf-tools pkg-info restart-emacs rime s
+            orderless org-roam-ui pdf-tools pkg-info restart-emacs rime
             smartparens telega tree-sitter-langs valign vertico
             yasnippet-snippets)))
 (custom-set-faces

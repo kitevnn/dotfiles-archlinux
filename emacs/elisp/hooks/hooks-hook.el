@@ -31,6 +31,7 @@
 (add-hook 'LaTeX-mode-hook #'tree-sitter-mode)                               ; 在LaTeX-mode使用ts
 (add-hook 'org-mode-hook
           (lambda ()
+            (custom-org-table-with-cdlatex)
             (add-hook 'post-command-hook 'custom-org-table-with-cdlatex)))   ; 仅在org-table上下文范围内使用cdlatex的TAB来补全来防止单元格内容不会因org-cycle而被新插入的字符org-self-insert-command而覆盖
 (add-hook 'pdf-view-mode-hook 'custom-pdf-view-mode-hook-with-yas)           ; 在PDFView里禁用yasnippet
 

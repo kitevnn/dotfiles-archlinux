@@ -134,11 +134,12 @@
 ;; from chatGPT 4o
 ;; =======================================
 (defun custom-org-table-with-cdlatex ()
+  (when (and (derived-mode-p 'org-mode) (not (minibufferp)))
   (if (org-at-table-p)
       (progn
         (local-set-key (kbd "TAB")     'cdlatex-tab)
         (local-set-key (kbd "C-l")     'org-table-next-field))
-      (local-set-key (kbd "TAB")       'org-cycle)))
+      (local-set-key (kbd "TAB")       'org-cycle))))
 
 
 ;; =======================================
