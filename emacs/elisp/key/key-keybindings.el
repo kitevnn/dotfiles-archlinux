@@ -68,7 +68,7 @@
 ;; ========================================
 ;; 重启GNU Emacs
 ;; ========================================
-(global-set-key (kbd "M-r")                              'restart-emacs)                              ; 重启GNU Emacs
+(global-set-key (kbd "C-z C-z C-z C-z C-r")              'restart-emacs)                              ; 重启GNU Emacs
 
 
 ;; ========================================
@@ -141,7 +141,8 @@
 ;; ========================================
 (global-set-key (kbd "C-=")                              'custom-duplicate-line)                      ; 复制当前行到下一行并保持光标水平位置不变
 (global-set-key (kbd "C-z C-z C-e")                      'embark-act)                                 ; 增强原始工作流embark
-(global-set-key (kbd "M-s")                              'consult-line)                               ; C-s搜索
+(global-set-key (kbd "M-s l")                            'consult-line)                               ; C-s搜索
+(global-set-key (kbd "M-s r")                            'consult-ripgrep)                            ; rg搜索
 (global-set-key (kbd "C-c C-x C-h")                      'embark-prefix-help-command)                 ; prefix快捷键
 
 
