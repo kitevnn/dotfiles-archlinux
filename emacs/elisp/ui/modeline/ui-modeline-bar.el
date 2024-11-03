@@ -85,7 +85,7 @@
 ;; ========================================
 ;; 定时更新每个脚本
 ;; ========================================
-(run-at-time "0 sec" 1800  'update-modeline-output-time-hour)           ; 每30分钟更新一次时间小时信息
+(run-at-time "0 sec" 180   'update-modeline-output-time-hour)           ; 每3分钟更新一次时间小时信息
 (run-at-time "0 sec" 60    'update-modeline-output-time-minute)         ; 每1分钟更新一次时间分钟信息
 (run-at-time "0 sec" 43200 'update-modeline-output-calendar-day)        ; 每12小时更新一次日历月份信息
 (run-at-time "0 sec" 86400 'update-modeline-output-calendar-month)      ; 每24小时更新一次日历月份信息
