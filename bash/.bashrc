@@ -19,4 +19,6 @@ alias grep='grep --color=auto'
 alias caps='setxkbmap -option "ctrl:nocaps"'
 alias ge='export EDITOR="vim"'
 alias ra='ranger'
+alias get-weather='bash ~/.config/emacs/archive/weather-wttr.sh'
+alias xfs='xfce4-setting-manager'
 source ~/.bash_profile
