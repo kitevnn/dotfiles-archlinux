@@ -212,7 +212,7 @@
   "打开本地代理"
   (interactive)
   (eaf-open-browser "http://localhost:2017"))
-(defun custom-eaf-open-browser-chat-gpt ()
+(defun custom-eaf-open-browser-chatgpt ()
   "打开chatGPT"
   (interactive)
   (eaf-open-browser "https://chatgpt.com"))

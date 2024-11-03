@@ -31,7 +31,7 @@
 ;; =======================================
 ;; 起始目录
 ;; =======================================
-(setq default-directory "/home/une/桌面/back/archlinux/check")        ; GNU Emacs的起始目录
+(setq default-directory "~/Desktop/back/archlinux/check")             ; GNU Emacs的起始目录
 
 
 ;; =======================================

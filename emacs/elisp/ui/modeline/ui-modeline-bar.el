@@ -18,42 +18,42 @@
 ;; 关于当前日期
 ;; ========================================
 (defun update-modeline-output-calendar-month ()
-  (setq modeline-output-calendar-month (string-trim (shell-command-to-string "/home/une/.config/emacs/elisp/ui/modeline/calendar-month.sh"))))
+  (setq modeline-output-calendar-month (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/calendar-month.sh"))))
 (defun update-modeline-output-calendar-day ()
-  (setq modeline-output-calendar-day (string-trim (shell-command-to-string "/home/une/.config/emacs/elisp/ui/modeline/calendar-day.sh"))))
+  (setq modeline-output-calendar-day (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/calendar-day.sh"))))
 ;; ========================================
 ;; 关于当前时间
 ;; ========================================
 (defun update-modeline-output-time-hour ()
-  (setq modeline-output-time-hour (string-trim (shell-command-to-string "/home/une/.config/emacs/elisp/ui/modeline/time-hour.sh"))))
+  (setq modeline-output-time-hour (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/time-hour.sh"))))
 (defun update-modeline-output-time-minute ()
-  (setq modeline-output-time-minute (string-trim (shell-command-to-string "/home/une/.config/emacs/elisp/ui/modeline/time-minute.sh"))))
+  (setq modeline-output-time-minute (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/time-minute.sh"))))
 ;; ========================================
 ;; 关于电池信息
 ;; ========================================
 (defun update-modeline-output-battery-percentage ()
-  (setq modeline-output-battery-percentage (string-trim (shell-command-to-string "/home/une/.config/emacs/elisp/ui/modeline/battery-percentage.sh"))))
+  (setq modeline-output-battery-percentage (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/battery-percentage.sh"))))
 ;; ========================================
 ;; 关于发行版信息
 ;; ========================================
 (defun update-modeline-output-distribution ()
-  (setq modeline-output-distribution (string-trim (shell-command-to-string "/home/une/.config/emacs/elisp/ui/modeline/distribution.sh"))))
+  (setq modeline-output-distribution (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/distribution.sh"))))
 (defun update-modeline-output-pacman-packages ()
-  (setq modeline-output-pacman-packages (string-trim (shell-command-to-string "/home/une/.config/emacs/elisp/ui/modeline/pacman-packages.sh"))))
+  (setq modeline-output-pacman-packages (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/pacman-packages.sh"))))
 ;; ========================================
 ;; 关于使用率
 ;; ========================================
 (defun update-modeline-output-disk-usage ()
-  (setq modeline-output-disk-usage (string-trim (shell-command-to-string "/home/une/.config/emacs/elisp/ui/modeline/disk-usage.sh"))))
+  (setq modeline-output-disk-usage (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/disk-usage.sh"))))
 (defun update-modeline-output-cpu-temperature ()
-  (setq modeline-output-cpu-temperature (string-trim (shell-command-to-string "/home/une/.config/emacs/elisp/ui/modeline/cpu-temperature.sh"))))
+  (setq modeline-output-cpu-temperature (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/cpu-temperature.sh"))))
 (defun update-modeline-output-ram-usage ()
-  (setq modeline-output-ram-usage (string-trim (shell-command-to-string "/home/une/.config/emacs/elisp/ui/modeline/ram-usage.sh"))))
+  (setq modeline-output-ram-usage (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/ram-usage.sh"))))
 ;; ========================================
 ;; 关于当地天气
 ;; ========================================
 (defun update-modeline-output-weather-situation ()
-  (setq modeline-output-weather-situation (string-trim (shell-command-to-string "/home/une/.config/emacs/elisp/ui/modeline/weather-situation.sh"))))
+  (setq modeline-output-weather-situation (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/weather-situation.sh"))))
 
 
 (defun update-modeline-with-all-scripts ()

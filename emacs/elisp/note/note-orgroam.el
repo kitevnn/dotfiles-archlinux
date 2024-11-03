@@ -4,7 +4,7 @@
 (use-package org-roam
   :ensure t
   :custom
-  (org-roam-directory "/home/une/桌面/back/archlinux/orgroam")
+  (org-roam-directory "~/.orgroam")
   (org-roam-dailies-directory "daily/")
   (org-roam-db-gc-threshold most-positive-fixnum)
   :config
