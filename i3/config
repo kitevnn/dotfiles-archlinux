@@ -24,8 +24,8 @@ tiling_drag modifier titlebar
 
 # 按键绑定
 ## 多媒体按键
-bindsym $mod+u exec pactl set-sink-volume @DEFAULT_SINK@ +10%
-bindsym $mod+d exec pactl set-sink-volume @DEFAULT_SINK@ -10%
+bindsym $mod+Ctrl+u exec pactl set-sink-volume @DEFAULT_SINK@ +10%
+bindsym $mod+Ctrl+d exec pactl set-sink-volume @DEFAULT_SINK@ -10%
 # bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 # bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 # bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
