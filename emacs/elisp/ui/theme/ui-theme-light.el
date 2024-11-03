@@ -24,6 +24,13 @@
 
 
 ;; ========================================
+;; 为telega-heading添加face颜色
+;; ========================================
+(with-eval-after-load 'telega
+  (set-face-attribute 'telega-msg-heading nil :background "#ffffff"))
+
+
+;; ========================================
 ;; 为posframe添加face颜色(默认主题nano-light)
 ;; ========================================
 (set-face-attribute 'rime-candidate-num-face nil
