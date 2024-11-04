@@ -15,26 +15,19 @@ set $refresh_i3status killall -SIGUSR1 i3status
 exec emacs
 
 # feh壁纸
-exec --no-startup-id feh --bg-fill "/home/une/Desktop/my/20220518085627.jpg"
+exec --no-startup-id feh --bg-fill "/home/une/.wallpaper/20220518085627.jpg"
 
 # 鼠标绑定
-## 通过Super + Mouse_L/R，来拖动floating window到别的位置
+# + 通过Super_L + Mouse_L，来拖动floating window到别的位置
+# + 通过Super_L + Mouse_R，来拖动floating window到别的位置
 floating_modifier $mod
 tiling_drag modifier titlebar
 
 # 按键绑定
-## 多媒体按键
-bindsym $mod+Ctrl+u exec pactl set-sink-volume @DEFAULT_SINK@ +10%
-bindsym $mod+Ctrl+d exec pactl set-sink-volume @DEFAULT_SINK@ -10%
-# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-# bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
-# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-# bindsym XF86AudioMute exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
-# bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-# bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-
-## 常规键配置
+# + 多媒体按键
+bindsym XF86AudioMute exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+# + 常规键配置
 bindsym $mod+Return exec alacritty
 bindsym $mod+O exec alacritty
 bindsym $mod+BackSpace kill
@@ -44,21 +37,21 @@ bindsym $mod+L exec rofi -show window
 bindsym $mod+M exec rofi -show drun
 bindsym $mod+A exec spectacle
 bindsym $mod+J layout toggle split
-## 更改光标焦点
+# + 更改光标焦点
 bindsym $mod+b focus left
 bindsym $mod+n focus down
 bindsym $mod+p focus up
 bindsym $mod+f focus right
-## 移动窗口位置
+# + 移动窗口位置
 bindsym $mod+Shift+B move left
 bindsym $mod+Shift+N move down
 bindsym $mod+Shift+P move up
 bindsym $mod+Shift+F move right
-## 窗口全屏
+# + 窗口全屏
 bindsym $mod+E fullscreen toggle
-## 窗口平铺浮动切换
+# + 窗口平铺浮动切换
 bindsym $mod+t floating toggle
-## 窗口平铺浮动切换
+# + 窗口平铺浮动切换
 bindsym $mod+shift+t focus mode_toggle
 
 # 工作区设置
