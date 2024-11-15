@@ -234,7 +234,8 @@
   (load-theme 'nano-light)
   (set-face-attribute 'vertico-current nil :background "#b5ffd1")
   (set-face-attribute 'tab-line nil :background "#ffffff")
-  (set-face-attribute 'telega-msg-heading nil :background "#ffffff")      
+  (with-eval-after-load 'telega
+                        (set-face-attribute 'telega-msg-heading nil :background "#ffffff"))
   (set-face-attribute 'rime-candidate-num-face nil
                       :height 90                    
                       :foreground "#90a4ae")
@@ -276,7 +277,8 @@
   (load-theme 'bliss)
   (set-face-attribute 'vertico-current nil :background "#31343e")
   (set-face-attribute 'tab-line nil :background "#191919")
-  (set-face-attribute 'telega-msg-heading nil :background "#191919")    
+  (with-eval-after-load 'telega
+                        (set-face-attribute 'telega-msg-heading nil :background "#191919"))
   (set-face-attribute 'rime-candidate-num-face nil
                       :height 90
                       :foreground "#c5c8c6")
