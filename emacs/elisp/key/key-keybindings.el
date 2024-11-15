@@ -115,7 +115,7 @@
 ;; 关于eshell
 ;; ========================================
 (global-set-key (kbd "C-c t o")                          'eshell)                                     ; 开启eshell壳
-(global-set-key (kbd "C-c t u")                          'eat)                                        ; 开启eat终端模拟器
+(global-set-key (kbd "C-c t g")                          'eat)                                        ; 开启eat终端模拟器
 
 
 ;; ========================================
