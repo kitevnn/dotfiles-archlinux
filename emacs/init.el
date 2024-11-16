@@ -23,7 +23,6 @@
 (require 'enhance-dirvish)
 (require 'enhance-minibuffer)
 (require 'enhance-indentline)
-(require 'enhance-keystroke)
 (require 'enhance-magit)
 (require 'enhance-pdftools)
 (require 'enhance-restart)
@@ -63,7 +62,12 @@
    '("1781e8bccbd8869472c09b744899ff4174d23e4f7517b8a6c721100288311fa5"
      "3001510be1be4a38508ff07633e97b810c0a52c6fa2f4c7153d22cc7596d9172"
      "e7820b899036ae7e966dcaaec29fd6b87aef253748b7de09e74fdc54407a7a02" default))
- '(package-selected-packages nil))
+ '(package-selected-packages
+   '(auctex bliss-theme cdlatex centaur-tabs corfu dashboard deadgrep dirvish eat
+            embark-consult highlight-indent-guides magit marginalia nano-theme
+            nerd-icons-corfu nerd-icons-dired orderless org-roam-ui pdf-tools
+            pkg-info restart-emacs rime smartparens telega tree-sitter-langs
+            valign vertico yasnippet-snippets)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

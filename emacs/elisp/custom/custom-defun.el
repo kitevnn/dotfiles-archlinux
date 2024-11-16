@@ -235,14 +235,19 @@
   (set-face-attribute 'vertico-current nil :background "#b5ffd1")
   (set-face-attribute 'tab-line nil :background "#ffffff")
   (with-eval-after-load 'telega
-                        (set-face-attribute 'telega-msg-heading nil :background "#ffffff"))
+    (set-face-attribute 'telega-msg-heading nil :background "#ffffff"))
+  (set-face-attribute 'help-key-binding nil
+                      :height 90
+                      :box nil
+                      :foreground "#673ab7"
+                      :background "#ffffff")    
   (set-face-attribute 'rime-candidate-num-face nil
                       :height 90                    
                       :foreground "#90a4ae")
   (set-face-attribute 'rime-code-face nil
                       :height 90                    
-                      :background "#37474f"
-                      :foreground "#ffffff")
+                      :background "#90a4ae"
+                      :foreground "#eceff1")
   (set-face-attribute 'rime-comment-face nil
                       :height 90
                       :foreground "#374f4f")
@@ -253,7 +258,7 @@
   (set-face-attribute 'rime-default-face nil
                       :height 90
                       :foreground "#37474f"
-                      :background "#eceff1")
+                      :background "#ffffff")
   (set-face-attribute 'rime-highlight-candidate-face nil
                       :height 90                    
                       :foreground "#673ab7")
@@ -278,7 +283,12 @@
   (set-face-attribute 'vertico-current nil :background "#31343e")
   (set-face-attribute 'tab-line nil :background "#191919")
   (with-eval-after-load 'telega
-                        (set-face-attribute 'telega-msg-heading nil :background "#191919"))
+    (set-face-attribute 'telega-msg-heading nil :background "#191919"))
+  (set-face-attribute 'help-key-binding nil
+                      :height 90
+                      :box nil
+                      :foreground "#64fbc8"
+                      :background "#191919")  
   (set-face-attribute 'rime-candidate-num-face nil
                       :height 90
                       :foreground "#c5c8c6")
