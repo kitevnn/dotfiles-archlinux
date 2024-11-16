@@ -38,8 +38,8 @@
                     :foreground "#90a4ae")
 (set-face-attribute 'rime-code-face nil
                     :height 90                    
-                    :background "#37474f"
-                    :foreground "#ffffff")
+                    :background "#90a4ae"
+                    :foreground "#eceff1")
 (set-face-attribute 'rime-comment-face nil
                     :height 90
                     :foreground "#374f4f")

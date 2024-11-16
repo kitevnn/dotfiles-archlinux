@@ -56,9 +56,12 @@
   (setq modeline-output-weather-situation (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/weather-situation.sh"))))
 
 
+;; ========================================
+;; 显示具体信息
+;; ========================================
 (defun update-modeline-with-all-scripts ()
   (setq global-mode-string
-        (list "   󰃯 "
+        (list "   󰃯 " ;
               modeline-output-calendar-month
               modeline-output-calendar-day
               "  "
