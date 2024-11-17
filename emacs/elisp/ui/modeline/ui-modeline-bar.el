@@ -82,7 +82,7 @@
               modeline-output-pacman-packages
               "   "
               modeline-output-weather-situation
-              "  ")))
+              " ")))
 
 
 ;; ========================================
