@@ -5,7 +5,7 @@
   :ensure t
   :config
   (dashboard-setup-startup-hook)
-  
+
   ;; ========================================
   ;; 设置dashboard的基本信息
   ;; ========================================
@@ -19,48 +19,82 @@
   ;; ========================================
   ;; 设置要展示的dashboard信息
   ;; ========================================
+  (setq dashboard-set-navigator t)
+  (setq dashboard-navigator-buttons
+        `(
+          (
+           ;; Recent Files
+           (,
+            "  最近 R" ""
+            (lambda (&rest _) (consult-recent-file))
+            nil "")
+
+           ;; Bookmarks
+           (,
+            "  书签 B" ""
+            (lambda (&rest _) (bookmark-bmenu-list))
+            nil "")
+
+           ;; Agenda
+           (,
+            "󱇘  议程 A" ""
+            (lambda (&rest _) (org-agenda))
+            nil ""))))
+
+  ;; ========================================
+  ;; 设置要展示的dashboard信息
+  ;; ========================================
   (setq dashboard-startupify-list '(dashboard-insert-newline
                                     dashboard-insert-banner
                                     dashboard-insert-newline
                                     dashboard-insert-newline
                                     dashboard-insert-banner-title
-                                    dashboard-insert-navigator
-                                    dashboard-insert-items
                                     dashboard-insert-newline
-                                    dashboard-insert-init-info))
-  
-  ;; ========================================
-  ;; 设置快捷键
-  ;; ========================================
-  (setq dashboard-navigation-cycle t)
-  (setq dashboard-heading-shorcut-format " [%s]")
-  (setq dashboard-item-shortcuts '((recents   . "r")
-                                 (bookmarks   . "m")))
+                                    dashboard-insert-navigator
+                                    dashboard-insert-newline
+                                    dashboard-insert-init-info
+                                    dashboard-insert-newline
+                                    dashboard-insert-newline
+                                    dashboard-insert-newline
+                                    dashboard-insert-newline
+                                    dashboard-insert-newline
+                                    dashboard-insert-newline
+                                    dashboard-insert-newline
+                                    dashboard-insert-newline
+                                    dashboard-insert-newline
+                                    dashboard-insert-newline
+                                    dashboard-insert-newline
+                                    dashboard-insert-newline
+                                    dashboard-insert-newline
+                                    dashboard-insert-newline
+                                    dashboard-insert-newline
+                                    dashboard-insert-newline
+                                    dashboard-insert-newline
+                                    dashboard-insert-newline
+                                    dashboard-insert-newline
+                                    dashboard-insert-newline
+                                    dashboard-insert-newline
+                                    dashboard-insert-newline
+                                    dashboard-insert-newline
+                                    dashboard-insert-newline
+                                    dashboard-insert-newline))
 
-  ;; ========================================
-  ;; 设置item的信息(字符串替换)
-  ;; ========================================
-  (setq dashboard-item-names '(("Recent Files:"               . "最近打开文件")
-                               ("Bookmarks:"                  . "最近打开书签")))
+    ;; 启用 recentf-mode
+    (recentf-mode 1)
 
-  ;; ========================================
-  ;; 图标设置
-  ;; ========================================
-  (setq dashboard-display-icons-p t
-      dashboard-icon-type 'nerd-icons
-      dashboard-set-heading-icons t 
-      dashboard-set-file-icons t)
+    ;; 设置最近文件列表的最大长度
+    (setq recentf-max-saved-items 100)  ;; 设置最多记录 100 个文件
 
-  ;; ========================================
-  ;; 数量设置
-  ;; ========================================
-  (setq dashboard-items '((recents   . 20)
-                        (bookmarks   . 5)))
+    ;; 完成初始化
+    (dashboard-open))
 
-  ;; ========================================
-  ;; 默认启动dashboard
-  ;; ========================================
-  (dashboard-open))
+;; ========================================
+;; 设置快捷键
+;; ========================================
+(with-eval-after-load 'dashboard
+  (define-key dashboard-mode-map (kbd "R") #'consult-recent-file)
+  (define-key dashboard-mode-map (kbd "B") #'bookmark-bmenu-list)
+  (define-key dashboard-mode-map (kbd "A") #'org-agenda-list))
 
 
 (provide 'ui-decorate-dashboard)

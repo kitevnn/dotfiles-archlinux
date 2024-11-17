@@ -13,10 +13,8 @@
 ;; 完成初始化后的钩子hook
 ;; ========================================
 (add-hook 'after-init-hook (lambda () 
-    (when (get-buffer "*scratch*")
-      (kill-buffer "*scratch*") 
-    (when (get-buffer "*Messages*") 
-      (kill-buffer "*Messages*")))))                                         ; 禁用Messages与scratch
+                             (custom-close-scratch-and-message-buffer)
+                             (dashboard-open)))                              ; 初始化钩子
 
 
 ;; ========================================

@@ -38,7 +38,7 @@
                     :foreground "#90a4ae")
 (set-face-attribute 'rime-code-face nil
                     :height 90                    
-                    :background "#90a4ae"
+                    :background "#37474f"
                     :foreground "#eceff1")
 (set-face-attribute 'rime-comment-face nil
                     :height 90
@@ -46,7 +46,7 @@
 (set-face-attribute 'rime-cursor-face nil
                     :height 90
                     :foreground "#ffffff"
-                    :background "#37474f")
+                    :background "#90a4ae")
 (set-face-attribute 'rime-default-face nil
                     :height 90
                     :foreground "#37474f"

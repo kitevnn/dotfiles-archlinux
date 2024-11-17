@@ -240,7 +240,7 @@
                       :height 90
                       :box nil
                       :foreground "#673ab7"
-                      :background "#ffffff")    
+                      :background "#ffffff")
   (set-face-attribute 'rime-candidate-num-face nil
                       :height 90                    
                       :foreground "#90a4ae")
@@ -288,7 +288,7 @@
                       :height 90
                       :box nil
                       :foreground "#64fbc8"
-                      :background "#191919")  
+                      :background "#191919")
   (set-face-attribute 'rime-candidate-num-face nil
                       :height 90
                       :foreground "#c5c8c6")
@@ -325,6 +325,17 @@
     (set-face-attribute 'corfu-default nil :background "#673ab7")
     (set-face-attribute 'corfu-border nil :background "#37474f")
     (set-face-attribute 'corfu-current nil :background "#6a0c9a" :foreground "#64fbc8")))
+
+
+;; =======================================
+;; 禁用Messages与scratch
+;; =======================================
+(defun custom-close-scratch-and-message-buffer ()
+  "禁用Messages与scratch"
+    (when (get-buffer "*scratch*")
+      (kill-buffer "*scratch*") 
+    (when (get-buffer "*Messages*") 
+      (kill-buffer "*Messages*"))))
 
 
 (provide 'custom-defun)
