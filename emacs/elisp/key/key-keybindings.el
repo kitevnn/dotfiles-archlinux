@@ -11,8 +11,6 @@
 ;; ========================================
 ;; 全局Buffer管理
 ;; ========================================
-(global-set-key (kbd "C-c t p")                          'next-buffer)                                ; 跳转到下一个全局Buffer
-(global-set-key (kbd "C-c t n")                          'previous-buffer)                            ; 跳转到上一个全局Buffer
 (global-set-key (kbd "C-c C-x C-<down>")                 'next-buffer)                                ; 跳转到下一个全局Buffer
 (global-set-key (kbd "C-c C-x C-<up>")                   'previous-buffer)                            ; 跳转到上一个全局Buffer
 
@@ -20,12 +18,8 @@
 ;; ========================================
 ;; 局部Buffer管理
 ;; ========================================
-(global-set-key (kbd "C-c t b")                          'centaur-tabs-backward)                      ; 跳转到上一个局部Buffer
-(global-set-key (kbd "C-c t f")                          'centaur-tabs-forward)                       ; 跳转到下一个局部Buffer
 (global-set-key (kbd "C-c C-x C-<left>")                 'centaur-tabs-backward)                      ; 跳转到上一个局部Buffer
 (global-set-key (kbd "C-c C-x C-<right>")                'centaur-tabs-forward)                       ; 跳转到下一个局部Buffer
-(global-set-key (kbd "C-c t c")                          'centaur-tabs--create-new-tab)               ; 创建新的Buffer
-(global-set-key (kbd "C-c t j")                          'centaur-tabs-ace-jump)                      ; 跳转到特定Buffer
 
 
 ;; ========================================
@@ -47,6 +41,10 @@
 (global-set-key (kbd "C-z C-z C-<left>")                 'windmove-left)                             ; 光标跳转到左边窗口
 (global-set-key (kbd "C-z C-z C-<down>")                 'windmove-down)                             ; 光标跳转到下边窗口
 (global-set-key (kbd "C-z C-z C-<up>")                   'windmove-up)                               ; 光标跳转到上边窗口
+(global-set-key (kbd "C-z C-m C-f")                      'windmove-swap-states-right)                ; 向右交换窗口 
+(global-set-key (kbd "C-z C-m C-b")                      'windmove-swap-states-left)                 ; 向左交换窗口 
+(global-set-key (kbd "C-z C-m C-n")                      'windmove-swap-states-down)                 ; 向下交换窗口 
+(global-set-key (kbd "C-z C-m C-p")                      'windmove-swap-states-up)                   ; 向上交换窗口 
 
 
 ;; ========================================
@@ -60,10 +58,10 @@
 ;; ========================================
 ;; 调整屏幕
 ;; ========================================
-(global-set-key (kbd "M--")                              'custom-resize-top-five-unit)                ; 当前窗口向上调整5个单位
-(global-set-key (kbd "M-=")                              'custom-resize-bottom-five-unit)             ; 当前窗口向下调整5个单位
-(global-set-key (kbd "M-9")                              'custom-resize-left-five-unit)               ; 当前窗口向左调整5个单位
-(global-set-key (kbd "M-0")                              'custom-resize-right-five-unit)              ; 当前窗口向右调整5个单位
+(global-set-key (kbd "C-z C-x C-<up>")                   'custom-resize-top-five-unit)                ; 当前窗口向上调整5个单位
+(global-set-key (kbd "C-z C-x C-<down>")                 'custom-resize-bottom-five-unit)             ; 当前窗口向下调整5个单位
+(global-set-key (kbd "C-z C-x C-<left>")                 'custom-resize-left-five-unit)               ; 当前窗口向左调整5个单位
+(global-set-key (kbd "C-z C-x C-<right>")                'custom-resize-right-five-unit)              ; 当前窗口向右调整5个单位
 
 
 ;; ========================================
@@ -158,10 +156,6 @@
 ;; ========================================
 (define-key org-mode-map (kbd "C-c C-x C-0")             'valign-mode)                                ; 切换valign-mode
 (define-key org-mode-map (kbd "C-c C-x C-a")             'org-agenda)                                 ; 当前文件放进org议题内
-(define-key org-mode-map (kbd "C-c C-x C-.")             'org-metaright)                              ; 用 C-c C-x C-. 替代原本的 Meta+<right>
-(define-key org-mode-map (kbd "C-c C-x C-,")             'org-metaleft)                               ; 用 C-c C-x C-, 替代原本的 Meta+<left>
-(define-key org-mode-map (kbd "C-c C-x C-=")             'org-shiftright)                             ; 用 C-c C-x C-= 替代原本的 Shift+<right>
-(define-key org-mode-map (kbd "C-c C-x C--")             'org-shiftleft)                              ; 用 C-c C-x C-- 替代原本的 Shift+<left>
 (define-key org-mode-map (kbd "C-c C-x C-v")             'custom-toggle-inline-images-with-valign)    ; 用 C-c C-x C-v 避免valign-mode造成的对齐卡顿来预览图片
 
 
@@ -200,21 +194,15 @@
 (define-key dashboard-mode-map       (kbd "n")           'dashboard-next-line)                        ; 设置在仅有dashboard-item下按下n来移动光标
 (define-key dashboard-mode-map       (kbd "j")           nil)                                         ; 取消在仅有dashboard-item下按下j来移动光标
 (define-key dashboard-mode-map       (kbd "k")           nil)                                         ; 取消在仅有dashboard-item下按下k来移动光标
-(global-set-key                      (kbd "C-c d r")     'consult-recent-file)                        ; C-c d r来打开最近文件
-(global-set-key                      (kbd "C-c d b")     'bookmark-bmenu-list)                        ; C-c d b来打开书签文件
-(global-set-key                      (kbd "C-c d a")     'org-agenda-list)                            ; C-c d a来打开议程文件
+(global-set-key                      (kbd "C-z C-d C-r") 'consult-recent-file)                        ; C-z C-d C-r 来打开最近文件
+(global-set-key                      (kbd "C-z C-d C-b") 'bookmark-bmenu-list)                        ; C-z C-d C-b 来打开书签文件
+(global-set-key                      (kbd "C-z C-d C-a") 'org-agenda-list)                            ; C-z C-d C-a 来打开议程文件
 
 
 ;; ========================================
 ;; 关于telega
 ;; ========================================
 (global-set-key (kbd "C-c t e")                          'telega)                                    ; 打开telega
-
-
-;; ========================================
-;; 关于telega
-;; ========================================
-(global-set-key (kbd "C-c C-x C-1")                      'custom-eaf-open-browser-command)           ; 使用eaf-browser打开minibuffer
 
 
 ;; ========================================

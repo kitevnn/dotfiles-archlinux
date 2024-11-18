@@ -178,53 +178,6 @@
 
 
 ;; =======================================
-;; 关于eaf
-;; =======================================
-(defun custom-eaf-open-browser-homepage ()
-  "打开鸭鸭冲"
-  (interactive)
-  (eaf-open-browser "https://duckduckgo.com"))
-(defun custom-eaf-open-browser-soundcloud ()
-  "打开声云"
-  (interactive)
-  (eaf-open-browser "https://soundcloud.com/"))
-(defun custom-eaf-open-browser-bilibili ()
-  "打开B站"
-  (interactive)
-  (eaf-open-browser "https://www.bilibili.com"))
-(defun custom-eaf-open-browser-github ()
-  "打开github"
-  (interactive)
-  (eaf-open-browser "https://github.com"))
-(defun custom-eaf-open-browser-emacs-china ()
-  "打开emacs-china"
-  (interactive)
-  (eaf-open-browser "https://emacs-china.org"))
-(defun custom-eaf-open-browser-pan ()
-  "打开度盘"
-  (interactive)
-  (eaf-open-browser "https://pan.baidu.com/"))
-(defun custom-eaf-open-browser-org-roam ()
-  "打开本地ORUI"
-  (interactive)
-  (eaf-open-browser "http://localhost:35901"))
-(defun custom-eaf-open-browser-proxy ()
-  "打开本地代理"
-  (interactive)
-  (eaf-open-browser "http://localhost:2017"))
-(defun custom-eaf-open-browser-chatgpt ()
-  "打开chatGPT"
-  (interactive)
-  (eaf-open-browser "https://chatgpt.com"))
-(defun custom-eaf-open-browser-command ()
-  (interactive)
-  (let ((input (read-string "Input command: " "custom-eaf-open-browser-")))
-    (if (string-prefix-p "custom-eaf-open-browser-" input)
-        (call-interactively (intern input))
-      (message "Invalid command"))))
-
-
-;; =======================================
 ;; 关于theme
 ;; =======================================
 (defun custom-load-theme-light ()

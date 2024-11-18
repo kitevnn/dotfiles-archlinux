@@ -38,7 +38,7 @@
 (require 'ui-modeline-bar)
 (require 'note-auctex)
 (require 'note-orgmode)
-(require 'note-orgroam)
+; (require 'note-orgroam)
 (require 'zprogramming-cmp-corfu)
 (require 'zprogramming-lsp-eglot)
 (require 'zprogramming-snips-yasnippet)
