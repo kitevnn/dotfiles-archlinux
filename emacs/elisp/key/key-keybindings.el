@@ -195,10 +195,13 @@
 ;; ========================================
 ;; 关于Dashboard
 ;; ========================================
-(define-key dashboard-mode-map       (kbd "p")           'dashboard-previous-line)
-(define-key dashboard-mode-map       (kbd "n")           'dashboard-next-line)
-(define-key dashboard-mode-map       (kbd "j")           nil)
-(define-key dashboard-mode-map       (kbd "k")           nil)
+(define-key dashboard-mode-map       (kbd "p")           'dashboard-previous-line)                    ; 设置在仅有dashboard-item下按下p来移动光标
+(define-key dashboard-mode-map       (kbd "n")           'dashboard-next-line)                        ; 设置在仅有dashboard-item下按下n来移动光标
+(define-key dashboard-mode-map       (kbd "j")           nil)                                         ; 取消在仅有dashboard-item下按下j来移动光标
+(define-key dashboard-mode-map       (kbd "k")           nil)                                         ; 取消在仅有dashboard-item下按下k来移动光标
+(global-set-key                      (kbd "C-c d r")     'consult-recent-file)                        ; C-c d r来打开最近文件
+(global-set-key                      (kbd "C-c d b")     'bookmark-bmenu-list)                        ; C-c d b来打开书签文件
+(global-set-key                      (kbd "C-c d a")     'org-agenda-list)                            ; C-c d a来打开议程文件
 
 
 ;; ========================================
