@@ -9,7 +9,8 @@
   (default-input-method "rime")
   :init
   (setq rime-show-candidate 'posframe)
-  (setq rime-cursor "˰"))
+  (setq rime-cursor "˰")
+  (setq rime-title " 双 "))
 
 (use-package posframe
   :ensure t

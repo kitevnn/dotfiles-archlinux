@@ -53,6 +53,7 @@
 ;; 选区管理
 ;; ========================================
 (global-set-key (kbd "C-c v")                            'set-mark-command)                           ; 进入单行选区
+(global-set-key (kbd "C-z C-z C-v")                      'set-mark-command)                           ; 进入单行选区
 (global-set-key (kbd "C-c SPC")                          'rectangle-mark-mode)                        ; 进入矩形选区
 
 

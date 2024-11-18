@@ -311,7 +311,7 @@
                                         ; ffea00
                                         ; f6eb61
                                         ; ffd700
-                      :foreground "#ffc300")  
+                      :foreground "#ffc300")
   (set-face-attribute 'rime-indicator-dim-face nil
                       :height 90
                       :foreground "#c5c8c6")
@@ -322,15 +322,15 @@
   (setq dashboard-startup-banner "/home/une/.wallpaper/dashboard-zoom-out-dark.png")
   (dashboard-refresh-buffer)
   (with-eval-after-load 'corfu
-    (set-face-attribute 'corfu-default nil :background "#673ab7")
+    (set-face-attribute 'corfu-default nil :background "#669c8f" :foreground "#c5c8c6")
     (set-face-attribute 'corfu-border nil :background "#37474f")
-    (set-face-attribute 'corfu-current nil :background "#6a0c9a" :foreground "#64fbc8")))
+    (set-face-attribute 'corfu-current nil :background "#444444" :foreground "#c5c8c6")))
 
 
 ;; =======================================
 ;; 禁用Messages与scratch
 ;; =======================================
-(defun custom-close-scratch-and-message-buffer ()
+(defun custom-close-scratch-and-messages-buffer ()
   "禁用Messages与scratch"
     (when (get-buffer "*scratch*")
       (kill-buffer "*scratch*") 
