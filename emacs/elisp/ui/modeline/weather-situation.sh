@@ -41,6 +41,7 @@
 #     ;;
 # esac
 
+weather_temperature=$(cat ~/.config/emacs/archive/weather | awk -F'[()]' '{print $2}' | grep -oP '[0-9]+' | sed -n '4p')
 weather_location1=$(cat ~/.config/emacs/archive/weather | sed -n '38p' | awk -F ', ' '{print $2}' | cut -c '1-9')
 weather_location2=$(cat ~/.config/emacs/archive/weather | sed -n '38p' | awk -F ', ' '{print $3}')
-echo "󰫕 $weather_location1, $weather_location2"
+echo "󰫕 $weather_temperature°C $weather_location1, $weather_location2"
