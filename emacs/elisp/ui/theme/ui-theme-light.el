@@ -27,7 +27,7 @@
 ;; 为telega-heading添加face颜色
 ;; ========================================
 (with-eval-after-load 'telega
-  (set-face-attribute 'telega-msg-heading nil :background "#ffffff"))
+  (set-face-attribute 'telega-msg-heading nil :background "#ffffff" :extend nil))
 
 
 ;; ========================================
