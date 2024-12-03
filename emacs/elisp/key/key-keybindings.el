@@ -209,7 +209,7 @@
 ;; ========================================
 ;; 关于输入法
 ;; ========================================
-(global-set-key (kbd "C-SPC")                            'toggle-input-method)                       ; 切换输入法
+(global-set-key (kbd "C-\\")                             'toggle-input-method)                       ; 切换输入法
 
 
 (provide 'key-keybindings)
