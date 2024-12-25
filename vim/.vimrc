@@ -1,4 +1,4 @@
-" 
+"r 
 " settings
 " 
 set t_Co=256
@@ -71,8 +71,8 @@ nnoremap sl :set splitright<CR>:vsplit<CR>
 tnoremap <ESC><ESC> <C-\><C-N>
 map <down> :res +5<CR>
 map <up> :res -5<CR>
-map <right> :vertical reszie-5<CR>
-map <left> :vertical reszie+5<CR>
+map <right> :vertical resize -5<CR>
+map <left> :vertical resize +5<CR>
 nnoremap <leader>R :source ~/.vimrc<CR>
 nnoremap [w :execute 'move -1-'. v:count1<CR>
 nnoremap ]w :execute 'move +'. v:count1<CR>
