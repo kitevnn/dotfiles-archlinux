@@ -45,5 +45,23 @@
                                \\setlength{\\topmargin}{1.5cm}
                                \\addtolength{\\topmargin}{-2.54cm}")    ; 设置org-mode的latex-header(+esint)
 
+(add-to-list 'org-preview-latex-process-alist
+                     '(xelatex-chinese
+                       :programs ("xelatex" "convert")
+                       :description "XeLaTeX with Chinese support dvi > png"
+                       :message "you need to install the programs: xelatex and divpng."
+                       :image-input-type "pdf"
+                       :image-output-type "png"
+                       :image-size-adjust (1.7 . 1.5)
+                       :latex-header "\\documentclass[11pt]{standalone}
+                                      \\usepackage{fontspec}
+                                      \\setmainfont{Source Han Sans CN}
+                                      \\setsansfont{Source Han Sans CN}
+                                      \\usepackage[usenames]{color}
+                                      \\usepackage{amsmath}
+                                      \\pagestyle{empty}"
+
+                       :latex-compiler ("xelatex -interaction nonstopmode -output-directory %o %f")
+                       :image-converter ("convert -density 80 %f %O")))
 
 (provide 'note-orgmode)

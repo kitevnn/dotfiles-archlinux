@@ -291,4 +291,28 @@
       (kill-buffer "*Messages*"))))
 
 
+;; =======================================
+;; 动态选择引擎来渲染
+;; =======================================
+(defun custom-org-latex-preview-with-utf8 ()
+  "在org-mode下渲染含有utf-8字符的latex-fragment"
+  (interactive)
+  (let* ((latex-code (thing-at-point 'line t))
+         (is-utf8 (and latex-code
+                       (string-match "\\[.*\\]" latex-code)
+                       (string-match-p "[\\x80-\\xFF]" latex-code))))        ; 检测 UTF-8 字符
+    (if is-utf8
+        ;; 如果包含 UTF-8 字符，就使用 xelatex-chinese 引擎
+        (progn
+          (setq org-preview-latex-default-process 'xelatex-chinese)
+          (message "目前使用了xelatex-chinese引擎渲染此latex-fragment"))
+      ;; 如果不包含 UTF-8 字符，就使用 dvipng、dvisvgm、imagemagick 引擎
+      (setq org-preview-latex-default-process 'dvipng)                       
+      (message "目前使用了org-mode默认的dvipng、dvisvgm、imagemagick引擎渲染此latex-fragment"))
+    (org-latex-preview)
+    ;; 每次执行完毕后都恢复为 dvipng、dvisvgm、imagemagick 引擎
+    (setq org-preview-latex-default-process 'dvipng)
+    (message "Creating Latex previews in section...(and recover dvipng...) done.")))
+
+
 (provide 'custom-defun)

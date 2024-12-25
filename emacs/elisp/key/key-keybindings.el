@@ -158,6 +158,7 @@
 (define-key org-mode-map (kbd "C-c C-x C-0")             'valign-mode)                                ; 切换valign-mode
 (define-key org-mode-map (kbd "C-c C-x C-a")             'org-agenda)                                 ; 当前文件放进org议题内
 (define-key org-mode-map (kbd "C-c C-x C-v")             'custom-toggle-inline-images-with-valign)    ; 用 C-c C-x C-v 避免valign-mode造成的对齐卡顿来预览图片
+(define-key org-mode-map (kbd "C-z C-z C-l")             'custom-org-latex-preview-with-utf8)         ; 用 C-c C-x C-p 进行utf-8的 \[\] 上下文范围的公式渲染
 
 
 ;; ========================================
