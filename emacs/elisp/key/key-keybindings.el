@@ -9,24 +9,19 @@
 
 
 ;; ========================================
-;; 全局Buffer管理
+;; 关于buffer
 ;; ========================================
-(global-set-key (kbd "C-c C-x C-<down>")                 'next-buffer)                                ; 跳转到下一个全局Buffer
-(global-set-key (kbd "C-c C-x C-<up>")                   'previous-buffer)                            ; 跳转到上一个全局Buffer
-
-
-;; ========================================
-;; 局部Buffer管理
-;; ========================================
-(global-set-key (kbd "C-c C-x C-<left>")                 'centaur-tabs-backward)                      ; 跳转到上一个局部Buffer
-(global-set-key (kbd "C-c C-x C-<right>")                'centaur-tabs-forward)                       ; 跳转到下一个局部Buffer
+(global-set-key (kbd "C-z C-b C-n")                       'next-buffer)                               ; 跳转到下一个全局buffer
+(global-set-key (kbd "C-z C-b C-p")                       'previous-buffer)                           ; 跳转到上一个全局buffer
+(global-set-key (kbd "C-z C-b C-b")                       'centaur-tabs-backward)                     ; 跳转到上一个局部buffer
+(global-set-key (kbd "C-z C-b C-f")                       'centaur-tabs-forward)                      ; 跳转到下一个局部buffer
 
 
 ;; ========================================
 ;; 关于theme
 ;; ========================================
-(global-set-key (kbd "C-c t 1")                          'custom-load-theme-light)                   ; 切换为亮色light主题
-(global-set-key (kbd "C-c t 2")                          'custom-load-theme-dark)                    ; 切换为暗色dark主题
+(global-set-key (kbd "C-z C-t C-1")                       'custom-load-theme-light)                   ; 切换为亮色light主题
+(global-set-key (kbd "C-z C-t C-2")                       'custom-load-theme-dark)                    ; 切换为暗色dark主题
 
 
 ;; ========================================
@@ -37,18 +32,14 @@
 (global-set-key (kbd "C-z C-z C-b")                      'windmove-left)                             ; 光标跳转到左边窗口
 (global-set-key (kbd "C-z C-z C-n")                      'windmove-down)                             ; 光标跳转到下边窗口
 (global-set-key (kbd "C-z C-z C-p")                      'windmove-up)                               ; 光标跳转到上边窗口
-(global-set-key (kbd "C-z C-z C-<right>")                'windmove-right)                            ; 光标跳转到右边窗口
-(global-set-key (kbd "C-z C-z C-<left>")                 'windmove-left)                             ; 光标跳转到左边窗口
-(global-set-key (kbd "C-z C-z C-<down>")                 'windmove-down)                             ; 光标跳转到下边窗口
-(global-set-key (kbd "C-z C-z C-<up>")                   'windmove-up)                               ; 光标跳转到上边窗口
-(global-set-key (kbd "C-z C-m C-f")                      'windmove-swap-states-right)                ; 向右交换窗口 
-(global-set-key (kbd "C-z C-m C-b")                      'windmove-swap-states-left)                 ; 向左交换窗口 
-(global-set-key (kbd "C-z C-m C-n")                      'windmove-swap-states-down)                 ; 向下交换窗口 
-(global-set-key (kbd "C-z C-m C-p")                      'windmove-swap-states-up)                   ; 向上交换窗口 
+(global-set-key (kbd "C-z C-s C-f")                      'windmove-swap-states-right)                ; 向右交换窗口 
+(global-set-key (kbd "C-z C-s C-b")                      'windmove-swap-states-left)                 ; 向左交换窗口 
+(global-set-key (kbd "C-z C-s C-n")                      'windmove-swap-states-down)                 ; 向下交换窗口 
+(global-set-key (kbd "C-z C-s C-p")                      'windmove-swap-states-up)                   ; 向上交换窗口
 
 
 ;; ========================================
-;; 选区管理
+;; 关于选区
 ;; ========================================
 (global-set-key (kbd "C-c v")                            'set-mark-command)                           ; 进入单行选区
 (global-set-key (kbd "C-z C-z C-c")                      'set-mark-command)                           ; 进入单行选区
@@ -56,12 +47,12 @@
 
 
 ;; ========================================
-;; 调整屏幕
+;; 关于调整屏幕
 ;; ========================================
-(global-set-key (kbd "C-z C-x C-<up>")                   'custom-resize-top-five-unit)                ; 当前窗口向上调整5个单位
-(global-set-key (kbd "C-z C-x C-<down>")                 'custom-resize-bottom-five-unit)             ; 当前窗口向下调整5个单位
-(global-set-key (kbd "C-z C-x C-<left>")                 'custom-resize-left-five-unit)               ; 当前窗口向左调整5个单位
-(global-set-key (kbd "C-z C-x C-<right>")                'custom-resize-right-five-unit)              ; 当前窗口向右调整5个单位
+(global-set-key (kbd "C-z C-w C-p")                      'custom-resize-top-five-unit)                ; 当前窗口向上调整5个单位
+(global-set-key (kbd "C-z C-w C-n")                      'custom-resize-bottom-five-unit)             ; 当前窗口向下调整5个单位
+(global-set-key (kbd "C-z C-w C-b")                      'custom-resize-left-five-unit)               ; 当前窗口向左调整5个单位
+(global-set-key (kbd "C-z C-w C-f")                      'custom-resize-right-five-unit)              ; 当前窗口向右调整5个单位
 
 
 ;; ========================================
@@ -71,7 +62,7 @@
 
 
 ;; ========================================
-;; 文件管理器dirvish
+;; 关于dirvish文件管理器
 ;; ========================================
 (global-set-key (kbd "C-c d o")                          'dirvish-side)                               ; 左侧打开dirvish
 (global-set-key (kbd "C-z C-z C-d")                      'dirvish-side)                               ; 左侧打开dirvish
@@ -80,60 +71,16 @@
 
 
 ;; ========================================
-;; 移动光标
+;; 关于移动光标
 ;; ========================================
 (global-set-key (kbd "M-n")                              'custom-move-next-five-lines)                ; 光标向下移动5行
 (global-set-key (kbd "M-p")                              'custom-move-prev-five-lines)                ; 光标向上移动5行
 
 
 ;; ========================================
-;; 关于corfu
-;; ========================================
-(global-set-key (kbd "C-c c o")                          'corfu-mode)                                 ; 开启corfu轻量补全框架
-
-
-;; ========================================
-;; 关于eglot
-;; ========================================
-(global-set-key (kbd "C-c e o")                          'eglot)                                      ; 开启eglot语言服务客户端
-(global-set-key (kbd "C-c e r")                          'eglot-reconnect)                            ; 重连eglot语言服务客户端
-(global-set-key (kbd "C-c e s")                          'eglot-shutdown)                             ; 关闭eglot语言服务客户端
-(global-set-key (kbd "C-c e d s")                        'flymake-show-diagnostic)                    ; 通过flymake(built-in)，给eglot提供diagnostic诊断信息
-(global-set-key (kbd "C-c e d n")                        'flymake-goto-next-error)                    ; 前往下一个错误(会用波浪线来展示错误的)
-(global-set-key (kbd "C-c e d p")                        'flymake-goto-prev-error)                    ; 前往上一个错误(会用波浪线来展示错误的)
-(global-set-key (kbd "C-c e d g")                        'flymake-goto-diagnostic)                    ; 前往diagnostic诊断信息
-(global-set-key (kbd "C-c e d c")                        'eglot-code-actions)                         ; 进行代码行动
-(global-set-key (kbd "C-c e d r")                        'eglot-rename)                               ; 重命名相同名称的symbol符号
-(global-set-key (kbd "C-c e d f d")                      'eglot-find-declaration)                     ; 寻找declaration声明
-(global-set-key (kbd "C-c e d f x")                      'xref-find-definitions)                      ; 寻找来源(放在哪一行内)definitions定义(默认xref快捷键: M-.)
-(global-set-key (kbd "C-c e d f r")                      'xref-find-references)                       ; 寻找出处(放在哪个文件内)references引用(默认xref快捷键: M-?)
-(global-set-key (kbd "C-c e d f i")                      'eglot-find-implementation)                  ; 寻找implementation执行
-(global-set-key (kbd "C-c e d f t")                      'eglot-find-typeDefinition)                  ; 寻找typeDefinition类型定义
-
-
-;; ========================================
-;; 关于eshell
-;; ========================================
-(global-set-key (kbd "C-c t o")                          'eshell)                                     ; 开启eshell壳
-(global-set-key (kbd "C-c t u")                          'eat)                                        ; 开启eat终端模拟器
-
-
-;; ========================================
 ;; 关于buffer
 ;; ========================================
 (global-set-key (kbd "C-x C-b")                          'ibuffer)                                    ; 用ibuffer(built-in)代替原生的C-x C-b
-
-
-;; ========================================
-;; deadgrep相关
-;; ========================================
-(global-set-key (kbd "C-c r o")                          'deadgrep)                                   ; 打开deapgrep
-
-
-;; ========================================
-;; 关于magit版本控制
-;; ========================================
-(global-set-key (kbd "C-c g o")                          'magit)                                      ; 打开magit
 
 
 ;; ========================================
@@ -196,15 +143,21 @@
 (define-key dashboard-mode-map       (kbd "n")           'dashboard-next-line)                        ; 设置在仅有dashboard-item下按下n来移动光标
 (define-key dashboard-mode-map       (kbd "j")           nil)                                         ; 取消在仅有dashboard-item下按下j来移动光标
 (define-key dashboard-mode-map       (kbd "k")           nil)                                         ; 取消在仅有dashboard-item下按下k来移动光标
-(global-set-key                      (kbd "C-z C-z C-r") 'consult-recent-file)                        ; C-z C-d C-r 来打开最近文件
-(global-set-key                      (kbd "C-z C-z C-s") 'bookmark-bmenu-list)                        ; C-z C-d C-b 来打开书签文件
-(global-set-key                      (kbd "C-z C-z C-a") 'org-agenda-list)                            ; C-z C-d C-a 来打开议程文件
+(global-set-key                      (kbd "C-z C-d C-r") 'consult-recent-file)                        ; C-z C-d C-r 来打开最近文件
+(global-set-key                      (kbd "C-z C-d C-b") 'bookmark-bmenu-list)                        ; C-z C-d C-b 来打开书签文件
+(global-set-key                      (kbd "C-z C-d C-a") 'org-agenda-list)                            ; C-z C-d C-a 来打开议程文件
 
 
 ;; ========================================
-;; 关于telega
+;; 关于进程process
 ;; ========================================
-(global-set-key (kbd "C-c t e")                          'telega)                                    ; 打开telega
+(global-set-key (kbd "C-z C-p C-e")                      'telega)                                     ; 打开telega
+(global-set-key (kbd "C-z C-p C-d")                      'deadgrep)                                   ; 打开deapgrep
+(global-set-key (kbd "C-z C-p C-s")                      'eshell)                                     ; 开启eshell壳
+(global-set-key (kbd "C-z C-p C-t")                      'eat)                                        ; 开启eat终端模拟器
+(global-set-key (kbd "C-c C-p C-l")                      'eglot)                                      ; 开启eglot语言服务客户端
+(global-set-key (kbd "C-c C-p C-c")                      'corfu-mode)                                 ; 开启corfu轻量补全框架
+(global-set-key (kbd "C-z C-z C-1")                      'magit)                                      ; 打开magit
 
 
 ;; ========================================
