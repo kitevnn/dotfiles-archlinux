@@ -196,9 +196,9 @@
 (define-key dashboard-mode-map       (kbd "n")           'dashboard-next-line)                        ; 设置在仅有dashboard-item下按下n来移动光标
 (define-key dashboard-mode-map       (kbd "j")           nil)                                         ; 取消在仅有dashboard-item下按下j来移动光标
 (define-key dashboard-mode-map       (kbd "k")           nil)                                         ; 取消在仅有dashboard-item下按下k来移动光标
-(global-set-key                      (kbd "C-z C-d C-r") 'consult-recent-file)                        ; C-z C-d C-r 来打开最近文件
-(global-set-key                      (kbd "C-z C-d C-b") 'bookmark-bmenu-list)                        ; C-z C-d C-b 来打开书签文件
-(global-set-key                      (kbd "C-z C-d C-a") 'org-agenda-list)                            ; C-z C-d C-a 来打开议程文件
+(global-set-key                      (kbd "C-z C-z C-r") 'consult-recent-file)                        ; C-z C-d C-r 来打开最近文件
+(global-set-key                      (kbd "C-z C-z C-s") 'bookmark-bmenu-list)                        ; C-z C-d C-b 来打开书签文件
+(global-set-key                      (kbd "C-z C-z C-a") 'org-agenda-list)                            ; C-z C-d C-a 来打开议程文件
 
 
 ;; ========================================

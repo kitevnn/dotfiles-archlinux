@@ -300,7 +300,7 @@
   (let* ((latex-code (thing-at-point 'line t))
          (is-utf8 (and latex-code
                        (string-match "\\[.*\\]" latex-code)
-                       (string-match-p "[\\x80-\\xFF]" latex-code))))        ; 检测 UTF-8 字符
+                       (string-match-p "[^\x00-\x7F]" latex-code))))
     (if is-utf8
         ;; 如果包含 UTF-8 字符，就使用 xelatex-chinese 引擎
         (progn

@@ -45,6 +45,10 @@
                                \\setlength{\\topmargin}{1.5cm}
                                \\addtolength{\\topmargin}{-2.54cm}")    ; 设置org-mode的latex-header(+esint)
 
+
+;; ========================================
+;; 使用 xelatex 渲染 latex-fragment
+;; ========================================
 (add-to-list 'org-preview-latex-process-alist
                      '(xelatex-chinese
                        :programs ("xelatex" "convert")
@@ -60,8 +64,8 @@
                                       \\usepackage[usenames]{color}
                                       \\usepackage{amsmath}
                                       \\pagestyle{empty}"
-
                        :latex-compiler ("xelatex -interaction nonstopmode -output-directory %o %f")
-                       :image-converter ("convert -density 80 %f %O")))
+                       :image-converter ("convert -density 90 %f %O")))
+
 
 (provide 'note-orgmode)
