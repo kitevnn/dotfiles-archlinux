@@ -55,16 +55,20 @@
       ("oiintlg" "" "\\oiint\\limits_{\\Gamma} ? d" cdlatex-position-cursor nil nil t)
       ("oiintls" "" "\\oiint\\limits_{\\Sigma} ? d" cdlatex-position-cursor nil nil t)
       ("oiintlo" "" "\\oiint\\limits_{\\Omega} ? d" cdlatex-position-cursor nil nil t)
-      ("inf" "" "\\infty?" cdlatex-position-cursor nil nil t)))
+      ("inf" "" "\\infty?" cdlatex-position-cursor nil nil t)
+      ("app" "" "\\approx" cdlatex-position-cursor nil nil t))))
 
   ;; ==================================
   ;; cdlatex的`补全
   ;; ==================================
-  (setq cdlatex-math-symbol-alist 
+  (setq cdlatex-math-symbol-alist
         '((112 ("" "\\pi")) 
-          (33  ("" "" "\\neq")) 
-          (46  ("\\cdot" "\\cdots"))
-          (97  ("" "" "\\ast")))))
+          (33 ("" "" "\\neq")) 
+          (46 ("\\cdot" "\\cdots"))
+          (97 ("" "" "\\ast"))
+          (39 ("" "" "~")) 
+          (109 ("" "" "\\lim"))))
+
 
 ;; ========================================
 ;; cdlatex的括号匹配
