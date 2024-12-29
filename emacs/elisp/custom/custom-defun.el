@@ -96,23 +96,23 @@
 ;; from https://stackoverflow.com/a/998472
 ;; =======================================
 (defun custom-duplicate-line (arg)
-  "Duplicate current line, leaving point in lower line."
+  "重复上一行，并保持光标在原位置不变"
   (interactive "*p")  
-  (setq buffer-undo-list (cons (point) buffer-undo-list))  ; save the point for undo
-  (let ((bol (save-excursion (beginning-of-line) (point))) ; local variables for start and end of line
+  (setq buffer-undo-list (cons (point) buffer-undo-list))
+  (let ((bol (save-excursion (beginning-of-line) (point)))
         eol)
     (save-excursion            
-      (end-of-line)        ; don't use forward-line for this, because you would have
-      (setq eol (point))   ; to check whether you are at the end of the buffer      
+      (end-of-line)
+      (setq eol (point))
       (let ((line (buffer-substring bol eol))
             (buffer-undo-list t)
-            (count arg))   ; store the line and disable the recording of undo information      
+            (count arg))
         (while (> count 0)          
-          (newline)         ; because there is no newline in 'line'
-          (insert line)     ; insert the line arg times
+          (newline)
+          (insert line)
           (setq count (1- count))))      
-      (setq buffer-undo-list (cons (cons eol (point)) buffer-undo-list))))  ; create the undo information  ; end-of-let      
-  (next-line arg))  ; put the point in the lowest line and return
+      (setq buffer-undo-list (cons (cons eol (point)) buffer-undo-list))))
+  (next-line arg))
 
 
 ;; =======================================
@@ -293,6 +293,7 @@
 
 ;; =======================================
 ;; 动态选择引擎来渲染
+;; from chatGPT 4o
 ;; =======================================
 (defun custom-org-latex-preview-with-utf8 ()
   "在org-mode下渲染含有utf-8字符的latex-fragment"
@@ -313,6 +314,65 @@
     ;; 每次执行完毕后都恢复为 dvipng、dvisvgm、imagemagick 引擎
     (setq org-preview-latex-default-process 'dvipng)
     (message "Creating Latex previews in section...(and recover dvipng...) done.")))
+
+
+;; =======================================
+;; 在org-mode的公式上下文的光标跳转
+;; from chatGPT 4o
+;; =======================================
+(defun custom-jump-the-beginning-of-the-equation ()
+  "当光标在公式块\[ \]时，跳转到此公式块的\["
+  (interactive)
+  (let ((thing (thing-at-point 'line t)))
+    (if (and thing (string-match "\\[.*\\]" thing))
+        (search-backward "\\[" nil t)
+      (message "no such equation, please check again..."))))
+
+(defun custom-jump-the-ending-of-the-equation ()
+  "当光标在公式块\[ \]时，跳转到此公式块的\]"
+  (interactive)
+  (let ((thing (thing-at-point 'line t)))
+    (if (and thing (string-match "\\[.*\\]" thing))
+        (search-forward "\\]" nil t)
+      (message "no such equation, please check again..."))))
+
+(defun custom-inside-escaped-bracket-pair-p ()
+  "判断公式块\[ \]的的谓词"
+  (let ((thing (thing-at-point 'line t)))
+    (and thing
+         (string-match-p "\\[.*\\]" thing))))
+
+(defun custom-jump-the-previous-equation-formatting ()
+  "光标跳转到上一个公式块前的格式化"
+  (interactive)
+  (if (custom-inside-escaped-bracket-pair-p)
+      (search-backward "\\[" nil t)))
+
+(defun custom-jump-the-next-equation-formatting ()
+  "光标跳转到下一个公式块前的格式化"
+  (interactive)
+  (if (custom-inside-escaped-bracket-pair-p)
+      (search-forward "\\]" nil t)))
+
+(defun custom-jump-the-previous-equation ()
+  "当光标在公式块\[ \]时，跳转到此上一个公式块的\[ \]"
+  (interactive)
+  (custom-jump-the-previous-equation-formatting)
+  (if (custom-inside-escaped-bracket-pair-p)
+      (progn
+        (forward-char 2)
+        (search-backward "\\[" nil t))
+    (message "no previous equation, please check again...")))
+
+(defun custom-jump-the-next-equation ()
+  "当光标在公式块\[ \]时，跳转到此下一个公式块的\[ \]"
+  (interactive)
+  (custom-jump-the-next-equation-formatting)
+  (if (custom-inside-escaped-bracket-pair-p)
+      (progn
+        (backward-char 2)
+        (search-forward "\\]" nil t))
+    (message "no next equation, please check again...")))
 
 
 (provide 'custom-defun)
