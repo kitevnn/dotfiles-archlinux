@@ -228,7 +228,10 @@
   (with-eval-after-load 'corfu
     (set-face-attribute 'corfu-default nil :background "#ffffff")
     (set-face-attribute 'corfu-border nil :background "#37474f")
-    (set-face-attribute 'corfu-current nil :background "#cfd8dc" :foreground "#37474f")))
+    (set-face-attribute 'corfu-current nil :background "#cfd8dc" :foreground "#37474f"))  
+  (with-eval-after-load 'dirvish
+    (set-face-attribute 'dirvish-hl-line nil :background "#cfd8dc" :foreground "#37474f")))
+
 (defun custom-load-theme-dark ()
   "切换为暗色dark主题"
   (interactive)
@@ -272,13 +275,15 @@
   (set-face-attribute 'rime-preedit-face nil
                       :height 90
                       :background "#444444"
-                      :foreground "#64fbc8")
+                      :foreground "#64fbc8")  
   (setq dashboard-startup-banner "/home/une/.wallpaper/dashboard-zoom-out-dark.png")
   (dashboard-refresh-buffer)
   (with-eval-after-load 'corfu
     (set-face-attribute 'corfu-default nil :background "#669c8f" :foreground "#c5c8c6")
     (set-face-attribute 'corfu-border nil :background "#37474f")
-    (set-face-attribute 'corfu-current nil :background "#444444" :foreground "#c5c8c6")))
+    (set-face-attribute 'corfu-current nil :background "#444444" :foreground "#c5c8c6"))
+  (with-eval-after-load 'dirvish
+    (set-face-attribute 'dirvish-hl-line nil :background "#444444" :foreground "#64fbc8")))
 
 
 ;; =======================================

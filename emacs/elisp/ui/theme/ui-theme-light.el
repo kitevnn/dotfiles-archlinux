@@ -72,4 +72,11 @@
   (set-face-attribute 'corfu-current nil :background "#cfd8dc" :foreground "#37474f"))
 
 
+;; ========================================
+;; 为dirvish-hl-line添加face颜色
+;; ========================================
+(with-eval-after-load 'dirvish
+  (set-face-attribute 'dirvish-hl-line nil :background "#cfd8dc" :foreground "#37474f"))
+
+
 (provide 'ui-theme-light)
