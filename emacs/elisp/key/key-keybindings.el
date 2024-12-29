@@ -115,12 +115,12 @@
 ;; ========================================
 ;; 关于org-roam
 ;; ========================================
-(define-key org-mode-map (kbd "C-c j f")                 'org-roam-node-find)                         ; 寻找笔记地图节点
-(define-key org-mode-map (kbd "C-c j a")                 'org-roam-node-insert)                       ; 创建笔记地图节点
-(define-key org-mode-map (kbd "C-c j n")                 'org-roam-capture)                           ; 创建笔记地图节点
-(define-key org-mode-map (kbd "C-c j t")                 'org-roam-buffer-toggle)                     ; 切换笔记地图节点
-(define-key org-mode-map (kbd "C-c j o")                 'org-roam-ui-mode)                           ; 打开笔记地图
-(define-key org-mode-map (kbd "C-c j d")                 'org-roam-dailies-map)                       ; 打开日记菜单
+(define-key org-mode-map (kbd "C-z C-r C-f")             'org-roam-node-find)                         ; 寻找笔记地图节点
+(define-key org-mode-map (kbd "C-z C-r C-a")             'org-roam-node-insert)                       ; 创建笔记地图节点
+(define-key org-mode-map (kbd "C-z C-r C-n")             'org-roam-capture)                           ; 创建笔记地图节点
+(define-key org-mode-map (kbd "C-z C-r C-t")             'org-roam-buffer-toggle)                     ; 切换笔记地图节点
+(define-key org-mode-map (kbd "C-z C-r C-o")             'org-roam-ui-mode)                           ; 打开笔记地图
+(define-key org-mode-map (kbd "C-z C-r C-d")             'org-roam-dailies-map)                       ; 打开日记菜单
 
 
 ;; ========================================

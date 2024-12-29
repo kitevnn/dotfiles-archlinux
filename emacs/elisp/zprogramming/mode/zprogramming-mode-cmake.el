@@ -1,9 +1,9 @@
 ;; =======================================
-;; LSP客户端 zprogramming-lsp-eglot.el 
+;; 模式识别 zprogramming-mode-cmake.el
 ;; =======================================
-(use-package eglot
+(use-package cmake-mode
              :ensure t
              :defer t)
 
 
-(provide 'zprogramming-lsp-eglot)
+(provide 'zprogramming-mode-cmake)

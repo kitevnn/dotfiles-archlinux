@@ -59,6 +59,9 @@
 (add-to-list 'load-path
              (expand-file-name 
               (concat user-emacs-directory "elisp/zprogramming/ts")))
+(add-to-list 'load-path
+             (expand-file-name 
+              (concat user-emacs-directory "elisp/zprogramming/mode")))
 ;; =======================================
 ;; 关于快捷键设置
 ;; =======================================
