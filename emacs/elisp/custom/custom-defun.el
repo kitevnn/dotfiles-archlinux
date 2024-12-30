@@ -279,9 +279,9 @@
   (setq dashboard-startup-banner "/home/une/.wallpaper/dashboard-zoom-out-dark.png")
   (dashboard-refresh-buffer)
   (with-eval-after-load 'corfu
-    (set-face-attribute 'corfu-default nil :background "#669c8f" :foreground "#c5c8c6")
+    (set-face-attribute 'corfu-default nil :background "#191919" :foreground "#3bb1df")
     (set-face-attribute 'corfu-border nil :background "#37474f")
-    (set-face-attribute 'corfu-current nil :background "#444444" :foreground "#c5c8c6"))
+    (set-face-attribute 'corfu-current nil :background "#444444" :foreground "#64fbc8"))
   (with-eval-after-load 'dirvish
     (set-face-attribute 'dirvish-hl-line nil :background "#444444" :foreground "#64fbc8")))
 
