@@ -343,7 +343,7 @@
       (message "no such equation, please check again..."))))
 
 (defun custom-inside-escaped-bracket-pair-p ()
-  "判断公式块\[ \]的的谓词"
+  "判断公式块\[ \]的谓词"
   (let ((thing (thing-at-point 'line t)))
     (and thing
          (string-match-p "\\[.*\\]" thing))))
