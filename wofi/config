@@ -1,5 +1,9 @@
-x = 504px
-y = 240px
-key_up = Ctrl-p
-key_down = Ctrl-n
-key_exit = Ctrl-g
+x             = 575px
+y             = 280px
+width         = 780px
+height        = 380px
+key_right     = Ctrl-f
+key_left      = Ctrl-b
+key_down      = Ctrl-n
+key_up        = Ctrl-p
+key_exit      = Ctrl-g
