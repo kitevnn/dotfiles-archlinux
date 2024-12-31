@@ -195,34 +195,6 @@
                       :box nil
                       :foreground "#673ab7"
                       :background "#ffffff")
-  (set-face-attribute 'rime-candidate-num-face nil
-                      :height 90                    
-                      :foreground "#90a4ae")
-  (set-face-attribute 'rime-code-face nil
-                      :height 90                    
-                      :background "#37474f"
-                      :foreground "#eceff1")
-  (set-face-attribute 'rime-comment-face nil
-                      :height 90
-                      :foreground "#374f4f")
-  (set-face-attribute 'rime-cursor-face nil
-                      :height 90
-                      :foreground "#ffffff"
-                      :background "#eceff1")
-  (set-face-attribute 'rime-default-face nil
-                      :height 90
-                      :foreground "#37474f"
-                      :background "#ffffff")
-  (set-face-attribute 'rime-highlight-candidate-face nil
-                      :height 90                    
-                      :foreground "#673ab7")
-  (set-face-attribute 'rime-indicator-dim-face nil
-                      :height 90                                        
-                      :foreground "#37474f")
-  (set-face-attribute 'rime-preedit-face nil
-                      :height 90                    
-                      :foreground "#ffffff"
-                      :background "#90a4ae")
   (setq dashboard-startup-banner "/home/une/.wallpaper/dashboard-zoom-out-light.png")
   (dashboard-refresh-buffer)
   (with-eval-after-load 'corfu
@@ -246,36 +218,6 @@
                       :box nil
                       :foreground "#64fbc8"
                       :background "#191919")
-  (set-face-attribute 'rime-candidate-num-face nil
-                      :height 90
-                      :foreground "#c5c8c6")
-  (set-face-attribute 'rime-code-face nil
-                      :height 90
-                      :background "#444444"
-                      :foreground "#64fbc8")
-  (set-face-attribute 'rime-comment-face nil
-                      :height 90
-                      :foreground "#c5c8c6")
-  (set-face-attribute 'rime-cursor-face nil
-                      :height 90
-                      :foreground "#b5ffd1")
-  (set-face-attribute 'rime-default-face nil
-                      :height 90
-                      :foreground "#64fbc8"
-                      :background "#191919")
-  (set-face-attribute 'rime-highlight-candidate-face nil
-                      :height 90
-                                        ; ffea00
-                                        ; f6eb61
-                                        ; ffd700
-                      :foreground "#ffc300")
-  (set-face-attribute 'rime-indicator-dim-face nil
-                      :height 90
-                      :foreground "#c5c8c6")
-  (set-face-attribute 'rime-preedit-face nil
-                      :height 90
-                      :background "#444444"
-                      :foreground "#64fbc8")  
   (setq dashboard-startup-banner "/home/une/.wallpaper/dashboard-zoom-out-dark.png")
   (dashboard-refresh-buffer)
   (with-eval-after-load 'corfu
