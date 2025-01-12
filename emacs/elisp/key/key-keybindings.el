@@ -79,7 +79,8 @@
 ;; ========================================
 ;; 关于buffer
 ;; ========================================
-(global-set-key (kbd "C-x C-b")                          'ibuffer)                                    ; 用ibuffer(built-in)代替原生的C-x C-b
+(global-set-key (kbd "C-z C-z C-t")                      'ibuffer)                                    ; 用ibuffer来管理buffer
+(global-set-key (kbd "C-x C-b")                          'consult-buffer)                             ; 用consult-buffer来切换buffer
 
 
 ;; ========================================

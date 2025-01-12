@@ -15,27 +15,23 @@
   ;; cdlatex的TAB补全
   ;; ==================================
   (setq cdlatex-command-alist
-    '(("Bm" "" "\\begin{Bmatrix} ? \\end{Bmatrix}" cdlatex-position-cursor nil nil t)
-      ("vm" "" "\\begin{vmatrix} ? \\end{vmatrix}" cdlatex-position-cursor nil nil t)
-      ("bm" "" "\\begin{bmatrix} ? \\end{bmatrix}" cdlatex-position-cursor nil nil t)
-      ("ve" "" "\\vert{} ?" cdlatex-position-cursor nil t t)
-      ("or" "" "\\overrightarrow{?}" cdlatex-position-cursor nil t t)
-      ("ii" "" "\\textit{?}" cdlatex-position-cursor nil t t)
-      ("bb" "" "\\textbf{?}" cdlatex-position-cursor nil t t)
-      ("tt" "" "\\text{?}" cdlatex-position-cursor nil t t)
-      ("xl" "" "\\xleftarrow[?]{}" cdlatex-position-cursor nil nil t)      
-      ("xr" "" "\\xrightarrow[?]{}" cdlatex-position-cursor nil nil t)
-      ("liml" "" "\\lim_{? \\to }" cdlatex-position-cursor nil nil t)      
-      ("intl" "" "\\int_{?}^{} \\mathrm{d}" cdlatex-position-cursor nil nil t)      
-      ("intlx" "" "\\int_{?}^{} \\mathrm{d}x" cdlatex-position-cursor nil nil t)      
-      ("intly" "" "\\int_{?}^{} \\mathrm{d}y" cdlatex-position-cursor nil nil t)      
-      ("intls" "" "\\int_{?}^{} \\mathrm{d}s" cdlatex-position-cursor nil nil t)      
-      ("intlq" "" "\\int_{?}^{} \\mathrm{d}\\Theta" cdlatex-position-cursor nil nil t)      
-      ("intlf" "" "\\int_{?}^{} r^2 \\sin \\Phi \\mathrm{d}\\Phi" cdlatex-position-cursor nil nil t)      
-      ("intlr" "" "\\int_{?}^{} r\\mathrm{d}r" cdlatex-position-cursor nil nil t)      
-      ("iintl" "" "\\iint\\limits_{L} ? \\mathrm{d}\\sigma" cdlatex-position-cursor nil nil t)
-      ("inf" "" "\\infty?" cdlatex-position-cursor nil nil t)
-      ("app" "" "\\approx?" cdlatex-position-cursor nil nil t))))
+    '(("Bm" "" "\\begin{Bmatrix} ? \\end{Bmatrix} " cdlatex-position-cursor nil nil t)
+      ("vm" "" "\\begin{vmatrix} ? \\end{vmatrix} " cdlatex-position-cursor nil nil t)
+      ("bm" "" "\\begin{bmatrix} ? \\end{bmatrix} " cdlatex-position-cursor nil nil t)
+      ("ve" "" "\\vert{} ? " cdlatex-position-cursor nil t t)
+      ("or" "" "\\overrightarrow{?} " cdlatex-position-cursor nil t t)
+      ("ii" "" "\\textit{?} " cdlatex-position-cursor nil t t)
+      ("bb" "" "\\textbf{?} " cdlatex-position-cursor nil t t)
+      ("tt" "" "\\text{?} " cdlatex-position-cursor nil t t)
+      ("dd" "" "\\mathrm{d}? " cdlatex-position-cursor nil t t)
+      ("xl" "" "\\xleftarrow[]{?} " cdlatex-position-cursor nil nil t)      
+      ("xr" "" "\\xrightarrow[]{?} " cdlatex-position-cursor nil nil t)
+      ("R" "" "\\Re " cdlatex-position-cursor nil nil t)
+      ("liml" "" "\\lim_{? \\to } " cdlatex-position-cursor nil nil t)      
+      ("intl" "" "\\int_{?}^{} \\mathrm{d} " cdlatex-position-cursor nil nil t)
+      ("iintl" "" "\\iint\\limits_{L} ? \\mathrm{d}\\sigma " cdlatex-position-cursor nil nil t)
+      ("inf" "" "\\infty? " cdlatex-position-cursor nil nil t)
+      ("app" "" "\\approx? " cdlatex-position-cursor nil nil t))))
 
   ;; ==================================
   ;; cdlatex的`补全
@@ -76,6 +72,18 @@
   (save-excursion (insert "}")))
 (eval-after-load 'org
    '(define-key org-cdlatex-mode-map (kbd "{")   'custom-insert-curly-bra-OCDL))
+
+
+;; ========================================
+;; cdlatex的'补全
+;; ========================================
+(defun custom-math-modify-prefix-OCDL ()
+  (interactive)
+  (org-cdlatex-math-modify))
+(eval-after-load 'org
+  '(define-key org-cdlatex-mode-map (kbd "'")    nil))
+(eval-after-load 'org
+  '(define-key org-cdlatex-mode-map (kbd "\\")   'custom-math-modify-prefix-OCDL))
 
 
 (provide 'enhance-cdlatex)

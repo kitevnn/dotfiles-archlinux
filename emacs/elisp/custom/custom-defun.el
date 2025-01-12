@@ -197,6 +197,10 @@
                       :background "#ffffff")
   (setq dashboard-startup-banner "/home/une/.wallpaper/dashboard-zoom-out-light.png")
   (dashboard-refresh-buffer)
+  (set-face-attribute 'vertico-group-separator nil :background "#37474f" :foreground "#FFFFFF")
+  (set-face-attribute 'vertico-group-title nil :background "#37474f" :foreground "#FFFFFF")
+  (set-face-attribute 'vertico-posframe nil :background "#FFFFFF" :foreground "#37474f")
+  (set-face-attribute 'vertico-current nil :background "#b5ffd1" :foreground "#37474f")
   (with-eval-after-load 'corfu
     (set-face-attribute 'corfu-default nil :background "#ffffff")
     (set-face-attribute 'corfu-border nil :background "#37474f")
@@ -220,6 +224,10 @@
                       :background "#191919")
   (setq dashboard-startup-banner "/home/une/.wallpaper/dashboard-zoom-out-dark.png")
   (dashboard-refresh-buffer)
+  (set-face-attribute 'vertico-current nil :background "#444444" :foreground "#67fbc8")
+  (set-face-attribute 'vertico-group-separator nil :background "#64fbc8" :foreground "#191919")
+  (set-face-attribute 'vertico-group-title nil :background "#64fbc8" :foreground "#191919")
+  (set-face-attribute 'vertico-posframe nil :background "#191919" :foreground "#3bb1df")
   (with-eval-after-load 'corfu
     (set-face-attribute 'corfu-default nil :background "#191919" :foreground "#3bb1df")
     (set-face-attribute 'corfu-border nil :background "#37474f")

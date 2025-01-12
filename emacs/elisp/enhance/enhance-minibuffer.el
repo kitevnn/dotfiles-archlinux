@@ -32,5 +32,16 @@
   :ensure t
   :defer nil)
 
+(use-package posframe
+  :ensure t
+  :defer t)
+(use-package vertico-posframe
+  :ensure t
+  :defer t
+  :init
+  (vertico-posframe-mode 1))
+(setq vertico-posframe-height 11)
+(setq vertico-posframe-width 150)
+
 
 (provide 'enhance-minibuffer)

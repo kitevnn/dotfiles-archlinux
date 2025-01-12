@@ -46,4 +46,11 @@
   (set-face-attribute 'dirvish-hl-line nil :background "#cfd8dc" :foreground "#37474f"))
 
 
+;; ========================================
+;; 为vertico-posframe添加face颜色
+;; ========================================
+(set-face-attribute 'vertico-group-separator nil :background "#37474f" :foreground "#FFFFFF")
+(set-face-attribute 'vertico-group-title nil :background "#37474f" :foreground "#FFFFFF")
+
+
 (provide 'ui-theme-light)
