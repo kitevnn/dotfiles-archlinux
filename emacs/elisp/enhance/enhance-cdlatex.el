@@ -32,8 +32,8 @@
       ("liml" "" "\\lim_{? \\to } " cdlatex-position-cursor nil nil t)      
       ("intl" "" "\\int_{?}^{} \\mathrm{d} " cdlatex-position-cursor nil nil t)
       ("iintl" "" "\\iint\\limits_{L} ? \\mathrm{d}\\sigma " cdlatex-position-cursor nil nil t)
-      ("inf" "" "\\infty ?" cdlatex-position-cursor nil nil t)
-      ("app" "" "\\approx ?" cdlatex-position-cursor nil nil t))))
+      ("inf" "" "\\infty?" cdlatex-position-cursor nil nil t)
+      ("app" "" "\\approx?" cdlatex-position-cursor nil nil t))))
 
   ;; ==================================
   ;; cdlatex的`补全
@@ -44,7 +44,6 @@
           (46 ("\\cdot" "\\cdots"))
           (97 ("\\alpha" "" "\\ast"))
           (39 ("" "" "`"))
-          (47 ("" "" "/"))
           (109 ("\\mu" "" "\\lim"))))
 
 
@@ -75,18 +74,6 @@
   (save-excursion (insert "}")))
 (eval-after-load 'org
    '(define-key org-cdlatex-mode-map (kbd "{")   'custom-insert-curly-bra-OCDL))
-
-
-;; ========================================
-;; cdlatex的'补全
-;; ========================================
-(defun custom-math-modify-prefix-OCDL ()
-  (interactive)
-  (org-cdlatex-math-modify))
-(eval-after-load 'org
-  '(define-key org-cdlatex-mode-map (kbd "'")    nil))
-(eval-after-load 'org
-  '(define-key org-cdlatex-mode-map (kbd "/")   'custom-math-modify-prefix-OCDL))
 
 
 (provide 'enhance-cdlatex)
