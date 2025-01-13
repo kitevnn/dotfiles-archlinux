@@ -29,6 +29,7 @@
       ("xl" "" "\\xleftarrow[?]{} " cdlatex-position-cursor nil nil t)      
       ("xr" "" "\\xrightarrow[?]{} " cdlatex-position-cursor nil nil t)
       ("R" "" "\\Re ?" cdlatex-position-cursor nil nil t)
+      ("to" "" "{? \\to }" cdlatex-position-cursor nil nil t)
       ("liml" "" "\\lim_{? \\to } " cdlatex-position-cursor nil nil t)      
       ("intl" "" "\\int_{?}^{} \\mathrm{d} " cdlatex-position-cursor nil nil t)
       ("iintl" "" "\\iint\\limits_{L} ? \\mathrm{d}\\sigma " cdlatex-position-cursor nil nil t)
