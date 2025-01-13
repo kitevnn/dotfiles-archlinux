@@ -247,7 +247,7 @@
       (message "no such equation, please check again...")))
   (forward-char 2)
   (delete-all-space)
-
+  ;; 找到 \[\] 的 \]
   (let ((thing (thing-at-point 'line t)))
     (if (and thing (string-match "\\[.*\\]" thing))
         (search-forward "\\]" nil t)
