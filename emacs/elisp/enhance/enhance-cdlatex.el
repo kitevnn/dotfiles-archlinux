@@ -15,34 +15,36 @@
   ;; cdlatex的TAB补全
   ;; ==================================
   (setq cdlatex-command-alist
-    '(("Bm" "" "\\begin{Bmatrix} ? \\end{Bmatrix} " cdlatex-position-cursor nil nil t)
-      ("vm" "" "\\begin{vmatrix} ? \\end{vmatrix} " cdlatex-position-cursor nil nil t)
-      ("bm" "" "\\begin{bmatrix} ? \\end{bmatrix} " cdlatex-position-cursor nil nil t)
-      ("ve" "" "\\vert{} ? " cdlatex-position-cursor nil t t)
+    '(("Bm" "" "\\begin{Bmatrix} ? \\end{Bmatrix}" cdlatex-position-cursor nil nil t)
+      ("vm" "" "\\begin{vmatrix} ? \\end{vmatrix}" cdlatex-position-cursor nil nil t)
+      ("bm" "" "\\begin{bmatrix} ? \\end{bmatrix}" cdlatex-position-cursor nil nil t)
+      ("ve" "" "\\vert{} ?" cdlatex-position-cursor nil t t)
       ("or" "" "\\overrightarrow{?} " cdlatex-position-cursor nil t t)
       ("ii" "" "\\textit{?} " cdlatex-position-cursor nil t t)
       ("bb" "" "\\textbf{?} " cdlatex-position-cursor nil t t)
       ("tt" "" "\\text{?} " cdlatex-position-cursor nil t t)
-      ("dd" "" "\\mathrm{d}? " cdlatex-position-cursor nil t t)
-      ("xl" "" "\\xleftarrow[]{?} " cdlatex-position-cursor nil nil t)      
-      ("xr" "" "\\xrightarrow[]{?} " cdlatex-position-cursor nil nil t)
-      ("R" "" "\\Re " cdlatex-position-cursor nil nil t)
+      ("dd" "" "\\mathrm{d} ?" cdlatex-position-cursor nil t t)
+      ("nn" "" "\\\\ ?" cdlatex-position-cursor nil t t)
+      ("nl" "" "\\\\ ?" cdlatex-position-cursor nil t t)
+      ("xl" "" "\\xleftarrow[?]{} " cdlatex-position-cursor nil nil t)      
+      ("xr" "" "\\xrightarrow[?]{} " cdlatex-position-cursor nil nil t)
+      ("R" "" "\\Re ?" cdlatex-position-cursor nil nil t)
       ("liml" "" "\\lim_{? \\to } " cdlatex-position-cursor nil nil t)      
       ("intl" "" "\\int_{?}^{} \\mathrm{d} " cdlatex-position-cursor nil nil t)
       ("iintl" "" "\\iint\\limits_{L} ? \\mathrm{d}\\sigma " cdlatex-position-cursor nil nil t)
-      ("inf" "" "\\infty? " cdlatex-position-cursor nil nil t)
-      ("app" "" "\\approx? " cdlatex-position-cursor nil nil t))))
+      ("inf" "" "\\infty ?" cdlatex-position-cursor nil nil t)
+      ("app" "" "\\approx ?" cdlatex-position-cursor nil nil t))))
 
   ;; ==================================
   ;; cdlatex的`补全
   ;; ==================================
   (setq cdlatex-math-symbol-alist
-        '((112 ("" "\\pi")) 
-          (33 ("" "" "\\neq")) 
+        '((112 ("" "\\pi"))
+          (33 ("" "" "\\neq"))
           (46 ("\\cdot" "\\cdots"))
-          (97 ("\\alpha" "" "\\ast")) 
-          (39 ("" "" "`")) 
-          (92 ("" "" "\\"))
+          (97 ("\\alpha" "" "\\ast"))
+          (39 ("" "" "`"))
+          (47 ("" "" "/"))
           (109 ("\\mu" "" "\\lim"))))
 
 
@@ -84,7 +86,7 @@
 (eval-after-load 'org
   '(define-key org-cdlatex-mode-map (kbd "'")    nil))
 (eval-after-load 'org
-  '(define-key org-cdlatex-mode-map (kbd "\\")   'custom-math-modify-prefix-OCDL))
+  '(define-key org-cdlatex-mode-map (kbd "/")   'custom-math-modify-prefix-OCDL))
 
 
 (provide 'enhance-cdlatex)
