@@ -5,7 +5,7 @@
   :ensure t
   :defer nil
   :init
-  (pdf-loader-install))  ; 按下M-x pdf-tools-install 来编译安装
+  (pdf-loader-install))
 
 
 (provide 'enhance-pdftools)

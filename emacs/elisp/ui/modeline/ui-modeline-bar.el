@@ -1,17 +1,17 @@
 ;; ========================================
 ;; mode-line设置 ui-modeline-bar.el
 ;; ========================================
-(defvar modeline-output-calendar-month "")        ; 定义全局变量来存储输出
-(defvar modeline-output-calendar-day "")          ; 定义全局变量来存储输出
-(defvar modeline-output-time-hour "")             ; 定义全局变量来存储输出
-(defvar modeline-output-time-minute "")           ; 定义全局变量来存储输出
-(defvar modeline-output-battery-percentage "")    ; 定义全局变量来存储输出
-(defvar modeline-output-distribution "")          ; 定义全局变量来存储输出
-(defvar modeline-output-disk-usage "")            ; 定义全局变量来存储输出
-(defvar modeline-output-cpu-temperature "")       ; 定义全局变量来存储输出
-(defvar modeline-output-ram-usage "")             ; 定义全局变量来存储输出
-(defvar modeline-output-pacman-packages "")       ; 定义全局变量来存储输出
-(defvar modeline-output-weather-situation "")     ; 定义全局变量来存储输出
+(defvar modeline-output-calendar-month "")
+(defvar modeline-output-calendar-day "")
+(defvar modeline-output-time-hour "")
+(defvar modeline-output-time-minute "")
+(defvar modeline-output-battery-percentage "")
+(defvar modeline-output-distribution "")
+(defvar modeline-output-disk-usage "")
+(defvar modeline-output-cpu-temperature "")
+(defvar modeline-output-ram-usage "")
+(defvar modeline-output-pacman-packages "")
+(defvar modeline-output-weather-situation "")
 
 
 ;; ========================================
