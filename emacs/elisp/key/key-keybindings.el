@@ -63,10 +63,8 @@
 ;; ========================================
 ;; 关于dirvish文件管理器
 ;; ========================================
-(global-set-key (kbd "C-c d o")                          'dirvish-side)                               ; 左侧打开dirvish
 (global-set-key (kbd "C-z C-z C-d")                      'dirvish-side)                               ; 左侧打开dirvish
-(global-set-key (kbd "C-c d q")                          'dirvish-quit)                               ; 退出关闭dirvish
-(global-set-key (kbd "C-c d g")                          'dirvish)                                    ; 全局打开dirvish
+(global-set-key (kbd "C-z C-z C-0")                      'dirvish)                                    ; 全局打开dirvish
 
 
 ;; ========================================
