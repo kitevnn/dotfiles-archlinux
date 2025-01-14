@@ -133,11 +133,11 @@
 (define-key pdf-view-mode-map (kbd "t")                  'custom-move-prev-ten-pages)                 ; PDFView向前翻10页
 (define-key pdf-view-mode-map (kbd "b")                  'custom-move-next-ten-pages)                 ; PDFView向后翻10页
 (require 'pdf-annot)
-(define-key pdf-annot-minor-mode-map (kbd "C-c C-a `")   'pdf-annot-delete)                           ; PDFView删除批注
-(define-key pdf-annot-minor-mode-map (kbd "C-c C-a 1")   'pdf-annot-add-highlight-markup-annotation)  ; PDFView高亮
-(define-key pdf-annot-minor-mode-map (kbd "C-c C-a 2")   'pdf-annot-add-underline-markup-annotation)  ; PDFView下划线
-(define-key pdf-annot-minor-mode-map (kbd "C-c C-a 3")   'pdf-annot-add-squiggly-markup-annotation)   ; PDFView波浪下划线
-(define-key pdf-annot-minor-mode-map (kbd "C-c C-a 5")   'pdf-annot-add-text-annotation)              ; PDFView文本批注
+(define-key pdf-annot-minor-mode-map (kbd "C-c C-a C-0") 'pdf-annot-delete)                           ; PDFView删除批注
+(define-key pdf-annot-minor-mode-map (kbd "C-c C-a C-1") 'pdf-annot-add-highlight-markup-annotation)  ; PDFView高亮
+(define-key pdf-annot-minor-mode-map (kbd "C-c C-a C-2") 'pdf-annot-add-underline-markup-annotation)  ; PDFView下划线
+(define-key pdf-annot-minor-mode-map (kbd "C-c C-a C-3") 'pdf-annot-add-squiggly-markup-annotation)   ; PDFView波浪下划线
+(define-key pdf-annot-minor-mode-map (kbd "C-c C-a C-8") 'pdf-annot-add-text-annotation)              ; PDFView文本批注
 
 
 ;; ========================================
