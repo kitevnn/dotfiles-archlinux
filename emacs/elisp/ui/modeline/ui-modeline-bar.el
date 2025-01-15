@@ -3,6 +3,7 @@
 ;; ========================================
 (defvar modeline-output-calendar-month "")
 (defvar modeline-output-calendar-day "")
+(defvar modeline-output-calendar-week "")
 (defvar modeline-output-time-hour "")
 (defvar modeline-output-time-minute "")
 (defvar modeline-output-battery-percentage "")
@@ -21,6 +22,8 @@
   (setq modeline-output-calendar-month (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/calendar-month.sh"))))
 (defun update-modeline-output-calendar-day ()
   (setq modeline-output-calendar-day (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/calendar-day.sh"))))
+(defun update-modeline-output-calendar-week ()
+  (setq modeline-output-calendar-week (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/calendar-week.sh"))))
 ;; ========================================
 ;; 关于当前时间
 ;; ========================================
@@ -64,7 +67,9 @@
         (list "   󰃯 " ;
               modeline-output-calendar-month
               modeline-output-calendar-day
-              "  "
+              "  "
+              modeline-output-calendar-week              
+              "  "                           
               modeline-output-time-hour
               ":"
               modeline-output-time-minute
@@ -99,6 +104,8 @@
 (run-at-time "0 sec" 15    'update-modeline-output-ram-usage)           ; 每15秒更新一次内存使用量信息
 (run-at-time "0 sec" 43200 'update-modeline-output-pacman-packages)     ; 每12小时更新一次包总数信息
 (run-at-time "0 sec" 1800  'update-modeline-output-weather-situation)   ; 每30分钟更新一次当前天气信息
+(run-at-time "0 sec" 43200 'update-modeline-output-calendar-week)       ; 每12小时更新一次当前星期信息
+
 
 ;; ========================================
 ;; 定时更新模式行，设置为每分钟检查一次
