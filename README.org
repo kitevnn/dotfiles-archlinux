@@ -13,3 +13,16 @@
 还是推荐您先观看一下 [[https://www.bilibili.com/video/BV1Fb421v7ZV][daily tsoding - one thing every programmer must have]] 这个视频
 
 *仅供参考*
+
+*** GNU Emacs快捷键风格
+
+| 序号 | 快捷键前缀(prefix-key) | 解释意义              |
+|------+-----------------------+----------------------|
+|    1 | ~C-z C-p~             | *<p>* rocess         |
+|    2 | ~C-z C-s~             | *<s>* witch window   |
+|    3 | ~C-z C-t~             | *<t>* heme           |
+|    4 | ~C-z C-b~             | *<b>* uffer          |
+|    5 | ~C-z C-w~             | resize *<w>* indow   |
+|    6 | ~C-z C-d~             | about *<d>* ashboard |
+|    7 | ~C-z C-x~             | about te *<x>* t     |
+
