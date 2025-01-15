@@ -61,22 +61,6 @@
 
 
 ;; =======================================
-;; lisp相关
-;; =======================================
-(defun custom-eval-elisp-sexp ()
-  "C-cxe快速计算lisp式子，来源于emacs-tw"
-  (interactive)
-  (cond ((equal current-prefix-arg nil)      ;if no prefix
-         (let ((OUTPUT (eval (preceding-sexp))))
-           (kill-sexp -1)
-           (insert (format "%S" OUTPUT))))
-        ((equal current-prefix-arg '(4)) ;one C-u prefix
-         (save-excursion
-           (let ((OUTPUT (eval (preceding-sexp))))
-             (insert (format "%s%S" " => " OUTPUT)))))))
-
-
-;; =======================================
 ;; 自动添加文本
 ;; =======================================
 (defun custom-org-add-latex-header ()

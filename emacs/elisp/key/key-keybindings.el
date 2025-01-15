@@ -85,23 +85,17 @@
 ;; 关于编辑增强
 ;; ========================================
 (global-set-key (kbd "C-=")                              'custom-duplicate-line)                      ; 复制当前行到下一行并保持光标水平位置不变
-(global-set-key (kbd "C-z C-z C-e")                      'embark-act)                                 ; 增强原始工作流embark
-(global-set-key (kbd "M-s l")                            'consult-line)                               ; C-s搜索
-(global-set-key (kbd "M-s r")                            'consult-ripgrep)                            ; rg搜索
-(global-set-key (kbd "C-c C-x C-h")                      'embark-prefix-help-command)                 ; prefix快捷键
-
-
-;; ========================================
-;; 关于emacs-lisp-mode
-;; ========================================
-(define-key emacs-lisp-mode-map (kbd "C-c C-x C-e")      'custom-eval-elisp-sexp)                     ; C-cxe快速计算lisp式子
+(global-set-key (kbd "C-z C-z C-\-")                     'consult-line)                               ; consult版C-s搜索
+(global-set-key (kbd "C-z C-z C-\=")                     'consult-ripgrep)                            ; consult版rg搜索
+(global-set-key (kbd "C-z C-z C-e")                      'embark-act)                                 ; embark版action行动
+(global-set-key (kbd "C-z C-x C-h")                      'embark-prefix-help-command)                 ; embark版help帮助
 
 
 ;; ========================================
 ;; 关于org-mode
 ;; ========================================
-(define-key org-mode-map (kbd "C-c C-x C-0")             'valign-mode)                                ; 切换valign-mode
-(define-key org-mode-map (kbd "C-c C-x C-a")             'org-agenda)                                 ; 当前文件放进org议题内
+(define-key org-mode-map (kbd "C-z C-x C-0")             'valign-mode)                                ; 切换valign-mode
+(define-key org-mode-map (kbd "C-z C-z C-8")             'org-agenda)                                 ; 当前文件放进org议题内
 (define-key org-mode-map (kbd "C-c C-x C-v")             'custom-toggle-inline-images-with-valign)    ; 用 C-c C-x C-v 避免valign-mode造成的对齐卡顿来预览图片
 (define-key org-mode-map (kbd "C-z C-z C-l")             'custom-org-latex-preview-with-utf8)         ; 用 C-c C-x C-p 进行utf-8的 \[\] 上下文范围的公式渲染
 (define-key org-mode-map (kbd "C-z C-x C-f")             'custom-jump-the-ending-of-the-equation)     ; 当光标在\[\]上下文时，光标跳转到\[\]的\[
