@@ -278,21 +278,29 @@
 ;; 在org-mode的公式上下文的光标跳转
 ;; from chatGPT 4o
 ;; =======================================
-(defun custom-jump-the-beginning-of-the-equation ()
-  "当光标在公式块\[ \]时，跳转到此公式块的\["
-  (interactive)
+(defun custom-jump-the-beginning-of-the-equation (arg)
+  "根据 prefix 参数决定是否手动或自动进入选区模式，并跳转到公式块\[\]的\["
+  (interactive "P")
   (let ((thing (thing-at-point 'line t)))
     (if (and thing (string-match "\\[.*\\]" thing))
-        (search-backward "\\[" nil t)
-      (message "no such equation, please check again..."))))
+        (progn
+          (if arg
+              (call-interactively 'set-mark-command)
+            (execute-kbd-macro (kbd "C-SPC")))
+          (search-backward "\\[" nil t))
+      (message "No such equation, please check again..."))))
 
-(defun custom-jump-the-ending-of-the-equation ()
-  "当光标在公式块\[ \]时，跳转到此公式块的\]"
-  (interactive)
+(defun custom-jump-the-ending-of-the-equation (arg)
+  "根据 prefix 参数决定是否手动或自动进入选区模式，并跳转到公式块\[\]的\["
+  (interactive "P")
   (let ((thing (thing-at-point 'line t)))
     (if (and thing (string-match "\\[.*\\]" thing))
-        (search-forward "\\]" nil t)
-      (message "no such equation, please check again..."))))
+        (progn
+          (if arg
+              (call-interactively 'set-mark-command)
+            (execute-kbd-macro (kbd "C-SPC")))
+          (search-forward "\\]" nil t))
+      (message "No such equation, please check again..."))))
 
 (defun custom-inside-escaped-bracket-pair-p ()
   "判断公式块\[ \]的谓词"
