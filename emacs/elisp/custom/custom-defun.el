@@ -83,13 +83,15 @@
   "在org-mode里添加可能需要的LaTeX Header来成功导出pdf文档"
   (interactive)
   (goto-char (point-min))
+  (insert "#+LATEX_HEADER: \\usepackage[usenames]{color}\n")
   (insert "#+LATEX_HEADER: \\usepackage{amsmath}\n")
+  (insert "#+LATEX_HEADER: \\usepackage{esint}\n")
   (insert "#+LATEX_HEADER: \\usepackage{fontspec}\n")
   (insert "#+LATEX_HEADER: \\setsansfont{Noto Sans CJK TC}\n")
   (insert "#+LATEX_HEADER: \\setmainfont{Noto Serif CJK TC}\n")
   (insert "#+LATEX_HEADER: xelatex\n\n"))
 (eval-after-load 'org
-  '(define-key org-mode-map (kbd "C-c C-x C-f") 'custom-org-add-latex-header))
+  '(define-key org-mode-map (kbd "C-z C-x C-e") 'custom-org-add-latex-header))
 
 
 ;; =======================================

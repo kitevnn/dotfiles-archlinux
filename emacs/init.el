@@ -29,6 +29,7 @@
 (require 'enhance-smartparens)
 (require 'enhance-tabs)
 (require 'enhance-term)
+(require 'enhance-history)
 (require 'ui-font-sauce)
 (require 'ui-icon-nerdfont)
 (require 'ui-theme-light)
