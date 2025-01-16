@@ -275,7 +275,7 @@
       (message "No such equation, please check again..."))))
 
 (defun custom-jump-the-ending-of-the-equation (arg)
-  "根据 prefix 参数决定是否手动或自动进入选区模式，并跳转到公式块\[\]的\["
+  "根据 prefix 参数决定是否手动或自动进入选区模式，并跳转到公式块\[\]的\]"
   (interactive "P")
   (let ((thing (thing-at-point 'line t)))
     (if (and thing (string-match "\\[.*\\]" thing))
