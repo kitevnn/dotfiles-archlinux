@@ -15,15 +15,15 @@
   ;; cdlatex的TAB补全
   ;; ==================================
   (setq cdlatex-command-alist
-    '(("Bm" "" "\\begin{Bmatrix} ? \\end{Bmatrix}" cdlatex-position-cursor nil nil t)
-      ("vm" "" "\\begin{vmatrix} ? \\end{vmatrix}" cdlatex-position-cursor nil nil t)
-      ("bm" "" "\\begin{bmatrix} ? \\end{bmatrix}" cdlatex-position-cursor nil nil t)
+    '(("Bm" "" "\\begin{Bmatrix}  ? \\end{Bmatrix}" cdlatex-position-cursor nil nil t)
+      ("vm" "" "\\begin{vmatrix}  ? \\end{vmatrix}" cdlatex-position-cursor nil nil t)
+      ("bm" "" "\\begin{bmatrix}  ? \\end{bmatrix}" cdlatex-position-cursor nil nil t)
       ("ve" "" "\\vert{} ?" cdlatex-position-cursor nil t t)
       ("or" "" "\\overrightarrow{?} " cdlatex-position-cursor nil t t)
       ("ii" "" "\\textit{?} " cdlatex-position-cursor nil t t)
       ("bb" "" "\\textbf{?} " cdlatex-position-cursor nil t t)
       ("tt" "" "\\text{?} " cdlatex-position-cursor nil t t)
-      ("dd" "" "\\mathrm{d} ?" cdlatex-position-cursor nil t t)
+      ("dd" "" "\\mathrm{d}? " cdlatex-position-cursor nil t t)
       ("nn" "" "\\\\ ?" cdlatex-position-cursor nil t t)
       ("nl" "" "\\\\ ?" cdlatex-position-cursor nil t t)
       ("xl" "" "\\xleftarrow[?]{} " cdlatex-position-cursor nil nil t)      
