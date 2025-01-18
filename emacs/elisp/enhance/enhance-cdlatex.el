@@ -23,12 +23,12 @@
       ("ii" "" "\\textit{?} " cdlatex-position-cursor nil t t)
       ("bb" "" "\\textbf{?} " cdlatex-position-cursor nil t t)
       ("tt" "" "\\text{?} " cdlatex-position-cursor nil t t)
-      ("dd" "" "\\mathrm{d}? " cdlatex-position-cursor nil t t)
+      ("dd" "" "\\mathrm{d} ? " cdlatex-position-cursor nil t t)
       ("nn" "" "\\\\ ?" cdlatex-position-cursor nil t t)
       ("nl" "" "\\\\ ?" cdlatex-position-cursor nil t t)
       ("xl" "" "\\xleftarrow[?]{} " cdlatex-position-cursor nil nil t)      
       ("xr" "" "\\xrightarrow[?]{} " cdlatex-position-cursor nil nil t)
-      ("R" "" "\\Re ?" cdlatex-position-cursor nil nil t)
+      ("R" "" "\\Re?" cdlatex-position-cursor nil nil t)
       ("to" "" "{? \\to }" cdlatex-position-cursor nil nil t)
       ("liml" "" "\\lim_{? \\to } " cdlatex-position-cursor nil nil t)      
       ("intl" "" "\\int_{?}^{} \\mathrm{d} " cdlatex-position-cursor nil nil t)
@@ -41,7 +41,7 @@
   ;; ==================================
   (setq cdlatex-math-symbol-alist
         '((112 ("" "\\pi"))
-          (33 ("" "" "\\neq"))
+          (33 ("\\neq" "" ""))
           (46 ("\\cdot" "\\cdots"))
           (97 ("\\alpha" "" "\\ast"))
           (39 ("" "" "`"))
