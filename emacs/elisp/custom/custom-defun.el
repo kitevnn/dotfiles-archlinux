@@ -237,8 +237,26 @@
 ;; 动态选择引擎来渲染
 ;; from chatGPT 4o
 ;; =======================================
+(defun custom-format-org-latex-preview-with-utf8 ()
+  "渲染在org-mode下渲染含有utf-8字符的equation之前的格式化准备"
+  (interactive)
+  ;; 找到 \[\] 的 \[
+  (let ((thing (thing-at-point 'line t)))
+    (if (and thing (string-match "\\[.*\\]" thing))
+        (search-backward "\\[" nil t)
+      (message "no such equation, please check again...")))
+  (forward-char 2)
+  (delete-all-space)
+
+  (let ((thing (thing-at-point 'line t)))
+    (if (and thing (string-match "\\[.*\\]" thing))
+        (search-forward "\\]" nil t)
+      (message "no such equation, please check again...")))
+  (backward-char 3)
+  (delete-all-space))
+
 (defun custom-org-latex-preview-with-utf8 ()
-  "在org-mode下渲染含有utf-8字符的latex-fragment"
+  "在org-mode下渲染含有utf-8字符的equation"
   (interactive)
   (let* ((latex-code (thing-at-point 'line t))
          (is-utf8 (and latex-code
@@ -257,13 +275,19 @@
     (setq org-preview-latex-default-process 'dvipng)
     (message "Creating Latex previews in section...(and recover dvipng...) done.")))
 
+(defun custom-render-equation-utf8 ()
+  "在org-mode下渲染含有utf-8字符的equation的组合函数"
+  (interactive)
+  (custom-format-org-latex-preview-with-utf8)
+  (custom-org-latex-preview-with-utf8))
+
 
 ;; =======================================
 ;; 在org-mode的公式上下文的光标跳转
 ;; from chatGPT 4o
 ;; =======================================
 (defun custom-jump-the-beginning-of-the-equation (arg)
-  "根据 prefix 参数决定是否手动或自动进入选区模式，并跳转到公式块\[\]的\["
+  "根据 prefix(C-u) 参数决定是否手动或自动进入选区模式，并跳转到公式块\[\]的\["
   (interactive "P")
   (let ((thing (thing-at-point 'line t)))
     (if (and thing (string-match "\\[.*\\]" thing))
@@ -275,7 +299,7 @@
       (message "No such equation, please check again..."))))
 
 (defun custom-jump-the-ending-of-the-equation (arg)
-  "根据 prefix 参数决定是否手动或自动进入选区模式，并跳转到公式块\[\]的\]"
+  "根据 prefix(C-u) 参数决定是否手动或自动进入选区模式，并跳转到公式块\[\]的\]"
   (interactive "P")
   (let ((thing (thing-at-point 'line t)))
     (if (and thing (string-match "\\[.*\\]" thing))
