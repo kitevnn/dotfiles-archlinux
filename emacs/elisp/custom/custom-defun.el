@@ -146,25 +146,6 @@
 
 
 ;; =======================================
-;; 关于eshell
-;; =======================================
-(defun custom-eshell-prompt ()
-    "设置eshell的prompt的前景色"
-    (interactive)
-    (set-face-attribute 'eshell-prompt nil :foreground "#673ab7"))
-(defun custom-eshell-withcentaur-tabs-mode ()
-    (local-set-key (kbd "M--")     'custom-move-prev-five-lines)         ; 在eshell向上移动5行            
-    (local-set-key (kbd "M-=")     'custom-move-next-five-lines)         ; 在eshell向下移动5行
-    (local-set-key (kbd "M-l")     'eshell/clear)                        ; 清空 eshell
-    (local-set-key (kbd "M-j")     'eshell-list-history)                 ; 展开历史命令
-    (local-set-key (kbd "C-c C-j") 'corfu-mode))                         ; 手动关闭corfu
-(defun custom-eshell-mode-hook ()
-  (custom-eshell-prompt)
-  (custom-eshell-withcentaur-tabs-mode)
-  (message "Window configuration changed!"))
-
-
-;; =======================================
 ;; 关于theme
 ;; =======================================
 (defun custom-load-theme-light ()
