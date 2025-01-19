@@ -23,7 +23,7 @@
       ("ii" "" "\\textit{?} " cdlatex-position-cursor nil t t)
       ("bb" "" "\\textbf{?} " cdlatex-position-cursor nil t t)
       ("te" "" "\\text{?} " cdlatex-position-cursor nil t t)
-      ("dd" "" "\\mathrm{d} ? " cdlatex-position-cursor nil t t)
+      ("dd" "" "\\mathrm{d} ?" cdlatex-position-cursor nil t t)
       ("nn" "" "\\\\ ?" cdlatex-position-cursor nil t t)
       ("nl" "" "\\\\ ?" cdlatex-position-cursor nil t t)
       ("xl" "" "\\xleftarrow[?]{} " cdlatex-position-cursor nil nil t)      
