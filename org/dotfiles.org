@@ -133,7 +133,14 @@
 **** GNU Emacs
 到 [[https://alpha.gnu.org/gnu/emacs/pretest/][alpha.gnu.org]] 下载当前最新版的 GNU Emacs 的源码，并按 (若不能 ~./configure --option~ 则先运行 ~./autogen.sh~)
 #+begin_src sh
+  # 添加编译选项
   ./configure --sysconfdir=/etc --prefix=/usr --libexecdir=/usr/lib --with-tree-sitter --localstatedir=/var --disable-build-details --with-harfbuzz --with-libsystemd --with-modules --with-x-toolkit=no --with-cairo 'CFLAGS=-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=3 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection         -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -g -ffile-prefix-map=/build/emacs/src=/usr/src/debug/emacs -flto=auto' 'LDFLAGS=-Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now          -Wl,-z,pack-relative-relocs -flto=auto'  
+
+  # 编译GNU Emacs
+  make
+
+  # 安装GNU Emacs
+  sudo make install
 #+end_src
 
 td安装
