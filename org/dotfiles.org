@@ -156,6 +156,18 @@ texlive安装
   # curl wttr.in/Guangzhou > /home/您的用户名/.config/emacs/archive/weather  
 #+end_src
 
+设置Auto saving.....done的目录
+#+begin_src sh
+  # 创建名为 saves 的备份文件夹
+  cd ~/.config/emacs/
+  mkdir -p saves  
+#+end_src
+
+设置org-roam的目录
+#+begin_src sh
+  # 创建名为 .orgroam 的笔记漫游文件夹
+  mkdir -p ~/.orgroam
+#+end_src
 
 **** i3
 feh安装
