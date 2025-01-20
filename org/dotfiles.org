@@ -17,7 +17,9 @@
 ** 二、配置前提
 
 *** 1. 文件结构
-#+begin_src 
+#+begin_src
+🔧 .bashrc
+🔧 .bash_profile  
 📁 ~/.config
    📁 alacritty
       🔧 alacritty.toml
@@ -212,8 +214,6 @@ fcitx5全家桶配置
 #+end_quote
 
 
-
-
 *** 5. 配置文件
 
 **** (1) alacritty
@@ -337,7 +337,7 @@ fcitx5全家桶配置
 **** (3) GNU Emacs
 
 ***** 文件结构
-#+begin_quote
+#+begin_src
 🔧 init.el
 📁 elisp
    📁 basic
@@ -406,7 +406,7 @@ fcitx5全家桶配置
          🔧 zprogramming-snips-yasnippet.el
       📁 ts
          🔧 zprogramming-ts-treesitter.el
-#+end_quote
+#+end_src
 
 ***** 文件配置
 ****** 🔧 init.el
