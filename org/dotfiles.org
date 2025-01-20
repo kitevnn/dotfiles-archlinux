@@ -18,8 +18,8 @@
 
 *** 1. 文件结构
 #+begin_src
-🔧 .bashrc
-🔧 .bash_profile  
+🔧 ~/.bashrc
+🔧 ~/.bash_profile
 📁 ~/.config
    📁 alacritty
       🔧 alacritty.toml
