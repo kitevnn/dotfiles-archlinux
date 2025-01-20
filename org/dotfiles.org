@@ -1,0 +1,2828 @@
+* dotfiles
+
+** 一、配置说明
+
+| 序号 | 工具                      | 描述        |
+|------+---------------------------+-------------|
+|    1 | 桌面服务器(desktop-server) | ~X11~       |
+|    2 | 窗管(wm)                  | ~i3~        |
+|    3 | 发射台(launcher)          | ~rofi~      |
+|    4 | 混用器(compositor)        | ~picom~     |
+|    5 | (主要)编辑器(editor)       | ~GNU Emacs~ |
+|    6 | 编辑器(editor)            | ~vim~       |
+|    7 | 壳(sh)                    | ~bash~      |
+|    8 | 系统信息(fetch)            | ~fastfetch~ |
+
+
+** 二、配置前提
+
+*** 1. 文件结构
+#+begin_quote
+📁 ~/.config
+   📁 alacritty
+      🔧 alacritty.toml
+   📁 emacs
+      🔧 init.el
+      📁 elisp
+         📁 basic
+            🔧 basic-elpa.el
+            🔧 basic-init.el
+            🔧 basic-mode.el
+            🔧 basic-path.el      
+         📁 custom
+            🔧 custom-defun.el
+         📁 enhance
+            🔧 enhance-cdlatex.el
+            🔧 enhance-deadgrep.el
+            🔧 enhance-dirvish.el
+            🔧 enhance-history.el
+            🔧 enhance-indentline.el
+            🔧 enhance-magit.el
+            🔧 enhance-minibuffer.el
+            🔧 enhance-pdftools.el
+            🔧 enhance-restart.el
+            🔧 enhance-smartparens.el
+            🔧 enhance-tabs.el
+            🔧 enhance-term.el
+            🔧 enhance-unre.el            
+         📁 hooks
+            🔧 hooks-hook.el               
+         📁 im
+            🔧 im-telega.el                  
+         📁 key
+            🔧 key-keybindings.el                     
+         📁 note
+            🔧 note-auctex.el
+            🔧 note-orgmode.el
+            🔧 note-orgroam.el      
+         📁 ui
+            📁 decorate
+               🔧 ui-decorate-dashboard.el
+            📁 font
+               🔧 ui-font-sauce.el      
+            📁 icon
+               🔧 ui-icon-nerdfont.el      
+            📁 modeline
+               🔧 ui-modeline-bar.el
+               🔧 battery-percentage.sh
+               🔧 calendar-day.sh
+               🔧 calendar-month.sh
+               🔧 calendar-week.sh
+               🔧 cpu-temperature.sh
+               🔧 disk-usage.sh
+               🔧 distribution.sh
+               🔧 pacman-packages.sh
+               🔧 ram-usage.sh
+               🔧 time-hour.sh
+               🔧 time-minute.sh
+               🔧 weather-situation.sh                  
+            📁 theme
+               🔧 ui-theme-dark.el
+               🔧 ui-theme-light.el         
+         📁 zprogramming
+            📁 cmp
+               🔧 zprogramming-cmp-corfu.el
+            📁 lsp
+               🔧 zprogramming-lsp-eglot.el
+            📁 mode
+               🔧 zprogramming-mode-cmake.el
+            📁 snips
+               🔧 zprogramming-snips-yasnippet.el
+            📁 ts
+               🔧 zprogramming-ts-treesitter.el      
+   📁 fastfetch
+      🔧 ff.jsonc
+   📁 i3
+      🔧 config
+   📁 picom
+      🔧 picom.conf
+   📁 vim
+      🔧 vimrc
+   📁 rofi
+      🔧 config.rasi
+      🔧 forest.rasi
+#+end_quote
+
+
+*** 2. 字体补丁
+首先，在 [[https://github.com/ryanoasis/nerd-fonts?tab=readme-ov-file#font-patcher][archive]] 这里下载 nf 作者的 font-patcher
+
+然后，在 [[https://github.com/kitevnn/dotfiles-archlinux/tree/main/res/font][Sauce Code Pro Semibold Nerd Font Complete Mono.ttf]] 这里下载所需字体
+
+然后开始打补丁
+#+begin_src sh
+  # 安装打补丁工具
+  sudo pacman -S fontforge
+
+  # 打补丁
+  fontforge --script ./font-patcher --complete 'Sauce Code Pro Semibold Nerd Font Complete Mono.ttf'
+
+  # 创建字体文件夹
+  mkdir -p ~/.local/share/fonts/    
+  mv SauceCodeProNerdFontCompleteMonoNerdFont-SemiBold.ttf ~/.local/share/fonts/
+
+  # 刷新字体缓存
+  sudo fc-cache -f
+#+end_src
+
+
+*** 3. 依赖安装
+
+**** GNU Emacs
+到 [[https://alpha.gnu.org/gnu/emacs/pretest/][alpha.gnu.org]] 下载当前最新版的 GNU Emacs 的源码，并按 (若不能 ~./configure --option~ 则先运行 ~./autogen.sh~)
+#+begin_src sh
+  ./configure --sysconfdir=/etc --prefix=/usr --libexecdir=/usr/lib --with-tree-sitter --localstatedir=/var --disable-build-details --with-harfbuzz --with-libsystemd --with-modules --with-x-toolkit=no --with-cairo 'CFLAGS=-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=3 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection         -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -g -ffile-prefix-map=/build/emacs/src=/usr/src/debug/emacs -flto=auto' 'LDFLAGS=-Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now          -Wl,-z,pack-relative-relocs -flto=auto'  
+#+end_src
+
+td安装
+#+begin_src sh
+  git clone https://github.com/tdlib/td.git
+  mkdir build
+  cd build
+  cmake ../
+  make -jN
+  sudo make install  
+#+end_src
+
+texlive安装
+#+begin_src sh
+  sudo pacman -S texlive
+  
+#+end_src
+
+天气modeline信息
+#+begin_src sh :tangle ~/.config/emacs/archive/weather-wttr.sh
+  # 比如如果您在广州(Guangzhou)的话，于是就是这样的
+  # curl wttr.in/Guangzhou > /home/您的用户名/.config/emacs/archive/weather  
+#+end_src
+
+
+**** i3
+feh安装
+#+begin_src sh
+  sudo pacman -S i3  
+  sudo pacman -S feh
+#+end_src
+
+
+**** vim
+plug.vim安装
+#+begin_src sh
+  curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim  
+#+end_src
+
+随后进入 vim 界面后，按下 ~<leader> + I~ 来安装剩余插件
+
+
+
+*** 4. 杂项(可看可不看)
+
+**** 输入法安装
+安装fcitx5全家桶
+#+begin_src sh
+sudo pacman -S fcitx5-im fcitx5-chinese-addons fcitx5-material-color
+#+end_src
+
+fcitx5全家桶配置
+#+begin_src sh
+sudo vim /etc/environment
+# 并添加下面内容
+# + GTK_IM_MODULE=fcitx
+# + QT_IM_MODULE=fcitx
+# + XMODIFIERS=@im=fcitx
+# + SDL_IM_MODULE=fcitx
+#+end_src
+
+fcitx5全家桶配置
+#+begin_quote
+然后在KDE下(如果您使用的也是KDE plasma 6的话)，依次点击 [系统设置] > [键盘] > [虚拟键盘] > [选择Fcitx5]
+#+end_quote
+
+
+
+
+*** 5. 配置文件
+
+**** (1) alacritty
+***** 文件结构
+#+begin_quote
+🔧 alacritty.toml
+#+end_quote
+
+***** 文件配置
+****** 🔧 alacritty.toml
+#+BEGIN_SRC toml :tangle ~/.config/alacritty/alacritty.toml
+  general.working_directory = "/home/une/桌面/back/archlinux/check"
+
+  [font]
+  size = 12
+  normal.family = "SauceCodeProNerdFontCompleteMono Nerd Font"
+  normal.style = "SemiBold"
+
+  [terminal.shell]
+  program = "/usr/bin/bash"
+
+  [window]
+  opacity = 0.81
+  decorations = "None"
+  dynamic_title = false
+  decorations_theme_variant = "Dark"
+  startup_mode = "Maximized"
+  [window.padding]
+  x = 0
+  y = 0
+
+  [colors]
+  primary.background = "#2c2c2c"
+  primary.foreground = "#dcdcdc"
+  normal.black       = "#3F3F3F"
+  normal.red         = "#FD5760"
+  normal.green       = "#60B48A"
+  normal.yellow      = "#DFAF8F"
+  normal.blue        = "#9AB8D7"
+  normal.magenta     = "#DC8CC3"
+  normal.cyan        = "#8CD0D3"
+  normal.white       = "#DCDCDC"
+  bright.black       = "#709080"
+  bright.red         = "#DCA3A3"
+  bright.green       = "#72D5A3"
+  bright.yellow      = "#16F0BB"
+  bright.blue        = "#94BFF3"
+  bright.magenta     = "#EC93D3"
+  bright.cyan        = "#93E0E3"
+  bright.white       = "#FFFFFF"
+
+  [keyboard]
+  bindings = [
+    { mods = "Alt | Shift", key = "P", action = "ScrollPageUp" },
+    { mods = "Alt | Shift", key = "N", action = "ScrollPageDown" },
+    { mods = "Alt | Shift", key = "W", action = "Copy" },        
+    { mods = "Alt | Shift", key = "Y", action = "Paste" },
+    { mods = "Alt | Shift", key = "S", action = "SearchForward" },
+    { mods = "Alt | Shift", key = "R", action = "SearchBackward" },
+    { mods = "Alt | Shift", key = "V", action = "ToggleViMode" },
+    { mods = "Alt | Shift", key = "G", action = "SearchCancel" },
+    { mods = "Control", key = "F", mode = "Vi", action = "Right" },
+    { mods = "Control", key = "B", mode = "Vi", action = "Left" },
+    { mods = "Control", key = "N", mode = "Vi", action = "Down" },
+    { mods = "Control", key = "P", mode = "Vi", action = "Up" },
+    { mods = "Control", key = "A", mode = "Vi", action = "First" },
+    { mods = "Control", key = "E", mode = "Vi", action = "Last" },
+    { mods = "Control", key = "G", mode = "Vi", action = "ToggleNormalSelection" },
+    { mods = "Alt", key = "F", mode = "Vi", action = "SemanticRight" },
+    { mods = "Alt", key = "B", mode = "Vi", action = "SemanticLeft" },
+  ]  
+#+END_SRC
+
+
+**** (2) bash
+***** 文件结构
+#+begin_quote
+🔧 .bashrc
+🔧 .bash_profile
+#+end_quote
+
+***** 文件配置
+****** 🔧 .bashrc
+#+begin_src sh :tangle ~/.bashrc
+  #
+  # ~/.bashrc
+  #
+  # PS1='[\u@\h \W]\$ '
+  # If not running interactively, don't do anything
+  [[ $- != *i* ]] && return
+
+  alias ls='ls --color=auto'
+  alias l='ls -la --color=auto'
+  alias grep='grep --color=auto'
+  alias rm='rm -i'
+  alias ec='emacs -nw'
+  alias ff='fastfetch --load-config ~/.config/fastfetch/ff.jsonc'
+  alias caps='setxkbmap -option "ctrl:nocaps"'
+  alias sye='bash /home/une/桌面/back/archlinux/check/zprac-some/sh/sync-emacs.sh'
+  alias gwe='bash /home/une/.config/emacs/archive/weather-wttr.sh'
+  source ~/.bash_profile  
+#+end_src
+
+****** 🔧 .bash_profile
+#+begin_src sh :tangle ~/.bash_profile
+  #
+  # ~/.bash_profile
+  #
+  # [[ -f ~/.bashrc ]] && . ~/.bashrc
+
+  export EMACS="/home/une/.config/emacs"
+  export check="/home/une/桌面/back/archlinux/check"
+  export learn="/home/une/桌面/back/archlinux/check/my/learn"
+  export blog="/home/une/桌面/back/archlinux/check/my/blog/BTWIUSEARCH/colfwe.github.io"
+  export pic="/home/une/图片/屏幕截图"
+  export gtd="/home/une/桌面/back/archlinux/check/GTD/2025"
+  export dotfiles="/home/une/.gi/dotfiles-archlinux"  
+#+end_src
+
+
+**** (3) GNU Emacs
+
+***** 文件结构
+#+begin_quote
+🔧 init.el
+📁 elisp
+   📁 basic
+      🔧 basic-elpa.el
+      🔧 basic-init.el
+      🔧 basic-mode.el
+      🔧 basic-path.el      
+   📁 custom
+      🔧 custom-defun.el
+   📁 enhance
+      🔧 enhance-cdlatex.el
+      🔧 enhance-deadgrep.el
+      🔧 enhance-dirvish.el
+      🔧 enhance-history.el
+      🔧 enhance-indentline.el
+      🔧 enhance-magit.el
+      🔧 enhance-minibuffer.el
+      🔧 enhance-pdftools.el
+      🔧 enhance-restart.el
+      🔧 enhance-smartparens.el
+      🔧 enhance-tabs.el
+      🔧 enhance-term.el
+      🔧 enhance-unre.el            
+   📁 hooks
+      🔧 hooks-hook.el               
+   📁 im
+      🔧 im-telega.el                  
+   📁 key
+      🔧 key-keybindings.el                     
+   📁 note
+      🔧 note-auctex.el
+      🔧 note-orgmode.el
+      🔧 note-orgroam.el      
+   📁 ui
+      📁 decorate
+         🔧 ui-decorate-dashboard.el
+      📁 font
+         🔧 ui-font-sauce.el      
+      📁 icon
+         🔧 ui-icon-nerdfont.el      
+      📁 modeline
+         🔧 ui-modeline-bar.el
+         🔧 battery-percentage.sh
+         🔧 calendar-day.sh
+         🔧 calendar-month.sh
+         🔧 calendar-week.sh
+         🔧 cpu-temperature.sh
+         🔧 disk-usage.sh
+         🔧 distribution.sh
+         🔧 pacman-packages.sh
+         🔧 ram-usage.sh
+         🔧 time-hour.sh
+         🔧 time-minute.sh
+         🔧 weather-situation.sh                  
+      📁 theme
+         🔧 ui-theme-dark.el
+         🔧 ui-theme-light.el         
+   📁 zprogramming
+      📁 cmp
+         🔧 zprogramming-cmp-corfu.el
+      📁 lsp
+         🔧 zprogramming-lsp-eglot.el
+      📁 mode
+         🔧 zprogramming-mode-cmake.el
+      📁 snips
+         🔧 zprogramming-snips-yasnippet.el
+      📁 ts
+         🔧 zprogramming-ts-treesitter.el
+#+end_quote
+
+***** 文件配置
+****** 🔧 init.el
+#+begin_src elisp :tangle ~/.config/emacs/init.el
+  ;; =======================================
+  ;; 
+  ;; 路径加载
+  ;; 
+  ;; =======================================
+  (add-to-list 'load-path
+               (expand-file-name 
+                (concat user-emacs-directory "elisp/basic")))
+  (require 'basic-path)
+
+
+  ;; =======================================
+  ;; 
+  ;; 模块加载
+  ;; 
+  ;; =======================================
+  (require 'custom-defun)
+  (require 'basic-elpa)
+  (require 'basic-init)
+  (require 'basic-mode)
+  (require 'enhance-cdlatex)
+  (require 'enhance-deadgrep)
+  (require 'enhance-dirvish)
+  (require 'enhance-minibuffer)
+  (require 'enhance-indentline)
+  (require 'enhance-magit)
+  (require 'enhance-pdftools)
+  (require 'enhance-restart)
+  (require 'enhance-smartparens)
+  (require 'enhance-tabs)
+  (require 'enhance-term)
+  (require 'enhance-history)
+  (require 'ui-font-sauce)
+  (require 'ui-icon-nerdfont)
+  (require 'ui-theme-light)
+  (require 'ui-theme-dark)
+  (require 'ui-decorate-dashboard)
+  (require 'ui-modeline-bar)
+  (require 'note-auctex)
+  (require 'note-orgmode)
+  (require 'note-orgroam)
+  (require 'zprogramming-cmp-corfu)
+  (require 'zprogramming-lsp-eglot)
+  (require 'zprogramming-snips-yasnippet)
+  (require 'zprogramming-ts-treesitter)
+  (require 'zprogramming-mode-cmake)
+  (require 'im-telega)
+  (require 'key-keybindings)
+
+  ;; =======================================
+  ;; 
+  ;; 钩子加载
+  ;; 
+  ;; =======================================
+  (require 'hooks-hook)
+  (custom-set-variables
+   ;; custom-set-variables was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(custom-safe-themes
+     '("1781e8bccbd8869472c09b744899ff4174d23e4f7517b8a6c721100288311fa5"
+       "3001510be1be4a38508ff07633e97b810c0a52c6fa2f4c7153d22cc7596d9172"
+       "e7820b899036ae7e966dcaaec29fd6b87aef253748b7de09e74fdc54407a7a02" default))
+   '(org-agenda-files
+     '("/home/une/桌面/back/archlinux/todo/archlinux/2025/2025.org"))
+   '(package-selected-packages
+     '(auctex bliss-theme cdlatex centaur-tabs cmake-mode corfu dashboard deadgrep
+              dirvish eat embark-consult highlight-indent-guides magit marginalia
+              nano-theme nerd-icons-corfu nerd-icons-dired nerd-icons-ibuffer
+              orderless org org-roam-ui pdf-tools pkg-info posframe
+              rainbow-identifiers restart-emacs smartparens telega
+              tree-sitter-langs valign vertico vertico-posframe yasnippet-snippets)))
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   )
+#+end_src
+
+****** 📁 elisp 📁 basic 🔧 basic-elpa.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/basic/basic-elpa.el
+  ;; =======================================
+  ;; 源设置 basic-elpa.el 
+  ;; =======================================
+  (use-package package
+    :init 
+    (setq package-archives 
+          '(("melpa" . "https://melpa.org/packages/")         
+            ("gnu" . "https://elpa.gnu.org/packages/")
+            ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
+    (setq package-enable-at-startup nil)
+    (setq use-package-expand-minimally t
+          use-package-verbose t)
+    :autoload
+    (package-initialize))
+
+
+  (provide 'basic-elpa)  
+#+end_src
+
+****** 📁 elisp 📁 basic 🔧 basic-init.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/basic/basic-init.el
+  ;; =======================================
+  ;; 基本配置 basic-init.el
+  ;; =======================================
+
+  ;; =======================================
+  ;; 关闭默认欢迎界面
+  ;; =======================================
+  (setq inhibit-startup-screen t)
+
+
+  ;; =======================================
+  ;; 关闭默认工具栏显示
+  ;; =======================================
+  (tool-bar-mode -1)
+  (menu-bar-mode -1)
+  (scroll-bar-mode -1)
+
+
+  ;; =======================================
+  ;; 关闭scratch与Messages的Buffer
+  ;; =======================================
+  (setq-default message-log-max nil)
+
+
+  ;; =======================================
+  ;; y or n
+  ;; =======================================
+  (fset 'yes-or-no-p 'y-or-n-p)
+
+
+  ;; =======================================
+  ;; 编码设置
+  ;; =======================================
+  (prefer-coding-system 'utf-8)
+
+
+  ;; =======================================
+  ;; ibuffer格式设置
+  ;; =======================================
+  (setq ibuffer-formats
+        '((mark modified read-only locked " " (name 30 18 :left :elide) " "
+                (size 9 -1 :right) " " (mode 16 16 :left :elide) " " filename-and-process)
+          (mark " " (name 16 -1) " " filename)))
+
+
+  ;; =======================================
+  ;; 起始目录
+  ;; =======================================
+  (setq default-directory "~/桌面/back/archlinux/check")                ; GNU Emacs的起始目录
+
+
+  ;; =======================================
+  ;; 关于agenda
+  ;; =======================================
+  (setq org-agenda-files '("~/.config/emacs/archive/org-agenda-archive.org"))
+
+
+  ;; =======================================
+  ;; 关于eshell
+  ;; =======================================
+  (setq eshell-prompt-function
+        (lambda ()
+          (let* ((user (getenv "USER"))
+                 (host (system-name))
+                 (dir (abbreviate-file-name (eshell/pwd))))
+            (concat "[" user "@" host " " dir "]$ "))))                 ; eshell-prompt设置
+  (setq eshell-banner-message " ")                                      ; eshell-welcome设置
+
+
+  ;; =======================================
+  ;; 自定义恢复文件配置(Auto saving...done)
+  ;; =======================================
+  (setq backup-directory-alist `(("." . "~/.config/emacs/saves/")))     ; 统一设置恢复文件的保存目录，而不污染当前同级目录
+  (setq backup-by-copying t)                                            ; 设置保存形式
+  (setq delete-old-versions t
+    kept-new-versions 6
+    kept-old-versions 2
+    version-control t)                                                  ; 设置保存版本控制
+
+
+  ;; =======================================
+  ;; 1行80个字符
+  ;; =======================================
+  (setq-default fill-column 80)
+
+
+  (provide 'basic-init)  
+#+end_src
+
+****** 📁 elisp 📁 basic 🔧 basic-mode.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/basic/basic-mode.el
+  ;; =======================================
+  ;; 模式初始化 basic-mode.el
+  ;; =======================================
+  (add-to-list 'auto-mode-alist '("\\.el\\'"  . emacs-lisp-mode))
+
+
+  (provide 'basic-mode)  
+#+end_src
+
+****** 📁 elisp 📁 basic 🔧 basic-path.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/basic/basic-path.el  
+  ;; =======================================
+  ;; 关于路径加载 basic-path.el
+  ;; =======================================
+
+  ;; =======================================
+  ;; 关于基本设置路径
+  ;; =======================================
+  (add-to-list 'load-path
+               (expand-file-name 
+                (concat user-emacs-directory "elisp/basic")))
+  ;; =======================================
+  ;; 关于自定义函数路径
+  ;; =======================================
+  (add-to-list 'load-path
+               (expand-file-name 
+                 (concat user-emacs-directory "elisp/custom")))
+  ;; =======================================
+  ;; 关于体验增强路径
+  ;; =======================================
+  (add-to-list 'load-path
+               (expand-file-name 
+                 (concat user-emacs-directory "elisp/enhance")))
+  ;; =======================================
+  ;; 关于ui路径
+  ;; =======================================
+  (add-to-list 'load-path
+               (expand-file-name 
+                (concat user-emacs-directory "elisp/ui/font")))
+  (add-to-list 'load-path
+               (expand-file-name 
+                (concat user-emacs-directory "elisp/ui/icon")))
+  (add-to-list 'load-path
+               (expand-file-name 
+                 (concat user-emacs-directory "elisp/ui/theme")))
+  (add-to-list 'load-path
+               (expand-file-name 
+                (concat user-emacs-directory "elisp/ui/decorate")))
+  (add-to-list 'load-path
+               (expand-file-name 
+                (concat user-emacs-directory "elisp/ui/modeline")))
+  ;; =======================================
+  ;; 关于笔记路径
+  ;; =======================================
+  (add-to-list 'load-path
+               (expand-file-name 
+                 (concat user-emacs-directory "elisp/note")))
+  ;; =======================================
+  ;; 关于编程路径
+  ;; =======================================
+  (add-to-list 'load-path
+               (expand-file-name 
+                 (concat user-emacs-directory "elisp/zprogramming/cmp")))
+  (add-to-list 'load-path
+               (expand-file-name 
+                (concat user-emacs-directory "elisp/zprogramming/lsp")))
+  (add-to-list 'load-path
+               (expand-file-name 
+                 (concat user-emacs-directory "elisp/zprogramming/snips")))
+  (add-to-list 'load-path
+               (expand-file-name 
+                (concat user-emacs-directory "elisp/zprogramming/ts")))
+  (add-to-list 'load-path
+               (expand-file-name 
+                (concat user-emacs-directory "elisp/zprogramming/mode")))
+  ;; =======================================
+  ;; 关于快捷键设置
+  ;; =======================================
+  (add-to-list 'load-path
+               (expand-file-name 
+                (concat user-emacs-directory "elisp/key")))
+  ;; =======================================
+  ;; 关于快捷键设置
+  ;; =======================================
+  (add-to-list 'load-path
+               (expand-file-name 
+                (concat user-emacs-directory "elisp/hooks")))
+  ;; =======================================
+  ;; 关于instant-messaging(IM)设置
+  ;; =======================================
+  (add-to-list 'load-path
+               (expand-file-name 
+                (concat user-emacs-directory "elisp/im")))
+
+
+  (provide 'basic-path)
+#+end_src
+
+****** 📁 elisp 📁 custom 🔧 custom-defun.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/custom/custom-defun.el
+  ;; =======================================
+  ;; 自定义 custom-defun.el
+  ;; =======================================
+
+  ;; =======================================
+  ;; 切换主题
+  ;; =======================================
+  (defun custom-toggle-light-theme ()
+    "切换主题到nano-light"
+    (lambda () (interactive)    
+      (load-theme     'nano-light t)))
+
+
+  ;; =======================================
+  ;; 光标移动
+  ;; =======================================
+  (defun custom-move-next-five-lines ()
+    "光标向下移动5行"
+    (interactive)
+    (next-line 5))
+  (defun custom-move-prev-five-lines ()
+    "光标向上移动5行"
+    (interactive)
+    (previous-line 5))
+
+
+  ;; =======================================
+  ;; 窗口移动
+  ;; =======================================
+  (defun custom-resize-top-five-unit ()
+    "当前窗口向上5个单位"
+    (interactive)
+    (shrink-window 5))
+  (defun custom-resize-bottom-five-unit ()
+    "当前窗口向下5个单位"
+    (interactive)
+    (enlarge-window 5))
+  (defun custom-resize-left-five-unit ()
+    "当前窗口向左5个单位"
+    (interactive)
+    (shrink-window-horizontally 5))
+  (defun custom-resize-right-five-unit ()
+    "当前窗口向右5个单位"
+    (interactive)
+    (enlarge-window-horizontally 5))
+
+
+  ;; =======================================
+  ;; 软空格: 保证每次TAB都是2个字符宽度的整数倍单位
+  ;; =======================================
+  (defun custom-tab-stops-generate (&optional width max)
+    "Return a sequence suitable for `tab-stop-list'."
+    (let* ((max-column (or max 200))
+           (tab-width (or width tab-width))
+           (count (/ max-column tab-width)))
+      (number-sequence tab-width (* tab-width count) tab-width)))
+  ;; 软空格
+  (setq-default indent-tabs-mode nil)
+  (setq tab-width 2)
+  (setq tab-stop-list (custom-tab-stops-generate))
+
+
+  ;; =======================================
+  ;; 自动添加文本
+  ;; =======================================
+  (defun custom-org-add-latex-header ()
+    "在org-mode里添加可能需要的LaTeX Header来成功导出pdf文档"
+    (interactive)
+    (goto-char (point-min))
+    (insert "#+LATEX_HEADER: \\usepackage[usenames]{color}\n")
+    (insert "#+LATEX_HEADER: \\usepackage{amsmath}\n")
+    (insert "#+LATEX_HEADER: \\usepackage{esint}\n")
+    (insert "#+LATEX_HEADER: \\usepackage{fontspec}\n")
+    (insert "#+LATEX_HEADER: \\setsansfont{Noto Sans CJK TC}\n")
+    (insert "#+LATEX_HEADER: \\setmainfont{Noto Serif CJK TC}\n")
+    (insert "#+LATEX_HEADER: xelatex\n\n"))
+  (eval-after-load 'org
+    '(define-key org-mode-map (kbd "C-z C-x C-e") 'custom-org-add-latex-header))
+
+
+  ;; =======================================
+  ;; 编辑增强
+  ;; from https://stackoverflow.com/a/998472
+  ;; =======================================
+  (defun custom-duplicate-line (arg)
+    "重复上一行，并保持光标在原位置不变"
+    (interactive "*p")  
+    (setq buffer-undo-list (cons (point) buffer-undo-list))
+    (let ((bol (save-excursion (beginning-of-line) (point)))
+          eol)
+      (save-excursion            
+        (end-of-line)
+        (setq eol (point))
+        (let ((line (buffer-substring bol eol))
+              (buffer-undo-list t)
+              (count arg))
+          (while (> count 0)          
+            (newline)
+            (insert line)
+            (setq count (1- count))))      
+        (setq buffer-undo-list (cons (cons eol (point)) buffer-undo-list))))
+    (next-line arg))
+
+
+  ;; =======================================
+  ;; 在org-mode下避免valign-mode造成的卡顿问题
+  ;; from chatGPT 4o
+  ;; =======================================
+  (defun custom-toggle-inline-images-with-valign ()
+    (interactive)
+    (if (bound-and-true-p valign-mode)
+        (progn
+          (valign-mode -1)
+          (org-toggle-inline-images)
+          (valign-mode 1))
+      (org-toggle-inline-images)))
+
+
+  ;; =======================================
+  ;; 重量级更新: 解耦org-cycle与cdlatex-tab的快捷键
+  ;; from chatGPT 4o
+  ;; =======================================
+  (defun custom-org-table-with-cdlatex ()
+    (when (and (derived-mode-p 'org-mode) (not (minibufferp)))
+    (if (org-at-table-p)
+        (progn
+          (local-set-key (kbd "TAB")     'cdlatex-tab)
+          (local-set-key (kbd "C-l")     'org-table-next-field))
+        (local-set-key (kbd "TAB")       'org-cycle))))
+
+
+  ;; =======================================
+  ;; 关于PDFView
+  ;; =======================================
+  (defun custom-move-prev-ten-pages ()
+    "pdf向上翻10页"
+    (interactive)
+    (pdf-view-previous-page-command 10))
+  (defun custom-move-next-ten-pages ()
+    "pdf向下翻10页"
+    (interactive)
+    (pdf-view-next-page-command 10))
+  (defun custom-pdf-view-mode-hook-with-yas ()
+    "禁用 yasnippet"
+    (yas-minor-mode -1))
+
+
+  ;; =======================================
+  ;; 关于theme
+  ;; =======================================
+  (defun custom-load-theme-light ()
+    "切换为亮色light主题"
+    (interactive)
+    (disable-theme 'bliss)
+    (load-theme 'nano-light)
+    (set-face-attribute 'vertico-current nil :background "#b5ffd1")
+    (set-face-attribute 'tab-line nil :background "#ffffff")
+    (with-eval-after-load 'telega
+      (set-face-attribute 'telega-msg-heading nil :background "#ffffff"))
+    (set-face-attribute 'help-key-binding nil
+                        :height 90
+                        :box nil
+                        :foreground "#673ab7"
+                        :background "#ffffff")
+    (setq dashboard-startup-banner "/home/une/.wallpaper/dashboard-zoom-out-light.png")
+    (dashboard-refresh-buffer)
+    (set-face-attribute 'vertico-group-separator nil :background "#37474f" :foreground "#FFFFFF")
+    (set-face-attribute 'vertico-group-title nil :background "#37474f" :foreground "#FFFFFF")
+    (set-face-attribute 'vertico-posframe nil :background "#FFFFFF" :foreground "#37474f")
+    (set-face-attribute 'vertico-current nil :background "#b5ffd1" :foreground "#37474f")
+    (with-eval-after-load 'corfu
+      (set-face-attribute 'corfu-default nil :background "#ffffff")
+      (set-face-attribute 'corfu-border nil :background "#37474f")
+      (set-face-attribute 'corfu-current nil :background "#cfd8dc" :foreground "#37474f"))  
+    (with-eval-after-load 'dirvish
+      (set-face-attribute 'dirvish-hl-line nil :background "#cfd8dc" :foreground "#37474f")))
+
+  (defun custom-load-theme-dark ()
+    "切换为暗色dark主题"
+    (interactive)
+    (disable-theme 'nano-light)
+    (load-theme 'bliss)
+    (set-face-attribute 'vertico-current nil :background "#31343e")
+    (set-face-attribute 'tab-line nil :background "#191919")
+    (with-eval-after-load 'telega
+      (set-face-attribute 'telega-msg-heading nil :background "#191919"))
+    (set-face-attribute 'help-key-binding nil
+                        :height 90
+                        :box nil
+                        :foreground "#64fbc8"
+                        :background "#191919")
+    (setq dashboard-startup-banner "/home/une/.wallpaper/dashboard-zoom-out-dark.png")
+    (dashboard-refresh-buffer)
+    (set-face-attribute 'vertico-current nil :background "#444444" :foreground "#67fbc8")
+    (set-face-attribute 'vertico-group-separator nil :background "#64fbc8" :foreground "#191919")
+    (set-face-attribute 'vertico-group-title nil :background "#64fbc8" :foreground "#191919")
+    (set-face-attribute 'vertico-posframe nil :background "#191919" :foreground "#3bb1df")
+    (with-eval-after-load 'corfu
+      (set-face-attribute 'corfu-default nil :background "#191919" :foreground "#3bb1df")
+      (set-face-attribute 'corfu-border nil :background "#37474f")
+      (set-face-attribute 'corfu-current nil :background "#444444" :foreground "#64fbc8"))
+    (with-eval-after-load 'dirvish
+      (set-face-attribute 'dirvish-hl-line nil :background "#444444" :foreground "#64fbc8")))
+
+
+  ;; =======================================
+  ;; 禁用Messages与scratch
+  ;; =======================================
+  (defun custom-close-scratch-and-messages-buffer ()
+    "禁用Messages与scratch"
+      (when (get-buffer "*scratch*")
+        (kill-buffer "*scratch*") 
+      (when (get-buffer "*Messages*") 
+        (kill-buffer "*Messages*"))))
+
+
+  ;; =======================================
+  ;; 动态选择引擎来渲染
+  ;; from chatGPT 4o
+  ;; =======================================
+  (defun custom-format-org-latex-preview-with-utf8 ()
+    "渲染在org-mode下渲染含有utf-8字符的equation之前的格式化准备"
+    (interactive)
+    ;; 找到 \[\] 的 \[
+    (let ((thing (thing-at-point 'line t)))
+      (if (and thing (string-match "\\[.*\\]" thing))
+          (search-backward "\\[" nil t)
+        (message "no such equation, please check again...")))
+    (forward-char 2)
+    (delete-all-space)
+    ;; 找到 \[\] 的 \]
+    (let ((thing (thing-at-point 'line t)))
+      (if (and thing (string-match "\\[.*\\]" thing))
+          (search-forward "\\]" nil t)
+        (message "no such equation, please check again...")))
+    (backward-char 3)
+    (delete-all-space))
+
+  (defun custom-org-latex-preview-with-utf8 ()
+    "在org-mode下渲染含有utf-8字符的equation"
+    (interactive)
+    (let* ((latex-code (thing-at-point 'line t))
+           (is-utf8 (and latex-code
+                         (string-match "\\[.*\\]" latex-code)
+                         (string-match-p "[^\x00-\x7F]" latex-code))))
+      (if is-utf8
+          ;; 如果包含 UTF-8 字符，就使用 xelatex-chinese 引擎
+          (progn
+            (setq org-preview-latex-default-process 'xelatex-chinese)
+            (message "目前使用了xelatex-chinese引擎渲染此latex-fragment"))
+        ;; 如果不包含 UTF-8 字符，就使用 dvipng、dvisvgm、imagemagick 引擎
+        (setq org-preview-latex-default-process 'dvipng)                       
+        (message "目前使用了org-mode默认的dvipng、dvisvgm、imagemagick引擎渲染此latex-fragment"))
+      (org-latex-preview)
+      ;; 每次执行完毕后都恢复为 dvipng、dvisvgm、imagemagick 引擎
+      (setq org-preview-latex-default-process 'dvipng)
+      (message "Creating Latex previews in section...(and recover dvipng...) done.")))
+
+  (defun custom-render-equation-utf8 ()
+    "在org-mode下渲染含有utf-8字符的equation的组合函数"
+    (interactive)
+    (custom-format-org-latex-preview-with-utf8)
+    (custom-org-latex-preview-with-utf8))
+
+
+  ;; =======================================
+  ;; 在org-mode的公式上下文的光标跳转
+  ;; from chatGPT 4o
+  ;; =======================================
+  (defun custom-jump-the-beginning-of-the-equation (arg)
+    "根据 prefix(C-u) 参数决定是否手动或自动进入选区模式，并跳转到公式块\[\]的\["
+    (interactive "P")
+    (let ((thing (thing-at-point 'line t)))
+      (if (and thing (string-match "\\[.*\\]" thing))
+          (progn
+            (if arg
+                (call-interactively 'set-mark-command)
+              (execute-kbd-macro (kbd "C-SPC")))
+            (search-backward "\\[" nil t))
+        (message "No such equation, please check again..."))))
+
+  (defun custom-jump-the-ending-of-the-equation (arg)
+    "根据 prefix(C-u) 参数决定是否手动或自动进入选区模式，并跳转到公式块\[\]的\]"
+    (interactive "P")
+    (let ((thing (thing-at-point 'line t)))
+      (if (and thing (string-match "\\[.*\\]" thing))
+          (progn
+            (if arg
+                (call-interactively 'set-mark-command)
+              (execute-kbd-macro (kbd "C-SPC")))
+            (search-forward "\\]" nil t))
+        (message "No such equation, please check again..."))))
+
+  (defun custom-inside-escaped-bracket-pair-p ()
+    "判断公式块\[ \]的谓词"
+    (let ((thing (thing-at-point 'line t)))
+      (and thing
+           (string-match-p "\\[.*\\]" thing))))
+
+  (defun custom-jump-the-previous-equation-formatting ()
+    "光标跳转到上一个公式块前的格式化"
+    (interactive)
+    (if (custom-inside-escaped-bracket-pair-p)
+        (search-backward "\\[" nil t)))
+
+  (defun custom-jump-the-next-equation-formatting ()
+    "光标跳转到下一个公式块前的格式化"
+    (interactive)
+    (if (custom-inside-escaped-bracket-pair-p)
+        (search-forward "\\]" nil t)))
+
+  (defun custom-jump-the-previous-equation ()
+    "当光标在公式块\[ \]时，跳转到此上一个公式块的\[ \]"
+    (interactive)
+    (custom-jump-the-previous-equation-formatting)
+    (if (custom-inside-escaped-bracket-pair-p)
+        (progn
+          (forward-char 2)
+          (search-backward "\\[" nil t))
+      (message "no previous equation, please check again...")))
+
+  (defun custom-jump-the-next-equation ()
+    "当光标在公式块\[ \]时，跳转到此下一个公式块的\[ \]"
+    (interactive)
+    (custom-jump-the-next-equation-formatting)
+    (if (custom-inside-escaped-bracket-pair-p)
+        (progn
+          (backward-char 2)
+          (search-forward "\\]" nil t))
+      (message "no next equation, please check again...")))
+
+
+  (provide 'custom-defun)
+#+end_src
+
+****** 📁 elisp 📁 enhance 🔧 enhance-cdlatex.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/enhance/enhance-cdlatex.el
+  ;; ========================================
+  ;; 快速输入数学符号 enhance-cdlatex.el
+  ;; ========================================
+  (use-package cdlatex
+    :ensure t
+    :defer nil
+    :after tex-site
+    :bind (:map cdlatex-mode-map
+                ("<tab>" . cdlatex-tab))
+    :init 
+    (setq cdlatex-paired-parens "")
+    (setq cdlatex-use-dollar-to-ensure-math nil)
+
+    ;; ==================================
+    ;; cdlatex的TAB补全
+    ;; ==================================
+    (setq cdlatex-command-alist
+      '(("Bm" "" "\\begin{Bmatrix}  ? \\end{Bmatrix}" cdlatex-position-cursor nil nil t)
+        ("vm" "" "\\begin{vmatrix}  ? \\end{vmatrix}" cdlatex-position-cursor nil nil t)
+        ("bm" "" "\\begin{bmatrix}  ? \\end{bmatrix}" cdlatex-position-cursor nil nil t)
+        ("ve" "" "\\vert{} ?" cdlatex-position-cursor nil t t)
+        ("or" "" "\\overrightarrow{?} " cdlatex-position-cursor nil t t)
+        ("ii" "" "\\textit{?} " cdlatex-position-cursor nil t t)
+        ("bb" "" "\\textbf{?} " cdlatex-position-cursor nil t t)
+        ("te" "" "\\text{?} " cdlatex-position-cursor nil t t)
+        ("dd" "" "\\mathrm{d} ?" cdlatex-position-cursor nil t t)
+        ("nn" "" "\\\\ ?" cdlatex-position-cursor nil t t)
+        ("nl" "" "\\\\ ?" cdlatex-position-cursor nil t t)
+        ("xl" "" "\\xleftarrow[?]{} " cdlatex-position-cursor nil nil t)      
+        ("xr" "" "\\xrightarrow[?]{} " cdlatex-position-cursor nil nil t)
+        ("ae" "" "\\underset{ ? }{\\overset{   }{\\Longleftrightarrow}} " cdlatex-position-cursor nil nil t)
+        ("al" "" "\\underset{ ? }{\\overset{   }{\\Longleftarrow}} " cdlatex-position-cursor nil nil t)
+        ("ar" "" "\\underset{ ? }{\\overset{   }{\\Longrightarrow}} " cdlatex-position-cursor nil nil t)
+        ("R" "" "\\Re?" cdlatex-position-cursor nil nil t)
+        ("to" "" "{? \\to }" cdlatex-position-cursor nil nil t)
+        ("liml" "" "\\lim_{? \\to } " cdlatex-position-cursor nil nil t)      
+        ("intl" "" "\\int_{?}^{} \\mathrm{d} " cdlatex-position-cursor nil nil t)
+        ("iintl" "" "\\iint\\limits_{L} ? \\mathrm{d}\\sigma " cdlatex-position-cursor nil nil t)
+        ("inf" "" "\\infty?" cdlatex-position-cursor nil nil t)
+        ("app" "" "\\approx?" cdlatex-position-cursor nil nil t))))
+
+    ;; ==================================
+    ;; cdlatex的`补全
+    ;; ==================================
+    (setq cdlatex-math-symbol-alist
+          '((112 ("" "\\pi"))
+            (33 ("\\neq" "" ""))
+            (46 ("\\cdot" "\\cdots"))
+            (97 ("\\alpha" "" "\\ast"))
+            (39 ("" "" "`"))
+            (109 ("\\mu" "" "\\lim"))))
+
+
+  ;; ========================================
+  ;; cdlatex的括号匹配
+  ;; ========================================
+  (defun custom-insert-inline-OCDL ()
+    (interactive)
+    (insert "\\[ ")
+    (save-excursion (insert " \\]")))
+  (eval-after-load 'org
+    '(define-key org-cdlatex-mode-map (kbd "$")   'custom-insert-inline-OCDL))
+  (defun custom-insert-bra-OCDL ()
+    (interactive)
+    (insert "(")
+    (save-excursion (insert ")")))
+  (eval-after-load 'org
+     '(define-key org-cdlatex-mode-map (kbd "(")   'custom-insert-bra-OCDL))
+  (defun custom-insert-sq-bra-OCDL ()
+    (interactive)
+    (insert "[")
+    (save-excursion (insert "]")))
+  (eval-after-load 'org
+     '(define-key org-cdlatex-mode-map (kbd "[")   'custom-insert-sq-bra-OCDL))
+  (defun custom-insert-curly-bra-OCDL ()
+    (interactive)
+    (insert "{")
+    (save-excursion (insert "}")))
+  (eval-after-load 'org
+     '(define-key org-cdlatex-mode-map (kbd "{")   'custom-insert-curly-bra-OCDL))
+
+
+  (provide 'enhance-cdlatex)  
+#+end_src
+
+****** 📁 elisp 📁 enhance 🔧 enhance-deadgrep.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/enhance/enhance-deadgrep.el
+  ;; ========================================
+  ;; 抓取文本工具 enhance-deadgrep.el
+  ;; ========================================
+  (use-package cdlatex
+    :ensure t
+    :defer t)
+
+
+  (provide 'enhance-deadgrep)  
+#+end_src
+
+****** 📁 elisp 📁 enhance 🔧 enhance-dirvish.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/enhance/enhance-dirvish.el
+  ;; ========================================
+  ;; 左侧文件树工具 enhance-dirvish.el
+  ;; ========================================
+  (use-package dirvish
+    :ensure t
+    :defer t
+    :init
+    (dirvish-override-dired-mode)
+    (dirvish-side-follow-mode)
+    (setq dirvish-mode-line-format '(:left (sort symlink) :right (omit yank index))
+          dirvish-mode-line-height 16
+          dirvish-header-line-height 9
+          delete-by-moving-to-trash t
+          dired-listing-switches "-l --almost-all --human-readable --group-directories-first --no-group"))
+
+
+  (provide 'enhance-dirvish)  
+#+end_src
+
+****** 📁 elisp 📁 enhance 🔧 enhance-history.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/enhance/enhance-history.el
+  ;; ========================================
+  ;; 历史记录 enhance-history.el
+  ;; ========================================
+  (use-package savehist
+    :ensure t
+    :defer nil
+    :hook (after-init . savehist-mode)
+    :init (setq enable-recursive-minibuffers t
+                history-length 1000
+                savehist-additional-variables '(mark-ring
+                                                global-mark-ring
+                                                search-ring
+                                                regexp-search-ring
+                                                extended-command-history)
+                savehist-autosave-interval 300))
+
+  (use-package saveplace
+    :ensure t
+    :defer nil
+    :hook (after-init . save-place-mode))
+
+
+  (provide 'enhance-history)  
+#+end_src
+
+****** 📁 elisp 📁 enhance 🔧 enhance-indentline.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/enhance/enhance-indentline.el
+  ;; =======================================
+  ;; 缩进线 enhance-indentline.el 
+  ;; =======================================
+  (use-package highlight-indent-guides
+               :ensure t
+               :defer t
+               :init
+               (setq highlight-indent-guides-method 'column)
+               :hook
+               (prog-mode     .    highlight-indent-guides-mode))
+
+
+  (provide 'enhance-indentline)  
+#+end_src
+
+****** 📁 elisp 📁 enhance 🔧 enhance-magit.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/enhance/enhance-magit.el
+  ;; =======================================
+  ;; 最好用的版本控制 enhance-magit.el 
+  ;; =======================================
+  (use-package magit
+    :ensure t
+    :defer t)
+
+
+  (provide 'enhance-magit)  
+#+end_src
+
+****** 📁 elisp 📁 enhance 🔧 enhance-minibuffer.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/enhance/enhance-minibuffer.el
+  ;; =======================================
+  ;; 迷你显示菜单 enhance-minibuffer.el
+  ;; =======================================
+  (use-package vertico
+    :ensure t
+    :defer nil
+    :init
+    (vertico-mode t))
+
+  (use-package orderless
+    :ensure t
+    :defer nil
+    :custom
+    (completion-styles '(orderless basic))
+    (completion-category-overrides '((file (styles basic partial-completion)))))
+
+  (use-package marginalia
+    :ensure t
+    :defer nil
+    :init
+    (marginalia-mode t))
+
+  (use-package embark
+    :ensure t
+    :defer nil
+    :init
+    (setq prefix-help-command 'embark-prefix-help-command))
+  (use-package embark-consult
+    :ensure t
+    :defer nil)
+  (use-package consult
+    :ensure t
+    :defer nil)
+
+  (use-package posframe
+    :ensure t
+    :defer t)
+  (use-package vertico-posframe
+    :ensure t
+    :defer t
+    :init
+    (vertico-posframe-mode 1))
+  (setq vertico-posframe-height 11)
+  (setq vertico-posframe-width 150)
+
+
+  (provide 'enhance-minibuffer)  
+#+end_src
+
+****** 📁 elisp 📁 enhance 🔧 enhance-pdftools.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/enhance/enhance-pdftools.el
+  ;; =======================================
+  ;; PDF工具 enhance-pdftools.el
+  ;; =======================================
+  (use-package pdf-tools
+    :ensure t
+    :defer nil
+    :init
+    (pdf-loader-install))
+
+
+  (provide 'enhance-pdftools)  
+#+end_src
+
+****** 📁 elisp 📁 enhance 🔧 enhance-restart.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/enhance/enhance-restart.el
+  ;; =======================================
+  ;; 重启GNU Emacs enhance-restart.el 
+  ;; =======================================
+  (use-package restart-emacs
+    :ensure t
+    :defer nil)
+
+
+  (provide 'enhance-restart)  
+#+end_src
+
+****** 📁 elisp 📁 enhance 🔧 enhance-smartparens.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/enhance/enhance-smartparens.el
+  ;; =======================================
+  ;; 括号匹配 enhance-smartparens.el 
+  ;; =======================================
+  ; (use-package tex-site)
+
+  (use-package smartparens
+    :ensure t
+    :defer nil
+    :hook (prog-mode text-mode LaTeX-mode))
+
+
+  (provide 'enhance-smartparens)  
+#+end_src
+
+****** 📁 elisp 📁 enhance 🔧 enhance-tabs.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/enhance/enhance-tabs.el
+  ;; =======================================
+  ;; 标签页 enhance-tabs.el 
+  ;; =======================================
+  (use-package centaur-tabs
+    :ensure t
+
+    :demand
+
+    :config
+    (centaur-tabs-mode t)
+
+    :init 
+    ;; =======================================
+    ;; 设置buffer基本状态
+    ;; =======================================
+    (setq centaur-tabs-style "box"
+          centaur-tabs-height 9  ;; 16
+          centaur-tabs-set-icons t
+          centaur-tabs-plain-icons t
+          centaur-tabs-gray-out-icons 'buffer)
+
+    ;; =======================================
+    ;; 设置buffer的当前活跃的图标
+    ;; =======================================
+    (setq centaur-tabs-set-bar 'left)
+
+    ;; =======================================
+    ;; 设置buffer的关闭图标
+    ;; =======================================
+    (setq centaur-tabs-set-close-button nil
+          centaur-tabs-close-button "X")
+
+    ;; =======================================
+    ;; 设置buffer的未保存状态的图标
+    ;; =======================================
+    (setq centaur-tabs-set-modified-marker t
+          centaur-tabs-modified-marker "*")
+    
+    ;; =======================================
+    ;; 设置buffer可循环
+    ;; =======================================
+    (setq centaur-tabs-cycle-scope 'tabs)
+
+    ;; =======================================
+    ;; 设置buffer的最大长度(0值代表动态长度)
+    ;; =======================================
+    (setq centaur-tabs-label-fixed-length 15)
+
+    ;; =======================================
+    ;; 禁用centaur-tabs-local-mode
+    ;; =======================================
+    :hook
+    (dired-mode . centaur-tabs-local-mode))
+
+
+  (provide 'enhance-tabs)  
+#+end_src
+
+****** 📁 elisp 📁 enhance 🔧 enhance-term.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/enhance/enhance-term.el
+  ;; =======================================
+  ;; 终端模拟器 enhance-term.el
+  ;; =======================================
+  ;; -*- lexical-binding: t -*-
+  (use-package eat
+    :ensure t
+    :defer t)
+
+
+  (provide 'enhance-term)  
+#+end_src
+
+****** 📁 elisp 📁 hooks 🔧 hooks-hook.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/hooks/hooks-hook.el
+  ;; ========================================
+  ;; 钩子配置 hooks-hook.el
+  ;; ========================================
+
+
+  ;; ========================================
+  ;; 编程类钩子hook
+  ;; ========================================
+  (add-hook 'prog-mode 'hs-minor-mode)                                         ; 折叠展开
+
+
+  ;; ========================================
+  ;; 完成初始化后的钩子hook
+  ;; ========================================
+  (add-hook 'after-init-hook (lambda () 
+                               (custom-close-scratch-and-messages-buffer)
+                               (dashboard-open)))                              ; 初始化钩子
+
+
+  ;; ========================================
+  ;; 笔记文本org/LaTeX-PS/text的钩子hook                                         
+  ;; ========================================
+  (add-hook 'text-mode-hook 'turn-on-visual-line-mode)                         ; 单行文本超出一定长度后自动虚拟换行显示(类似于set wrap)
+  (add-hook 'TeX-after-compilation-finished-functions                          ; AUCTeX(14.0.3.2024-03-17)
+            #'TeX-revert-document-buffer)                                     
+  (add-hook 'org-mode-hook #'org-cdlatex-mode)                                 ; 在org-mode使用OCDL(这是OCDL而不是CDL)
+  (add-hook 'LaTeX-mode-hook #'cdlatex-mode)                                   ; 在LaTeX-mode使用OCDL(这是OCDL而不是CDL)
+  (add-hook 'org-mode-hook #'valign-mode)                                      ; 在org-mode使用valign对齐不等宽字体
+  (add-hook 'LaTeX-mode-hook #'tree-sitter-mode)                               ; 在LaTeX-mode使用ts
+  (add-hook 'org-mode-hook
+            (lambda ()
+              (custom-org-table-with-cdlatex)
+              (add-hook 'post-command-hook 'custom-org-table-with-cdlatex)))   ; 仅在org-table上下文范围内使用cdlatex的TAB来补全来防止单元格内容不会因org-cycle而被新插入的字符org-self-insert-command而覆盖
+  (add-hook 'pdf-view-mode-hook 'custom-pdf-view-mode-hook-with-yas)           ; 在PDFView里禁用yasnippet
+
+
+  ;; ========================================
+  ;; 壳eshell的钩子hook
+  ;; ========================================
+  (add-hook 'eshell-mode-hook
+            (lambda ()
+              (add-hook 'window-configuration-change-hook 'custom-eshell-mode-hook)
+              (add-hook 'kill-buffer-hook
+                        (lambda ()
+                          (remove-hook 'window-configuration-change-hook 'custom-eshell-mode-hook)))))
+
+
+  ;; ========================================
+  ;; 关于telega
+  ;; ========================================
+  (add-hook 'telega-load-hook
+            (lambda ()
+              (define-key global-map (kbd "C-c u") telega-prefix-map)))
+
+
+  (provide 'hooks-hook)  
+#+end_src
+
+****** 📁 elisp 📁 im 🔧 im-telega.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/im/im-telega.el
+  ;; ========================================
+  ;; IM设置 im-telega.el (zevlg, Thank you!)
+  ;; ========================================
+  (use-package telega
+    :ensure t
+    :defer t
+    :init
+    (setq telega-avatar-workaround-gaps-for '(return t)))
+
+  (use-package visual-fill-column
+    :ensure t
+    :defer nil)
+  (use-package rainbow-identifiers
+    :ensure t
+    :defer nil)
+
+
+  (provide 'im-telega)  
+#+end_src
+
+****** 📁 elisp 📁 key 🔧 key-keybindings.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/key/key-keybindings.el
+  ;; ========================================
+  ;; 自定义快捷键 key-keybindings.el
+  ;; ========================================
+
+  ;; ========================================
+  ;; 关于软屏蔽
+  ;; ========================================
+  (global-unset-key (kbd "C-z"))                                                                        ; 屏蔽C-z (原功能: 挂起)
+
+
+  ;; ========================================
+  ;; 关于buffer
+  ;; ========================================
+  (global-set-key (kbd "C-z C-b C-n")                       'next-buffer)                               ; 跳转到下一个全局buffer
+  (global-set-key (kbd "C-z C-b C-p")                       'previous-buffer)                           ; 跳转到上一个全局buffer
+  (global-set-key (kbd "C-z C-b C-b")                       'centaur-tabs-backward)                     ; 跳转到上一个局部buffer
+  (global-set-key (kbd "C-z C-b C-f")                       'centaur-tabs-forward)                      ; 跳转到下一个局部buffer
+
+
+  ;; ========================================
+  ;; 关于theme
+  ;; ========================================
+  (global-set-key (kbd "C-z C-t C-1")                       'custom-load-theme-light)                   ; 切换为亮色light主题
+  (global-set-key (kbd "C-z C-t C-2")                       'custom-load-theme-dark)                    ; 切换为暗色dark主题
+
+
+  ;; ========================================
+  ;; 窗口管理
+  ;; ========================================
+  (global-set-key (kbd "C-z C-z C-k")                      'delete-window)                             ; 关闭当前窗口
+  (global-set-key (kbd "C-z C-z C-f")                      'windmove-right)                            ; 光标跳转到右边窗口
+  (global-set-key (kbd "C-z C-z C-b")                      'windmove-left)                             ; 光标跳转到左边窗口
+  (global-set-key (kbd "C-z C-z C-n")                      'windmove-down)                             ; 光标跳转到下边窗口
+  (global-set-key (kbd "C-z C-z C-p")                      'windmove-up)                               ; 光标跳转到上边窗口
+  (global-set-key (kbd "C-z C-s C-f")                      'windmove-swap-states-right)                ; 向右交换窗口 
+  (global-set-key (kbd "C-z C-s C-b")                      'windmove-swap-states-left)                 ; 向左交换窗口 
+  (global-set-key (kbd "C-z C-s C-n")                      'windmove-swap-states-down)                 ; 向下交换窗口 
+  (global-set-key (kbd "C-z C-s C-p")                      'windmove-swap-states-up)                   ; 向上交换窗口
+
+
+  ;; ========================================
+  ;; 关于选区
+  ;; ========================================
+  (global-set-key (kbd "C-z C-z C-c")                      'set-mark-command)                           ; 进入单行选区
+  (global-set-key (kbd "C-z C-x C-c")                      'set-mark-command)                           ; 进入单行选区
+  (global-set-key (kbd "C-c SPC")                          'rectangle-mark-mode)                        ; 进入矩形选区
+
+
+  ;; ========================================
+  ;; 关于调整屏幕
+  ;; ========================================
+  (global-set-key (kbd "C-z C-w C-p")                      'custom-resize-top-five-unit)                ; 当前窗口向上调整5个单位
+  (global-set-key (kbd "C-z C-w C-n")                      'custom-resize-bottom-five-unit)             ; 当前窗口向下调整5个单位
+  (global-set-key (kbd "C-z C-w C-b")                      'custom-resize-left-five-unit)               ; 当前窗口向左调整5个单位
+  (global-set-key (kbd "C-z C-w C-f")                      'custom-resize-right-five-unit)              ; 当前窗口向右调整5个单位
+
+
+  ;; ========================================
+  ;; 重启GNU Emacs
+  ;; ========================================
+  (global-set-key (kbd "C-z C-z C-z C-z C-r")              'restart-emacs)                              ; 重启GNU Emacs
+
+
+  ;; ========================================
+  ;; 关于dirvish文件管理器
+  ;; ========================================
+  (global-set-key (kbd "C-z C-z C-d")                      'dirvish-side)                               ; 左侧打开dirvish
+  (global-set-key (kbd "C-z C-z C-0")                      'dirvish)                                    ; 全局打开dirvish
+
+
+  ;; ========================================
+  ;; 关于移动光标
+  ;; ========================================
+  (global-set-key (kbd "M-n")                              'custom-move-next-five-lines)                ; 光标向下移动5行
+  (global-set-key (kbd "M-p")                              'custom-move-prev-five-lines)                ; 光标向上移动5行
+
+
+  ;; ========================================
+  ;; 关于buffer
+  ;; ========================================
+  (global-set-key (kbd "C-z C-z C-t")                      'ibuffer)                                    ; 用ibuffer来管理buffer
+  (global-set-key (kbd "C-x C-b")                          'consult-buffer)                             ; 用consult-buffer来切换buffer
+
+
+  ;; ========================================
+  ;; 关于编辑增强
+  ;; ========================================
+  (global-set-key (kbd "C-=")                              'custom-duplicate-line)                      ; 复制当前行到下一行并保持光标水平位置不变
+  (global-set-key (kbd "C-z C-z C-\-")                     'consult-line)                               ; consult版C-s搜索
+  (global-set-key (kbd "C-z C-z C-\=")                     'consult-ripgrep)                            ; consult版rg搜索
+  (global-set-key (kbd "C-z C-z C-e")                      'embark-act)                                 ; embark版action行动
+  (global-set-key (kbd "C-z C-x C-h")                      'embark-prefix-help-command)                 ; embark版help帮助
+
+
+  ;; ========================================
+  ;; 关于org-mode
+  ;; ========================================
+  (define-key org-mode-map (kbd "C-z C-x C-0")             'valign-mode)                                ; 切换valign-mode
+  (define-key org-mode-map (kbd "C-c C-x C-v")             'custom-toggle-inline-images-with-valign)    ; 用 C-c C-x C-v 避免valign-mode造成的对齐卡顿来预览图片
+  (define-key org-mode-map (kbd "C-z C-z C-l")             'custom-render-equation-utf8)                ; 用 C-z C-z C-l 进行utf-8的 \[\] 上下文范围的公式渲染
+  (define-key org-mode-map (kbd "C-z C-x C-f")             'custom-jump-the-ending-of-the-equation)     ; 当光标在\[\]上下文时，光标跳转到\[\]的\[
+  (define-key org-mode-map (kbd "C-z C-x C-b")             'custom-jump-the-beginning-of-the-equation)  ; 当光标在\[\]上下文时，光标跳转到\[\]的\]
+  (define-key org-mode-map (kbd "C-z C-x C-n")             'custom-jump-the-next-equation)              ; 当光标在\[\]上下文时，光标跳转到下一个\[\]
+  (define-key org-mode-map (kbd "C-z C-x C-p")             'custom-jump-the-previous-equation)          ; 当光标在\[\]上下文时，光标跳转到上一个\[\]
+  (define-key org-mode-map (kbd "C-z C-x C-\[")            'org-previous-item)                          ; 跳转到上一个 (1) 2. 3) 的小标题
+  (define-key org-mode-map (kbd "C-z C-x C-\]")            'org-next-item)                              ; 跳转到下一个 (1) 2. 3) 的小标题
+  (define-key org-mode-map (kbd "C-z C-z C-\\")            'org-agenda)                                 ; 打开org议题界面
+  (define-key org-mode-map (kbd "C-z C-a C-\\")            'org-agenda)                                 ; 打开org议题界面
+  (define-key org-mode-map (kbd "C-z C-a C-\[")            'org-agenda-file-to-front)                   ; 当前文件放进org议题内
+  (define-key org-mode-map (kbd "C-z C-a C-\]")            'org-remove-file)                            ; 当前文件移出org议题外
+  (define-key org-mode-map (kbd "C-z C-a C-s")             'org-schedule)                               ; 添加org议题的起始时间
+  (define-key org-mode-map (kbd "C-z C-a C-d")             'org-deadline)                               ; 添加org议题的终止时间
+  (define-key org-mode-map (kbd "C-z C-a C-\=")            'org-timestamp)                              ; 添加org议题的<>激活标签
+  (define-key org-mode-map (kbd "C-z C-a C-\-")            'org-timestamp-inactive)                     ; 添加org议题的[]非激活标签
+  (define-key org-mode-map (kbd "C-z C-a C-t")             'org-todo)                                   ; 切换todo/done/etc.标题文字
+  (define-key org-mode-map (kbd "C-z C-a C-j")             'org-set-tags-command)                       ; 打上特征标签
+  (define-key org-mode-map (kbd "C-z C-a C-0")             'org-archive-subtree)                        ; 删除subtree并保存至同目录下的org-archive文件内
+
+
+  ;; ========================================
+  ;; 关于org-roam
+  ;; ========================================
+  (define-key org-mode-map (kbd "C-z C-r C-f")             'org-roam-node-find)                         ; 寻找笔记地图节点
+  (define-key org-mode-map (kbd "C-z C-r C-a")             'org-roam-node-insert)                       ; 创建笔记地图节点
+  (define-key org-mode-map (kbd "C-z C-r C-n")             'org-roam-capture)                           ; 创建笔记地图节点
+  (define-key org-mode-map (kbd "C-z C-r C-t")             'org-roam-buffer-toggle)                     ; 切换笔记地图节点
+  (define-key org-mode-map (kbd "C-z C-r C-o")             'org-roam-ui-mode)                           ; 打开笔记地图
+  (define-key org-mode-map (kbd "C-z C-r C-d")             'org-roam-dailies-map)                       ; 打开日记菜单
+
+
+  ;; ========================================
+  ;; 关于PDFView
+  ;; ========================================
+  (define-key pdf-view-mode-map (kbd "d")                  'pdf-view-next-page-command)                 ; PDFView向后翻页
+  (define-key pdf-view-mode-map (kbd "a")                  'pdf-view-previous-page-command)             ; PDFView向前翻页
+  (define-key pdf-view-mode-map (kbd "s")                  'pdf-view-scroll-up-or-next-page)            ; PDFView向下滚动
+  (define-key pdf-view-mode-map (kbd "w")                  'pdf-view-scroll-down-or-previous-page)      ; PDFView向上滚动
+  (define-key pdf-view-mode-map (kbd "t")                  'custom-move-prev-ten-pages)                 ; PDFView向前翻10页
+  (define-key pdf-view-mode-map (kbd "b")                  'custom-move-next-ten-pages)                 ; PDFView向后翻10页
+  (require 'pdf-annot)
+  (define-key pdf-annot-minor-mode-map (kbd "C-c C-a C-0") 'pdf-annot-delete)                           ; PDFView删除批注
+  (define-key pdf-annot-minor-mode-map (kbd "C-c C-a C-1") 'pdf-annot-add-highlight-markup-annotation)  ; PDFView高亮
+  (define-key pdf-annot-minor-mode-map (kbd "C-c C-a C-2") 'pdf-annot-add-underline-markup-annotation)  ; PDFView下划线
+  (define-key pdf-annot-minor-mode-map (kbd "C-c C-a C-3") 'pdf-annot-add-squiggly-markup-annotation)   ; PDFView波浪下划线
+  (define-key pdf-annot-minor-mode-map (kbd "C-c C-a C-8") 'pdf-annot-add-text-annotation)              ; PDFView文本批注
+
+
+  ;; ========================================
+  ;; 关于Dashboard
+  ;; ========================================
+  (define-key dashboard-mode-map       (kbd "p")           'dashboard-previous-line)                    ; 设置在仅有dashboard-item下按下p来移动光标
+  (define-key dashboard-mode-map       (kbd "n")           'dashboard-next-line)                        ; 设置在仅有dashboard-item下按下n来移动光标
+  (define-key dashboard-mode-map       (kbd "j")           nil)                                         ; 取消在仅有dashboard-item下按下j来移动光标
+  (define-key dashboard-mode-map       (kbd "k")           nil)                                         ; 取消在仅有dashboard-item下按下k来移动光标
+  (global-set-key                      (kbd "C-z C-d C-r") 'consult-recent-file)                        ; C-z C-d C-r 来打开最近文件
+  (global-set-key                      (kbd "C-z C-d C-b") 'bookmark-bmenu-list)                        ; C-z C-d C-b 来打开书签文件
+  (global-set-key                      (kbd "C-z C-d C-a") 'org-agenda-list)                            ; C-z C-d C-a 来打开议程文件
+
+
+  ;; ========================================
+  ;; 关于进程process
+  ;; ========================================
+  (global-set-key (kbd "C-z C-p C-e")                      'telega)                                     ; 打开telega
+  (global-set-key (kbd "C-z C-p C-d")                      'deadgrep)                                   ; 打开deapgrep
+  (global-set-key (kbd "C-z C-p C-s")                      'eshell)                                     ; 开启eshell壳
+  (global-set-key (kbd "C-z C-p C-t")                      'eat)                                        ; 开启eat终端模拟器
+  (global-set-key (kbd "C-c C-p C-l")                      'eglot)                                      ; 开启eglot语言服务客户端
+  (global-set-key (kbd "C-c C-p C-c")                      'corfu-mode)                                 ; 开启corfu轻量补全框架
+  (global-set-key (kbd "C-z C-z C-1")                      'magit)                                      ; 打开magit
+
+
+  ;; ========================================
+  ;; 关于输入法
+  ;; ========================================
+  (global-set-key (kbd "C-\\")                             'toggle-input-method)                       ; 切换输入法
+
+
+  (provide 'key-keybindings)  
+#+end_src
+
+****** 📁 elisp 📁 note 🔧 note-auctex.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/note/note-auctex.el
+  ;; ========================================
+  ;; LaTeX编写 note-auctex.el
+  ;; ========================================
+  (use-package auctex
+    :ensure t
+    :defer t
+    
+    :init
+    ;; ========================================
+    ;; AUCTeX相关
+    ;; ========================================
+    (setq-default TeX-engine 'xetex)                                      ; 更改AUCTeX的渲染引擎从pdflatex到xelatex
+    (setq-default TeX-command-default "LatexMk")                          ; 使用 latexmk
+    (setq latexmk-command "latexmk -pdf -xelatex")                        ; 指定 latexmk 使用 XeLaTeX
+
+    ;; ========================================
+    ;; 建议添加的
+    ;; ========================================
+    (setq-default TeX-master nil)
+    (setq TeX-parse-selt t)
+
+    (setq-default TeX-PDF-mode t)                                         ; PDF输出
+    (setq TeX-source-correlate-mode t)
+    (setq TeX-source-correlate-method 'synctex)
+    (setq TeX-clean-intermediate t)                                       ; 清理中间文件
+    (setq TeX-view-program-selection '((output-pdf "PDF Tools"))
+          TeX-source-correlate-start-server t))                           ; pdf-tools(20240429.407)作为pdf-viewer
+
+
+  (provide 'note-auctex)  
+#+end_src
+
+****** 📁 elisp 📁 note 🔧 note-orgmode.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/note/note-orgmode.el
+  ;; ========================================
+  ;; org"开发" note-orgmode.el
+  ;; ========================================
+  (use-package org
+    :ensure t
+    :defer nil)
+   
+
+  ;; ========================================
+  ;; org-babel(C-c ') 能加载 LaTeX
+  ;; ========================================
+  (org-babel-do-load-languages 
+    'org-babel-load-languages 
+    '((latex . t)))
+
+
+  ;; ========================================
+  ;; valign 虚拟对齐
+  ;; ========================================
+  (use-package valign
+    :ensure t
+    :defer nil)
+
+
+  ;; ========================================
+  ;; org-mode 添加 lataex-header
+  ;; ========================================
+  (setq org-format-latex-header "\\documentclass{article}
+                                 \\usepackage[usenames]{color}
+                                 [DEFAULT-PACKAGES]
+                                 [PACKAGES]
+                                 \\usepackage{esint}
+                                 \\pagestyle{empty}             % do not remove
+                                 % The settings below are copied from fullpage.sty
+                                 \\setlength{\\textwidth}{\\paperwidth}
+                                 \\addtolength{\\textwidth}{-3cm}
+                                 \\setlength{\\oddsidemargin}{1.5cm}
+                                 \\addtolength{\\oddsidemargin}{-2.54cm}
+                                 \\setlength{\\evensidemargin}{\\oddsidemargin}
+                                 \\setlength{\\textheight}{\\paperheight}
+                                 \\addtolength{\\textheight}{-\\headheight}
+                                 \\addtolength{\\textheight}{-\\headsep}
+                                 \\addtolength{\\textheight}{-\\footskip}
+                                 \\addtolength{\\textheight}{-3cm}
+                                 \\setlength{\\topmargin}{1.5cm}
+                                 \\addtolength{\\topmargin}{-2.54cm}")    ; 设置org-mode的latex-header(+esint)
+
+
+  ;; ========================================
+  ;; 使用 xelatex 渲染 latex-fragment
+  ;; ========================================
+  (add-to-list 'org-preview-latex-process-alist
+                       '(xelatex-chinese
+                         :programs ("xelatex" "convert")
+                         :description "XeLaTeX with Chinese support dvi > png"
+                         :message "you need to install the programs: xelatex and divpng."
+                         :image-input-type "pdf"
+                         :image-output-type "png"
+                         :image-size-adjust (1.7 . 1.5)
+                         :latex-header "\\documentclass[11pt]{standalone}
+                                        \\usepackage{fontspec}
+                                        \\setmainfont{Source Han Sans CN}
+                                        \\setsansfont{Source Han Sans CN}
+                                        \\usepackage[usenames]{color}
+                                        \\usepackage{amsmath}
+                                        \\pagestyle{empty}"
+                         :latex-compiler ("xelatex -interaction nonstopmode -output-directory %o %f")
+                         :image-converter ("convert -density 90 %f %O")))
+
+
+  ;; ========================================
+  ;; 设置更多可用的org-todo
+  ;; ========================================
+  (setq org-todo-keywords
+        '((sequence "TODO" "DOING" "WAIT" "MY" "DONE")))
+
+
+  (provide 'note-orgmode)  
+#+end_src
+
+****** 📁 elisp 📁 note 🔧 note-orgroam.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/note/note-orgroam.el
+  ;; ========================================
+  ;; note-orgroam.el 双链笔记(卡片盒笔记法)
+  ;; ========================================
+  (use-package org-roam
+    :ensure t
+    :custom
+    (org-roam-directory "~/.orgroam")
+    (org-roam-dailies-directory "daily/")
+    (org-roam-db-gc-threshold most-positive-fixnum)
+    :config
+    (require 'org-roam-dailies)
+    (org-roam-db-autosync-mode))
+
+  (use-package org-roam-ui
+    :ensure t
+    :after org-roam
+    :custom
+    (org-roam-ui-sync-theme t)
+    (org-roam-ui-follow t)
+    (org-roam-ui-update-on-save t))
+
+
+  (provide 'note-orgroam)  
+#+end_src
+
+****** 📁 elisp 📁 ui 📁 decorate 🔧 ui-decorate-dashboard.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/ui/decorate/ui-decorate-dashboard.el
+  ;; ========================================
+  ;; 欢迎界面 ui-decorate-dashboard.el
+  ;; ========================================
+  (use-package dashboard
+    :ensure t
+    :config
+    (dashboard-setup-startup-hook)
+
+    ;; ========================================
+    ;; 设置dashboard的基本信息
+    ;; ========================================
+    :init
+    (setq dashboard-banner-logo-title "p😭q 真正的编辑器: GNU Emacs"
+          dashboard-startup-banner    "/home/une/.wallpaper/dashboard-zoom-out-light.png"
+          dashboard-center-content t
+          dashboard-vertically-center-content t
+          dashboard-show-shortcuts nil)
+
+    ;; ========================================
+    ;; 设置要展示的dashboard信息
+    ;; ========================================
+    (setq dashboard-set-navigator t)
+    (setq dashboard-navigator-buttons
+          `(
+            (
+             ;; Recent Files
+             (,
+              "  最近 R" ""
+              (lambda (&rest _) (consult-recent-file))
+              nil "")
+
+             ;; Bookmarks
+             (,
+              "  书签 B" ""
+              (lambda (&rest _) (bookmark-bmenu-list))
+              nil "")
+
+             ;; Agenda
+             (,
+              "󱇘  议程 A" ""
+              (lambda (&rest _) (org-agenda))
+              nil ""))))
+
+    ;; ========================================
+    ;; 设置要展示的dashboard信息
+    ;; ========================================
+    (setq dashboard-startupify-list '(dashboard-insert-newline
+                                      dashboard-insert-banner
+                                      dashboard-insert-newline
+                                      dashboard-insert-newline
+                                      dashboard-insert-banner-title
+                                      dashboard-insert-newline
+                                      dashboard-insert-navigator
+                                      dashboard-insert-newline
+                                      dashboard-insert-init-info
+                                      dashboard-insert-newline
+                                      dashboard-insert-newline
+                                      dashboard-insert-newline
+                                      dashboard-insert-newline
+                                      dashboard-insert-newline
+                                      dashboard-insert-newline
+                                      dashboard-insert-newline
+                                      dashboard-insert-newline
+                                      dashboard-insert-newline
+                                      dashboard-insert-newline
+                                      dashboard-insert-newline
+                                      dashboard-insert-newline
+                                      dashboard-insert-newline
+                                      dashboard-insert-newline
+                                      dashboard-insert-newline
+                                      dashboard-insert-newline
+                                      dashboard-insert-newline
+                                      dashboard-insert-newline
+                                      dashboard-insert-newline
+                                      dashboard-insert-newline
+                                      dashboard-insert-newline
+                                      dashboard-insert-newline
+                                      dashboard-insert-newline
+                                      dashboard-insert-newline
+                                      dashboard-insert-newline))
+
+      ;; 启用 recentf-mode
+      (recentf-mode 1)
+
+      ;; 设置最近文件列表的最大长度
+      (setq recentf-max-saved-items 100)  ;; 设置最多记录 100 个文件
+
+      ;; 完成初始化
+      (dashboard-open))
+
+  ;; ========================================
+  ;; 设置快捷键
+  ;; ========================================
+  (with-eval-after-load 'dashboard
+    (define-key dashboard-mode-map (kbd "R") #'consult-recent-file)
+    (define-key dashboard-mode-map (kbd "B") #'bookmark-bmenu-list)
+    (define-key dashboard-mode-map (kbd "A") #'org-agenda-list))
+
+
+  (provide 'ui-decorate-dashboard)  
+#+end_src
+
+****** 📁 elisp 📁 ui 📁 font 🔧 ui-font-sauce.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/ui/font/ui-font-sauce.el
+  ;; ========================================
+  ;; 字体设置 ui-font-sauce.el
+  ;; ========================================
+
+  ;; ========================================
+  ;; 全局默认字体设置
+  ;; ========================================
+  (set-face-attribute 'default nil 
+                      :height 90
+                      :font "SauceCodeProNerdFontCompleteMono Nerd Font")
+
+  ;; ========================================
+  ;; 设置buffer的字体
+  ;; ========================================
+  (centaur-tabs-change-fonts "SauceCodeProNerdFontCompleteMono Nerd Font" 90)
+
+
+  (provide 'ui-font-sauce)  
+#+end_src
+
+****** 📁 elisp 📁 ui 📁 icon 🔧 ui-icon-nerdfont.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/ui/decorate/ui-decorate-dashboard.el
+  ;; ========================================
+  ;; 图标设置 ui-icon-nerdfont.el
+  ;; ========================================
+  (use-package nerd-icons
+    :ensure t
+    :custom (nerd-icons-font-family "Symbols Nerd Font Mono"))
+
+  (use-package nerd-icons-corfu
+    :ensure t
+    :init)
+
+  (use-package nerd-icons-dired
+    :ensure t
+    :hook
+    (dired-mode . nerd-icons-dired-mode))
+
+  (use-package nerd-icons-ibuffer
+    :ensure t
+    :defer t
+    :hook (ibuffer-mode . nerd-icons-ibuffer-mode))
+
+
+  (provide 'ui-icon-nerdfont)  
+#+end_src
+
+****** 📁 elisp 📁 ui 📁 modeline 🔧 ui-modeline-bar.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/ui/modeline/ui-modeline-bar.el
+  ;; ========================================
+  ;; mode-line设置 ui-modeline-bar.el
+  ;; ========================================
+  (defvar modeline-output-calendar-month "")
+  (defvar modeline-output-calendar-day "")
+  (defvar modeline-output-calendar-week "")
+  (defvar modeline-output-time-hour "")
+  (defvar modeline-output-time-minute "")
+  (defvar modeline-output-battery-percentage "")
+  (defvar modeline-output-distribution "")
+  (defvar modeline-output-disk-usage "")
+  (defvar modeline-output-cpu-temperature "")
+  (defvar modeline-output-ram-usage "")
+  (defvar modeline-output-pacman-packages "")
+  (defvar modeline-output-weather-situation "")
+
+
+  ;; ========================================
+  ;; 关于当前日期
+  ;; ========================================
+  (defun update-modeline-output-calendar-month ()
+    (setq modeline-output-calendar-month (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/calendar-month.sh"))))
+  (defun update-modeline-output-calendar-day ()
+    (setq modeline-output-calendar-day (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/calendar-day.sh"))))
+  (defun update-modeline-output-calendar-week ()
+    (setq modeline-output-calendar-week (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/calendar-week.sh"))))
+  ;; ========================================
+  ;; 关于当前时间
+  ;; ========================================
+  (defun update-modeline-output-time-hour ()
+    (setq modeline-output-time-hour (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/time-hour.sh"))))
+  (defun update-modeline-output-time-minute ()
+    (setq modeline-output-time-minute (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/time-minute.sh"))))
+  ;; ========================================
+  ;; 关于电池信息
+  ;; ========================================
+  (defun update-modeline-output-battery-percentage ()
+    (setq modeline-output-battery-percentage (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/battery-percentage.sh"))))
+  ;; ========================================
+  ;; 关于发行版信息
+  ;; ========================================
+  (defun update-modeline-output-distribution ()
+    (setq modeline-output-distribution (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/distribution.sh"))))
+  (defun update-modeline-output-pacman-packages ()
+    (setq modeline-output-pacman-packages (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/pacman-packages.sh"))))
+  ;; ========================================
+  ;; 关于使用率
+  ;; ========================================
+  (defun update-modeline-output-disk-usage ()
+    (setq modeline-output-disk-usage (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/disk-usage.sh"))))
+  (defun update-modeline-output-cpu-temperature ()
+    (setq modeline-output-cpu-temperature (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/cpu-temperature.sh"))))
+  (defun update-modeline-output-ram-usage ()
+    (setq modeline-output-ram-usage (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/ram-usage.sh"))))
+  ;; ========================================
+  ;; 关于当地天气
+  ;; ========================================
+  (defun update-modeline-output-weather-situation ()
+    (setq modeline-output-weather-situation (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/weather-situation.sh"))))
+
+
+  ;; ========================================
+  ;; 显示具体信息
+  ;; ========================================
+  (defun update-modeline-with-all-scripts ()
+    (setq global-mode-string
+          (list "   󰃯 " ;
+                modeline-output-calendar-month
+                modeline-output-calendar-day
+                "  "
+                modeline-output-calendar-week              
+                "  "                           
+                modeline-output-time-hour
+                ":"
+                modeline-output-time-minute
+                "     ."
+                modeline-output-battery-percentage
+                "  "
+                modeline-output-distribution              
+                "    "
+                modeline-output-cpu-temperature              
+                "°C  ."
+                modeline-output-disk-usage
+                " 󰄨 "
+                modeline-output-ram-usage
+                " 󰏖 "
+                modeline-output-pacman-packages
+                "   "
+                modeline-output-weather-situation
+                " ")))
+
+
+  ;; ========================================
+  ;; 定时更新每个脚本
+  ;; ========================================
+  (run-at-time "0 sec" 180   'update-modeline-output-time-hour)           ; 每3分钟更新一次时间小时信息
+  (run-at-time "0 sec" 60    'update-modeline-output-time-minute)         ; 每1分钟更新一次时间分钟信息
+  (run-at-time "0 sec" 43200 'update-modeline-output-calendar-day)        ; 每12小时更新一次日历月份信息
+  (run-at-time "0 sec" 86400 'update-modeline-output-calendar-month)      ; 每24小时更新一次日历月份信息
+  (run-at-time "0 sec" 120   'update-modeline-output-battery-percentage)  ; 每2分钟更新一次电池信息
+  (run-at-time "0 sec" 86400 'update-modeline-output-distribution)        ; 每1天更新一次发行版信息
+  (run-at-time "0 sec" 86400 'update-modeline-output-disk-usage)          ; 每1天更新一次磁盘使用量信息
+  (run-at-time "0 sec" 15    'update-modeline-output-cpu-temperature)     ; 每15秒更新一次CPU温度信息
+  (run-at-time "0 sec" 15    'update-modeline-output-ram-usage)           ; 每15秒更新一次内存使用量信息
+  (run-at-time "0 sec" 43200 'update-modeline-output-pacman-packages)     ; 每12小时更新一次包总数信息
+  (run-at-time "0 sec" 1800  'update-modeline-output-weather-situation)   ; 每30分钟更新一次当前天气信息
+  (run-at-time "0 sec" 43200 'update-modeline-output-calendar-week)       ; 每12小时更新一次当前星期信息
+
+
+  ;; ========================================
+  ;; 定时更新模式行，设置为每分钟检查一次
+  ;; ========================================
+  (run-at-time "0 sec" 60    'update-modeline-with-all-scripts)
+
+
+  (provide 'ui-modeline-bar)  
+#+end_src
+
+****** 📁 elisp 📁 ui 📁 modeline 🔧 battery-percentage.sh
+#+begin_src sh :tangle ~/.config/emacs/elisp/ui/modeline/battery-percentage.sh
+  upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage | cut -c 25-30  
+#+end_src
+
+****** 📁 elisp 📁 ui 📁 modeline 🔧 calendar-day.sh
+#+begin_src sh :tangle ~/.config/emacs/elisp/ui/modeline/calendar-day.sh
+  date | cut -c '15-19'  
+#+end_src
+
+****** 📁 elisp 📁 ui 📁 modeline 🔧 calendar-month.sh
+#+begin_src sh :tangle ~/.config/emacs/elisp/ui/modeline/calendar-month.sh
+  date | cut -c '9-13'  
+#+end_src
+
+****** 📁 elisp 📁 ui 📁 modeline 🔧 calendar-week.sh
+#+begin_src sh :tangle ~/.config/emacs/elisp/ui/modeline/calendar-week.sh
+  date "+%A"  
+#+end_src
+
+****** 📁 elisp 📁 ui 📁 modeline 🔧 cpu-temperature.sh
+#+begin_src sh :tangle ~/.config/emacs/elisp/ui/modeline/cpu-temperature.sh
+  CPU_TEMP="$(cat /sys/devices/platform/coretemp.0/hwmon/hwmon6/temp2_input | awk '{sub(/000$/, "°C", $0); print}' | cut -c 1-2)"
+  echo "${CPU_TEMP:-null}"  
+#+end_src
+
+****** 📁 elisp 📁 ui 📁 modeline 🔧 disk-usage.sh
+#+begin_src sh :tangle ~/.config/emacs/elisp/ui/modeline/disk-usage.sh
+  df -h | grep 132G | cut -c '36-37'  
+#+end_src
+
+****** 📁 elisp 📁 ui 📁 modeline 🔧 distribution.sh
+#+begin_src sh :tangle ~/.config/emacs/elisp/ui/modeline/distribution.sh
+  cat /etc/os-release | grep "NAME" | sed -n '1p' | cut -c '7-16'      
+#+end_src
+
+****** 📁 elisp 📁 ui 📁 modeline 🔧 pacman-packages.sh
+#+begin_src sh :tangle ~/.config/emacs/elisp/ui/modeline/pacman-packages.sh
+  pacman -Q | wc -l  
+#+end_src
+
+****** 📁 elisp 📁 ui 📁 modeline 🔧 ram-usage.sh
+#+begin_src sh :tangle ~/.config/emacs/elisp/ui/modeline/ram-usage.sh
+  ram_usage=$(free -h | grep Gi | sed -n '1p' | cut -c '30-31' | tr -d ' ')
+
+  if [ "$ram_usage" -gt 7 ]; then
+      echo "$(free -h | grep Mi | sed -n '1p' | cut -c '31-33' | tr -d ' ')M"
+  else
+      echo "$(free -h | grep Gi | sed -n '1p' | cut -c '31-33' | tr -d ' ')G"
+  fi  
+#+end_src
+
+****** 📁 elisp 📁 ui 📁 modeline 🔧 time-hour.sh
+#+begin_src sh :tangle ~/.config/emacs/elisp/ui/modeline/time-hour.sh
+  date | cut -c '31-35' | cut -c '1-2'  
+#+end_src
+
+****** 📁 elisp 📁 ui 📁 modeline 🔧 time-minute.sh
+#+begin_src sh :tangle ~/.config/emacs/elisp/ui/modeline/time-minute.sh
+  date | cut -c '31-35' | cut -c '4-5'
+#+end_src
+
+****** 📁 elisp 📁 ui 📁 modeline 🔧 weather-situation.sh
+#+begin_src sh :tangle ~/.config/emacs/elisp/ui/modeline/weather-situation.sh
+  # 一定要记得将weather天气情况保存在~/.config/emacs/archive或者下面的路径自己根据实际情况纠正一下
+  # 如果数据没有更新，请自己手动拉一下保存到本地文件(或请自己使用付费API)
+
+  weather_temperature=$(cat ~/.config/emacs/archive/weather | awk -F'[()]' '{print $2}' | grep -oP '[0-9]+' | sed -n '4p')
+  weather_location1=$(cat ~/.config/emacs/archive/weather | sed -n '38p' | awk -F ', ' '{print $2}' | cut -c '1-9')
+  weather_location2=$(cat ~/.config/emacs/archive/weather | sed -n '38p' | awk -F ', ' '{print $3}')
+  echo "󰫕 $weather_temperature°C $weather_location1, $weather_location2"  
+#+end_src
+
+****** 📁 elisp 📁 ui 📁 theme 🔧 ui-theme-dark.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/ui/theme/ui-theme-dark.el
+  ;; ========================================
+  ;; 主题设置 ui-theme-dark.el
+  ;; ========================================
+  (use-package bliss-theme
+    :ensure nil
+    :defer t)
+
+
+  (provide 'ui-theme-dark)  
+#+end_src
+
+****** 📁 elisp 📁 ui 📁 theme 🔧 ui-theme-light.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/ui/theme/ui-theme-light.el
+  ;; ========================================
+  ;; 主题设置 ui-theme-light.el
+  ;; ========================================
+  (use-package nano-theme
+    :ensure nil
+    :defer t
+    :init
+    (load-theme 'nano-light t t))
+
+
+  ;; ========================================
+  ;; 默认加载nano-light主题
+  ;; ========================================
+  (add-to-list 'custom-safe-themes "e7820b899036ae7e966dcaaec29fd6b87aef253748b7de09e74fdc54407a7a02")
+  (load-theme 'nano-light t)
+  (setq custom-safe-thems '("e7820b899036ae7e966dcaaec29fd6b87aef253748b7de09e74fdc54407a7a02" default))
+  (setq custom-safe-themsdefault '("e7820b899036ae7e966dcaaec29fd6b87aef253748b7de09e74fdc54407a7a02" default))
+
+
+  ;; ========================================
+  ;; 为vertico-current添加face颜色
+  ;; ========================================
+  (set-face-attribute 'vertico-current nil :background "#b5ffd1")
+
+
+  ;; ========================================
+  ;; 为telega-heading添加face颜色
+  ;; ========================================
+  (with-eval-after-load 'telega
+    (set-face-attribute 'telega-msg-heading nil :background "#ffffff" :extend nil))
+
+
+  ;; ========================================
+  ;; corfu弹出窗口颜色设置
+  ;; ========================================
+  (with-eval-after-load 'corfu
+    (set-face-attribute 'corfu-default nil :background "#ffffff")
+    (set-face-attribute 'corfu-border nil :background "#37474f")
+    (set-face-attribute 'corfu-current nil :background "#cfd8dc" :foreground "#37474f"))
+
+
+  ;; ========================================
+  ;; 为dirvish-hl-line添加face颜色
+  ;; ========================================
+  (with-eval-after-load 'dirvish
+    (set-face-attribute 'dirvish-hl-line nil :background "#cfd8dc" :foreground "#37474f"))
+
+
+  ;; ========================================
+  ;; 为vertico-posframe添加face颜色
+  ;; ========================================
+  (set-face-attribute 'vertico-group-separator nil :background "#37474f" :foreground "#FFFFFF")
+  (set-face-attribute 'vertico-group-title nil :background "#37474f" :foreground "#FFFFFF")
+
+
+  (provide 'ui-theme-light)  
+#+end_src
+
+****** 📁 elisp 📁 zprogramming 📁 cmp 🔧 zprogramming-cmp-corfu.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/zprogramming/cmp/zprogramming-cmp-corfu.el
+  ;; =======================================
+  ;; 补全框架 enhance-corfu.el 
+  ;; =======================================
+
+
+  ;; =======================================
+  ;; 轻量补全本体
+  ;; =======================================
+  (use-package corfu
+    :config
+    (setq corfu-auto t
+          corfu-cycle t
+          corfu-quit-at-boundary t
+          corfu-quit-no-match t
+          corfu-preview-current nil
+          corfu-min-width 20
+          corfu-max-width 100
+          corfu-auto-delay 0.2
+          corfu-auto-prefix 1
+          corfu-on-exact-match nil)
+
+    :hook
+    ((shell-mode      . corfu-mode)
+    (eshell-mode      . corfu-mode)
+    (LaTeX-mode       . corfu-mode)
+    (latex-mode       . corfu-mode)
+    (emacs-lisp-mode  . corfu-mode)))
+
+
+  ;; =======================================
+  ;; corfu图标设置
+  ;; =======================================
+  (with-eval-after-load 'corfu
+    (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
+
+
+  (provide 'zprogramming-cmp-corfu)  
+#+end_src
+
+****** 📁 elisp 📁 zprogramming 📁 lsp 🔧 zprogramming-lsp-eglot.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/zprogramming/lsp/zprogramming-lsp-eglot.el
+  ;; =======================================
+  ;; LSP客户端 zprogramming-lsp-eglot.el 
+  ;; =======================================
+  (use-package eglot
+               :ensure t
+               :defer t)
+
+
+  (provide 'zprogramming-lsp-eglot)  
+#+end_src
+
+****** 📁 elisp 📁 zprogramming 📁 mode 🔧 zprogramming-mode-cmake.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/zprogramming/mode/zprogramming-mode-cmake.el
+  ;; =======================================
+  ;; 模式识别 zprogramming-mode-cmake.el
+  ;; =======================================
+  (use-package cmake-mode
+               :ensure t
+               :defer t)
+
+
+  (provide 'zprogramming-mode-cmake)  
+#+end_src
+
+****** 📁 elisp 📁 zprogramming 📁 snips 🔧 zprogramming-snips-yasnippet.el 
+#+begin_src elisp :tangle ~/.config/emacs/elisp/zprogramming/snips/zprogramming-snips-yasnippet.el 
+  ;; =======================================
+  ;; 快速输入片段 zprogramming-snips-yasnippet.el 
+  ;; =======================================
+  (use-package yasnippet
+               :ensure t
+               :demand
+               :hook
+               (LaTeX-mode . yas-global-mode))  ; 输入片段的本体工具
+
+  (use-package yasnippet-snippets
+               :ensure t)            ; 提供具体输入片段的工具
+
+
+  (provide 'zprogramming-snips-yasnippet)  
+#+end_src
+
+****** 📁 elisp 📁 zprogramming 📁 ts 🔧 zprogramming-ts-treesitter.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/zprogramming/ts/zprogramming-ts-treesitter.el
+  ;; =======================================
+  ;; 静态语法抽象树 zprogramming-ts-treesitter.el 
+  ;; =======================================
+  (use-package tree-sitter
+               :ensure t
+               :defer t)
+
+  (use-package tree-sitter-langs
+               :ensure t
+               :defer nil)
+
+
+  (provide 'zprogramming-ts-treesitter)  
+#+end_src
+
+
+**** (4) fastfetch
+***** 文件结构
+#+begin_quote
+🔧 ff.jsonc
+#+end_quote
+
+***** 文件配置
+****** 🔧 ff.jsonc
+#+begin_src jsonc :tangle ~/.config/fastfetch/ff.jsonc
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "padding": {
+            "top": 2,
+            "left": 3
+        }   
+    },
+    "display": {
+      "separator": "  → "
+    },
+    "modules": [
+        "break",
+        "title",
+        "separator",
+        {
+            "type": "os",
+            "key": "",
+            "format": "{3} {12}",
+            "keyColor": "blue"
+        },
+        {
+            "type": "kernel",
+            "key": "",
+            "keyColor": "blue"
+        },
+        {
+            "type": "host",
+            "key": "",
+            "format": "{/2}{-}{/}{2}{?3} {3}{?}",
+            "keyColor": "blue"
+        },
+        {
+            "type": "uptime",
+            "key": "󰅐",
+            "keyColor": "blue"
+        },
+        {
+            "type": "packages",
+            "key": "󰏖",
+            "keyColor": "blue"
+        },
+        {
+            "type": "shell",
+            "key": "",
+            "keyColor": "blue"
+        },
+        {
+            "type": "display",
+            "compactType": "original",
+            "key": "󰍺",
+            "keyColor": "blue"
+        },
+        {
+            "type": "wm",
+            "key": "",
+            "keyColor": "blue"
+        },
+        {
+            "type": "lm",
+            "key": "󰧨",
+            "keyColor": "blue"
+        },
+        {
+            "type": "wmtheme",
+            "key": "󰉼",
+            "keyColor": "blue"
+        },
+        {
+            "type": "icons",
+            "key": "",
+            "keyColor": "blue"
+        },
+        {
+            "type": "terminal",
+            "key": "",
+            "keyColor": "blue"
+        },
+        {
+            "type": "cpu",
+            "key": "󱪈",
+            "keyColor": "blue"
+        },
+        {
+            "type": "gpu",
+            "key": "󰖖",
+            "keyColor": "blue"
+        },
+        {
+            "type": "memory",
+            "key": "󰫕",
+            "keyColor": "blue",
+            "format": "{/1}{-}{/}{/2}{-}{/}{} / {}"
+        },
+        "break",
+        "colors",
+        "break",
+        "break"
+    ]
+}  
+#+end_src
+
+
+
+
+**** (5) i3
+***** 文件结构
+#+begin_quote
+🔧 config
+#+end_quote
+
+***** 文件配置
+****** 🔧 config
+#+begin_src sh :tangle ~/.config/i3/config
+  # 设置Super键为i3-wm起始键
+  set $mod Mod4
+
+  # 设置字体
+  font pango:SauceCodeProNerdFontCompleteMono Nerd Font SemiBold 9
+
+  # 自启动服务
+  exec --no-startup-id dex --autostart --environment i3
+  exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+  exec --no-startup-id nm-applet
+  exec_always fcitx5
+  exec_always picom --backend glx
+  exec setxkbmap -option "ctrl:nocaps"
+  set $refresh_i3status killall -SIGUSR1 i3status
+  exec emacs
+
+  # feh壁纸
+  exec --no-startup-id feh --bg-fill "/home/une/.wallpaper/20220518085627.jpg"
+
+  # 鼠标绑定
+  # + 通过Super_L + Mouse_L，来拖动floating window到别的位置
+  # + 通过Super_L + Mouse_R，来拖动floating window到别的位置
+  floating_modifier $mod
+  tiling_drag modifier titlebar
+
+  # 按键绑定
+  # + 多媒体按键
+  bindsym XF86AudioMute exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+  bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+  # + 常规键配置
+  bindsym $mod+Return exec alacritty
+  bindsym $mod+O exec alacritty
+  bindsym $mod+BackSpace kill
+  bindsym $mod+I exec firefox
+  bindsym $mod+G exec emacs
+  bindsym $mod+L exec rofi -show window
+  bindsym $mod+M exec rofi -show drun
+  bindsym $mod+A exec spectacle
+  bindsym $mod+J layout toggle split
+  # + 更改光标焦点
+  bindsym $mod+b focus left
+  bindsym $mod+n focus down
+  bindsym $mod+p focus up
+  bindsym $mod+f focus right
+  # + 移动窗口位置
+  bindsym $mod+Shift+B move left
+  bindsym $mod+Shift+N move down
+  bindsym $mod+Shift+P move up
+  bindsym $mod+Shift+F move right
+  # + 窗口全屏
+  bindsym $mod+E fullscreen toggle
+  # + 窗口平铺浮动切换
+  bindsym $mod+t floating toggle
+  # + 窗口平铺浮动切换
+  bindsym $mod+shift+t focus mode_toggle
+
+  # 工作区设置
+  set $ws1 "1"
+  set $ws2 "2"
+  set $ws3 "3"
+  set $ws4 "4"
+  set $ws5 "5"
+  set $ws6 "6"
+  set $ws7 "7"
+  set $ws8 "8"
+  set $ws9 "9"
+  set $ws10 "10"
+  bindsym $mod+1 workspace number $ws1
+  bindsym $mod+2 workspace number $ws2
+  bindsym $mod+3 workspace number $ws3
+  bindsym $mod+4 workspace number $ws4
+  bindsym $mod+5 workspace number $ws5
+  bindsym $mod+6 workspace number $ws6
+  bindsym $mod+7 workspace number $ws7
+  bindsym $mod+8 workspace number $ws8
+  bindsym $mod+9 workspace number $ws9
+  bindsym $mod+0 workspace number $ws10
+  bindsym $mod+Left workspace prev_on_output;
+  bindsym $mod+Right workspace next_on_output;
+  bindsym $mod+Ctrl+1 move container to workspace number $ws1
+  bindsym $mod+Ctrl+2 move container to workspace number $ws2
+  bindsym $mod+Ctrl+3 move container to workspace number $ws3
+  bindsym $mod+Ctrl+4 move container to workspace number $ws4
+  bindsym $mod+Ctrl+5 move container to workspace number $ws5
+  bindsym $mod+Ctrl+6 move container to workspace number $ws6
+  bindsym $mod+Ctrl+7 move container to workspace number $ws7
+  bindsym $mod+Ctrl+8 move container to workspace number $ws8
+  bindsym $mod+Ctrl+9 move container to workspace number $ws9
+  bindsym $mod+Ctrl+0 move container to workspace number $ws10
+
+  # 重新加载i3
+  bindsym $mod+c reload
+  bindsym $mod+r restart
+
+  # 调整window大小
+  bindsym $mod+w mode "resize"
+  mode "resize" {
+          bindsym b resize shrink width 10 px or 10 ppt
+          bindsym n resize grow height 10 px or 10 ppt
+          bindsym p resize shrink height 10 px or 10 ppt
+          bindsym f resize grow width 10 px or 10 ppt
+          bindsym $mod+w mode "default"
+  }
+
+  # 自动隐藏窗口标题
+  for_window [class="^.*"] border pixel 0  
+#+end_src
+
+
+**** (6) picom
+***** 文件结构
+#+begin_quote
+🔧 picom.conf
+#+end_quote
+
+***** 文件配置
+****** 🔧 picom.conf
+#+begin_src sh :tangle ~/.config/picom/picom.conf
+  # corner-radius = 15;
+  round-border = 6;  
+#+end_src
+
+
+**** (7) vim
+***** 文件结构
+#+begin_quote
+🔧 vimrc
+#+end_quote
+
+***** 文件配置
+****** 🔧 vimrc
+#+begin_src vimscript :tangle ~/.config/vim/vimrc
+"
+" settings
+" 
+set t_Co=256
+set expandtab
+set hlsearch
+set incsearch
+set smartcase
+set tw=0
+set encoding=utf-8
+set hidden
+set updatetime=100
+set shortmess+=c
+set backspace=indent,eol,start
+set ruler
+set title
+set nocompatible
+set modeline
+set modelines=6
+set belloff=all
+set nrformats=
+set wildmenu
+set history=200
+set foldlevel=99
+set laststatus=0
+set autochdir
+set textwidth=500
+set conceallevel=0
+set jumpoptions=stack
+syntax on
+autocmd FileType json set conceallevel=0
+" set tabstop=2
+" set softtabstop=2
+" set shiftwidth=2
+" set autoindent
+" set indentexpr=
+" set foldmethod=indent
+
+" 
+" colorscheme
+" 
+nnoremap <leader><leader>n :colorscheme habamax<CR>
+nnoremap <leader><leader>d :colorscheme delek<CR>
+colorscheme habamax
+
+set cursorline
+set cursorlineopt=number
+autocmd ColorScheme * highlight CursorLineNr cterm=bold term=bold gui=bold
+highlight LineNr ctermfg=238
+:set number
+:augroup numbertoggle
+:   autocmd!
+:   autocmd BufEnter, FocusGained, InsertLeave, WinEnter * if &nu && mode() != "i" | set rnu | endif
+:   autocmd BufLeave, FocusLost, InsertEnter, WinLeave * if &nu | set nornu | endif
+:augroup END
+highlight CursorLineNr ctermfg=179
+
+" 
+" keymapping
+" 
+map J 5j
+map K 5k
+nnoremap S :w<CR>
+nnoremap s <nop>
+nnoremap Q :q<CR>
+nnoremap <leader>q :q!<CR>
+nnoremap sj :set splitbelow<CR>:split<CR>
+nnoremap sk :set nosplitbelow<CR>:split<CR>
+nnoremap sh :set nosplitright<CR>:vsplit<CR>
+nnoremap sl :set splitright<CR>:vsplit<CR>
+tnoremap <ESC><ESC> <C-\><C-N>
+map <down> :res +5<CR>
+map <up> :res -5<CR>
+map <right> :vertical resize -5<CR>
+map <left> :vertical resize +5<CR>
+nnoremap <leader>R :source ~/.vimrc<CR>
+nnoremap [w :execute 'move -1-'. v:count1<CR>
+nnoremap ]w :execute 'move +'. v:count1<CR>
+vmap <leader>S y/<C-R>"<CR>
+nnoremap <leader>e :set spell<CR>
+nnoremap <leader>E :set nospell<CR>
+nnoremap <leader>I :<C-u>PlugInstall<CR>
+nnoremap M :Lexplore<CR><C-w>l<CR>
+inoremap <C-e> <C-k>
+nnoremap <leader>md :h digraph-table<CR>
+cnoremap <expr> %% getcmdtype()==':'?expand('%:h').'/':'%%'
+
+" 
+" macros
+" 
+let @g="a<br /> \<ESC>"
+let @r="i<br /> \<CR>\<ESC>"
+let @c="```placeholder```\<ESC>bi\<CR>\<CR>\<ESC>kkel"
+
+" 
+" patch
+" 
+if has("patch-8.1.1564")
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
+" 
+" plugin
+" 
+call plug#begin()
+   " [jiangmiao/auto-pairs]
+   Plug 'jiangmiao/auto-pairs'
+
+   " [ryanoasis/vim-devicons]
+   Plug 'ryanoasis/vim-devicons'
+
+   " [Yggdroot/indentLine]
+   Plug 'Yggdroot/indentLine'
+   let g:indentLine_color_term=102
+   let g:markdown_syntax_conceal=0
+   let g:indentLine_char_list=['|']
+   nnoremap <leader>il :<C-u>IndentLinesToggle<CR>
+
+   " [mhinz/vim-signify]
+   Plug 'mhinz/vim-signify'
+   highlight SignifySignAdd ctermfg=green cterm=NONE
+   highlight SignifySignDelete ctermfg=red cterm=NONE
+   highlight SignifySignChange ctermfg=yellow cterm=NONE
+   nnoremap <leader>gj <Plug>(signify-next-hunk)
+   nnoremap <leader>gk <Plug>(signify-prev-hunk)
+  
+   " [prabirshrestha/asyncomplete.vim]
+   Plug 'prabirshrestha/asyncomplete.vim'
+   inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+   inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+   nnoremap <expr> <CR> pumvisible() ? asyncomplete#close_popup()
+
+   if has('conceal')
+     set conceallevel=2 concealcursor=niv
+   endif
+
+call plug#end()  
+#+end_src
+
+
+**** (8) rofi
+***** 文件结构
+#+begin_quote
+🔧 config.rasi
+🔧 forest.rasi
+#+end_quote
+
+***** 文件配置
+****** 🔧 config.rasi
+#+begin_src css :tangle ~/.config/rofi/config.rasi  
+  configuration {
+     	yoffset: -45;
+
+    timeout {
+        action: "kb-cancel";
+        delay:  0;
+    }
+    filebrowser {
+        directories-first: true;
+        sorting-method:    "name";
+    }
+  }
+
+  @theme "forest"  
+#+end_src
+
+****** 🔧 forest.rasi
+#+begin_src css :tangle ~/.config/rofi/forest.rasi
+/******************************************************************************
+ * ROFI Color theme: forest
+ * User: kitevnn
+ ******************************************************************************/
+
+
+/*                 */
+/* global settings */
+/*                 */
+* {
+    font: "SauceCodeProNerdFontCompleteMono Nerd Font 12";
+    scrollbar: true;
+    
+    forest-selected-text-shadow: #2E8B57;
+    forest-selected:             #72D5A3;
+    forest-box-border:           #60B48A;
+    forest-box-background:       #2C2C2C;
+    forest-orange:               #DFAF8F;
+    forest-black:                #000000;
+    forest-input:                #3A3A3A;
+    forest-white:                #FFFFFF;
+    forest-text-color:           #DCDCDC;
+    text-color:                  @forest-text-color;
+    background-color:            rgba ( 0, 0, 0, 0 % );
+}
+#window {
+    background-color: @forest-box-background;
+    border:           3px;
+    padding:          2px;
+    border-radius:    12px;
+    border-color:     @forest-box-border;
+}
+
+
+/*                  */
+/* element settings */
+/*                  */
+#element {
+    border:  0;
+    padding: 3px 0px 3px 18px;
+    background-color: @forest-box-background;
+}
+#element.normal {
+    text-color:       @forest-white;
+}    
+#element.selected {
+    text-color:       @forest-selected;
+    background-color: @forest-selected-text-shadow;
+}
+#element.alternate {
+    text-color:       @forest-white;
+}
+
+
+/*                */
+/* input settings */
+/*                */
+#case-indicator {
+    spacing:    0;
+    text-color: @forest-box-background;
+}
+#entry {
+    spacing:    0;
+    text-color: @forest-box-background;
+}
+#prompt {
+    spacing:    0;
+    text-color: @forest-box-background;    
+}
+#textbox-prompt-colon {
+    expand:     false;
+    str:        ":";
+    margin:     0px 0.3em 0em 0em ;
+    text-color: @forest-black;
+}
+
+
+/*              */
+/* bar settings */
+/*               */
+#inputbar {
+    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
+}
+#inputbar {
+    spacing:    0;
+    background-color: @forest-orange;
+    padding:    1px;
+    border-radius: 12px 12px 0px 0px;
+}
+#scrollbar {
+    background-color: @forest-input;
+    width:         3px;
+    border-radius: 6px;
+}
+#+end_src
+
