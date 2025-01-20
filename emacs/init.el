@@ -62,7 +62,8 @@
    '("1781e8bccbd8869472c09b744899ff4174d23e4f7517b8a6c721100288311fa5"
      "3001510be1be4a38508ff07633e97b810c0a52c6fa2f4c7153d22cc7596d9172"
      "e7820b899036ae7e966dcaaec29fd6b87aef253748b7de09e74fdc54407a7a02" default))
- '(org-agenda-files nil)
+ '(org-agenda-files
+   '("/home/une/桌面/back/archlinux/todo/archlinux/2025/2025.org"))
  '(package-selected-packages
    '(auctex bliss-theme cdlatex centaur-tabs cmake-mode corfu dashboard deadgrep
             dirvish eat embark-consult highlight-indent-guides magit marginalia

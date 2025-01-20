@@ -68,4 +68,11 @@
                        :image-converter ("convert -density 90 %f %O")))
 
 
+;; ========================================
+;; 设置更多可用的org-todo
+;; ========================================
+(setq org-todo-keywords
+      '((sequence "TODO" "DOING" "WAIT" "MY" "DONE")))
+
+
 (provide 'note-orgmode)

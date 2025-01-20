@@ -102,11 +102,19 @@
 (define-key org-mode-map (kbd "C-z C-x C-b")             'custom-jump-the-beginning-of-the-equation)  ; 当光标在\[\]上下文时，光标跳转到\[\]的\]
 (define-key org-mode-map (kbd "C-z C-x C-n")             'custom-jump-the-next-equation)              ; 当光标在\[\]上下文时，光标跳转到下一个\[\]
 (define-key org-mode-map (kbd "C-z C-x C-p")             'custom-jump-the-previous-equation)          ; 当光标在\[\]上下文时，光标跳转到上一个\[\]
-(define-key org-mode-map (kbd "C-z C-z C-\\")            'org-agenda)                                 ; 打开org议题界面
-(define-key org-mode-map (kbd "C-z C-z C-\[")            'org-agenda-file-to-front)                   ; 当前文件放进org议题内
-(define-key org-mode-map (kbd "C-z C-z C-\]")            'org-remove-file)                            ; 当前文件移出org议题外
 (define-key org-mode-map (kbd "C-z C-x C-\[")            'org-previous-item)                          ; 跳转到上一个 (1) 2. 3) 的小标题
 (define-key org-mode-map (kbd "C-z C-x C-\]")            'org-next-item)                              ; 跳转到下一个 (1) 2. 3) 的小标题
+(define-key org-mode-map (kbd "C-z C-z C-\\")            'org-agenda)                                 ; 打开org议题界面
+(define-key org-mode-map (kbd "C-z C-a C-\\")            'org-agenda)                                 ; 打开org议题界面
+(define-key org-mode-map (kbd "C-z C-a C-\[")            'org-agenda-file-to-front)                   ; 当前文件放进org议题内
+(define-key org-mode-map (kbd "C-z C-a C-\]")            'org-remove-file)                            ; 当前文件移出org议题外
+(define-key org-mode-map (kbd "C-z C-a C-s")             'org-schedule)                               ; 添加org议题的起始时间
+(define-key org-mode-map (kbd "C-z C-a C-d")             'org-deadline)                               ; 添加org议题的终止时间
+(define-key org-mode-map (kbd "C-z C-a C-\=")            'org-timestamp)                              ; 添加org议题的<>激活标签
+(define-key org-mode-map (kbd "C-z C-a C-\-")            'org-timestamp-inactive)                     ; 添加org议题的[]非激活标签
+(define-key org-mode-map (kbd "C-z C-a C-t")             'org-todo)                                   ; 切换todo/done/etc.标题文字
+(define-key org-mode-map (kbd "C-z C-a C-j")             'org-set-tags-command)                       ; 打上特征标签
+(define-key org-mode-map (kbd "C-z C-a C-0")             'org-archive-subtree)                        ; 删除subtree并保存至同目录下的org-archive文件内
 
 
 ;; ========================================
