@@ -52,19 +52,8 @@
 ;; =======================================
 ;; 关于agenda
 ;; =======================================
-(setq org-agenda-files '("~/.config/emacs/archive/org-agenda-archive.org"))
-
-
-;; =======================================
-;; 关于eshell
-;; =======================================
-(setq eshell-prompt-function
-      (lambda ()
-        (let* ((user (getenv "USER"))
-               (host (system-name))
-               (dir (abbreviate-file-name (eshell/pwd))))
-          (concat "[" user "@" host " " dir "]$ "))))                 ; eshell-prompt设置
-(setq eshell-banner-message " ")                                      ; eshell-welcome设置
+(setq org-agenda-files 
+      '("~/桌面/back/archlinux/check/GTD/2025/2025.org"))             ; org-agenda的GTD文件
 
 
 ;; =======================================
