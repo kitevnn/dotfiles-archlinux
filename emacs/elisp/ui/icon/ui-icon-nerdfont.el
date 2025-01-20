@@ -14,5 +14,10 @@
   :hook
   (dired-mode . nerd-icons-dired-mode))
 
+(use-package nerd-icons-ibuffer
+  :ensure t
+  :defer t
+  :hook (ibuffer-mode . nerd-icons-ibuffer-mode))
+
 
 (provide 'ui-icon-nerdfont)

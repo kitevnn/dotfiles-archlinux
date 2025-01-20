@@ -96,13 +96,17 @@
 ;; 关于org-mode
 ;; ========================================
 (define-key org-mode-map (kbd "C-z C-x C-0")             'valign-mode)                                ; 切换valign-mode
-(define-key org-mode-map (kbd "C-z C-z C-8")             'org-agenda)                                 ; 当前文件放进org议题内
 (define-key org-mode-map (kbd "C-c C-x C-v")             'custom-toggle-inline-images-with-valign)    ; 用 C-c C-x C-v 避免valign-mode造成的对齐卡顿来预览图片
 (define-key org-mode-map (kbd "C-z C-z C-l")             'custom-render-equation-utf8)                ; 用 C-z C-z C-l 进行utf-8的 \[\] 上下文范围的公式渲染
 (define-key org-mode-map (kbd "C-z C-x C-f")             'custom-jump-the-ending-of-the-equation)     ; 当光标在\[\]上下文时，光标跳转到\[\]的\[
 (define-key org-mode-map (kbd "C-z C-x C-b")             'custom-jump-the-beginning-of-the-equation)  ; 当光标在\[\]上下文时，光标跳转到\[\]的\]
 (define-key org-mode-map (kbd "C-z C-x C-n")             'custom-jump-the-next-equation)              ; 当光标在\[\]上下文时，光标跳转到下一个\[\]
 (define-key org-mode-map (kbd "C-z C-x C-p")             'custom-jump-the-previous-equation)          ; 当光标在\[\]上下文时，光标跳转到上一个\[\]
+(define-key org-mode-map (kbd "C-z C-z C-\\")            'org-agenda)                                 ; 打开org议题界面
+(define-key org-mode-map (kbd "C-z C-z C-\[")            'org-agenda-file-to-front)                   ; 当前文件放进org议题内
+(define-key org-mode-map (kbd "C-z C-z C-\]")            'org-remove-file)                            ; 当前文件移出org议题外
+(define-key org-mode-map (kbd "C-z C-x C-\[")            'org-previous-item)                          ; 跳转到上一个 (1) 2. 3) 的小标题
+(define-key org-mode-map (kbd "C-z C-x C-\]")            'org-next-item)                              ; 跳转到下一个 (1) 2. 3) 的小标题
 
 
 ;; ========================================
