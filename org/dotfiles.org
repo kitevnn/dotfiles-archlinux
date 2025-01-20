@@ -17,6 +17,7 @@
 ** 二、配置前提
 
 *** 1. 文件结构
+#+begin_src 
 📁 ~/.config
    📁 alacritty
       🔧 alacritty.toml
@@ -100,6 +101,7 @@
    📁 rofi
       🔧 config.rasi
       🔧 forest.rasi
+#+end_src
 
 
 *** 2. 字体补丁
