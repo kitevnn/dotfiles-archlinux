@@ -115,6 +115,8 @@
 (define-key org-mode-map (kbd "C-z C-a C-t")             'org-todo)                                   ; 切换todo/done/etc.标题文字
 (define-key org-mode-map (kbd "C-z C-a C-j")             'org-set-tags-command)                       ; 打上特征标签
 (define-key org-mode-map (kbd "C-z C-a C-0")             'org-archive-subtree)                        ; 删除subtree并保存至同目录下的org-archive文件内
+(global-unset-key (kbd "C-,"))                                                                        ; 屏蔽C-, (原功能: 直接进入org-agenda-files)
+(global-set-key (kbd "C-z C-a C-,")                      'org-cycle-agenda-files)                     ; 直接进入org-agenda-files
 
 
 ;; ========================================
