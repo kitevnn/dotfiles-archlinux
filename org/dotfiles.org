@@ -870,6 +870,7 @@ fcitx5全家桶配置
     (set-face-attribute 'vertico-group-title nil :background "#37474f" :foreground "#FFFFFF")
     (set-face-attribute 'vertico-posframe nil :background "#FFFFFF" :foreground "#37474f")
     (set-face-attribute 'vertico-current nil :background "#b5ffd1" :foreground "#37474f")
+    (set-face-attribute 'region nil :background "#eceff1")
     (with-eval-after-load 'corfu
       (set-face-attribute 'corfu-default nil :background "#ffffff")
       (set-face-attribute 'corfu-border nil :background "#37474f")
@@ -1032,7 +1033,7 @@ fcitx5全家桶配置
       (message "no next equation, please check again...")))
 
 
-  (provide 'custom-defun)
+  (provide 'custom-defun)  
 #+end_src
 
 ****** 📁 elisp 📁 enhance 🔧 enhance-cdlatex.el
@@ -2203,6 +2204,12 @@ fcitx5全家桶配置
   ;; ========================================
   (set-face-attribute 'vertico-group-separator nil :background "#37474f" :foreground "#FFFFFF")
   (set-face-attribute 'vertico-group-title nil :background "#37474f" :foreground "#FFFFFF")
+
+
+  ;; ========================================
+  ;; 为region添加face颜色
+  ;; ========================================
+  (set-face-attribute 'region nil :background "#eceff1")
 
 
   (provide 'ui-theme-light)  

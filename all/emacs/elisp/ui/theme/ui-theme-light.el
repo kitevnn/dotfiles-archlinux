@@ -53,4 +53,10 @@
 (set-face-attribute 'vertico-group-title nil :background "#37474f" :foreground "#FFFFFF")
 
 
+;; ========================================
+;; 为region添加face颜色
+;; ========================================
+(set-face-attribute 'region nil :background "#eceff1")
+
+
 (provide 'ui-theme-light)

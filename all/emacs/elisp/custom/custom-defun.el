@@ -168,6 +168,7 @@
   (set-face-attribute 'vertico-group-title nil :background "#37474f" :foreground "#FFFFFF")
   (set-face-attribute 'vertico-posframe nil :background "#FFFFFF" :foreground "#37474f")
   (set-face-attribute 'vertico-current nil :background "#b5ffd1" :foreground "#37474f")
+  (set-face-attribute 'region nil :background "#eceff1")
   (with-eval-after-load 'corfu
     (set-face-attribute 'corfu-default nil :background "#ffffff")
     (set-face-attribute 'corfu-border nil :background "#37474f")
