@@ -230,9 +230,10 @@ fcitx5全家桶配置
 #+end_quote
 
 ***** 文件配置
-****** 🔧 alacritty.toml
-#+BEGIN_SRC toml :tangle ~/.config/alacritty/alacritty.toml
-  general.working_directory = "/home/une/桌面/back/archlinux/check"
+****** 🔧 alacritty.toml 
+#+begin_src toml :tangle ~/.config/alacritty/alacritty.toml
+  general.working_directory = "/home/une/桌面/back/archlinux/org"
+
 
   [font]
   size = 12
@@ -292,7 +293,7 @@ fcitx5全家桶配置
     { mods = "Alt", key = "F", mode = "Vi", action = "SemanticRight" },
     { mods = "Alt", key = "B", mode = "Vi", action = "SemanticLeft" },
   ]  
-#+END_SRC
+#+end_src
 
 
 **** (2) bash
