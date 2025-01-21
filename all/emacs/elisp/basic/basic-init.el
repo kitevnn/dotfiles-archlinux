@@ -46,14 +46,14 @@
 ;; =======================================
 ;; 起始目录
 ;; =======================================
-(setq default-directory "~/桌面/back/archlinux/check")                ; GNU Emacs的起始目录
+(setq default-directory "~/桌面/back/archlinux/org")                  ; GNU Emacs的起始目录
 
 
 ;; =======================================
 ;; 关于agenda
 ;; =======================================
 (setq org-agenda-files 
-      '("~/桌面/back/archlinux/check/GTD/2025/2025.org"))             ; org-agenda的GTD文件
+      '("~/桌面/back/archlinux/org/GTD/agenda"))                      ; org-agenda的GTD文件
 
 
 ;; =======================================
