@@ -248,10 +248,10 @@
         ;; 如果包含 UTF-8 字符，就使用 xelatex-chinese 引擎
         (progn
           (setq org-preview-latex-default-process 'xelatex-chinese)
-          (message "目前使用了xelatex-chinese引擎渲染此latex-fragment"))
+          (message "目前使用了xelatex-chinese引擎渲染此equation"))
       ;; 如果不包含 UTF-8 字符，就使用 dvipng、dvisvgm、imagemagick 引擎
       (setq org-preview-latex-default-process 'dvipng)                       
-      (message "目前使用了org-mode默认的dvipng、dvisvgm、imagemagick引擎渲染此latex-fragment"))
+      (message "目前使用了org-mode默认的dvipng、dvisvgm、imagemagick引擎渲染此equation"))
     (org-latex-preview)
     ;; 每次执行完毕后都恢复为 dvipng、dvisvgm、imagemagick 引擎
     (setq org-preview-latex-default-process 'dvipng)
