@@ -13,6 +13,10 @@
 (defvar modeline-output-ram-usage "")
 (defvar modeline-output-pacman-packages "")
 (defvar modeline-output-weather-situation "")
+(defvar modeline-agenda-output-todo-count 0)
+(defvar modeline-agenda-output-doing-count 0)
+(defvar modeline-agenda-output-wait-count 0)
+(defvar modeline-agenda-output-file-name "")
 
 
 ;; ========================================
@@ -57,6 +61,30 @@
 ;; ========================================
 (defun update-modeline-output-weather-situation ()
   (setq modeline-output-weather-situation (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/weather-situation.sh"))))
+;; ========================================
+;; 关于议程
+;; ========================================
+(defun custom-count-agenda-file-tasks (file-path)
+  "更新指定路径议程文件的agenda信息"
+  (interactive)
+  (setq modeline-agenda-output-todo-count 0)
+  (setq modeline-agenda-output-doing-count 0)
+  (setq modeline-agenda-output-wait-count 0)
+  (setq modeline-agenda-output-file-name (file-name-nondirectory file-path))
+  ;; 打开临时buffer
+  (with-temp-buffer
+    (insert-file-contents file-path)
+    (goto-char (point-min))
+    (while (re-search-forward org-heading-regexp nil t)
+      (let ((headline (match-string 0)))
+        (cond
+         ((string-match-p "\\*+ TODO" headline) (setq modeline-agenda-output-todo-count (1+ modeline-agenda-output-todo-count)))
+         ((string-match-p "\\*+ DOING" headline) (setq modeline-agenda-output-doing-count (1+ modeline-agenda-output-doing-count)))
+         ((string-match-p "\\*+ WAIT" headline) (setq modeline-agenda-output-wait-count (1+ ))))))))
+
+(defun update-modeline-output-agenda-file-tasks ()
+  "统计指定文件2025.org的任务"
+  (custom-count-agenda-file-tasks "~/桌面/back/archlinux/org/GTD/agenda/2025.org"))
 
 
 ;; ========================================
@@ -85,9 +113,15 @@
               modeline-output-ram-usage
               " 󰏖 "
               modeline-output-pacman-packages
-              "   "
+              "  "
               modeline-output-weather-situation
-              " ")))
+              "  "
+              (format "󰄒 TODO %d " modeline-agenda-output-todo-count)
+              (format "󱞿 DOING %d " modeline-agenda-output-doing-count)
+              (format "󰝕 WAIT %d " modeline-agenda-output-wait-count)
+              "-  "
+              modeline-agenda-output-file-name
+              "")))
 
 
 ;; ========================================
@@ -105,6 +139,8 @@
 (run-at-time "0 sec" 43200 'update-modeline-output-pacman-packages)     ; 每12小时更新一次包总数信息
 (run-at-time "0 sec" 1800  'update-modeline-output-weather-situation)   ; 每30分钟更新一次当前天气信息
 (run-at-time "0 sec" 43200 'update-modeline-output-calendar-week)       ; 每12小时更新一次当前星期信息
+(run-at-time "0 sec" 1800  'update-modeline-output-agenda-file-tasks)   ; 每30分钟更新一次时间tasks任务信息
+
 
 
 ;; ========================================
