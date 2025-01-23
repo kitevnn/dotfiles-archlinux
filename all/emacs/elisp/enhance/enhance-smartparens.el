@@ -1,8 +1,6 @@
 ;; =======================================
 ;; 括号匹配 enhance-smartparens.el 
 ;; =======================================
-; (use-package tex-site)
-
 (use-package smartparens
   :ensure t
   :defer nil

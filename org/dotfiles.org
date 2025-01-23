@@ -1267,8 +1267,32 @@ fcitx5全家桶配置
 #+end_src
 
 
-****** 📁 elisp 📁 enhance 🔧 enhance-history.el  #+begin_src elisp :tangle ~/.config/emacs/elisp/enhance/enhance-history.el
+****** 📁 elisp 📁 enhance 🔧 enhance-history.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/enhance/enhance-history.el
+  ;; ========================================
+  ;; 光标历史记录 enhance-history.el
+  ;; ========================================
+  (use-package savehist
+    :ensure t
+    :defer nil
+    :hook (after-init . savehist-mode)
+    :init (setq enable-recursive-minibuffers t
+                history-length 1000
+                savehist-additional-variables '(mark-ring
+                                                global-mark-ring
+                                                search-ring
+                                                regexp-search-ring
+                                                extended-command-history)
+                savehist-autosave-interval 300))
 
+  (use-package saveplace
+    :ensure t
+    :defer nil
+    :hook (after-init . save-place-mode))
+
+
+  (provide 'enhance-history)  
+#+end_src
 
 
 ****** 📁 elisp 📁 enhance 🔧 enhance-indentline.el
@@ -1288,6 +1312,7 @@ fcitx5全家桶配置
   (provide 'enhance-indentline)  
 #+end_src
 
+
 ****** 📁 elisp 📁 enhance 🔧 enhance-magit.el
 #+begin_src elisp :tangle ~/.config/emacs/elisp/enhance/enhance-magit.el
   ;; =======================================
@@ -1300,6 +1325,7 @@ fcitx5全家桶配置
 
   (provide 'enhance-magit)  
 #+end_src
+
 
 ****** 📁 elisp 📁 enhance 🔧 enhance-minibuffer.el
 #+begin_src elisp :tangle ~/.config/emacs/elisp/enhance/enhance-minibuffer.el
@@ -1352,6 +1378,7 @@ fcitx5全家桶配置
   (provide 'enhance-minibuffer)  
 #+end_src
 
+
 ****** 📁 elisp 📁 enhance 🔧 enhance-pdftools.el
 #+begin_src elisp :tangle ~/.config/emacs/elisp/enhance/enhance-pdftools.el
   ;; =======================================
@@ -1367,6 +1394,7 @@ fcitx5全家桶配置
   (provide 'enhance-pdftools)  
 #+end_src
 
+
 ****** 📁 elisp 📁 enhance 🔧 enhance-restart.el
 #+begin_src elisp :tangle ~/.config/emacs/elisp/enhance/enhance-restart.el
   ;; =======================================
@@ -1380,13 +1408,12 @@ fcitx5全家桶配置
   (provide 'enhance-restart)  
 #+end_src
 
+
 ****** 📁 elisp 📁 enhance 🔧 enhance-smartparens.el
 #+begin_src elisp :tangle ~/.config/emacs/elisp/enhance/enhance-smartparens.el
   ;; =======================================
   ;; 括号匹配 enhance-smartparens.el 
   ;; =======================================
-  ; (use-package tex-site)
-
   (use-package smartparens
     :ensure t
     :defer nil
@@ -1395,6 +1422,8 @@ fcitx5全家桶配置
 
   (provide 'enhance-smartparens)  
 #+end_src
+
+
 
 ****** 📁 elisp 📁 enhance 🔧 enhance-tabs.el
 #+begin_src elisp :tangle ~/.config/emacs/elisp/enhance/enhance-tabs.el
@@ -1456,6 +1485,7 @@ fcitx5全家桶配置
   (provide 'enhance-tabs)  
 #+end_src
 
+
 ****** 📁 elisp 📁 enhance 🔧 enhance-term.el
 #+begin_src elisp :tangle ~/.config/emacs/elisp/enhance/enhance-term.el
   ;; =======================================
@@ -1469,6 +1499,7 @@ fcitx5全家桶配置
 
   (provide 'enhance-term)  
 #+end_src
+
 
 ****** 📁 elisp 📁 hooks 🔧 hooks-hook.el
 #+begin_src elisp :tangle ~/.config/emacs/elisp/hooks/hooks-hook.el
@@ -1508,29 +1539,11 @@ fcitx5全家桶配置
   (add-hook 'pdf-view-mode-hook 'custom-pdf-view-mode-hook-with-yas)           ; 在PDFView里禁用yasnippet
 
 
-  ;; ========================================
-  ;; 壳eshell的钩子hook
-  ;; ========================================
-  (add-hook 'eshell-mode-hook
-            (lambda ()
-              (add-hook 'window-configuration-change-hook 'custom-eshell-mode-hook)
-              (add-hook 'kill-buffer-hook
-                        (lambda ()
-                          (remove-hook 'window-configuration-change-hook 'custom-eshell-mode-hook)))))
-
-
-  ;; ========================================
-  ;; 关于telega
-  ;; ========================================
-  (add-hook 'telega-load-hook
-            (lambda ()
-              (define-key global-map (kbd "C-c u") telega-prefix-map)))
-
-
   (provide 'hooks-hook)  
 #+end_src
 
-****** 📁 elisp 📁 im 🔧 im-telega.el
+
+****** 📁 elisp 📁 im 🔧 im-telega.el 
 #+begin_src elisp :tangle ~/.config/emacs/elisp/im/im-telega.el
   ;; ========================================
   ;; IM设置 im-telega.el (zevlg, Thank you!)
@@ -1662,15 +1675,17 @@ fcitx5全家桶配置
   (define-key org-mode-map (kbd "C-z C-x C-\]")            'org-next-item)                              ; 跳转到下一个 (1) 2. 3) 的小标题
   (define-key org-mode-map (kbd "C-z C-z C-\\")            'org-agenda)                                 ; 打开org议题界面
   (define-key org-mode-map (kbd "C-z C-a C-\\")            'org-agenda)                                 ; 打开org议题界面
-  (define-key org-mode-map (kbd "C-z C-a C-\[")            'org-agenda-file-to-front)                   ; 当前文件放进org议题内
-  (define-key org-mode-map (kbd "C-z C-a C-\]")            'org-remove-file)                            ; 当前文件移出org议题外
-  (define-key org-mode-map (kbd "C-z C-a C-s")             'org-schedule)                               ; 添加org议题的起始时间
-  (define-key org-mode-map (kbd "C-z C-a C-d")             'org-deadline)                               ; 添加org议题的终止时间
+  (define-key org-mode-map (kbd "C-z C-a C-\[")            'org-schedule)                               ; 添加org议题的起始时间
+  (define-key org-mode-map (kbd "C-z C-a C-\]")            'org-deadline)                               ; 添加org议题的终止时间
   (define-key org-mode-map (kbd "C-z C-a C-\=")            'org-timestamp)                              ; 添加org议题的<>激活标签
   (define-key org-mode-map (kbd "C-z C-a C-\-")            'org-timestamp-inactive)                     ; 添加org议题的[]非激活标签
-  (define-key org-mode-map (kbd "C-z C-a C-t")             'org-todo)                                   ; 切换todo/done/etc.标题文字
-  (define-key org-mode-map (kbd "C-z C-a C-j")             'org-set-tags-command)                       ; 打上特征标签
+  (define-key org-mode-map (kbd "C-z C-a C-j")             'org-todo)                                   ; 切换todo/done/etc.标题文字
+  (define-key org-mode-map (kbd "C-z C-a C-t")             'org-set-tags-command)                       ; 打上特征标签
   (define-key org-mode-map (kbd "C-z C-a C-0")             'org-archive-subtree)                        ; 删除subtree并保存至同目录下的org-archive文件内
+  (define-key org-mode-map (kbd "C-z C-a C-\m")            'custom-update-modeline-all-information)     ; 手动更新modeline上的已有信息
+  (define-key org-mode-map (kbd "C-z C-a C-w")             'custom-org-agenda-change-headline-to-wait)  ; 将当前任务状态改为WAIT
+  (define-key org-mode-map (kbd "C-z C-a C-i")             'custom-org-agenda-change-headline-to-doing) ; 将当前任务状态改为DOING
+  (define-key org-mode-map (kbd "C-z C-a C-d")             'custom-org-agenda-change-headline-to-done)  ; 将当前任务状态改为DONE
   (global-unset-key (kbd "C-,"))                                                                        ; 屏蔽C-, (原功能: 直接进入org-agenda-files)
   (global-set-key (kbd "C-z C-a C-,")                      'org-cycle-agenda-files)                     ; 直接进入org-agenda-files
 
@@ -1736,6 +1751,7 @@ fcitx5全家桶配置
   (provide 'key-keybindings)  
 #+end_src
 
+
 ****** 📁 elisp 📁 note 🔧 note-auctex.el
 #+begin_src elisp :tangle ~/.config/emacs/elisp/note/note-auctex.el
   ;; ========================================
@@ -1769,6 +1785,7 @@ fcitx5全家桶配置
 
   (provide 'note-auctex)  
 #+end_src
+
 
 ****** 📁 elisp 📁 note 🔧 note-orgmode.el
 #+begin_src elisp :tangle ~/.config/emacs/elisp/note/note-orgmode.el
@@ -1846,11 +1863,12 @@ fcitx5全家桶配置
   ;; 设置更多可用的org-todo
   ;; ========================================
   (setq org-todo-keywords
-        '((sequence "TODO" "DOING" "WAIT" "MY" "DONE")))
+        '((sequence "TODO" "DOING" "WAIT" "DONE" "MY")))
 
 
   (provide 'note-orgmode)  
 #+end_src
+
 
 ****** 📁 elisp 📁 note 🔧 note-orgroam.el
 #+begin_src elisp :tangle ~/.config/emacs/elisp/note/note-orgroam.el
@@ -1860,8 +1878,8 @@ fcitx5全家桶配置
   (use-package org-roam
     :ensure t
     :custom
-    (org-roam-directory "~/桌面/back/archlinux/org/GTD/roam")
-    (org-roam-dailies-directory "daily/")
+    (org-roam-directory directory-org-roam-directory)
+    (org-roam-dailies-directory (concat directory-org-roam-directory "/daily/"))
     (org-roam-db-gc-threshold most-positive-fixnum)
     :config
     (require 'org-roam-dailies)
@@ -1878,6 +1896,7 @@ fcitx5全家桶配置
 
   (provide 'note-orgroam)  
 #+end_src
+
 
 
 ****** 📁 elisp 📁 ui 📁 decorate 🔧 ui-decorate-dashboard.el
@@ -1984,6 +2003,7 @@ fcitx5全家桶配置
   (provide 'ui-decorate-dashboard)  
 #+end_src
 
+
 ****** 📁 elisp 📁 ui 📁 font 🔧 ui-font-sauce.el
 #+begin_src elisp :tangle ~/.config/emacs/elisp/ui/font/ui-font-sauce.el
   ;; ========================================
@@ -2006,8 +2026,9 @@ fcitx5全家桶配置
   (provide 'ui-font-sauce)  
 #+end_src
 
+
 ****** 📁 elisp 📁 ui 📁 icon 🔧 ui-icon-nerdfont.el
-#+begin_src elisp :tangle ~/.config/emacs/elisp/ui/decorate/ui-decorate-dashboard.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/ui/decorate/ui-icon-nerdfont.el
   ;; ========================================
   ;; 图标设置 ui-icon-nerdfont.el
   ;; ========================================
@@ -2033,81 +2054,119 @@ fcitx5全家桶配置
   (provide 'ui-icon-nerdfont)  
 #+end_src
 
-****** 📁 elisp 📁 ui 📁 modeline 🔧 ui-modeline-bar.el 
+****** 📁 elisp 📁 ui 📁 modeline 🔧 ui-modeline-bar.el
 #+begin_src elisp :tangle ~/.config/emacs/elisp/ui/modeline/ui-modeline-bar.el
   ;; ========================================
   ;; mode-line设置 ui-modeline-bar.el
   ;; ========================================
-  (defvar modeline-output-calendar-month "")
-  (defvar modeline-output-calendar-day "")
-  (defvar modeline-output-calendar-week "")
-  (defvar modeline-output-time-hour "")
-  (defvar modeline-output-time-minute "")
-  (defvar modeline-output-battery-percentage "")
-  (defvar modeline-output-distribution "")
-  (defvar modeline-output-disk-usage "")
-  (defvar modeline-output-cpu-temperature "")
-  (defvar modeline-output-ram-usage "")
-  (defvar modeline-output-pacman-packages "")
-  (defvar modeline-output-weather-situation "")
-  (defvar modeline-agenda-output-todo-count 0)
-  (defvar modeline-agenda-output-doing-count 0)
-  (defvar modeline-agenda-output-wait-count 0)
-  (defvar modeline-agenda-output-file-name "")
+  (defvar modeline-calendar-month "")
+  (defvar modeline-calendar-day "")
+  (defvar modeline-calendar-week "")
+  (defvar modeline-time-hour "")
+  (defvar modeline-time-minute "")
+  (defvar modeline-battery-percentage "")
+  (defvar modeline-distribution "")
+  (defvar modeline-disk-usage "")
+  (defvar modeline-cpu-temperature "")
+  (defvar modeline-ram-usage "")
+  (defvar modeline-pacman-packages "")
+  (defvar modeline-weather-situation "")
+  (defvar modeline-agenda-todo-count 0)
+  (defvar modeline-agenda-doing-count 0)
+  (defvar modeline-agenda-wait-count 0)
+  (defvar modeline-agenda-file-name "")
 
 
   ;; ========================================
   ;; 关于当前日期
   ;; ========================================
-  (defun update-modeline-output-calendar-month ()
-    (setq modeline-output-calendar-month (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/calendar-month.sh"))))
-  (defun update-modeline-output-calendar-day ()
-    (setq modeline-output-calendar-day (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/calendar-day.sh"))))
-  (defun update-modeline-output-calendar-week ()
-    (setq modeline-output-calendar-week (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/calendar-week.sh"))))
+  (defun update-modeline-calendar-month ()
+    (setq modeline-calendar-month
+          (string-trim
+            (shell-command-to-string
+              (concat user-emacs-directory directory-modeline-path-suffix "calendar-month.sh")))))
+  (defun update-modeline-calendar-day ()
+    (setq modeline-calendar-day
+          (string-trim
+            (shell-command-to-string
+              (concat user-emacs-directory directory-modeline-path-suffix "calendar-day.sh")))))
+  (defun update-modeline-calendar-week ()
+    (setq modeline-calendar-week
+          (string-trim
+            (shell-command-to-string
+              (concat user-emacs-directory directory-modeline-path-suffix "calendar-week.sh")))))
   ;; ========================================
   ;; 关于当前时间
   ;; ========================================
-  (defun update-modeline-output-time-hour ()
-    (setq modeline-output-time-hour (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/time-hour.sh"))))
-  (defun update-modeline-output-time-minute ()
-    (setq modeline-output-time-minute (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/time-minute.sh"))))
+  (defun update-modeline-time-hour ()
+    (setq modeline-time-hour
+          (string-trim
+            (shell-command-to-string
+              (concat user-emacs-directory directory-modeline-path-suffix "time-hour.sh")))))
+  (defun update-modeline-time-minute ()
+    (setq modeline-time-minute
+          (string-trim
+            (shell-command-to-string
+              (concat user-emacs-directory directory-modeline-path-suffix "time-minute.sh")))))
   ;; ========================================
   ;; 关于电池信息
   ;; ========================================
-  (defun update-modeline-output-battery-percentage ()
-    (setq modeline-output-battery-percentage (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/battery-percentage.sh"))))
+  (defun update-modeline-battery-percentage ()
+    (setq modeline-battery-percentage 
+          (string-trim
+            (shell-command-to-string
+              (concat user-emacs-directory directory-modeline-path-suffix "battery-percentage.sh")))))
   ;; ========================================
   ;; 关于发行版信息
   ;; ========================================
-  (defun update-modeline-output-distribution ()
-    (setq modeline-output-distribution (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/distribution.sh"))))
-  (defun update-modeline-output-pacman-packages ()
-    (setq modeline-output-pacman-packages (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/pacman-packages.sh"))))
+  (defun update-modeline-distribution ()
+    (setq modeline-distribution (string-trim 
+          (string-trim
+            (shell-command-to-string
+              (concat user-emacs-directory directory-modeline-path-suffix "distribution.sh"))))))
+  (defun update-modeline-pacman-packages ()
+    (setq modeline-pacman-packages (string-trim 
+          (string-trim
+            (shell-command-to-string
+              (concat user-emacs-directory directory-modeline-path-suffix "pacman-packages.sh"))))))
   ;; ========================================
   ;; 关于使用率
   ;; ========================================
-  (defun update-modeline-output-disk-usage ()
-    (setq modeline-output-disk-usage (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/disk-usage.sh"))))
-  (defun update-modeline-output-cpu-temperature ()
-    (setq modeline-output-cpu-temperature (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/cpu-temperature.sh"))))
-  (defun update-modeline-output-ram-usage ()
-    (setq modeline-output-ram-usage (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/ram-usage.sh"))))
+  (defun update-modeline-disk-usage ()
+    (setq modeline-disk-usage (string-trim
+          (string-trim
+            (shell-command-to-string
+              (concat user-emacs-directory directory-modeline-path-suffix "disk-usage.sh"))))))
+  (defun update-modeline-cpu-temperature ()
+    (setq modeline-cpu-temperature (string-trim
+          (string-trim
+            (shell-command-to-string
+              (concat user-emacs-directory directory-modeline-path-suffix "cpu-temperature.sh"))))))
+  (defun update-modeline-ram-usage ()
+    (setq modeline-ram-usage (string-trim
+          (string-trim
+            (shell-command-to-string
+              (concat user-emacs-directory directory-modeline-path-suffix "ram-usage.sh"))))))
   ;; ========================================
   ;; 关于当地天气
   ;; ========================================
-  (defun update-modeline-output-weather-situation ()
-    (setq modeline-output-weather-situation (string-trim (shell-command-to-string "~/.config/emacs/elisp/ui/modeline/weather-situation.sh"))))
+  (defun update-modeline-weather-situation ()
+    (setq modeline-weather-situation (string-trim
+          (string-trim
+            (shell-command-to-string
+              (concat user-emacs-directory directory-modeline-path-suffix "weather-situation.sh"))))))
+
+
   ;; ========================================
   ;; 关于议程
   ;; ========================================
   (defun custom-count-agenda-file-tasks (file-path)
     "更新指定路径议程文件的agenda信息"
     (interactive)
-    (setq modeline-agenda-output-todo-count 0)
-    (setq modeline-agenda-output-doing-count 0)
-    (setq modeline-agenda-output-wait-count 0)
-    (setq modeline-agenda-output-file-name (file-name-nondirectory file-path))
+    (setq modeline-agenda-todo-count 0)
+    (setq modeline-agenda-doing-count 0)
+    (setq modeline-agenda-wait-count 0)
+    (setq modeline-agenda-file-name (file-name-nondirectory file-path))
     ;; 打开临时buffer
     (with-temp-buffer
       (insert-file-contents file-path)
@@ -2115,79 +2174,79 @@ fcitx5全家桶配置
       (while (re-search-forward org-heading-regexp nil t)
         (let ((headline (match-string 0)))
           (cond
-           ((string-match-p "\\*+ TODO" headline) (setq modeline-agenda-output-todo-count (1+ modeline-agenda-output-todo-count)))
-           ((string-match-p "\\*+ DOING" headline) (setq modeline-agenda-output-doing-count (1+ modeline-agenda-output-doing-count)))
-           ((string-match-p "\\*+ WAIT" headline) (setq modeline-agenda-output-wait-count (1+ ))))))))
-
-  (defun update-modeline-output-agenda-file-tasks ()
+           ((string-match-p "\\*+ TODO" headline) (setq modeline-agenda-todo-count (1+ modeline-agenda-todo-count)))
+           ((string-match-p "\\*+ DOING" headline) (setq modeline-agenda-doing-count (1+ modeline-agenda-doing-count)))
+           ((string-match-p "\\*+ WAIT" headline) (setq modeline-agenda-wait-count (1+ modeline-agenda-wait-count))))))))
+  (defun update-modeline-agenda-file-tasks ()
     "统计指定文件2025.org的任务"
-    (custom-count-agenda-file-tasks "~/桌面/back/archlinux/org/GTD/agenda/2025.org"))
+    (custom-count-agenda-file-tasks file-org-agenda-files))
 
 
   ;; ========================================
-  ;; 显示具体信息
+  ;; 定期更新变量数据
+  ;; ========================================
+  (run-at-time "0 sec" 180   'update-modeline-time-hour)           ; 每3分钟更新一次时间小时信息
+  (run-at-time "0 sec" 60    'update-modeline-time-minute)         ; 每1分钟更新一次时间分钟信息
+  (run-at-time "0 sec" 43200 'update-modeline-calendar-day)        ; 每12小时更新一次日历月份信息
+  (run-at-time "0 sec" 86400 'update-modeline-calendar-month)      ; 每24小时更新一次日历月份信息
+  (run-at-time "0 sec" 120   'update-modeline-battery-percentage)  ; 每2分钟更新一次电池信息
+  (run-at-time "0 sec" 86400 'update-modeline-distribution)        ; 每1天更新一次发行版信息
+  (run-at-time "0 sec" 86400 'update-modeline-disk-usage)          ; 每1天更新一次磁盘使用量信息
+  (run-at-time "0 sec" 15    'update-modeline-cpu-temperature)     ; 每15秒更新一次CPU温度信息
+  (run-at-time "0 sec" 15    'update-modeline-ram-usage)           ; 每15秒更新一次内存使用量信息
+  (run-at-time "0 sec" 43200 'update-modeline-pacman-packages)     ; 每12小时更新一次包总数信息
+  (run-at-time "0 sec" 1800  'update-modeline-weather-situation)   ; 每30分钟更新一次当前天气信息
+  (run-at-time "0 sec" 43200 'update-modeline-calendar-week)       ; 每12小时更新一次当前星期信息
+  (run-at-time "0 sec" 1800  'update-modeline-agenda-file-tasks)   ; 每30分钟更新一次时间tasks任务信息
+
+
+  ;; ========================================
+  ;; 关于状态栏
   ;; ========================================
   (defun update-modeline-with-all-scripts ()
+    "显示状态栏除议程数量之外的信息"
     (setq global-mode-string
           (list "   󰃯 " ;
-                modeline-output-calendar-month
-                modeline-output-calendar-day
+                modeline-calendar-month
+                modeline-calendar-day
                 "  "
-                modeline-output-calendar-week              
+                modeline-calendar-week              
                 "  "                           
-                modeline-output-time-hour
+                modeline-time-hour
                 ":"
-                modeline-output-time-minute
+                modeline-time-minute
                 "     ."
-                modeline-output-battery-percentage
+                modeline-battery-percentage
                 "  "
-                modeline-output-distribution              
+                modeline-distribution              
                 "    "
-                modeline-output-cpu-temperature              
+                modeline-cpu-temperature              
                 "°C  ."
-                modeline-output-disk-usage
+                modeline-disk-usage
                 " 󰄨 "
-                modeline-output-ram-usage
+                modeline-ram-usage
                 " 󰏖 "
-                modeline-output-pacman-packages
+                modeline-pacman-packages
                 "  "
-                modeline-output-weather-situation
+                modeline-weather-situation
                 "  "
-                (format "󰄒 TODO %d " modeline-agenda-output-todo-count)
-                (format "󱞿 DOING %d " modeline-agenda-output-doing-count)
-                (format "󰝕 WAIT %d " modeline-agenda-output-wait-count)
+                (format "󰄒 TODO %d " modeline-agenda-todo-count)
+                (format "󱞿 DOING %d " modeline-agenda-doing-count)
+                (format "󰝕 WAIT %d " modeline-agenda-wait-count)
                 "-  "
-                modeline-agenda-output-file-name
+                modeline-agenda-file-name
                 "")))
 
 
   ;; ========================================
-  ;; 定时更新每个脚本
+  ;; 设置不同的信息更新定时器
   ;; ========================================
-  (run-at-time "0 sec" 180   'update-modeline-output-time-hour)           ; 每3分钟更新一次时间小时信息
-  (run-at-time "0 sec" 60    'update-modeline-output-time-minute)         ; 每1分钟更新一次时间分钟信息
-  (run-at-time "0 sec" 43200 'update-modeline-output-calendar-day)        ; 每12小时更新一次日历月份信息
-  (run-at-time "0 sec" 86400 'update-modeline-output-calendar-month)      ; 每24小时更新一次日历月份信息
-  (run-at-time "0 sec" 120   'update-modeline-output-battery-percentage)  ; 每2分钟更新一次电池信息
-  (run-at-time "0 sec" 86400 'update-modeline-output-distribution)        ; 每1天更新一次发行版信息
-  (run-at-time "0 sec" 86400 'update-modeline-output-disk-usage)          ; 每1天更新一次磁盘使用量信息
-  (run-at-time "0 sec" 15    'update-modeline-output-cpu-temperature)     ; 每15秒更新一次CPU温度信息
-  (run-at-time "0 sec" 15    'update-modeline-output-ram-usage)           ; 每15秒更新一次内存使用量信息
-  (run-at-time "0 sec" 43200 'update-modeline-output-pacman-packages)     ; 每12小时更新一次包总数信息
-  (run-at-time "0 sec" 1800  'update-modeline-output-weather-situation)   ; 每30分钟更新一次当前天气信息
-  (run-at-time "0 sec" 43200 'update-modeline-output-calendar-week)       ; 每12小时更新一次当前星期信息
-  (run-at-time "0 sec" 1800  'update-modeline-output-agenda-file-tasks)   ; 每30分钟更新一次时间tasks任务信息
-
-
-
-  ;; ========================================
-  ;; 定时更新模式行，设置为每分钟检查一次
-  ;; ========================================
-  (run-at-time "0 sec" 60    'update-modeline-with-all-scripts)
+  (run-at-time "0 sec" 60    'update-modeline-with-all-scripts)    ; 每60秒更新一次状态栏除议程数量之外的信息
 
 
   (provide 'ui-modeline-bar)  
 #+end_src
+
 
 ****** 📁 elisp 📁 ui 📁 modeline 🔧 battery-percentage.sh
 #+begin_src sh :tangle ~/.config/emacs/elisp/ui/modeline/battery-percentage.sh
@@ -2275,6 +2334,7 @@ fcitx5全家桶配置
   (provide 'ui-theme-dark)  
 #+end_src
 
+
 ****** 📁 elisp 📁 ui 📁 theme 🔧 ui-theme-light.el
 #+begin_src elisp :tangle ~/.config/emacs/elisp/ui/theme/ui-theme-light.el
   ;; ========================================
@@ -2341,6 +2401,7 @@ fcitx5全家桶配置
   (provide 'ui-theme-light)  
 #+end_src
 
+
 ****** 📁 elisp 📁 zprogramming 📁 cmp 🔧 zprogramming-cmp-corfu.el
 #+begin_src elisp :tangle ~/.config/emacs/elisp/zprogramming/cmp/zprogramming-cmp-corfu.el
   ;; =======================================
@@ -2382,6 +2443,7 @@ fcitx5全家桶配置
   (provide 'zprogramming-cmp-corfu)  
 #+end_src
 
+
 ****** 📁 elisp 📁 zprogramming 📁 lsp 🔧 zprogramming-lsp-eglot.el
 #+begin_src elisp :tangle ~/.config/emacs/elisp/zprogramming/lsp/zprogramming-lsp-eglot.el
   ;; =======================================
@@ -2394,6 +2456,7 @@ fcitx5全家桶配置
 
   (provide 'zprogramming-lsp-eglot)  
 #+end_src
+
 
 ****** 📁 elisp 📁 zprogramming 📁 mode 🔧 zprogramming-mode-cmake.el
 #+begin_src elisp :tangle ~/.config/emacs/elisp/zprogramming/mode/zprogramming-mode-cmake.el
@@ -2408,8 +2471,9 @@ fcitx5全家桶配置
   (provide 'zprogramming-mode-cmake)  
 #+end_src
 
-****** 📁 elisp 📁 zprogramming 📁 snips 🔧 zprogramming-snips-yasnippet.el 
-#+begin_src elisp :tangle ~/.config/emacs/elisp/zprogramming/snips/zprogramming-snips-yasnippet.el 
+
+****** 📁 elisp 📁 zprogramming 📁 snips 🔧 zprogramming-snips-yasnippet.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/zprogramming/snips/zprogramming-snips-yasnippet.el
   ;; =======================================
   ;; 快速输入片段 zprogramming-snips-yasnippet.el 
   ;; =======================================
@@ -2425,6 +2489,7 @@ fcitx5全家桶配置
 
   (provide 'zprogramming-snips-yasnippet)  
 #+end_src
+
 
 ****** 📁 elisp 📁 zprogramming 📁 ts 🔧 zprogramming-ts-treesitter.el
 #+begin_src elisp :tangle ~/.config/emacs/elisp/zprogramming/ts/zprogramming-ts-treesitter.el
