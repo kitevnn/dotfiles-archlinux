@@ -11,17 +11,17 @@
 ;; ========================================
 ;; 关于buffer
 ;; ========================================
-(global-set-key (kbd "C-z C-b C-n")                       'next-buffer)                               ; 跳转到下一个全局buffer
-(global-set-key (kbd "C-z C-b C-p")                       'previous-buffer)                           ; 跳转到上一个全局buffer
-(global-set-key (kbd "C-z C-b C-b")                       'centaur-tabs-backward)                     ; 跳转到上一个局部buffer
-(global-set-key (kbd "C-z C-b C-f")                       'centaur-tabs-forward)                      ; 跳转到下一个局部buffer
+(global-set-key (kbd "C-z C-b C-n")                      'next-buffer)                               ; 跳转到下一个全局buffer
+(global-set-key (kbd "C-z C-b C-p")                      'previous-buffer)                           ; 跳转到上一个全局buffer
+(global-set-key (kbd "C-z C-b C-b")                      'centaur-tabs-backward)                     ; 跳转到上一个局部buffer
+(global-set-key (kbd "C-z C-b C-f")                      'centaur-tabs-forward)                      ; 跳转到下一个局部buffer
 
 
 ;; ========================================
 ;; 关于theme
 ;; ========================================
-(global-set-key (kbd "C-z C-t C-1")                       'custom-load-theme-light)                   ; 切换为亮色light主题
-(global-set-key (kbd "C-z C-t C-2")                       'custom-load-theme-dark)                    ; 切换为暗色dark主题
+(global-set-key (kbd "C-z C-t C-1")                      'custom-load-theme-light)                   ; 切换为亮色light主题
+(global-set-key (kbd "C-z C-t C-2")                      'custom-load-theme-dark)                    ; 切换为暗色dark主题
 
 
 ;; ========================================
