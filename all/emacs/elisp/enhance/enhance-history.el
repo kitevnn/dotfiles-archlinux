@@ -1,5 +1,5 @@
 ;; ========================================
-;; 历史记录 enhance-history.el
+;; 光标历史记录 enhance-history.el
 ;; ========================================
 (use-package savehist
   :ensure t

@@ -349,6 +349,7 @@ fcitx5全家桶配置
 📁 elisp
    📁 basic
       🔧 basic-elpa.el
+      🔧 basic-file.el
       🔧 basic-init.el
       🔧 basic-mode.el
       🔧 basic-path.el      
@@ -416,7 +417,7 @@ fcitx5全家桶配置
 #+end_src
 
 ***** 文件配置
-****** 🔧 init.el 
+****** 🔧 init.el  
 #+begin_src elisp :tangle ~/.config/emacs/init.el
   ;; =======================================
   ;; 
@@ -427,6 +428,7 @@ fcitx5全家桶配置
                (expand-file-name 
                 (concat user-emacs-directory "elisp/basic")))
   (require 'basic-path)
+  (require 'basic-file)
 
 
   ;; =======================================
@@ -497,7 +499,7 @@ fcitx5全家桶配置
    )  
 #+end_src
 
-****** 📁 elisp 📁 basic 🔧 basic-elpa.el
+****** 📁 elisp 📁 basic 🔧 basic-elpa.el 
 #+begin_src elisp :tangle ~/.config/emacs/elisp/basic/basic-elpa.el
   ;; =======================================
   ;; 源设置 basic-elpa.el 
@@ -516,6 +518,31 @@ fcitx5全家桶配置
 
 
   (provide 'basic-elpa)  
+#+end_src
+
+****** 📁 elisp 📁 basic 🔧 basic-file.el
+#+begin_src elisp :tangle ~/.config/emacs/elisp/basic/basic-file.el
+  ;; =======================================
+  ;; 文件路径 basic-file.el
+  ;; =======================================
+
+
+  ;; =======================================
+  ;; 关于directory文件夹
+  ;; =======================================
+  (defvar directory-default-directory "~/桌面/back/archlinux/org/")               ; GNU Emacs的起始目录
+  (defvar directory-backup-directory-alist "~/.config/emacs/saves/")              ; 恢复文件的保存目录
+  (defvar directory-modeline-path-suffix "elisp/ui/modeline/")                    ; emacs配置文件路径的modeline部分
+  (defvar directory-org-roam-directory "~/桌面/back/archlinux/org/GTD/roam/")     ; org-roam的保存目录
+
+
+  ;; =======================================
+  ;; 关于file文件
+  ;; =======================================
+  (defvar file-org-agenda-files "~/桌面/back/archlinux/org/GTD/agenda/2025.org")  ; org-agenda的GTD文件
+
+
+  (provide 'basic-file)  
 #+end_src
 
 ****** 📁 elisp 📁 basic 🔧 basic-init.el
@@ -568,20 +595,20 @@ fcitx5全家桶配置
   ;; =======================================
   ;; 起始目录
   ;; =======================================
-  (setq default-directory "~/桌面/back/archlinux/org")                  ; GNU Emacs的起始目录
+  (setq default-directory directory-default-directory)                  ; GNU Emacs的起始目录
 
 
   ;; =======================================
   ;; 关于agenda
   ;; =======================================
-  (setq org-agenda-files 
-        '("~/桌面/back/archlinux/org/GTD/agenda"))                      ; org-agenda的GTD文件
+  (setq org-agenda-files (list file-org-agenda-files))                  ; org-agenda的GTD文件，多个文件请用 (list file-org-agenda-files-1 file-org-agenda-files-2)
 
 
   ;; =======================================
   ;; 自定义恢复文件配置(Auto saving...done)
   ;; =======================================
-  (setq backup-directory-alist `(("." . "~/.config/emacs/saves/")))     ; 统一设置恢复文件的保存目录，而不污染当前同级目录
+  (setq backup-directory-alist 
+        `(("." . ,directory-backup-directory-alist)))                   ; 统一设置恢复文件的保存目录，而不污染当前同级目录
   (setq backup-by-copying t)                                            ; 设置保存形式
   (setq delete-old-versions t
     kept-new-versions 6
@@ -610,7 +637,7 @@ fcitx5全家桶配置
 #+end_src
 
 ****** 📁 elisp 📁 basic 🔧 basic-path.el
-#+begin_src elisp :tangle ~/.config/emacs/elisp/basic/basic-path.el  
+#+begin_src elisp :tangle ~/.config/emacs/elisp/basic/basic-path.el
   ;; =======================================
   ;; 关于路径加载 basic-path.el
   ;; =======================================
@@ -695,7 +722,7 @@ fcitx5全家桶配置
                 (concat user-emacs-directory "elisp/im")))
 
 
-  (provide 'basic-path)
+  (provide 'basic-path)  
 #+end_src
 
 ****** 📁 elisp 📁 custom 🔧 custom-defun.el
@@ -1033,8 +1060,88 @@ fcitx5全家桶配置
       (message "no next equation, please check again...")))
 
 
+  ;; =======================================
+  ;; 手动更新议程任务信息
+  ;; =======================================
+  (defun custom-update-modeline-output-agenda-tasks ()
+    "手动更新议程任务信息 TODO: a DOING: b WAIT: c"
+    (interactive)
+    (update-modeline-output-agenda-file-tasks))
+
+
+  ;; =======================================
+  ;; 快速更改议程任务信息
+  ;; =======================================
+  (defun custom-org-agenda-change-headline-to-done ()
+    "将当前任务状态改为DONE"
+    (interactive)
+    (if (org-at-heading-p)
+        (progn
+          (org-beginning-of-line)
+          (forward-word)
+          (backward-kill-word 1)
+          (insert "DONE")
+          (org-end-of-line))
+      (progn
+        (org-previous-visible-heading 1)
+        (org-beginning-of-line)
+        (forward-word)
+        (backward-kill-word 1)
+        (insert "DONE")
+        (org-end-of-line))))
+
+  (defun custom-org-agenda-change-headline-to-doing ()
+    "将当前任务状态改为DOING"
+    (interactive)
+    (if (org-at-heading-p)
+        (progn
+          (org-beginning-of-line)
+          (forward-word)
+          (backward-kill-word 1)
+          (insert "DOING")
+          (org-end-of-line))
+      (progn
+        (org-previous-visible-heading 1)
+        (org-beginning-of-line)
+        (forward-word)
+        (backward-kill-word 1)
+        (insert "DOING")
+        (org-end-of-line))))
+
+  (defun custom-org-agenda-change-headline-to-wait ()
+    "将当前任务状态改为WAIT"
+    (interactive)
+    (if (org-at-heading-p)
+        (progn
+          (org-beginning-of-line)
+          (forward-word)
+          (backward-kill-word 1)
+          (insert "WAIT")
+          (org-end-of-line))
+      (progn
+        (org-previous-visible-heading 1)
+        (org-beginning-of-line)
+        (forward-word)
+        (backward-kill-word 1)
+        (insert "WAIT")
+        (org-end-of-line))))
+
+
+  ;; =======================================
+  ;; 手动更新modeline上的已有信息
+  ;; =======================================
+  (defun custom-update-modeline-all-information ()
+    "手动更新modeline上的已有信息"
+    (interactive)
+    ;; 更新变量数据
+    (update-modeline-agenda-file-tasks)  
+    ;; 更新modeline信息
+    (update-modeline-with-all-scripts))
+
+
   (provide 'custom-defun)  
 #+end_src
+
 
 ****** 📁 elisp 📁 enhance 🔧 enhance-cdlatex.el
 #+begin_src elisp :tangle ~/.config/emacs/elisp/enhance/enhance-cdlatex.el
@@ -1123,6 +1230,7 @@ fcitx5全家桶配置
   (provide 'enhance-cdlatex)  
 #+end_src
 
+
 ****** 📁 elisp 📁 enhance 🔧 enhance-deadgrep.el
 #+begin_src elisp :tangle ~/.config/emacs/elisp/enhance/enhance-deadgrep.el
   ;; ========================================
@@ -1135,6 +1243,7 @@ fcitx5全家桶配置
 
   (provide 'enhance-deadgrep)  
 #+end_src
+
 
 ****** 📁 elisp 📁 enhance 🔧 enhance-dirvish.el
 #+begin_src elisp :tangle ~/.config/emacs/elisp/enhance/enhance-dirvish.el
@@ -1157,32 +1266,10 @@ fcitx5全家桶配置
   (provide 'enhance-dirvish)  
 #+end_src
 
-****** 📁 elisp 📁 enhance 🔧 enhance-history.el
-#+begin_src elisp :tangle ~/.config/emacs/elisp/enhance/enhance-history.el
-  ;; ========================================
-  ;; 历史记录 enhance-history.el
-  ;; ========================================
-  (use-package savehist
-    :ensure t
-    :defer nil
-    :hook (after-init . savehist-mode)
-    :init (setq enable-recursive-minibuffers t
-                history-length 1000
-                savehist-additional-variables '(mark-ring
-                                                global-mark-ring
-                                                search-ring
-                                                regexp-search-ring
-                                                extended-command-history)
-                savehist-autosave-interval 300))
 
-  (use-package saveplace
-    :ensure t
-    :defer nil
-    :hook (after-init . save-place-mode))
+****** 📁 elisp 📁 enhance 🔧 enhance-history.el  #+begin_src elisp :tangle ~/.config/emacs/elisp/enhance/enhance-history.el
 
 
-  (provide 'enhance-history)  
-#+end_src
 
 ****** 📁 elisp 📁 enhance 🔧 enhance-indentline.el
 #+begin_src elisp :tangle ~/.config/emacs/elisp/enhance/enhance-indentline.el
