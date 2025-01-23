@@ -112,9 +112,13 @@
 (define-key org-mode-map (kbd "C-z C-a C-d")             'org-deadline)                               ; 添加org议题的终止时间
 (define-key org-mode-map (kbd "C-z C-a C-\=")            'org-timestamp)                              ; 添加org议题的<>激活标签
 (define-key org-mode-map (kbd "C-z C-a C-\-")            'org-timestamp-inactive)                     ; 添加org议题的[]非激活标签
-(define-key org-mode-map (kbd "C-z C-a C-t")             'org-todo)                                   ; 切换todo/done/etc.标题文字
-(define-key org-mode-map (kbd "C-z C-a C-j")             'org-set-tags-command)                       ; 打上特征标签
+(define-key org-mode-map (kbd "C-z C-a C-j")             'org-todo)                                   ; 切换todo/done/etc.标题文字
+(define-key org-mode-map (kbd "C-z C-a C-t")             'org-set-tags-command)                       ; 打上特征标签
 (define-key org-mode-map (kbd "C-z C-a C-0")             'org-archive-subtree)                        ; 删除subtree并保存至同目录下的org-archive文件内
+(define-key org-mode-map (kbd "C-z C-z C-\m")            'custom-update-modeline-all-information)           ; 手动更新modeline上的已有信息
+(define-key org-mode-map (kbd "C-z C-a C-w")             'custom-org-agenda-change-headline-to-wait)  ; 将当前任务状态改为WAIT
+(define-key org-mode-map (kbd "C-z C-a C-i")             'custom-org-agenda-change-headline-to-doing) ; 将当前任务状态改为DOING
+(define-key org-mode-map (kbd "C-z C-a C-o")             'custom-org-agenda-change-headline-to-done)  ; 将当前任务状态改为DONE
 (global-unset-key (kbd "C-,"))                                                                        ; 屏蔽C-, (原功能: 直接进入org-agenda-files)
 (global-set-key (kbd "C-z C-a C-,")                      'org-cycle-agenda-files)                     ; 直接进入org-agenda-files
 

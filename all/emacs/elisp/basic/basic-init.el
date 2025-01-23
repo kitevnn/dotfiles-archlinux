@@ -46,20 +46,20 @@
 ;; =======================================
 ;; 起始目录
 ;; =======================================
-(setq default-directory "~/桌面/back/archlinux/org")                  ; GNU Emacs的起始目录
+(setq default-directory directory-default-directory)                  ; GNU Emacs的起始目录
 
 
 ;; =======================================
 ;; 关于agenda
 ;; =======================================
-(setq org-agenda-files 
-      '("~/桌面/back/archlinux/org/GTD/agenda"))                      ; org-agenda的GTD文件
+(setq org-agenda-files (list file-org-agenda-files))                  ; org-agenda的GTD文件，多个文件请用 (list file-org-agenda-files-1 file-org-agenda-files-2)
 
 
 ;; =======================================
 ;; 自定义恢复文件配置(Auto saving...done)
 ;; =======================================
-(setq backup-directory-alist `(("." . "~/.config/emacs/saves/")))     ; 统一设置恢复文件的保存目录，而不污染当前同级目录
+(setq backup-directory-alist 
+      `(("." . ,directory-backup-directory-alist)))                   ; 统一设置恢复文件的保存目录，而不污染当前同级目录
 (setq backup-by-copying t)                                            ; 设置保存形式
 (setq delete-old-versions t
   kept-new-versions 6

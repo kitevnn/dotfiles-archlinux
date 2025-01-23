@@ -72,7 +72,7 @@
 ;; 设置更多可用的org-todo
 ;; ========================================
 (setq org-todo-keywords
-      '((sequence "TODO" "DOING" "WAIT" "MY" "DONE")))
+      '((sequence "TODO" "DOING" "WAIT" "DONE" "MY")))
 
 
 (provide 'note-orgmode)

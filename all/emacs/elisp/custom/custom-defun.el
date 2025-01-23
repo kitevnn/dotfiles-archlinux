@@ -331,4 +331,83 @@
     (message "no next equation, please check again...")))
 
 
+;; =======================================
+;; 手动更新议程任务信息
+;; =======================================
+(defun custom-update-modeline-output-agenda-tasks ()
+  "手动更新议程任务信息 TODO: a DOING: b WAIT: c"
+  (interactive)
+  (update-modeline-output-agenda-file-tasks))
+
+
+;; =======================================
+;; 快速更改议程任务信息
+;; =======================================
+(defun custom-org-agenda-change-headline-to-done ()
+  "将当前任务状态改为DONE"
+  (interactive)
+  (if (org-at-heading-p)
+      (progn
+        (org-beginning-of-line)
+        (forward-word)
+        (backward-kill-word 1)
+        (insert "DONE")
+        (org-end-of-line))
+    (progn
+      (org-previous-visible-heading 1)
+      (org-beginning-of-line)
+      (forward-word)
+      (backward-kill-word 1)
+      (insert "DONE")
+      (org-end-of-line))))
+
+(defun custom-org-agenda-change-headline-to-doing ()
+  "将当前任务状态改为DOING"
+  (interactive)
+  (if (org-at-heading-p)
+      (progn
+        (org-beginning-of-line)
+        (forward-word)
+        (backward-kill-word 1)
+        (insert "DOING")
+        (org-end-of-line))
+    (progn
+      (org-previous-visible-heading 1)
+      (org-beginning-of-line)
+      (forward-word)
+      (backward-kill-word 1)
+      (insert "DOING")
+      (org-end-of-line))))
+
+(defun custom-org-agenda-change-headline-to-wait ()
+  "将当前任务状态改为WAIT"
+  (interactive)
+  (if (org-at-heading-p)
+      (progn
+        (org-beginning-of-line)
+        (forward-word)
+        (backward-kill-word 1)
+        (insert "WAIT")
+        (org-end-of-line))
+    (progn
+      (org-previous-visible-heading 1)
+      (org-beginning-of-line)
+      (forward-word)
+      (backward-kill-word 1)
+      (insert "WAIT")
+      (org-end-of-line))))
+
+
+;; =======================================
+;; 手动更新modeline上的已有信息
+;; =======================================
+(defun custom-update-modeline-all-information ()
+  "手动更新modeline上的已有信息"
+  (interactive)
+  ;; 更新变量数据
+  (update-modeline-agenda-file-tasks)  
+  ;; 更新modeline信息
+  (update-modeline-with-all-scripts))
+
+
 (provide 'custom-defun)

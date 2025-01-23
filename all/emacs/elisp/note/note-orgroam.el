@@ -4,8 +4,8 @@
 (use-package org-roam
   :ensure t
   :custom
-  (org-roam-directory "~/桌面/back/archlinux/org/GTD/roam")
-  (org-roam-dailies-directory "daily/")
+  (org-roam-directory directory-org-roam-directory)
+  (org-roam-dailies-directory (concat directory-org-roam-directory "/daily/"))
   (org-roam-db-gc-threshold most-positive-fixnum)
   :config
   (require 'org-roam-dailies)

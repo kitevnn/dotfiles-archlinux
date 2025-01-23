@@ -34,23 +34,4 @@
 (add-hook 'pdf-view-mode-hook 'custom-pdf-view-mode-hook-with-yas)           ; 在PDFView里禁用yasnippet
 
 
-;; ========================================
-;; 壳eshell的钩子hook
-;; ========================================
-(add-hook 'eshell-mode-hook
-          (lambda ()
-            (add-hook 'window-configuration-change-hook 'custom-eshell-mode-hook)
-            (add-hook 'kill-buffer-hook
-                      (lambda ()
-                        (remove-hook 'window-configuration-change-hook 'custom-eshell-mode-hook)))))
-
-
-;; ========================================
-;; 关于telega
-;; ========================================
-(add-hook 'telega-load-hook
-          (lambda ()
-            (define-key global-map (kbd "C-c u") telega-prefix-map)))
-
-
 (provide 'hooks-hook)
