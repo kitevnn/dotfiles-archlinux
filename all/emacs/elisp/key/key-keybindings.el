@@ -47,7 +47,7 @@
 
 
 ;; ========================================
-;; 关于调整屏幕
+;; 关于调整窗口
 ;; ========================================
 (global-set-key (kbd "C-z C-w C-p")                      'custom-resize-top-five-unit)                ; 当前窗口向上调整5个单位
 (global-set-key (kbd "C-z C-w C-n")                      'custom-resize-bottom-five-unit)             ; 当前窗口向下调整5个单位
