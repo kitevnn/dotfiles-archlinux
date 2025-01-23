@@ -1752,8 +1752,6 @@ fcitx5全家桶配置
 #+end_src
 
 
-
-
 ****** 📁 elisp 📁 note 🔧 note-auctex.el
 #+begin_src elisp :tangle ~/.config/emacs/elisp/note/note-auctex.el
   ;; ========================================
@@ -1792,7 +1790,7 @@ fcitx5全家桶配置
 ****** 📁 elisp 📁 note 🔧 note-orgmode.el
 #+begin_src elisp :tangle ~/.config/emacs/elisp/note/note-orgmode.el
   ;; ========================================
-  ;; org"开发" note-orgmode.el
+  ;; org笔记及任务管理 note-orgmode.el
   ;; ========================================
   (use-package org
     :ensure t

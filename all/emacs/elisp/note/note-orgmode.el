@@ -1,5 +1,5 @@
 ;; ========================================
-;; org"开发" note-orgmode.el
+;; org笔记及任务管理 note-orgmode.el
 ;; ========================================
 (use-package org
   :ensure t
