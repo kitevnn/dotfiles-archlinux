@@ -102,7 +102,7 @@
 ;; ========================================
 ;; 关于议程
 ;; ========================================
-(defun custom-count-agenda-file-tasks (file-path)
+(defun my-count-agenda-file-tasks (file-path)
   "更新指定路径议程文件的agenda信息"
   (interactive)
   (setq modeline-agenda-todo-count 0)
@@ -121,7 +121,7 @@
          ((string-match-p "\\*+ WAIT" headline) (setq modeline-agenda-wait-count (1+ modeline-agenda-wait-count))))))))
 (defun update-modeline-agenda-file-tasks ()
   "统计指定文件2025.org的任务"
-  (custom-count-agenda-file-tasks file-org-agenda-files))
+  (my-count-agenda-file-tasks file-org-agenda-files))
 
 
 ;; ========================================
