@@ -20,43 +20,73 @@
 ;; ========================================
 ;; 为vertico-current添加face颜色
 ;; ========================================
-(set-face-attribute 'vertico-current nil :background "#b5ffd1")
+(custom-set-faces
+ '(vertico-current ((t (:background "#b5ffd1")))))
 
 
 ;; ========================================
 ;; 为telega-heading添加face颜色
 ;; ========================================
 (with-eval-after-load 'telega
-  (set-face-attribute 'telega-msg-heading nil :background "#ffffff" :extend nil))
+  (custom-set-faces
+   '(telega-msg-heading ((t (:background "#ffffff" :extend nil))))))
 
 
 ;; ========================================
 ;; corfu弹出窗口颜色设置
 ;; ========================================
 (with-eval-after-load 'corfu
-  (set-face-attribute 'corfu-default nil :background "#ffffff")
-  (set-face-attribute 'corfu-border nil :background "#37474f")
-  (set-face-attribute 'corfu-current nil :background "#cfd8dc" :foreground "#37474f"))
+  (custom-set-faces
+   '(corfu-default ((t (:background "#ffffff"))))
+   '(corfu-border  ((t (:background "#37474f"))))
+   '(corfu-current ((t (:background "#cfd8dc" :foreground "#37474f"))))))
 
 
 ;; ========================================
 ;; 为dirvish-hl-line添加face颜色
 ;; ========================================
 (with-eval-after-load 'dirvish
-  (set-face-attribute 'dirvish-hl-line nil :background "#cfd8dc" :foreground "#37474f"))
+  (custom-set-faces
+   '(dirvish-hl-line ((t (:background "#cfd8dc" :foreground "#37474f"))))))
 
 
 ;; ========================================
 ;; 为vertico-posframe添加face颜色
 ;; ========================================
-(set-face-attribute 'vertico-group-separator nil :background "#37474f" :foreground "#FFFFFF")
-(set-face-attribute 'vertico-group-title nil :background "#37474f" :foreground "#FFFFFF")
+(custom-set-faces
+ '(vertico-group-separator ((t (:background "#37474f" :foreground "#FFFFFF"))))
+ '(vertico-group-title     ((t (:background "#37474f" :foreground "#FFFFFF")))))
 
 
 ;; ========================================
 ;; 为region添加face颜色
 ;; ========================================
-(set-face-attribute 'region nil :background "#eceff1")
+(custom-set-faces
+ '(region ((t (:background "#eceff1")))))
+
+
+;; ========================================
+;; 亮色isearch
+;; ========================================
+(custom-set-faces
+ '(isearch-fail ((t (:foreground "#37474f" :background "#ffffff")))))
+
+
+;; ========================================
+;; 亮色agenda
+;; ========================================
+(custom-set-faces
+ '(org-agenda-structure     ((t (:background "#37474f" :foreground "#ffffff"))))   ; 结构信息
+ '(org-agenda-date          ((t (:background "#ffffff" :foreground "#673ab7"))))   ; 星期信息 
+ '(org-agenda-date-today    ((t (:background "#cfd8dc" :foreground "#37474f"))))   ; 今天时间
+ '(org-agenda-current-time  ((t (:background "#ffffff" :foreground "#673ab7"))))   ; 当前时间 
+ '(org-time-grid            ((t (:background "#ffffff" :foreground "#37474f"))))   ; 时间刻度线
+ '(org-scheduled-today      ((t (:background "#ffffff" :foreground "#000000"))))   ; 今天的安排 
+ '(org-imminent-deadline    ((t (:background "#ffffff" :foreground "#37474f"))))   ; 即将到期的议程
+ '(org-scheduled-previously ((t (:background "#ffffff" :foreground "#cfd8dc"))))   ; 先前完成或先前未完成的议程
+ '(org-todo                 ((t (:background "#ffffff" :foreground "#673ab7"))))   ; 议程状态
+ '(org-upcoming-deadline    ((t (:background "#ffffff" :foreground "#673ab7"))))   ; 即将过期的
+ '(org-default              ((t (:background "#ffffff" :foreground "#37474f")))))  ; 剩余议程
 
 
 (provide 'ui-theme-light)

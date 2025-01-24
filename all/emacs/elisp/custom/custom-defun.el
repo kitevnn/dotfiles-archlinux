@@ -152,56 +152,98 @@
   "切换为亮色light主题"
   (interactive)
   (disable-theme 'bliss)
-  (load-theme 'nano-light)
-  (set-face-attribute 'vertico-current nil :background "#b5ffd1")
-  (set-face-attribute 'tab-line nil :background "#ffffff")
+  (load-theme 'nano-light)  
+  ;; 亮色初始化
+  (custom-set-faces
+   '(vertico-current ((t (:background "#b5ffd1"))))
+   '(tab-line        ((t (:background "#ffffff")))))
   (with-eval-after-load 'telega
-    (set-face-attribute 'telega-msg-heading nil :background "#ffffff"))
-  (set-face-attribute 'help-key-binding nil
-                      :height 90
-                      :box nil
-                      :foreground "#673ab7"
-                      :background "#ffffff")
+    '(telega-msg-heading ((t (:background "#ffffff"))))
+    '(help-key-binding   ((t (:height 90 :box nil :foreground "#673ab7" :background "#ffffff")))))
+  ;; logo图
   (setq dashboard-startup-banner "/home/une/.wallpaper/dashboard-zoom-out-light.png")
   (dashboard-refresh-buffer)
-  (set-face-attribute 'vertico-group-separator nil :background "#37474f" :foreground "#FFFFFF")
-  (set-face-attribute 'vertico-group-title nil :background "#37474f" :foreground "#FFFFFF")
-  (set-face-attribute 'vertico-posframe nil :background "#FFFFFF" :foreground "#37474f")
-  (set-face-attribute 'vertico-current nil :background "#b5ffd1" :foreground "#37474f")
-  (set-face-attribute 'region nil :background "#eceff1")
+  ;; 亮色vertico
+  (custom-set-faces
+   '(vertico-group-separator ((t (:background "#37474f" :foreground "#FFFFFF"))))
+   '(vertico-group-title     ((t (:background "#37474f" :foreground "#FFFFFF"))))
+   '(vertico-posframe        ((t (:background "#FFFFFF" :foreground "#37474f"))))
+   '(vertico-current         ((t (:background "#b5ffd1" :foreground "#37474f"))))
+   '(region                  ((t (:background "#eceff1")))))
+  ;; 亮色corfu
   (with-eval-after-load 'corfu
-    (set-face-attribute 'corfu-default nil :background "#ffffff")
-    (set-face-attribute 'corfu-border nil :background "#37474f")
-    (set-face-attribute 'corfu-current nil :background "#cfd8dc" :foreground "#37474f"))  
-  (with-eval-after-load 'dirvish
-    (set-face-attribute 'dirvish-hl-line nil :background "#cfd8dc" :foreground "#37474f")))
+    (custom-set-faces     
+     '(corfu-default ((t (:background "#ffffff"))))
+     '(corfu-border  ((t (:background "#37474f"))))
+     '(corfu-current ((t (:background "#cfd8dc" :foreground "#37474f"))))))
+  ;; 亮色dirvish
+  (with-eval-after-load 'dirvish      
+    '(dirvish-hl-line ((t (:background "#cfd8dc" :foreground "#37474f")))))
+  ;; 亮色isearch
+  (custom-set-faces
+   '(isearch-fail ((t (:foreground "#37474f" :background "#ffffff")))))
+  ;; 亮色agenda
+  (custom-set-faces
+   '(org-agenda-structure     ((t (:background "#37474f" :foreground "#ffffff"))))   ; 结构信息
+   '(org-agenda-date          ((t (:background "#ffffff" :foreground "#673ab7"))))   ; 星期信息 
+   '(org-agenda-date-today    ((t (:background "#cfd8dc" :foreground "#37474f"))))   ; 今天时间
+   '(org-agenda-current-time  ((t (:background "#ffffff" :foreground "#673ab7"))))   ; 当前时间 
+   '(org-time-grid            ((t (:background "#ffffff" :foreground "#37474f"))))   ; 时间刻度线
+   '(org-scheduled-today      ((t (:background "#ffffff" :foreground "#000000"))))   ; 今天的安排 
+   '(org-imminent-deadline    ((t (:background "#ffffff" :foreground "#37474f"))))   ; 即将到期的议程
+   '(org-scheduled-previously ((t (:background "#ffffff" :foreground "#cfd8dc"))))   ; 先前完成或先前未完成的议程
+   '(org-todo                 ((t (:background "#ffffff" :foreground "#673ab7"))))   ; 议程状态
+   '(org-upcoming-deadline    ((t (:background "#ffffff" :foreground "#673ab7"))))   ; 即将过期的
+   '(org-default              ((t (:background "#ffffff" :foreground "#37474f")))))) ; 剩余议程
 
 (defun custom-load-theme-dark ()
   "切换为暗色dark主题"
   (interactive)
   (disable-theme 'nano-light)
   (load-theme 'bliss)
-  (set-face-attribute 'vertico-current nil :background "#31343e")
-  (set-face-attribute 'tab-line nil :background "#191919")
+  ;; 暗色初始化
+  (custom-set-faces
+   '(vertico-current ((t (:background "#31343e"))))
+   '(tab-line        ((t (:background "#191919")))))
   (with-eval-after-load 'telega
-    (set-face-attribute 'telega-msg-heading nil :background "#191919"))
-  (set-face-attribute 'help-key-binding nil
-                      :height 90
-                      :box nil
-                      :foreground "#64fbc8"
-                      :background "#191919")
+    (custom-set-faces     
+     '(telega-msg-heading ((t (:background "#191919"))))
+     '(help-key-binding   ((t (:height 90 :box nil :foreground "#64fbc8" :background "#191919"))))))
+  ;; logo图
   (setq dashboard-startup-banner "/home/une/.wallpaper/dashboard-zoom-out-dark.png")
   (dashboard-refresh-buffer)
-  (set-face-attribute 'vertico-current nil :background "#444444" :foreground "#67fbc8")
-  (set-face-attribute 'vertico-group-separator nil :background "#64fbc8" :foreground "#191919")
-  (set-face-attribute 'vertico-group-title nil :background "#64fbc8" :foreground "#191919")
-  (set-face-attribute 'vertico-posframe nil :background "#191919" :foreground "#3bb1df")
+  ;; 暗色vertico
+  (custom-set-faces   
+   '(vertico-current         ((t (:background "#444444" :foreground "#67fbc8"))))
+   '(vertico-group-separator ((t (:background "#64fbc8" :foreground "#191919"))))
+   '(vertico-group-title     ((t (:background "#64fbc8" :foreground "#191919"))))
+   '(vertico-posframe        ((t (:background "#191919" :foreground "#3bb1df")))))
+  ;; 暗色corfu
   (with-eval-after-load 'corfu
-    (set-face-attribute 'corfu-default nil :background "#191919" :foreground "#3bb1df")
-    (set-face-attribute 'corfu-border nil :background "#37474f")
-    (set-face-attribute 'corfu-current nil :background "#444444" :foreground "#64fbc8"))
+    (custom-set-faces
+     '(corfu-default ((t (:background "#191919" :foreground "#3bb1df"))))
+     '(corfu-border  ((t (:background "#37474f"))))
+     '(corfu-current ((t (:background "#444444" :foreground "#64fbc8"))))))
+  ;; 暗色dirvish
   (with-eval-after-load 'dirvish
-    (set-face-attribute 'dirvish-hl-line nil :background "#444444" :foreground "#64fbc8")))
+    (custom-set-faces
+     '(dirvish-hl-line ((t (:background "#444444" :foreground "#64fbc8"))))))
+  ;; 暗色isearch
+  (custom-set-faces
+   '(isearch-fail ((t (:foreground "#ffffff" :background "#191919")))))
+  ;; 暗色agenda
+  (custom-set-faces
+   '(org-agenda-structure     ((t (:background "#64fbc8" :foreground "#444444"))))   ; 结构信息
+   '(org-agenda-date          ((t (:background "#191919" :foreground "#64fbc8"))))   ; 星期信息 
+   '(org-agenda-date-today    ((t (:background "#444444" :foreground "#64fbc8"))))   ; 今天时间
+   '(org-agenda-current-time  ((t (:background "#444444" :foreground "#64fbc8"))))   ; 当前时间
+   '(org-time-grid            ((t (:background "#191919" :foreground "#3bb1df"))))   ; 时间刻度线
+   '(org-scheduled-today      ((t (:background "#191919" :foreground "#ffffff"))))   ; 今天的安排 
+   '(org-imminent-deadline    ((t (:background "#191919" :foreground "#3bb1df"))))   ; 即将到期的议程
+   '(org-scheduled-previously ((t (:background "#191919" :foreground "#444444"))))   ; 先前完成或先前未完成的议程
+   '(org-todo                 ((t (:background "#191919" :foreground "#1277a7"))))   ; 议程状态
+   '(org-upcoming-deadline    ((t (:background "#191919" :foreground "#64fbc8"))))   ; 即将过期的
+   '(org-default              ((t (:background "#191919" :foreground "#1277a7")))))) ; 剩余议程
 
 
 ;; =======================================
