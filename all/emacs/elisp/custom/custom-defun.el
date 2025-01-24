@@ -351,15 +351,13 @@
         (org-beginning-of-line)
         (forward-word)
         (backward-kill-word 1)
-        (insert "DONE")
-        (org-end-of-line))
+        (insert "DONE"))
     (progn
       (org-previous-visible-heading 1)
       (org-beginning-of-line)
       (forward-word)
       (backward-kill-word 1)
-      (insert "DONE")
-      (org-end-of-line))))
+      (insert "DONE"))))
 
 (defun custom-org-agenda-change-headline-to-doing ()
   "将当前任务状态改为DOING"
@@ -369,15 +367,13 @@
         (org-beginning-of-line)
         (forward-word)
         (backward-kill-word 1)
-        (insert "DOING")
-        (org-end-of-line))
+        (insert "DOING"))
     (progn
       (org-previous-visible-heading 1)
       (org-beginning-of-line)
       (forward-word)
       (backward-kill-word 1)
-      (insert "DOING")
-      (org-end-of-line))))
+      (insert "DOING"))))
 
 (defun custom-org-agenda-change-headline-to-wait ()
   "将当前任务状态改为WAIT"
@@ -387,15 +383,13 @@
         (org-beginning-of-line)
         (forward-word)
         (backward-kill-word 1)
-        (insert "WAIT")
-        (org-end-of-line))
+        (insert "WAIT"))
     (progn
       (org-previous-visible-heading 1)
       (org-beginning-of-line)
       (forward-word)
       (backward-kill-word 1)
-      (insert "WAIT")
-      (org-end-of-line))))
+      (insert "WAIT"))))
 
 
 ;; =======================================
