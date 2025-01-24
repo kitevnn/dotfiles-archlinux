@@ -1711,8 +1711,8 @@ fcitx5全家桶配置
   (define-key org-mode-map (kbd "C-z C-x C-p")             'my-jump-the-previous-equation)              ; 当光标在\[\]上下文时，光标跳转到上一个\[\]
   (define-key org-mode-map (kbd "C-z C-x C-\[")            'org-previous-item)                          ; 跳转到上一个 (1) 2. 3) 的小标题
   (define-key org-mode-map (kbd "C-z C-x C-\]")            'org-next-item)                              ; 跳转到下一个 (1) 2. 3) 的小标题
-  (define-key org-mode-map (kbd "C-z C-z C-\\")            'org-agenda)                                 ; 打开org议题界面
-  (define-key org-mode-map (kbd "C-z C-a C-\\")            'org-agenda)                                 ; 打开org议题界面
+  (global-set-key          (kbd "C-z C-z C-\\")            'org-agenda)                                 ; 打开org议题界面
+  (global-set-key          (kbd "C-z C-a C-\\")            'org-agenda)                                 ; 打开org议题界面
   (define-key org-mode-map (kbd "C-z C-a C-\[")            'org-schedule)                               ; 添加org议题的起始时间
   (define-key org-mode-map (kbd "C-z C-a C-\]")            'org-deadline)                               ; 添加org议题的终止时间
   (define-key org-mode-map (kbd "C-z C-a C-\=")            'org-timestamp)                              ; 添加org议题的<>激活标签
