@@ -59,6 +59,7 @@ highlight CursorLineNr ctermfg=179
 " keymapping
 " 
 map J 5j
+map sn :set nonumber<CR>
 map K 5k
 nnoremap S :w<CR>
 nnoremap s <nop>

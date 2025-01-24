@@ -2827,7 +2827,7 @@ fcitx5全家桶配置
 ***** 文件配置
 ****** 🔧 vimrc
 #+begin_src vimscript :tangle ~/.config/vim/vimrc
-"
+" 
 " settings
 " 
 set t_Co=256
@@ -2888,6 +2888,7 @@ highlight CursorLineNr ctermfg=179
 " keymapping
 " 
 map J 5j
+map sn :set nonumber<CR>
 map K 5k
 nnoremap S :w<CR>
 nnoremap s <nop>
