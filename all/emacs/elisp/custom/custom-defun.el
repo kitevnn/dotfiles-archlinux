@@ -392,14 +392,16 @@
       (progn
         (org-beginning-of-line)
         (forward-word)
-        (backward-kill-word 1)
-        (insert "DONE"))
+        (save-excursion
+          (delete-region (point) (progn (backward-word) (point)))
+          (insert "DONE")))
     (progn
       (org-previous-visible-heading 1)
       (org-beginning-of-line)
       (forward-word)
-      (backward-kill-word 1)
-      (insert "DONE"))))
+      (save-excursion
+        (delete-region (point) (progn (backward-word) (point)))
+        (insert "DONE")))))
 
 (defun my-org-agenda-change-headline-to-doing ()
   "将当前任务状态改为DOING"
@@ -408,14 +410,16 @@
       (progn
         (org-beginning-of-line)
         (forward-word)
-        (backward-kill-word 1)
-        (insert "DOING"))
+        (save-excursion
+          (delete-region (point) (progn (backward-word) (point)))
+          (insert "DOING")))
     (progn
       (org-previous-visible-heading 1)
       (org-beginning-of-line)
       (forward-word)
-      (backward-kill-word 1)
-      (insert "DOING"))))
+      (save-excursion
+        (delete-region (point) (progn (backward-word) (point)))
+        (insert "WAIT")))))
 
 (defun my-org-agenda-change-headline-to-wait ()
   "将当前任务状态改为WAIT"
@@ -424,14 +428,16 @@
       (progn
         (org-beginning-of-line)
         (forward-word)
-        (backward-kill-word 1)
-        (insert "WAIT"))
+        (save-excursion
+          (delete-region (point) (progn (backward-word) (point)))
+          (insert "WAIT")))
     (progn
       (org-previous-visible-heading 1)
       (org-beginning-of-line)
       (forward-word)
-      (backward-kill-word 1)
-      (insert "WAIT"))))
+      (save-excursion
+          (delete-region (point) (progn (backward-word) (point)))
+          (insert "WAIT")))))
 
 
 ;; =======================================
