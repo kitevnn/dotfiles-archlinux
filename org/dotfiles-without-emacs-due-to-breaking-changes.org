@@ -1,0 +1,911 @@
+* dotfiles
+
+** 一、配置说明
+
+| 序号 | 工具                      | 描述        |
+|------+---------------------------+-------------|
+|    1 | 桌面服务器(desktop-server) | ~X11~       |
+|    2 | 窗管(wm)                  | ~i3~        |
+|    3 | 发射台(launcher)          | ~rofi~      |
+|    4 | 混用器(compositor)        | ~picom~     |
+|    5 | (主要)编辑器(editor)       | ~GNU Emacs~ |
+|    6 | 编辑器(editor)            | ~vim~       |
+|    7 | 壳(sh)                    | ~bash~      |
+|    8 | 系统信息(fetch)            | ~fastfetch~ |
+
+
+** 二、配置前提
+
+
+*** 1. 文件结构
+#+begin_src
+🔧 ~/.bashrc
+🔧 ~/.bash_profile
+📁 ~/.config
+   📁 alacritty
+      🔧 alacritty.toml
+   📁 emacs
+      🔧 init.el
+      📁 elisp
+         📁 basic
+            🔧 basic-elpa.el
+            🔧 basic-init.el
+            🔧 basic-mode.el
+            🔧 basic-path.el      
+         📁 custom
+            🔧 custom-defun.el
+         📁 enhance
+            🔧 enhance-cdlatex.el
+            🔧 enhance-deadgrep.el
+            🔧 enhance-dirvish.el
+            🔧 enhance-history.el
+            🔧 enhance-indentline.el
+            🔧 enhance-magit.el
+            🔧 enhance-minibuffer.el
+            🔧 enhance-pdftools.el
+            🔧 enhance-restart.el
+            🔧 enhance-smartparens.el
+            🔧 enhance-tabs.el
+            🔧 enhance-term.el
+            🔧 enhance-unre.el            
+         📁 hooks
+            🔧 hooks-hook.el               
+         📁 im
+            🔧 im-telega.el                  
+         📁 key
+            🔧 key-keybindings.el                     
+         📁 note
+            🔧 note-auctex.el
+            🔧 note-orgmode.el
+            🔧 note-orgroam.el      
+         📁 ui
+            📁 decorate
+               🔧 ui-decorate-dashboard.el
+            📁 font
+               🔧 ui-font-sauce.el      
+            📁 icon
+               🔧 ui-icon-nerdfont.el      
+            📁 modeline
+               🔧 ui-modeline-bar.el
+               🔧 battery-percentage.sh
+               🔧 calendar-day.sh
+               🔧 calendar-month.sh
+               🔧 calendar-week.sh
+               🔧 cpu-temperature.sh
+               🔧 disk-usage.sh
+               🔧 distribution.sh
+               🔧 pacman-packages.sh
+               🔧 ram-usage.sh
+               🔧 time-hour.sh
+               🔧 time-minute.sh
+               🔧 weather-situation.sh                  
+            📁 theme
+               🔧 ui-theme-dark.el
+               🔧 ui-theme-light.el         
+         📁 zprogramming
+            📁 cmp
+               🔧 zprogramming-cmp-corfu.el
+            📁 lsp
+               🔧 zprogramming-lsp-eglot.el
+            📁 mode
+               🔧 zprogramming-mode-cmake.el
+            📁 snips
+               🔧 zprogramming-snips-yasnippet.el
+            📁 ts
+               🔧 zprogramming-ts-treesitter.el      
+   📁 fastfetch
+      🔧 ff.jsonc
+   📁 i3
+      🔧 config
+   📁 picom
+      🔧 picom.conf
+   📁 vim
+      🔧 vimrc
+   📁 rofi
+      🔧 config.rasi
+      🔧 forest.rasi
+#+end_src
+
+
+*** 2. 字体补丁
+首先，在 [[https://github.com/ryanoasis/nerd-fonts?tab=readme-ov-file#font-patcher][archive]] 这里下载 nf 作者的 font-patcher
+
+然后，在 [[https://github.com/kitevnn/dotfiles-archlinux/tree/main/res/font][Sauce Code Pro Semibold Nerd Font Complete Mono.ttf]] 这里下载所需字体
+
+然后开始打补丁
+#+begin_src sh
+  # 安装打补丁工具
+  sudo pacman -S fontforge
+
+  # 打补丁
+  fontforge --script ./font-patcher --complete 'Sauce Code Pro Semibold Nerd Font Complete Mono.ttf'
+
+  # 创建字体文件夹
+  mkdir -p ~/.local/share/fonts/    
+  mv SauceCodeProNerdFontCompleteMonoNerdFont-SemiBold.ttf ~/.local/share/fonts/
+
+  # 刷新字体缓存
+  sudo fc-cache -f
+#+end_src
+
+
+*** 3. 依赖安装
+
+
+**** GNU Emacs
+到 [[https://alpha.gnu.org/gnu/emacs/pretest/][alpha.gnu.org]] 下载当前最新版的 GNU Emacs 的源码，并按 (若不能 ~./configure --option~ 则先运行 ~./autogen.sh~)
+#+begin_src sh
+  # 添加编译选项
+  ./configure --sysconfdir=/etc --prefix=/usr --libexecdir=/usr/lib --with-tree-sitter --localstatedir=/var --disable-build-details --with-harfbuzz --with-libsystemd --with-modules --with-x-toolkit=no --with-cairo 'CFLAGS=-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=3 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection         -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -g -ffile-prefix-map=/build/emacs/src=/usr/src/debug/emacs -flto=auto' 'LDFLAGS=-Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now          -Wl,-z,pack-relative-relocs -flto=auto'  
+
+  # 编译GNU Emacs
+  make
+
+  # 安装GNU Emacs
+  sudo make install
+#+end_src
+
+td安装
+#+begin_src sh
+  git clone https://github.com/tdlib/td.git
+  mkdir build
+  cd build
+  cmake ../
+  make -jN
+  sudo make install  
+#+end_src
+
+texlive安装
+#+begin_src sh
+  sudo pacman -S texlive
+  
+#+end_src
+
+天气modeline信息
+#+begin_src sh :tangle ~/.config/emacs/archive/weather-wttr.sh
+  # 比如如果您在广州(Guangzhou)的话，于是就是这样的
+  # curl wttr.in/Guangzhou > /home/您的用户名/.config/emacs/archive/weather  
+#+end_src
+
+设置Auto saving.....done的目录
+#+begin_src sh
+  # 创建名为 saves 的备份文件夹
+  cd ~/.config/emacs/
+  mkdir -p saves  
+#+end_src
+
+设置org-roam的目录
+#+begin_src sh
+  # 创建名为 .orgroam 的笔记漫游文件夹
+  mkdir -p ~/.orgroam
+#+end_src
+
+
+**** i3
+feh安装
+#+begin_src sh
+  sudo pacman -S i3  
+  sudo pacman -S feh
+#+end_src
+
+
+**** vim
+plug.vim安装
+#+begin_src sh
+  curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim  
+#+end_src
+
+随后进入 vim 界面后，按下 ~<leader> + I~ 来安装剩余插件
+
+
+*** 4. 杂项(可看可不看)
+
+
+**** 输入法安装
+安装fcitx5全家桶
+#+begin_src sh
+sudo pacman -S fcitx5-im fcitx5-chinese-addons fcitx5-material-color
+#+end_src
+
+fcitx5全家桶配置
+#+begin_src sh
+sudo vim /etc/environment
+# 并添加下面内容
+# + GTK_IM_MODULE=fcitx
+# + QT_IM_MODULE=fcitx
+# + XMODIFIERS=@im=fcitx
+# + SDL_IM_MODULE=fcitx
+#+end_src
+
+fcitx5全家桶配置
+#+begin_quote
+然后在KDE下(如果您使用的也是KDE plasma 6的话)，依次点击 [系统设置] > [键盘] > [虚拟键盘] > [选择Fcitx5]
+#+end_quote
+
+
+*** 5. 配置文件
+
+
+**** (1) alacritty
+
+
+***** 文件结构
+#+begin_quote
+🔧 alacritty.toml
+#+end_quote
+
+
+***** 文件配置
+
+
+****** 🔧 alacritty.toml 
+#+begin_src toml :tangle ~/.config/alacritty/alacritty.toml
+  general.working_directory = "/home/une/桌面/back/archlinux/org"
+
+
+  [font]
+  size = 12
+  normal.family = "SauceCodeProNerdFontCompleteMono Nerd Font"
+  normal.style = "SemiBold"
+
+  [terminal.shell]
+  program = "/usr/bin/bash"
+
+  [window]
+  opacity = 0.81
+  decorations = "None"
+  dynamic_title = false
+  decorations_theme_variant = "Dark"
+  startup_mode = "Maximized"
+  [window.padding]
+  x = 0
+  y = 0
+
+  [colors]
+  primary.background = "#2c2c2c"
+  primary.foreground = "#dcdcdc"
+  normal.black       = "#3F3F3F"
+  normal.red         = "#FD5760"
+  normal.green       = "#60B48A"
+  normal.yellow      = "#DFAF8F"
+  normal.blue        = "#9AB8D7"
+  normal.magenta     = "#DC8CC3"
+  normal.cyan        = "#8CD0D3"
+  normal.white       = "#DCDCDC"
+  bright.black       = "#709080"
+  bright.red         = "#DCA3A3"
+  bright.green       = "#72D5A3"
+  bright.yellow      = "#16F0BB"
+  bright.blue        = "#94BFF3"
+  bright.magenta     = "#EC93D3"
+  bright.cyan        = "#93E0E3"
+  bright.white       = "#FFFFFF"
+
+  [keyboard]
+  bindings = [
+    { mods = "Alt | Shift", key = "P", action = "ScrollPageUp" },
+    { mods = "Alt | Shift", key = "N", action = "ScrollPageDown" },
+    { mods = "Alt | Shift", key = "W", action = "Copy" },        
+    { mods = "Alt | Shift", key = "Y", action = "Paste" },
+    { mods = "Alt | Shift", key = "S", action = "SearchForward" },
+    { mods = "Alt | Shift", key = "R", action = "SearchBackward" },
+    { mods = "Alt | Shift", key = "V", action = "ToggleViMode" },
+    { mods = "Alt | Shift", key = "G", action = "SearchCancel" },
+    { mods = "Control", key = "F", mode = "Vi", action = "Right" },
+    { mods = "Control", key = "B", mode = "Vi", action = "Left" },
+    { mods = "Control", key = "N", mode = "Vi", action = "Down" },
+    { mods = "Control", key = "P", mode = "Vi", action = "Up" },
+    { mods = "Control", key = "A", mode = "Vi", action = "First" },
+    { mods = "Control", key = "E", mode = "Vi", action = "Last" },
+    { mods = "Control", key = "G", mode = "Vi", action = "ToggleNormalSelection" },
+    { mods = "Alt", key = "F", mode = "Vi", action = "SemanticRight" },
+    { mods = "Alt", key = "B", mode = "Vi", action = "SemanticLeft" },
+  ]  
+#+end_src
+
+
+**** (2) bash
+
+
+***** 文件结构
+#+begin_quote
+🔧 .bashrc
+🔧 .bash_profile
+#+end_quote
+
+
+***** 文件配置
+
+
+****** 🔧 .bashrc 
+#+begin_src sh :tangle ~/.bashrc
+  #
+  # ~/.bashrc
+  #
+  # PS1='[\u@\h \W]\$ '
+  # If not running interactively, don't do anything
+  [[ $- != *i* ]] && return
+
+  alias ls='ls --color=auto'
+  alias l='ls -la --color=auto'
+  alias grep='grep --color=auto'
+  alias rm='rm -i'
+  alias ec='emacs -nw'
+  alias ff='fastfetch --load-config ~/.config/fastfetch/ff.jsonc'
+  alias caps='setxkbmap -option "ctrl:nocaps"'
+  alias gwe='bash /home/une/.config/emacs/archive/weather-wttr.sh'
+  source ~/.bash_profile  
+#+end_src
+
+
+****** 🔧 .bash_profile
+#+begin_src sh :tangle ~/.bash_profile
+  #
+  # ~/.bash_profile
+  #
+  # [[ -f ~/.bashrc ]] && . ~/.bashrc
+
+  export EMACS="/home/une/.config/emacs"
+  export org="/home/une/桌面/back/archlinux/org"
+  export gtd="/home/une/桌面/back/archlinux/org/GTD"
+  export subject="/home/une/桌面/back/archlinux/org/my/subject"
+  export pic="/home/une/图片/屏幕截图"
+  export blog="/home/une/桌面/back/archlinux/org/my/blog/colfwe.github.io"
+  export dotfiles="/home/une/.gi/dotfiles-archlinux"  
+#+end_src
+
+
+**** (3) GNU Emacs
+
+暂时不使用 ~dotfiles.org~ 因为最近有 *大量* 的 ~破坏性更新 - breaking changes~
+
+虽然我自己知道org-mode确实是有 ~org-babel-detangle~ 与 ~org-babel-tangle~ 函数，但此 ~dotfiles.org~ 直到现在因个人任务安排，故暂无测试用例
+
+详细内容还请移步到 ~all/emacs/~ 并下载最新源码获取安装。请见谅。
+
+
+**** (4) fastfetch
+
+
+***** 文件结构
+#+begin_quote
+🔧 ff.jsonc
+#+end_quote
+
+
+***** 文件配置
+
+
+****** 🔧 ff.jsonc
+#+begin_src jsonc :tangle ~/.config/fastfetch/ff.jsonc
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "padding": {
+            "top": 2,
+            "left": 3
+        }   
+    },
+    "display": {
+      "separator": "  → "
+    },
+    "modules": [
+        "break",
+        "title",
+        "separator",
+        {
+            "type": "os",
+            "key": "",
+            "format": "{3} {12}",
+            "keyColor": "blue"
+        },
+        {
+            "type": "kernel",
+            "key": "",
+            "keyColor": "blue"
+        },
+        {
+            "type": "host",
+            "key": "",
+            "format": "{/2}{-}{/}{2}{?3} {3}{?}",
+            "keyColor": "blue"
+        },
+        {
+            "type": "uptime",
+            "key": "󰅐",
+            "keyColor": "blue"
+        },
+        {
+            "type": "packages",
+            "key": "󰏖",
+            "keyColor": "blue"
+        },
+        {
+            "type": "shell",
+            "key": "",
+            "keyColor": "blue"
+        },
+        {
+            "type": "display",
+            "compactType": "original",
+            "key": "󰍺",
+            "keyColor": "blue"
+        },
+        {
+            "type": "wm",
+            "key": "",
+            "keyColor": "blue"
+        },
+        {
+            "type": "lm",
+            "key": "󰧨",
+            "keyColor": "blue"
+        },
+        {
+            "type": "wmtheme",
+            "key": "󰉼",
+            "keyColor": "blue"
+        },
+        {
+            "type": "icons",
+            "key": "",
+            "keyColor": "blue"
+        },
+        {
+            "type": "terminal",
+            "key": "",
+            "keyColor": "blue"
+        },
+        {
+            "type": "cpu",
+            "key": "󱪈",
+            "keyColor": "blue"
+        },
+        {
+            "type": "gpu",
+            "key": "󰖖",
+            "keyColor": "blue"
+        },
+        {
+            "type": "memory",
+            "key": "󰫕",
+            "keyColor": "blue",
+            "format": "{/1}{-}{/}{/2}{-}{/}{} / {}"
+        },
+        "break",
+        "colors",
+        "break",
+        "break"
+    ]
+}  
+#+end_src
+
+
+**** (5) i3
+
+
+***** 文件结构
+#+begin_quote
+🔧 config
+#+end_quote
+
+
+***** 文件配置
+
+
+****** 🔧 config
+#+begin_src sh :tangle ~/.config/i3/config
+  # 设置Super键为i3-wm起始键
+  set $mod Mod4
+
+  # 设置字体
+  font pango:SauceCodeProNerdFontCompleteMono Nerd Font SemiBold 9
+
+  # 自启动服务
+  exec --no-startup-id dex --autostart --environment i3
+  exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+  exec --no-startup-id nm-applet
+  exec_always fcitx5
+  exec_always picom --backend glx
+  exec setxkbmap -option "ctrl:nocaps"
+  set $refresh_i3status killall -SIGUSR1 i3status
+  exec emacs
+
+  # feh壁纸
+  exec --no-startup-id feh --bg-fill "/home/une/.wallpaper/20220518085627.jpg"
+
+  # 鼠标绑定
+  # + 通过Super_L + Mouse_L，来拖动floating window到别的位置
+  # + 通过Super_L + Mouse_R，来拖动floating window到别的位置
+  floating_modifier $mod
+  tiling_drag modifier titlebar
+
+  # 按键绑定
+  # + 多媒体按键
+  bindsym XF86AudioMute exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+  bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+  # + 常规键配置
+  bindsym $mod+Return exec alacritty
+  bindsym $mod+O exec alacritty
+  bindsym $mod+BackSpace kill
+  bindsym $mod+I exec firefox
+  bindsym $mod+G exec emacs
+  bindsym $mod+L exec rofi -show window
+  bindsym $mod+M exec rofi -show drun
+  bindsym $mod+A exec spectacle
+  bindsym $mod+J layout toggle split
+  # + 更改光标焦点
+  bindsym $mod+b focus left
+  bindsym $mod+n focus down
+  bindsym $mod+p focus up
+  bindsym $mod+f focus right
+  # + 移动窗口位置
+  bindsym $mod+Shift+B move left
+  bindsym $mod+Shift+N move down
+  bindsym $mod+Shift+P move up
+  bindsym $mod+Shift+F move right
+  # + 窗口全屏
+  bindsym $mod+E fullscreen toggle
+  # + 窗口平铺浮动切换
+  bindsym $mod+t floating toggle
+  # + 窗口平铺浮动切换
+  bindsym $mod+shift+t focus mode_toggle
+
+  # 工作区设置
+  set $ws1 "1"
+  set $ws2 "2"
+  set $ws3 "3"
+  set $ws4 "4"
+  set $ws5 "5"
+  set $ws6 "6"
+  set $ws7 "7"
+  set $ws8 "8"
+  set $ws9 "9"
+  set $ws10 "10"
+  bindsym $mod+1 workspace number $ws1
+  bindsym $mod+2 workspace number $ws2
+  bindsym $mod+3 workspace number $ws3
+  bindsym $mod+4 workspace number $ws4
+  bindsym $mod+5 workspace number $ws5
+  bindsym $mod+6 workspace number $ws6
+  bindsym $mod+7 workspace number $ws7
+  bindsym $mod+8 workspace number $ws8
+  bindsym $mod+9 workspace number $ws9
+  bindsym $mod+0 workspace number $ws10
+  bindsym $mod+Left workspace prev_on_output;
+  bindsym $mod+Right workspace next_on_output;
+  bindsym $mod+Ctrl+1 move container to workspace number $ws1
+  bindsym $mod+Ctrl+2 move container to workspace number $ws2
+  bindsym $mod+Ctrl+3 move container to workspace number $ws3
+  bindsym $mod+Ctrl+4 move container to workspace number $ws4
+  bindsym $mod+Ctrl+5 move container to workspace number $ws5
+  bindsym $mod+Ctrl+6 move container to workspace number $ws6
+  bindsym $mod+Ctrl+7 move container to workspace number $ws7
+  bindsym $mod+Ctrl+8 move container to workspace number $ws8
+  bindsym $mod+Ctrl+9 move container to workspace number $ws9
+  bindsym $mod+Ctrl+0 move container to workspace number $ws10
+
+  # 重新加载i3
+  bindsym $mod+c reload
+  bindsym $mod+r restart
+
+  # 调整window大小
+  bindsym $mod+w mode "resize"
+  mode "resize" {
+          bindsym b resize shrink width 10 px or 10 ppt
+          bindsym n resize grow height 10 px or 10 ppt
+          bindsym p resize shrink height 10 px or 10 ppt
+          bindsym f resize grow width 10 px or 10 ppt
+          bindsym $mod+w mode "default"
+  }
+
+  # 自动隐藏窗口标题
+  for_window [class="^.*"] border pixel 0  
+#+end_src
+
+
+**** (6) picom
+
+
+***** 文件结构
+#+begin_quote
+🔧 picom.conf
+#+end_quote
+
+
+***** 文件配置
+
+
+****** 🔧 picom.conf
+#+begin_src sh :tangle ~/.config/picom/picom.conf
+  # corner-radius = 15;
+  round-border = 6;  
+#+end_src
+
+
+**** (7) vim
+
+
+***** 文件结构
+#+begin_quote
+🔧 vimrc
+#+end_quote
+
+***** 文件配置
+
+
+****** 🔧 vimrc
+#+begin_src vimscript :tangle ~/.config/vim/vimrc
+" 
+" settings
+" 
+set t_Co=256
+set expandtab
+set hlsearch
+set incsearch
+set smartcase
+set tw=0
+set encoding=utf-8
+set hidden
+set updatetime=100
+set shortmess+=c
+set backspace=indent,eol,start
+set ruler
+set title
+set nocompatible
+set modeline
+set modelines=6
+set belloff=all
+set nrformats=
+set wildmenu
+set history=200
+set foldlevel=99
+set laststatus=0
+set autochdir
+set textwidth=500
+set conceallevel=0
+set jumpoptions=stack
+syntax on
+autocmd FileType json set conceallevel=0
+" set tabstop=2
+" set softtabstop=2
+" set shiftwidth=2
+" set autoindent
+" set indentexpr=
+" set foldmethod=indent
+
+" 
+" colorscheme
+" 
+nnoremap <leader><leader>n :colorscheme habamax<CR>
+nnoremap <leader><leader>d :colorscheme delek<CR>
+colorscheme habamax
+
+set cursorline
+set cursorlineopt=number
+autocmd ColorScheme * highlight CursorLineNr cterm=bold term=bold gui=bold
+highlight LineNr ctermfg=238
+:set number
+:augroup numbertoggle
+:   autocmd!
+:   autocmd BufEnter, FocusGained, InsertLeave, WinEnter * if &nu && mode() != "i" | set rnu | endif
+:   autocmd BufLeave, FocusLost, InsertEnter, WinLeave * if &nu | set nornu | endif
+:augroup END
+highlight CursorLineNr ctermfg=179
+
+" 
+" keymapping
+" 
+map J 5j
+map sn :set nonumber<CR>
+map K 5k
+nnoremap S :w<CR>
+nnoremap s <nop>
+nnoremap Q :q<CR>
+nnoremap <leader>q :q!<CR>
+nnoremap sj :set splitbelow<CR>:split<CR>
+nnoremap sk :set nosplitbelow<CR>:split<CR>
+nnoremap sh :set nosplitright<CR>:vsplit<CR>
+nnoremap sl :set splitright<CR>:vsplit<CR>
+tnoremap <ESC><ESC> <C-\><C-N>
+map <down> :res +5<CR>
+map <up> :res -5<CR>
+map <right> :vertical resize -5<CR>
+map <left> :vertical resize +5<CR>
+nnoremap <leader>R :source ~/.vimrc<CR>
+nnoremap [w :execute 'move -1-'. v:count1<CR>
+nnoremap ]w :execute 'move +'. v:count1<CR>
+vmap <leader>S y/<C-R>"<CR>
+nnoremap <leader>e :set spell<CR>
+nnoremap <leader>E :set nospell<CR>
+nnoremap <leader>I :<C-u>PlugInstall<CR>
+nnoremap M :Lexplore<CR><C-w>l<CR>
+inoremap <C-e> <C-k>
+nnoremap <leader>md :h digraph-table<CR>
+cnoremap <expr> %% getcmdtype()==':'?expand('%:h').'/':'%%'
+
+" 
+" macros
+" 
+let @g="a<br /> \<ESC>"
+let @r="i<br /> \<CR>\<ESC>"
+let @c="```placeholder```\<ESC>bi\<CR>\<CR>\<ESC>kkel"
+
+" 
+" patch
+" 
+if has("patch-8.1.1564")
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
+" 
+" plugin
+" 
+call plug#begin()
+   " [jiangmiao/auto-pairs]
+   Plug 'jiangmiao/auto-pairs'
+
+   " [ryanoasis/vim-devicons]
+   Plug 'ryanoasis/vim-devicons'
+
+   " [Yggdroot/indentLine]
+   Plug 'Yggdroot/indentLine'
+   let g:indentLine_color_term=102
+   let g:markdown_syntax_conceal=0
+   let g:indentLine_char_list=['|']
+   nnoremap <leader>il :<C-u>IndentLinesToggle<CR>
+
+   " [mhinz/vim-signify]
+   Plug 'mhinz/vim-signify'
+   highlight SignifySignAdd ctermfg=green cterm=NONE
+   highlight SignifySignDelete ctermfg=red cterm=NONE
+   highlight SignifySignChange ctermfg=yellow cterm=NONE
+   nnoremap <leader>gj <Plug>(signify-next-hunk)
+   nnoremap <leader>gk <Plug>(signify-prev-hunk)
+  
+   " [prabirshrestha/asyncomplete.vim]
+   Plug 'prabirshrestha/asyncomplete.vim'
+   inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+   inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+   nnoremap <expr> <CR> pumvisible() ? asyncomplete#close_popup()
+
+   if has('conceal')
+     set conceallevel=2 concealcursor=niv
+   endif
+
+call plug#end()  
+#+end_src
+
+
+**** (8) rofi
+
+
+***** 文件结构
+#+begin_quote
+🔧 config.rasi
+🔧 forest.rasi
+#+end_quote
+
+
+***** 文件配置
+
+
+****** 🔧 config.rasi
+#+begin_src css :tangle ~/.config/rofi/config.rasi  
+  configuration {
+     	yoffset: -45;
+
+    timeout {
+        action: "kb-cancel";
+        delay:  0;
+    }
+    filebrowser {
+        directories-first: true;
+        sorting-method:    "name";
+    }
+  }
+
+  @theme "forest"  
+#+end_src
+
+
+****** 🔧 forest.rasi
+#+begin_src css :tangle ~/.config/rofi/forest.rasi
+/******************************************************************************
+ * ROFI Color theme: forest
+ * User: kitevnn
+ ******************************************************************************/
+
+
+/*                 */
+/* global settings */
+/*                 */
+* {
+    font: "SauceCodeProNerdFontCompleteMono Nerd Font 12";
+    scrollbar: true;
+    
+    forest-selected-text-shadow: #2E8B57;
+    forest-selected:             #72D5A3;
+    forest-box-border:           #60B48A;
+    forest-box-background:       #2C2C2C;
+    forest-orange:               #DFAF8F;
+    forest-black:                #000000;
+    forest-input:                #3A3A3A;
+    forest-white:                #FFFFFF;
+    forest-text-color:           #DCDCDC;
+    text-color:                  @forest-text-color;
+    background-color:            rgba ( 0, 0, 0, 0 % );
+}
+#window {
+    background-color: @forest-box-background;
+    border:           3px;
+    padding:          2px;
+    border-radius:    12px;
+    border-color:     @forest-box-border;
+}
+
+
+/*                  */
+/* element settings */
+/*                  */
+#element {
+    border:  0;
+    padding: 3px 0px 3px 18px;
+    background-color: @forest-box-background;
+}
+#element.normal {
+    text-color:       @forest-white;
+}    
+#element.selected {
+    text-color:       @forest-selected;
+    background-color: @forest-selected-text-shadow;
+}
+#element.alternate {
+    text-color:       @forest-white;
+}
+
+
+/*                */
+/* input settings */
+/*                */
+#case-indicator {
+    spacing:    0;
+    text-color: @forest-box-background;
+}
+#entry {
+    spacing:    0;
+    text-color: @forest-box-background;
+}
+#prompt {
+    spacing:    0;
+    text-color: @forest-box-background;    
+}
+#textbox-prompt-colon {
+    expand:     false;
+    str:        ":";
+    margin:     0px 0.3em 0em 0em ;
+    text-color: @forest-black;
+}
+
+
+/*              */
+/* bar settings */
+/*               */
+#inputbar {
+    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
+}
+#inputbar {
+    spacing:    0;
+    background-color: @forest-orange;
+    padding:    1px;
+    border-radius: 12px 12px 0px 0px;
+}
+#scrollbar {
+    background-color: @forest-input;
+    width:         3px;
+    border-radius: 6px;
+}
+#+end_src

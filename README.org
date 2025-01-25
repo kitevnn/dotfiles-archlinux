@@ -33,3 +33,104 @@
 
 在 [[file:org/dotfiles.org][dotfiles.org]] 通过 ~M-x org-babel-tangle~ 管理 
 
+** 有趣的实现
+
+*** GNU Emacs总使用时长
+
+从 ~2025年 01月 25日 星期六 16:48:09 CST~ 开始累计
+
+Accompanying With GNU Emacs: 0 hours, 6 minutes, 56 seconds
+
+实现过程(展示代码，从而来证明我自己并没有乱写时间上去，因为每次的时间都依赖于 ~(emacs-uptime)~ 此el函数来获取)
+
+*bash方面*
+#+begin_src sh
+  #!/bin/bash
+
+  # 基本路径配置
+  user="une"
+  path=".config/emacs/archive"
+  filename="uptime"
+
+  # 存储文件路径
+  file="/home/${user}/${path}/${filename}"
+
+  # 初始化总时间
+  total_seconds=0
+
+  # 逐行读取文件内容
+  while IFS= read -r line; do
+    # 匹配并提取小时、分钟和秒
+    if [[ "$line" =~ Uptime:\ ([0-9]+)\ hours?,\ ([0-9]+)\ minutes?,\ ([0-9]+)\ seconds? ]]; then
+      hours=${BASH_REMATCH[1]}
+      minutes=${BASH_REMATCH[2]}
+      seconds=${BASH_REMATCH[3]}
+    elif [[ "$line" =~ Uptime:\ ([0-9]+)\ minutes?,\ ([0-9]+)\ seconds? ]]; then
+      hours=0
+      minutes=${BASH_REMATCH[1]}
+      seconds=${BASH_REMATCH[2]}
+    elif [[ "$line" =~ Uptime:\ ([0-9]+)\ seconds? ]]; then
+      hours=0
+      minutes=0
+      seconds=${BASH_REMATCH[1]}
+    else
+      # 如果不匹配任何已知格式，跳过这行
+      continue
+    fi
+
+    # 将时间转换为秒
+    total_seconds=$((total_seconds + hours * 3600 + minutes * 60 + seconds))
+
+  done < "$file"
+
+  # 可选：将秒数转换为小时:分钟:秒 格式
+  total_hours=$((total_seconds / 3600))
+  remaining_minutes=$(((total_seconds % 3600) / 60))
+  remaining_seconds=$((total_seconds % 60))
+
+  # 输出总时间
+  echo "Accompanying With GNU Emacs: $total_hours hours, $remaining_minutes minutes, $remaining_seconds seconds" 
+#+end_src
+
+*elisp方面*
+#+begin_src elisp
+  ;; =======================================
+  ;; 路径变量 (~/.config/emacs/elisp/basic/basic-file.el)
+  ;; =======================================  
+  (defvar directory-site-lisp               "elisp/site-lisp/sh/")                     ; emacs配置文件路径的modeline部分
+
+  ;; =======================================
+  ;; 手动更新已使用的GNU Emacs累加时长 (~/.config/emacs/elisp/custom/custom-defun.el)
+  ;; =======================================
+  (defun my-save-emacs-uptime ()
+    "通过添加hooks的方式，在每次退出Emacs后，自动将emacs-uptime保存到指定的 uptime 文件"
+    (let ((uptime (emacs-uptime)))
+      (with-temp-buffer
+        (insert (format "Uptime: %s\n" uptime))
+        (append-to-file (point-min) (point-max)  (concat user-emacs-directory directory-emacs-archive "uptime")))))
+
+  (defun my-sumize-emacs-uptime ()
+    "通过添加hooks的方式，在每次退出Emacs后，自动地对指定的 uptime 文件求和时长"
+    (let ((uptime-file (concat user-emacs-directory directory-emacs-archive "uptime")))
+      (let ((uptime-output
+             (string-trim (shell-command-to-string
+                           (concat user-emacs-directory directory-site-lisp "calculate-uptime.sh")))))
+        (with-temp-buffer
+          (insert (format "%s\n" uptime-output))
+          (append-to-file (point-min) (point-max) uptime-file)))))
+
+  (defun my-show-emacs-uptime ()
+    "获得最新的 calculate-uptime.sh 的输出"
+    (interactive)
+    (let ((uptime-output
+           (string-trim (shell-command-to-string
+                         (concat user-emacs-directory directory-site-lisp "calculate-uptime.sh")))))
+      (insert uptime-output)))
+
+  ;; =======================================
+  ;; 更新 calculate-uptime.sh 脚本输出的钩子 (~/.config/emacs/elisp/hooks/hooks-hook.el)
+  ;; =======================================
+  (add-hook 'kill-emacs-hook 'my-sumize-emacs-uptime)                          ; 再相加总累计时间到 my-accompany-with-emacs-uptime 变量上
+  (add-hook 'kill-emacs-hook 'my-save-emacs-uptime)                            ; 在退出Emacs时保存当前uptime
+  (add-hook 'kill-emacs-hook 'my-sumize-emacs-uptime)                          ; 再相加总累计时间到 my-accompany-with-emacs-uptime 变量上  
+#+end_src
