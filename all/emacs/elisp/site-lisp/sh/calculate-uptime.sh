@@ -2,11 +2,13 @@
 
 # 基本路径配置
 user="une"
-path=".config/emacs/archive"
+path1=".config/emacs/archive"
+path2=".config/emacs/elisp/site-lisp/sh"
 filename="uptime"
 
 # 存储文件路径
-file="/home/${user}/${path}/${filename}"
+file1="/home/${user}/${path1}/${filename}"
+file2="/home/${user}/${path2}/${filename}"
 
 # 初始化总时间
 total_seconds=0
@@ -34,7 +36,7 @@ while IFS= read -r line; do
   # 将时间转换为秒
   total_seconds=$((total_seconds + hours * 3600 + minutes * 60 + seconds))
 
-done < "$file"
+done < "$file1"
 
 # 可选：将秒数转换为小时:分钟:秒 格式
 total_hours=$((total_seconds / 3600))
@@ -43,4 +45,6 @@ remaining_seconds=$((total_seconds % 60))
 
 # 输出总时间
 echo "Accompanying With GNU Emacs: $total_hours hours, $remaining_minutes minutes, $remaining_seconds seconds"
+
+echo "Accompanying With GNU Emacs: $total_hours hours, $remaining_minutes minutes, $remaining_seconds seconds" > "$file2"
 
