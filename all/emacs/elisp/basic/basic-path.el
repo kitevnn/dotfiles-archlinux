@@ -80,6 +80,12 @@
 (add-to-list 'load-path
              (expand-file-name 
               (concat user-emacs-directory "elisp/im")))
+;; =======================================
+;; 关于site-lisp
+;; =======================================
+(add-to-list 'load-path
+             (expand-file-name 
+              (concat user-emacs-directory "site-lisp/sh")))
 
 
 (provide 'basic-path)

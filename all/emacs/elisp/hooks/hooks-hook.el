@@ -30,8 +30,16 @@
 (add-hook 'org-mode-hook
           (lambda ()
             (my-org-table-with-cdlatex)
-            (add-hook 'post-command-hook 'my-org-table-with-cdlatex)))   ; 仅在org-table上下文范围内使用cdlatex的TAB来补全来防止单元格内容不会因org-cycle而被新插入的字符org-self-insert-command而覆盖
-(add-hook 'pdf-view-mode-hook 'my-pdf-view-mode-hook-with-yas)           ; 在PDFView里禁用yasnippet
+            (add-hook 'post-command-hook 'my-org-table-with-cdlatex)))       ; 仅在org-table上下文范围内使用cdlatex的TAB来补全来防止单元格内容不会因org-cycle而被新插入的字符org-self-insert-command而覆盖
+(add-hook 'pdf-view-mode-hook 'my-pdf-view-mode-hook-with-yas)               ; 在PDFView里禁用yasnippet
+
+
+;; ========================================
+;; GNU Emacs相关
+;; ========================================
+(add-hook 'kill-emacs-hook 'my-sumize-emacs-uptime)                          ; 再相加总累计时间到 my-accompany-with-emacs-uptime 变量上
+(add-hook 'kill-emacs-hook 'my-save-emacs-uptime)                            ; 在退出Emacs时保存当前uptime
+(add-hook 'kill-emacs-hook 'my-sumize-emacs-uptime)                          ; 再相加总累计时间到 my-accompany-with-emacs-uptime 变量上
 
 
 (provide 'hooks-hook)

@@ -174,4 +174,10 @@
 (global-set-key (kbd "C-z C-z C-1")                      'magit)                                      ; 打开magit
 
 
+;; ========================================
+;; 关于GNU Emacs
+;; ========================================
+(define-key org-mode-map (kbd "C-z C-z C-\.")            'my-show-emacs-uptime)                       ; 累计使用GNU Emacs的总时长(site-lisp的bash实现)
+
+
 (provide 'key-keybindings)
