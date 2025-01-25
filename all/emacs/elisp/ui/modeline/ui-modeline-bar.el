@@ -17,6 +17,7 @@
 (defvar modeline-agenda-doing-count 0)
 (defvar modeline-agenda-wait-count 0)
 (defvar modeline-agenda-file-name "")
+(defvar modeline-emacs-uptime "")
 
 
 ;; ========================================
@@ -97,8 +98,6 @@
         (string-trim
          (shell-command-to-string
           (concat user-emacs-directory directory-modeline-path-suffix "weather-situation.sh")))))
-
-
 ;; ========================================
 ;; 关于议程
 ;; ========================================
@@ -122,6 +121,17 @@
 (defun update-modeline-agenda-file-tasks ()
   "统计指定文件2025.org的任务"
   (my-count-agenda-file-tasks file-org-agenda-files))
+;; ========================================
+;; 累计总时长
+;; ========================================
+(defun update-modeline-emacs-uptime ()
+  (setq modeline-emacs-uptime
+        (let ((uptime-text
+               (string-trim
+                (shell-command-to-string
+                 (concat user-emacs-directory directory-site-lisp "calculate-uptime.sh")))))
+          (if (string-match "Accompanying With GNU Emacs: \\(.*\\)" uptime-text)
+              (match-string 1 uptime-text)))))
 
 
 ;; ========================================
@@ -140,6 +150,7 @@
 (run-at-time "0 sec" 1800  'update-modeline-weather-situation)   ; 每30分钟更新一次当前天气信息
 (run-at-time "0 sec" 43200 'update-modeline-calendar-week)       ; 每12小时更新一次当前星期信息
 (run-at-time "0 sec" 1800  'update-modeline-agenda-file-tasks)   ; 每30分钟更新一次时间tasks任务信息
+(run-at-time "0 sec" 300   'update-modeline-emacs-uptime)        ; 每5分钟更新一次时间tasks任务信息
 
 
 ;; ========================================
@@ -177,7 +188,8 @@
               (format "󰝕 WAIT %d " modeline-agenda-wait-count)
               "-  "
               modeline-agenda-file-name
-              "")))
+              "    :Acc "
+              modeline-emacs-uptime)))
 
 
 ;; ========================================
