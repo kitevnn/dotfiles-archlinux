@@ -16,6 +16,7 @@
 
 ** 二、配置前提
 
+
 *** 1. 文件结构
 #+begin_src
 🔧 ~/.bashrc
@@ -130,6 +131,7 @@
 
 *** 3. 依赖安装
 
+
 **** GNU Emacs
 到 [[https://alpha.gnu.org/gnu/emacs/pretest/][alpha.gnu.org]] 下载当前最新版的 GNU Emacs 的源码，并按 (若不能 ~./configure --option~ 则先运行 ~./autogen.sh~)
 #+begin_src sh
@@ -178,6 +180,7 @@ texlive安装
   mkdir -p ~/.orgroam
 #+end_src
 
+
 **** i3
 feh安装
 #+begin_src sh
@@ -196,8 +199,8 @@ plug.vim安装
 随后进入 vim 界面后，按下 ~<leader> + I~ 来安装剩余插件
 
 
-
 *** 4. 杂项(可看可不看)
+
 
 **** 输入法安装
 安装fcitx5全家桶
@@ -223,13 +226,19 @@ fcitx5全家桶配置
 
 *** 5. 配置文件
 
+
 **** (1) alacritty
+
+
 ***** 文件结构
 #+begin_quote
 🔧 alacritty.toml
 #+end_quote
 
+
 ***** 文件配置
+
+
 ****** 🔧 alacritty.toml 
 #+begin_src toml :tangle ~/.config/alacritty/alacritty.toml
   general.working_directory = "/home/une/桌面/back/archlinux/org"
@@ -297,13 +306,18 @@ fcitx5全家桶配置
 
 
 **** (2) bash
+
+
 ***** 文件结构
 #+begin_quote
 🔧 .bashrc
 🔧 .bash_profile
 #+end_quote
 
+
 ***** 文件配置
+
+
 ****** 🔧 .bashrc 
 #+begin_src sh :tangle ~/.bashrc
   #
@@ -324,6 +338,7 @@ fcitx5全家桶配置
   source ~/.bash_profile  
 #+end_src
 
+
 ****** 🔧 .bash_profile
 #+begin_src sh :tangle ~/.bash_profile
   #
@@ -342,6 +357,7 @@ fcitx5全家桶配置
 
 
 **** (3) GNU Emacs
+
 
 ***** 文件结构
 #+begin_src
@@ -416,7 +432,10 @@ fcitx5全家桶配置
          🔧 zprogramming-ts-treesitter.el
 #+end_src
 
+
 ***** 文件配置
+
+
 ****** 🔧 init.el  
 #+begin_src elisp :tangle ~/.config/emacs/init.el
   ;; =======================================
@@ -499,6 +518,7 @@ fcitx5全家桶配置
    )  
 #+end_src
 
+
 ****** 📁 elisp 📁 basic 🔧 basic-elpa.el 
 #+begin_src elisp :tangle ~/.config/emacs/elisp/basic/basic-elpa.el
   ;; =======================================
@@ -519,6 +539,7 @@ fcitx5全家桶配置
 
   (provide 'basic-elpa)  
 #+end_src
+
 
 ****** 📁 elisp 📁 basic 🔧 basic-file.el
 #+begin_src elisp :tangle ~/.config/emacs/elisp/basic/basic-file.el
@@ -544,6 +565,7 @@ fcitx5全家桶配置
 
   (provide 'basic-file)  
 #+end_src
+
 
 ****** 📁 elisp 📁 basic 🔧 basic-init.el
 #+begin_src elisp :tangle ~/.config/emacs/elisp/basic/basic-init.el
@@ -625,6 +647,7 @@ fcitx5全家桶配置
   (provide 'basic-init)  
 #+end_src
 
+
 ****** 📁 elisp 📁 basic 🔧 basic-mode.el
 #+begin_src elisp :tangle ~/.config/emacs/elisp/basic/basic-mode.el
   ;; =======================================
@@ -635,6 +658,7 @@ fcitx5全家桶配置
 
   (provide 'basic-mode)  
 #+end_src
+
 
 ****** 📁 elisp 📁 basic 🔧 basic-path.el
 #+begin_src elisp :tangle ~/.config/emacs/elisp/basic/basic-path.el
@@ -724,6 +748,7 @@ fcitx5全家桶配置
 
   (provide 'basic-path)  
 #+end_src
+
 
 ****** 📁 elisp 📁 custom 🔧 custom-defun.el
 #+begin_src elisp :tangle ~/.config/emacs/elisp/custom/custom-defun.el
@@ -1209,7 +1234,6 @@ fcitx5全家桶配置
 #+end_src
 
 
-
 ****** 📁 elisp 📁 enhance 🔧 enhance-cdlatex.el
 #+begin_src elisp :tangle ~/.config/emacs/elisp/enhance/enhance-cdlatex.el
   ;; ========================================
@@ -1632,6 +1656,7 @@ fcitx5全家桶配置
   (provide 'im-telega)  
 #+end_src
 
+
 ****** 📁 elisp 📁 key 🔧 key-keybindings.el
 #+begin_src elisp :tangle ~/.config/emacs/elisp/key/key-keybindings.el
   ;; ========================================
@@ -1960,7 +1985,6 @@ fcitx5全家桶配置
 #+end_src
 
 
-
 ****** 📁 elisp 📁 ui 📁 decorate 🔧 ui-decorate-dashboard.el
 #+begin_src elisp :tangle ~/.config/emacs/elisp/ui/decorate/ui-decorate-dashboard.el
   ;; ========================================
@@ -2115,6 +2139,7 @@ fcitx5全家桶配置
 
   (provide 'ui-icon-nerdfont)  
 #+end_src
+
 
 ****** 📁 elisp 📁 ui 📁 modeline 🔧 ui-modeline-bar.el
 #+begin_src elisp :tangle ~/.config/emacs/elisp/ui/modeline/ui-modeline-bar.el
@@ -2359,6 +2384,7 @@ fcitx5全家桶配置
   pacman -Q | wc -l  
 #+end_src
 
+
 ****** 📁 elisp 📁 ui 📁 modeline 🔧 ram-usage.sh
 #+begin_src sh :tangle ~/.config/emacs/elisp/ui/modeline/ram-usage.sh
   ram_usage=$(free -h | awk '{print $2}' | sed -n '2p' | sed 's/[^0-9.]//g' | awk '{print int($1)}')
@@ -2394,6 +2420,7 @@ fcitx5全家桶配置
   weather_location2=$(cat ~/.config/emacs/archive/weather | sed -n '38p' | awk -F ', ' '{print $3}')
   echo "󰫕 $weather_temperature°C $weather_location1, $weather_location2"  
 #+end_src
+
 
 ****** 📁 elisp 📁 ui 📁 theme 🔧 ui-theme-dark.el
 #+begin_src elisp :tangle ~/.config/emacs/elisp/ui/theme/ui-theme-dark.el
@@ -2634,12 +2661,17 @@ fcitx5全家桶配置
 
 
 **** (4) fastfetch
+
+
 ***** 文件结构
 #+begin_quote
 🔧 ff.jsonc
 #+end_quote
 
+
 ***** 文件配置
+
+
 ****** 🔧 ff.jsonc
 #+begin_src jsonc :tangle ~/.config/fastfetch/ff.jsonc
 {
@@ -2745,15 +2777,18 @@ fcitx5全家桶配置
 #+end_src
 
 
-
-
 **** (5) i3
+
+
 ***** 文件结构
 #+begin_quote
 🔧 config
 #+end_quote
 
+
 ***** 文件配置
+
+
 ****** 🔧 config
 #+begin_src sh :tangle ~/.config/i3/config
   # 设置Super键为i3-wm起始键
@@ -2866,12 +2901,17 @@ fcitx5全家桶配置
 
 
 **** (6) picom
+
+
 ***** 文件结构
 #+begin_quote
 🔧 picom.conf
 #+end_quote
 
+
 ***** 文件配置
+
+
 ****** 🔧 picom.conf
 #+begin_src sh :tangle ~/.config/picom/picom.conf
   # corner-radius = 15;
@@ -2880,12 +2920,16 @@ fcitx5全家桶配置
 
 
 **** (7) vim
+
+
 ***** 文件结构
 #+begin_quote
 🔧 vimrc
 #+end_quote
 
 ***** 文件配置
+
+
 ****** 🔧 vimrc
 #+begin_src vimscript :tangle ~/.config/vim/vimrc
 " 
@@ -3032,13 +3076,18 @@ call plug#end()
 
 
 **** (8) rofi
+
+
 ***** 文件结构
 #+begin_quote
 🔧 config.rasi
 🔧 forest.rasi
 #+end_quote
 
+
 ***** 文件配置
+
+
 ****** 🔧 config.rasi
 #+begin_src css :tangle ~/.config/rofi/config.rasi  
   configuration {
@@ -3056,6 +3105,7 @@ call plug#end()
 
   @theme "forest"  
 #+end_src
+
 
 ****** 🔧 forest.rasi
 #+begin_src css :tangle ~/.config/rofi/forest.rasi
@@ -3154,4 +3204,3 @@ call plug#end()
     border-radius: 6px;
 }
 #+end_src
-
