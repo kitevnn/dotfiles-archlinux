@@ -2120,78 +2120,78 @@ fcitx5全家桶配置
   (defun update-modeline-calendar-month ()
     (setq modeline-calendar-month
           (string-trim
-            (shell-command-to-string
-              (concat user-emacs-directory directory-modeline-path-suffix "calendar-month.sh")))))
+           (shell-command-to-string
+            (concat user-emacs-directory directory-modeline-path-suffix "calendar-month.sh")))))
   (defun update-modeline-calendar-day ()
     (setq modeline-calendar-day
           (string-trim
-            (shell-command-to-string
-              (concat user-emacs-directory directory-modeline-path-suffix "calendar-day.sh")))))
+           (shell-command-to-string
+            (concat user-emacs-directory directory-modeline-path-suffix "calendar-day.sh")))))
   (defun update-modeline-calendar-week ()
     (setq modeline-calendar-week
           (string-trim
-            (shell-command-to-string
-              (concat user-emacs-directory directory-modeline-path-suffix "calendar-week.sh")))))
+           (shell-command-to-string
+            (concat user-emacs-directory directory-modeline-path-suffix "calendar-week.sh")))))
   ;; ========================================
   ;; 关于当前时间
   ;; ========================================
   (defun update-modeline-time-hour ()
     (setq modeline-time-hour
           (string-trim
-            (shell-command-to-string
-              (concat user-emacs-directory directory-modeline-path-suffix "time-hour.sh")))))
+           (shell-command-to-string
+            (concat user-emacs-directory directory-modeline-path-suffix "time-hour.sh")))))
   (defun update-modeline-time-minute ()
     (setq modeline-time-minute
           (string-trim
-            (shell-command-to-string
-              (concat user-emacs-directory directory-modeline-path-suffix "time-minute.sh")))))
+           (shell-command-to-string
+            (concat user-emacs-directory directory-modeline-path-suffix "time-minute.sh")))))
   ;; ========================================
   ;; 关于电池信息
   ;; ========================================
   (defun update-modeline-battery-percentage ()
     (setq modeline-battery-percentage 
           (string-trim
-            (shell-command-to-string
-              (concat user-emacs-directory directory-modeline-path-suffix "battery-percentage.sh")))))
+           (shell-command-to-string
+            (concat user-emacs-directory directory-modeline-path-suffix "battery-percentage.sh")))))
   ;; ========================================
   ;; 关于发行版信息
   ;; ========================================
   (defun update-modeline-distribution ()
-    (setq modeline-distribution (string-trim 
+    (setq modeline-distribution 
           (string-trim
-            (shell-command-to-string
-              (concat user-emacs-directory directory-modeline-path-suffix "distribution.sh"))))))
+           (shell-command-to-string
+            (concat user-emacs-directory directory-modeline-path-suffix "distribution.sh")))))
   (defun update-modeline-pacman-packages ()
-    (setq modeline-pacman-packages (string-trim 
+    (setq modeline-pacman-packages 
           (string-trim
-            (shell-command-to-string
-              (concat user-emacs-directory directory-modeline-path-suffix "pacman-packages.sh"))))))
+           (shell-command-to-string
+            (concat user-emacs-directory directory-modeline-path-suffix "pacman-packages.sh")))))
   ;; ========================================
   ;; 关于使用率
   ;; ========================================
   (defun update-modeline-disk-usage ()
-    (setq modeline-disk-usage (string-trim
+    (setq modeline-disk-usage 
           (string-trim
-            (shell-command-to-string
-              (concat user-emacs-directory directory-modeline-path-suffix "disk-usage.sh"))))))
+           (shell-command-to-string
+            (concat user-emacs-directory directory-modeline-path-suffix "disk-usage.sh")))))
   (defun update-modeline-cpu-temperature ()
-    (setq modeline-cpu-temperature (string-trim
+    (setq modeline-cpu-temperature 
           (string-trim
-            (shell-command-to-string
-              (concat user-emacs-directory directory-modeline-path-suffix "cpu-temperature.sh"))))))
+           (shell-command-to-string
+            (concat user-emacs-directory directory-modeline-path-suffix "cpu-temperature.sh")))))
   (defun update-modeline-ram-usage ()
-    (setq modeline-ram-usage (string-trim
+    (setq modeline-ram-usage 
           (string-trim
-            (shell-command-to-string
-              (concat user-emacs-directory directory-modeline-path-suffix "ram-usage.sh"))))))
+           (shell-command-to-string
+            (concat user-emacs-directory directory-modeline-path-suffix "ram-usage.sh")))))
   ;; ========================================
   ;; 关于当地天气
   ;; ========================================
   (defun update-modeline-weather-situation ()
-    (setq modeline-weather-situation (string-trim
+    (setq modeline-weather-situation 
           (string-trim
-            (shell-command-to-string
-              (concat user-emacs-directory directory-modeline-path-suffix "weather-situation.sh"))))))
+           (shell-command-to-string
+            (concat user-emacs-directory directory-modeline-path-suffix "weather-situation.sh")))))
 
 
   ;; ========================================
@@ -2287,23 +2287,27 @@ fcitx5全家桶配置
 
 ****** 📁 elisp 📁 ui 📁 modeline 🔧 battery-percentage.sh
 #+begin_src sh :tangle ~/.config/emacs/elisp/ui/modeline/battery-percentage.sh
-  upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage | cut -c 25-30  
+  upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage | awk '{print $2}'  
 #+end_src
+
 
 ****** 📁 elisp 📁 ui 📁 modeline 🔧 calendar-day.sh
 #+begin_src sh :tangle ~/.config/emacs/elisp/ui/modeline/calendar-day.sh
-  date | cut -c '15-19'  
+  date +"%d日"  
 #+end_src
+
 
 ****** 📁 elisp 📁 ui 📁 modeline 🔧 calendar-month.sh
 #+begin_src sh :tangle ~/.config/emacs/elisp/ui/modeline/calendar-month.sh
-  date | cut -c '9-13'  
+  date +"%m月"  
 #+end_src
+
 
 ****** 📁 elisp 📁 ui 📁 modeline 🔧 calendar-week.sh
 #+begin_src sh :tangle ~/.config/emacs/elisp/ui/modeline/calendar-week.sh
   date "+%A"  
 #+end_src
+
 
 ****** 📁 elisp 📁 ui 📁 modeline 🔧 cpu-temperature.sh
 #+begin_src sh :tangle ~/.config/emacs/elisp/ui/modeline/cpu-temperature.sh
@@ -2311,15 +2315,19 @@ fcitx5全家桶配置
   echo "${CPU_TEMP:-null}"  
 #+end_src
 
+
 ****** 📁 elisp 📁 ui 📁 modeline 🔧 disk-usage.sh
 #+begin_src sh :tangle ~/.config/emacs/elisp/ui/modeline/disk-usage.sh
-  df -h | grep 132G | cut -c '36-37'  
+  disk_device_type="/dev/sda"
+  df -h | awk '{print $1, $2, $3, $4, $5}' | grep ${disk_device_type} | head -n 1 | awk '{print $5}'  
 #+end_src
+
 
 ****** 📁 elisp 📁 ui 📁 modeline 🔧 distribution.sh
 #+begin_src sh :tangle ~/.config/emacs/elisp/ui/modeline/distribution.sh
-  cat /etc/os-release | grep "NAME" | sed -n '1p' | cut -c '7-16'      
+  cat /etc/os-release | grep "NAME" | sed -n '1p' | awk -F'=' '{print $2}' | tr -d "\""  
 #+end_src
+
 
 ****** 📁 elisp 📁 ui 📁 modeline 🔧 pacman-packages.sh
 #+begin_src sh :tangle ~/.config/emacs/elisp/ui/modeline/pacman-packages.sh
@@ -2328,24 +2336,28 @@ fcitx5全家桶配置
 
 ****** 📁 elisp 📁 ui 📁 modeline 🔧 ram-usage.sh
 #+begin_src sh :tangle ~/.config/emacs/elisp/ui/modeline/ram-usage.sh
-  ram_usage=$(free -h | grep Gi | sed -n '1p' | cut -c '30-31' | tr -d ' ')
+  ram_usage=$(free -h | awk '{print $2}' | sed -n '2p' | sed 's/[^0-9.]//g' | awk '{print int($1)}')
+  ram_used=$(free -h | awk '{print $3}' | sed -n '2p' | sed 's/[^0-9.]//g' | awk '{print int($1)}')
 
-  if [ "$ram_usage" -gt 7 ]; then
-      echo "$(free -h | grep Mi | sed -n '1p' | cut -c '31-33' | tr -d ' ')M"
+  if [ "$ram_used" -gt "$ram_usage" ]; then
+          echo "$(free -h | awk '{print $3}' | sed -n '2p' | sed 's/[^0-9.]//g')M"
   else
-      echo "$(free -h | grep Gi | sed -n '1p' | cut -c '31-33' | tr -d ' ')G"
+          echo "$(free -h | awk '{print $3}' | sed -n '2p' | sed 's/[^0-9.]//g')G"
   fi  
 #+end_src
 
+
 ****** 📁 elisp 📁 ui 📁 modeline 🔧 time-hour.sh
 #+begin_src sh :tangle ~/.config/emacs/elisp/ui/modeline/time-hour.sh
-  date | cut -c '31-35' | cut -c '1-2'  
+  date "+%H"  
 #+end_src
+
 
 ****** 📁 elisp 📁 ui 📁 modeline 🔧 time-minute.sh
 #+begin_src sh :tangle ~/.config/emacs/elisp/ui/modeline/time-minute.sh
-  date | cut -c '31-35' | cut -c '4-5'
+  date "+%M"  
 #+end_src
+
 
 ****** 📁 elisp 📁 ui 📁 modeline 🔧 weather-situation.sh
 #+begin_src sh :tangle ~/.config/emacs/elisp/ui/modeline/weather-situation.sh
@@ -2549,10 +2561,10 @@ fcitx5全家桶配置
                :ensure t
                :demand
                :hook
-               (LaTeX-mode . yas-global-mode))  ; 输入片段的本体工具
+               (LaTeX-mode . yas-global-mode))
 
   (use-package yasnippet-snippets
-               :ensure t)            ; 提供具体输入片段的工具
+               :ensure t)
 
 
   (provide 'zprogramming-snips-yasnippet)  

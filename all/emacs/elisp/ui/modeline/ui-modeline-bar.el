@@ -25,78 +25,78 @@
 (defun update-modeline-calendar-month ()
   (setq modeline-calendar-month
         (string-trim
-          (shell-command-to-string
-            (concat user-emacs-directory directory-modeline-path-suffix "calendar-month.sh")))))
+         (shell-command-to-string
+          (concat user-emacs-directory directory-modeline-path-suffix "calendar-month.sh")))))
 (defun update-modeline-calendar-day ()
   (setq modeline-calendar-day
         (string-trim
-          (shell-command-to-string
-            (concat user-emacs-directory directory-modeline-path-suffix "calendar-day.sh")))))
+         (shell-command-to-string
+          (concat user-emacs-directory directory-modeline-path-suffix "calendar-day.sh")))))
 (defun update-modeline-calendar-week ()
   (setq modeline-calendar-week
         (string-trim
-          (shell-command-to-string
-            (concat user-emacs-directory directory-modeline-path-suffix "calendar-week.sh")))))
+         (shell-command-to-string
+          (concat user-emacs-directory directory-modeline-path-suffix "calendar-week.sh")))))
 ;; ========================================
 ;; 关于当前时间
 ;; ========================================
 (defun update-modeline-time-hour ()
   (setq modeline-time-hour
         (string-trim
-          (shell-command-to-string
-            (concat user-emacs-directory directory-modeline-path-suffix "time-hour.sh")))))
+         (shell-command-to-string
+          (concat user-emacs-directory directory-modeline-path-suffix "time-hour.sh")))))
 (defun update-modeline-time-minute ()
   (setq modeline-time-minute
         (string-trim
-          (shell-command-to-string
-            (concat user-emacs-directory directory-modeline-path-suffix "time-minute.sh")))))
+         (shell-command-to-string
+          (concat user-emacs-directory directory-modeline-path-suffix "time-minute.sh")))))
 ;; ========================================
 ;; 关于电池信息
 ;; ========================================
 (defun update-modeline-battery-percentage ()
   (setq modeline-battery-percentage 
         (string-trim
-          (shell-command-to-string
-            (concat user-emacs-directory directory-modeline-path-suffix "battery-percentage.sh")))))
+         (shell-command-to-string
+          (concat user-emacs-directory directory-modeline-path-suffix "battery-percentage.sh")))))
 ;; ========================================
 ;; 关于发行版信息
 ;; ========================================
 (defun update-modeline-distribution ()
-  (setq modeline-distribution (string-trim 
+  (setq modeline-distribution 
         (string-trim
-          (shell-command-to-string
-            (concat user-emacs-directory directory-modeline-path-suffix "distribution.sh"))))))
+         (shell-command-to-string
+          (concat user-emacs-directory directory-modeline-path-suffix "distribution.sh")))))
 (defun update-modeline-pacman-packages ()
-  (setq modeline-pacman-packages (string-trim 
+  (setq modeline-pacman-packages 
         (string-trim
-          (shell-command-to-string
-            (concat user-emacs-directory directory-modeline-path-suffix "pacman-packages.sh"))))))
+         (shell-command-to-string
+          (concat user-emacs-directory directory-modeline-path-suffix "pacman-packages.sh")))))
 ;; ========================================
 ;; 关于使用率
 ;; ========================================
 (defun update-modeline-disk-usage ()
-  (setq modeline-disk-usage (string-trim
+  (setq modeline-disk-usage 
         (string-trim
-          (shell-command-to-string
-            (concat user-emacs-directory directory-modeline-path-suffix "disk-usage.sh"))))))
+         (shell-command-to-string
+          (concat user-emacs-directory directory-modeline-path-suffix "disk-usage.sh")))))
 (defun update-modeline-cpu-temperature ()
-  (setq modeline-cpu-temperature (string-trim
+  (setq modeline-cpu-temperature 
         (string-trim
-          (shell-command-to-string
-            (concat user-emacs-directory directory-modeline-path-suffix "cpu-temperature.sh"))))))
+         (shell-command-to-string
+          (concat user-emacs-directory directory-modeline-path-suffix "cpu-temperature.sh")))))
 (defun update-modeline-ram-usage ()
-  (setq modeline-ram-usage (string-trim
+  (setq modeline-ram-usage 
         (string-trim
-          (shell-command-to-string
-            (concat user-emacs-directory directory-modeline-path-suffix "ram-usage.sh"))))))
+         (shell-command-to-string
+          (concat user-emacs-directory directory-modeline-path-suffix "ram-usage.sh")))))
 ;; ========================================
 ;; 关于当地天气
 ;; ========================================
 (defun update-modeline-weather-situation ()
-  (setq modeline-weather-situation (string-trim
+  (setq modeline-weather-situation 
         (string-trim
-          (shell-command-to-string
-            (concat user-emacs-directory directory-modeline-path-suffix "weather-situation.sh"))))))
+         (shell-command-to-string
+          (concat user-emacs-directory directory-modeline-path-suffix "weather-situation.sh")))))
 
 
 ;; ========================================

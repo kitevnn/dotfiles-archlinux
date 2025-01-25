@@ -5,10 +5,10 @@
              :ensure t
              :demand
              :hook
-             (LaTeX-mode . yas-global-mode))  ; 输入片段的本体工具
+             (LaTeX-mode . yas-global-mode))
 
 (use-package yasnippet-snippets
-             :ensure t)            ; 提供具体输入片段的工具
+             :ensure t)
 
 
 (provide 'zprogramming-snips-yasnippet)

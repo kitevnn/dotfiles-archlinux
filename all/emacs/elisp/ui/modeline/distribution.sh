@@ -1,1 +1,1 @@
-cat /etc/os-release | grep "NAME" | sed -n '1p' | cut -c '7-16'
+cat /etc/os-release | grep "NAME" | sed -n '1p' | awk -F'=' '{print $2}' | tr -d "\""

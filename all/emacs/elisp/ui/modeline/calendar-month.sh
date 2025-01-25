@@ -1,1 +1,1 @@
-date | cut -c '9-13'
+date +"%m月"
