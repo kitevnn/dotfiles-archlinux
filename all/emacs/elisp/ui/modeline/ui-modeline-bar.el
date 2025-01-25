@@ -150,7 +150,7 @@
 (run-at-time "0 sec" 1800  'update-modeline-weather-situation)   ; 每30分钟更新一次当前天气信息
 (run-at-time "0 sec" 43200 'update-modeline-calendar-week)       ; 每12小时更新一次当前星期信息
 (run-at-time "0 sec" 1800  'update-modeline-agenda-file-tasks)   ; 每30分钟更新一次时间tasks任务信息
-(run-at-time "0 sec" 300   'update-modeline-emacs-uptime)        ; 每5分钟更新一次时间tasks任务信息
+(run-at-time "0 sec" 300   'update-modeline-emacs-uptime)        ; 每5分钟更新一次累计使用总时长
 
 
 ;; ========================================
