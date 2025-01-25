@@ -40,7 +40,7 @@
 从 ~2025年 01月 25日 星期六 16:48:09 CST~ 开始累计
 
 #+begin_quote
-Accompanying With GNU Emacs: 0 hours, 24 minutes, 48 seconds
+Accompanying With GNU Emacs: 1 hours, 42 minutes, 20 seconds
 #+end_quote
 
 实现过程(展示代码，从而来证明我自己并没有乱写时间上去，因为每次的时间都依赖于 ~(emacs-uptime)~ 此el函数来获取)
