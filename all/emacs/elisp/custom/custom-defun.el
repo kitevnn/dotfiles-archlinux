@@ -151,99 +151,123 @@
 (defun my-load-theme-light ()
   "切换为亮色light主题"
   (interactive)
-  (disable-theme 'bliss)
-  (load-theme 'nano-light)  
   ;; 亮色初始化
-  (custom-set-faces
-   '(vertico-current ((t (:background "#b5ffd1"))))
-   '(tab-line        ((t (:background "#ffffff")))))
-  (with-eval-after-load 'telega
-    '(telega-msg-heading ((t (:background "#ffffff"))))
-    '(help-key-binding   ((t (:height 90 :box nil :foreground "#673ab7" :background "#ffffff")))))
-  ;; logo图
-  (setq dashboard-startup-banner "/home/une/.wallpaper/dashboard-zoom-out-light.png")
+  (disable-theme 'bliss)                                                                                  ; 关闭暗色主题
+  (load-theme 'nano-light)                                                                                ; 启用亮色主题
+  ;; 亮色tab                                                                                              
+  (custom-set-faces                                                                                       
+   '(tab-line                 ((t (:background "#ffffff")))))                                             ; 标签项
+  ;; 亮色vertico                                                                                           
+  (custom-set-faces                                                                                        
+   '(vertico-group-separator  ((t (:background "#37474f" :foreground "#ffffff"))))                        ; 组分隔线
+   '(vertico-group-title      ((t (:background "#37474f" :foreground "#ffffff"))))                        ; 组标题
+   '(vertico-posframe         ((t (:background "#ffffff" :foreground "#37474f"))))                        ; child frame
+   '(vertico-current          ((t (:background "#b5ffd1" :foreground "#37474f")))))                       ; 当前条目  
+  ;; 亮色logo图                                                                                           
+  (setq dashboard-startup-banner
+        (concat user-emacs-directory directory-emacs-archive "dashboard-zoom-out-light.png"))             ; 启用亮色logo图
   (dashboard-refresh-buffer)
-  ;; 亮色vertico
-  (custom-set-faces
-   '(vertico-group-separator ((t (:background "#37474f" :foreground "#FFFFFF"))))
-   '(vertico-group-title     ((t (:background "#37474f" :foreground "#FFFFFF"))))
-   '(vertico-posframe        ((t (:background "#FFFFFF" :foreground "#37474f"))))
-   '(vertico-current         ((t (:background "#b5ffd1" :foreground "#37474f"))))
-   '(region                  ((t (:background "#eceff1")))))
-  ;; 亮色corfu
-  (with-eval-after-load 'corfu
-    (custom-set-faces     
-     '(corfu-default ((t (:background "#ffffff"))))
-     '(corfu-border  ((t (:background "#37474f"))))
-     '(corfu-current ((t (:background "#cfd8dc" :foreground "#37474f"))))))
-  ;; 亮色dirvish
-  (with-eval-after-load 'dirvish      
-    '(dirvish-hl-line ((t (:background "#cfd8dc" :foreground "#37474f")))))
-  ;; 亮色isearch
-  (custom-set-faces
-   '(isearch-fail ((t (:foreground "#37474f" :background "#ffffff")))))
-  ;; 亮色agenda
-  (custom-set-faces
-   '(org-agenda-structure     ((t (:background "#37474f" :foreground "#ffffff"))))   ; 结构信息
-   '(org-agenda-date          ((t (:background "#ffffff" :foreground "#673ab7"))))   ; 星期信息 
-   '(org-agenda-date-today    ((t (:background "#cfd8dc" :foreground "#37474f"))))   ; 今天时间
-   '(org-agenda-current-time  ((t (:background "#ffffff" :foreground "#673ab7"))))   ; 当前时间 
-   '(org-time-grid            ((t (:background "#ffffff" :foreground "#37474f"))))   ; 时间刻度线
-   '(org-scheduled-today      ((t (:background "#ffffff" :foreground "#000000"))))   ; 今天的安排 
-   '(org-imminent-deadline    ((t (:background "#ffffff" :foreground "#37474f"))))   ; 即将到期的议程
-   '(org-scheduled-previously ((t (:background "#ffffff" :foreground "#cfd8dc"))))   ; 先前完成或先前未完成的议程
-   '(org-todo                 ((t (:background "#ffffff" :foreground "#673ab7"))))   ; 议程状态
-   '(org-upcoming-deadline    ((t (:background "#ffffff" :foreground "#673ab7"))))   ; 即将过期的
-   '(org-default              ((t (:background "#ffffff" :foreground "#37474f")))))) ; 剩余议程
+  ;; 亮色org-keyword-faces
+  (setq org-todo-keyword-faces
+        '(("TODO"  . (:foreground "#ffffff" :background "#37474f"))
+          ("WAIT"  . (:foreground "#673ab7" :background "#ffffff"))
+          ("DOING" . (:foreground "#673ab7" :background "#ffffff"))
+          ("DONE"  . (:foreground "#cfd8dc" :background "#ffffff")))))                                    ; 亮色org-keyword-faces
+  ;; 亮色isearch                                                                                           
+  (custom-set-faces                                                                                        
+   '(isearch-fail             ((t (:foreground "#37474f" :background "#ffffff")))))                       ; 未匹配的字符串高亮
+  ;; 亮色agenda                                                                                           
+  (custom-set-faces                                                                                       
+   '(org-agenda-structure     ((t (:background "#37474f" :foreground "#ffffff"))))                        ; 结构信息
+   '(org-agenda-date          ((t (:background "#ffffff" :foreground "#673ab7"))))                        ; 星期信息 
+   '(org-agenda-date-today    ((t (:background "#cfd8dc" :foreground "#37474f"))))                        ; 今天时间
+   '(org-agenda-current-time  ((t (:background "#ffffff" :foreground "#673ab7"))))                        ; 当前时间 
+   '(org-time-grid            ((t (:background "#ffffff" :foreground "#37474f"))))                        ; 时间刻度线
+   '(org-scheduled-today      ((t (:background "#ffffff" :foreground "#000000"))))                        ; 今天的安排 
+   '(org-imminent-deadline    ((t (:background "#ffffff" :foreground "#37474f"))))                        ; 即将到期的议程
+   '(org-scheduled-previously ((t (:background "#ffffff" :foreground "#cfd8dc"))))                        ; 先前完成或先前未完成的议程
+   '(org-todo                 ((t (:background "#ffffff" :foreground "#673ab7"))))                        ; 议程状态
+   '(org-upcoming-deadline    ((t (:background "#ffffff" :foreground "#673ab7"))))                        ; 即将过期的
+   '(org-default              ((t (:background "#ffffff" :foreground "#37474f"))))                        ; 剩余议程
+   '(org-special-keyword      ((t (                      :foreground "#cfd8dc"))))                        ; 控制SCHEDULE与DEADLINE
+   '(org-date                 ((t (                      :foreground "#cfd8dc")))))                       ; 控制SCHEDULE与DEADLINE的日期时间
+  (custom-set-faces                                                                                       
+   '(region                   ((t (:background "#eceff1")))))                                             ; 选区
+  ;; 亮色corfu                                                                                            
+  (with-eval-after-load 'corfu                                                                            
+    (custom-set-faces                                                                                     
+     '(corfu-default          ((t (:background "#ffffff"))))                                              ; 补全窗口背景
+     '(corfu-border           ((t (:background "#37474f"))))                                              ; 补全窗口边框
+     '(corfu-current          ((t (:background "#cfd8dc" :foreground "#37474f"))))))                      ; 补全窗口当前条目
+  ;; 亮色dirvish                                                                                    
+  (with-eval-after-load 'dirvish                                                                    
+    (custom-set-faces                                                                               
+     '(dirvish-hl-line        ((t (:background "#cfd8dc" :foreground "#37474f"))))))                      ; 侧边文件管理器高亮  
+  (with-eval-after-load 'telega
+    '(telega-msg-heading      ((t (:background "#ffffff"))))                                              ; 消息标题颜色
+    '(help-key-binding        ((t (:background "#ffffff" :foreground "#673ab7" :height 90 :box nil)))))   ; 提示帮助颜色
+
 
 (defun my-load-theme-dark ()
   "切换为暗色dark主题"
   (interactive)
-  (disable-theme 'nano-light)
-  (load-theme 'bliss)
-  ;; 暗色初始化
+  ;; 暗色初始化  
+  (disable-theme 'nano-light)                                                                             ; 关闭亮色主题
+  (load-theme 'bliss)                                                                                     ; 启用暗色主题
+  ;; 暗色tab
   (custom-set-faces
-   '(vertico-current ((t (:background "#31343e"))))
-   '(tab-line        ((t (:background "#191919")))))
-  (with-eval-after-load 'telega
-    (custom-set-faces     
-     '(telega-msg-heading ((t (:background "#191919"))))
-     '(help-key-binding   ((t (:height 90 :box nil :foreground "#64fbc8" :background "#191919"))))))
-  ;; logo图
-  (setq dashboard-startup-banner "/home/une/.wallpaper/dashboard-zoom-out-dark.png")
-  (dashboard-refresh-buffer)
+   '(tab-line                 ((t (:background "#191919")))))                                             ; 标签项
   ;; 暗色vertico
   (custom-set-faces   
-   '(vertico-current         ((t (:background "#444444" :foreground "#67fbc8"))))
-   '(vertico-group-separator ((t (:background "#64fbc8" :foreground "#191919"))))
-   '(vertico-group-title     ((t (:background "#64fbc8" :foreground "#191919"))))
-   '(vertico-posframe        ((t (:background "#191919" :foreground "#3bb1df")))))
-  ;; 暗色corfu
-  (with-eval-after-load 'corfu
-    (custom-set-faces
-     '(corfu-default ((t (:background "#191919" :foreground "#3bb1df"))))
-     '(corfu-border  ((t (:background "#37474f"))))
-     '(corfu-current ((t (:background "#444444" :foreground "#64fbc8"))))))
+   '(vertico-group-separator  ((t (:background "#64fbc8" :foreground "#191919"))))                        ; 组分隔线
+   '(vertico-group-title      ((t (:background "#64fbc8" :foreground "#191919"))))                        ; 组标题
+   '(vertico-posframe         ((t (:background "#191919" :foreground "#3bb1df"))))                        ; child frame
+   '(vertico-current          ((t (:background "#444444" :foreground "#67fbc8")))))                       ; 当前条目  
+  ;; 暗色logo图
+  (setq dashboard-startup-banner
+        (concat user-emacs-directory directory-emacs-archive "dashboard-zoom-out-dark.png"))              ; 启用暗色logo图
+  (dashboard-refresh-buffer)
+  ;; 暗色org-keyword-faces
+  (setq org-todo-keyword-faces
+        '(("TODO"  . (:foreground "#191919" :background "#64fbc8"))
+          ("WAIT"  . (:foreground "#1277a7" :background "#191919"))
+          ("DOING" . (:foreground "#3bb1df" :background "#191919"))
+          ("DONE"  . (:foreground "#444444" :background "#191919"))))                                     ; 暗色org-keyword-faces
+  ;; 暗色isearch
+  (custom-set-faces
+   '(isearch-fail             ((t (:foreground "#ffffff" :background "#191919")))))                       ; 未匹配的字符串高亮
+  ;; 暗色agenda
+  (custom-set-faces
+   '(org-agenda-structure     ((t (:background "#64fbc8" :foreground "#444444"))))                        ; 结构信息
+   '(org-agenda-date          ((t (:background "#191919" :foreground "#64fbc8"))))                        ; 星期信息 
+   '(org-agenda-date-today    ((t (:background "#444444" :foreground "#64fbc8"))))                        ; 今天时间
+   '(org-agenda-current-time  ((t (:background "#444444" :foreground "#64fbc8"))))                        ; 当前时间
+   '(org-time-grid            ((t (:background "#191919" :foreground "#3bb1df"))))                        ; 时间刻度线
+   '(org-scheduled-today      ((t (:background "#191919" :foreground "#ffffff"))))                        ; 今天的安排 
+   '(org-imminent-deadline    ((t (:background "#191919" :foreground "#3bb1df"))))                        ; 即将到期的议程
+   '(org-scheduled-previously ((t (:background "#191919" :foreground "#444444"))))                        ; 先前完成或先前未完成的议程
+   '(org-todo                 ((t (:background "#191919" :foreground "#1277a7"))))                        ; 议程状态
+   '(org-upcoming-deadline    ((t (:background "#191919" :foreground "#64fbc8"))))                        ; 即将过期的
+   '(org-default              ((t (:background "#191919" :foreground "#1277a7"))))                        ; 剩余议程
+   '(org-special-keyword      ((t (                      :foreground "#1277a7"))))                        ; SCHEDULE与DEADLINE   
+   '(org-date                 ((t (                      :foreground "#1277a7")))))                       ; SCHEDULE与DEADLINE的日期时间
+  ;; 暗色set-mark
+  (custom-set-faces
+   '(region                   ((t (:background "#3bb1df" :foreground "#444444")))))                       ; 选区
+  (with-eval-after-load 'telega
+    (custom-set-faces     
+     '(telega-msg-heading     ((t (:background "#191919"))))                                              ; 消息标题颜色
+     '(help-key-binding       ((t (:background "#191919" :foreground "#64fbc8" :height 90 :box nil))))))  ; 提示帮助颜色
+  ;; 暗色corfu                                                                       
+  (with-eval-after-load 'corfu                                                       
+    (custom-set-faces                                                                
+     '(corfu-default          ((t (:background "#191919" :foreground "#3bb1df"))))                        ; 补全窗口背景
+     '(corfu-border           ((t (:background "#37474f"))))                                              ; 补全窗口边框
+     '(corfu-current          ((t (:background "#444444" :foreground "#64fbc8"))))))                      ; 补全窗口当前条目
   ;; 暗色dirvish
   (with-eval-after-load 'dirvish
     (custom-set-faces
-     '(dirvish-hl-line ((t (:background "#444444" :foreground "#64fbc8"))))))
-  ;; 暗色isearch
-  (custom-set-faces
-   '(isearch-fail ((t (:foreground "#ffffff" :background "#191919")))))
-  ;; 暗色agenda
-  (custom-set-faces
-   '(org-agenda-structure     ((t (:background "#64fbc8" :foreground "#444444"))))   ; 结构信息
-   '(org-agenda-date          ((t (:background "#191919" :foreground "#64fbc8"))))   ; 星期信息 
-   '(org-agenda-date-today    ((t (:background "#444444" :foreground "#64fbc8"))))   ; 今天时间
-   '(org-agenda-current-time  ((t (:background "#444444" :foreground "#64fbc8"))))   ; 当前时间
-   '(org-time-grid            ((t (:background "#191919" :foreground "#3bb1df"))))   ; 时间刻度线
-   '(org-scheduled-today      ((t (:background "#191919" :foreground "#ffffff"))))   ; 今天的安排 
-   '(org-imminent-deadline    ((t (:background "#191919" :foreground "#3bb1df"))))   ; 即将到期的议程
-   '(org-scheduled-previously ((t (:background "#191919" :foreground "#444444"))))   ; 先前完成或先前未完成的议程
-   '(org-todo                 ((t (:background "#191919" :foreground "#1277a7"))))   ; 议程状态
-   '(org-upcoming-deadline    ((t (:background "#191919" :foreground "#64fbc8"))))   ; 即将过期的
-   '(org-default              ((t (:background "#191919" :foreground "#1277a7")))))) ; 剩余议程
+     '(dirvish-hl-line        ((t (:background "#444444" :foreground "#64fbc8")))))))                     ; 侧边文件管理器高亮
 
 
 ;; =======================================
