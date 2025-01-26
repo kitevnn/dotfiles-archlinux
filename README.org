@@ -129,7 +129,7 @@ Accompanying With GNU Emacs: 0 hours, 3 minutes, 36 seconds
   (add-hook 'kill-emacs-hook 'my-save-emacs-uptime)                            ; 在退出Emacs时保存当前uptime  
 #+end_src
 
-*改进思路*
+*我自己的改进思路*
 
 当前必须退出后1个Emacs进程后，才能统计本次的累计使用总时长，这是因为保存了的是逐渐递增的emacs-uptime，而非增量
 
@@ -143,6 +143,8 @@ Accompanying With GNU Emacs: 0 hours, 3 minutes, 36 seconds
   能模仿emacs-uptime的字符串(如Uptime: 1 hours, 55 minutes, 33 seconds)
 
   保存到指定的文件中
+
+  (以后有空再弄.....因为这几天我自己已经配置了接近20小时的GNU Emacs了......下次再弄下次再弄)
   #+end_quote
 
-
+  
