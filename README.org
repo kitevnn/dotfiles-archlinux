@@ -40,7 +40,7 @@
 从 ~2025年 01月 25日 星期六 16:48:09 CST~ 开始累计
 
 #+begin_quote
-Accompanying With GNU Emacs: 1 hours, 42 minutes, 20 seconds
+Accompanying With GNU Emacs: 3 hours, 19 minutes, 0 seconds
 #+end_quote
 
 实现过程(展示代码，从而来证明我自己并没有乱写时间上去，因为每次的时间都依赖于 ~(emacs-uptime)~ 此el函数来获取)
@@ -104,35 +104,35 @@ Accompanying With GNU Emacs: 1 hours, 42 minutes, 20 seconds
   ;; =======================================
   ;; 手动更新已使用的GNU Emacs累加时长 (~/.config/emacs/elisp/custom/custom-defun.el)
   ;; =======================================
-  (defun my-save-emacs-uptime ()
-    "通过添加hooks的方式，在每次退出Emacs后，自动将emacs-uptime保存到指定的 uptime 文件"
-    (let ((uptime (emacs-uptime)))
-      (with-temp-buffer
-        (insert (format "Uptime: %s\n" uptime))
-        (append-to-file (point-min) (point-max)  (concat user-emacs-directory directory-emacs-archive "uptime")))))
+(defun my-save-emacs-uptime ()
+  "通过添加hooks的方式，在每次退出Emacs后，自动将emacs-uptime保存到指定的 uptime 文件"
+  (let ((uptime (emacs-uptime)))
+    (with-temp-buffer
+      (insert (format "Uptime: %s\n" uptime))
+      (append-to-file (point-min) (point-max)  (concat user-emacs-directory directory-emacs-archive "uptime")))))
 
-  (defun my-sumize-emacs-uptime ()
-    "通过添加hooks的方式，在每次退出Emacs后，自动地对指定的 uptime 文件求和时长"
-    (let ((uptime-file (concat user-emacs-directory directory-emacs-archive "uptime")))
-      (let ((uptime-output
-             (string-trim (shell-command-to-string
-                           (concat user-emacs-directory directory-site-lisp "calculate-uptime.sh")))))
-        (with-temp-buffer
-          (insert (format "%s\n" uptime-output))
-          (append-to-file (point-min) (point-max) uptime-file)))))
-
-  (defun my-show-emacs-uptime ()
-    "获得最新的 calculate-uptime.sh 的输出"
-    (interactive)
+(defun my-sumize-emacs-uptime ()
+  "通过添加hooks的方式，在每次退出Emacs后，自动地对指定的 uptime 文件求和时长"
+  (let ((uptime-file (concat user-emacs-directory directory-emacs-archive "uptime")))
     (let ((uptime-output
            (string-trim (shell-command-to-string
                          (concat user-emacs-directory directory-site-lisp "calculate-uptime.sh")))))
-      (insert uptime-output)))
+      (with-temp-buffer
+        (insert (format "%s\n" uptime-output))
+        (append-to-file (point-min) (point-max) uptime-file)))))
+
+(defun my-show-emacs-uptime ()
+  "获得最新的 calculate-uptime.sh 的输出"
+  (interactive)
+  (let ((uptime-output
+         (string-trim (shell-command-to-string
+                       (concat user-emacs-directory directory-site-lisp "calculate-uptime.sh")))))
+    (insert uptime-output)))
 
   ;; =======================================
   ;; 更新 calculate-uptime.sh 脚本输出的钩子 (~/.config/emacs/elisp/hooks/hooks-hook.el)
   ;; =======================================
   (add-hook 'kill-emacs-hook 'my-sumize-emacs-uptime)                          ; 再相加总累计时间到 my-accompany-with-emacs-uptime 变量上
   (add-hook 'kill-emacs-hook 'my-save-emacs-uptime)                            ; 在退出Emacs时保存当前uptime
-  (add-hook 'kill-emacs-hook 'my-sumize-emacs-uptime)                          ; 再相加总累计时间到 my-accompany-with-emacs-uptime 变量上  
+  (add-hook 'kill-emacs-hook 'my-sumize-emacs-uptime)                          ; 再相加总累计时间到 my-accompany-with-emacs-uptime 变量上
 #+end_src
