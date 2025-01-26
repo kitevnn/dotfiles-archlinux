@@ -23,17 +23,17 @@
 ;; ========================================
 ;; 关于当前日期
 ;; ========================================
-(defun update-modeline-calendar-month ()
+(defun kivnn/update-modeline-calendar-month ()
   (setq modeline-calendar-month
         (string-trim
          (shell-command-to-string
           (concat user-emacs-directory directory-modeline-path-suffix "calendar-month.sh")))))
-(defun update-modeline-calendar-day ()
+(defun kivnn/update-modeline-calendar-day ()
   (setq modeline-calendar-day
         (string-trim
          (shell-command-to-string
           (concat user-emacs-directory directory-modeline-path-suffix "calendar-day.sh")))))
-(defun update-modeline-calendar-week ()
+(defun kivnn/update-modeline-calendar-week ()
   (setq modeline-calendar-week
         (string-trim
          (shell-command-to-string
@@ -41,12 +41,12 @@
 ;; ========================================
 ;; 关于当前时间
 ;; ========================================
-(defun update-modeline-time-hour ()
+(defun kivnn/update-modeline-time-hour ()
   (setq modeline-time-hour
         (string-trim
          (shell-command-to-string
           (concat user-emacs-directory directory-modeline-path-suffix "time-hour.sh")))))
-(defun update-modeline-time-minute ()
+(defun kivnn/update-modeline-time-minute ()
   (setq modeline-time-minute
         (string-trim
          (shell-command-to-string
@@ -54,7 +54,7 @@
 ;; ========================================
 ;; 关于电池信息
 ;; ========================================
-(defun update-modeline-battery-percentage ()
+(defun kivnn/update-modeline-battery-percentage ()
   (setq modeline-battery-percentage 
         (string-trim
          (shell-command-to-string
@@ -62,12 +62,12 @@
 ;; ========================================
 ;; 关于发行版信息
 ;; ========================================
-(defun update-modeline-distribution ()
+(defun kivnn/update-modeline-distribution ()
   (setq modeline-distribution 
         (string-trim
          (shell-command-to-string
           (concat user-emacs-directory directory-modeline-path-suffix "distribution.sh")))))
-(defun update-modeline-pacman-packages ()
+(defun kivnn/update-modeline-pacman-packages ()
   (setq modeline-pacman-packages 
         (string-trim
          (shell-command-to-string
@@ -75,17 +75,17 @@
 ;; ========================================
 ;; 关于使用率
 ;; ========================================
-(defun update-modeline-disk-usage ()
+(defun kivnn/update-modeline-disk-usage ()
   (setq modeline-disk-usage 
         (string-trim
          (shell-command-to-string
           (concat user-emacs-directory directory-modeline-path-suffix "disk-usage.sh")))))
-(defun update-modeline-cpu-temperature ()
+(defun kivnn/update-modeline-cpu-temperature ()
   (setq modeline-cpu-temperature 
         (string-trim
          (shell-command-to-string
           (concat user-emacs-directory directory-modeline-path-suffix "cpu-temperature.sh")))))
-(defun update-modeline-ram-usage ()
+(defun kivnn/update-modeline-ram-usage ()
   (setq modeline-ram-usage 
         (string-trim
          (shell-command-to-string
@@ -93,7 +93,7 @@
 ;; ========================================
 ;; 关于当地天气
 ;; ========================================
-(defun update-modeline-weather-situation ()
+(defun kivnn/update-modeline-weather-situation ()
   (setq modeline-weather-situation 
         (string-trim
          (shell-command-to-string
@@ -118,13 +118,13 @@
          ((string-match-p "\\*+ TODO" headline) (setq modeline-agenda-todo-count (1+ modeline-agenda-todo-count)))
          ((string-match-p "\\*+ DOING" headline) (setq modeline-agenda-doing-count (1+ modeline-agenda-doing-count)))
          ((string-match-p "\\*+ WAIT" headline) (setq modeline-agenda-wait-count (1+ modeline-agenda-wait-count))))))))
-(defun update-modeline-agenda-file-tasks ()
+(defun kivnn/update-modeline-agenda-file-tasks ()
   "统计指定文件2025.org的任务"
   (kivnn/count-agenda-file-tasks file-org-agenda-files))
 ;; ========================================
 ;; 累计总时长
 ;; ========================================
-(defun update-modeline-emacs-uptime ()
+(defun kivnn/update-modeline-emacs-uptime ()
   (setq modeline-emacs-uptime
         (let ((uptime-text
                (string-trim
@@ -137,26 +137,26 @@
 ;; ========================================
 ;; 定期更新变量数据
 ;; ========================================
-(run-at-time "0 sec" 180   'update-modeline-time-hour)           ; 每3分钟更新一次时间小时信息
-(run-at-time "0 sec" 60    'update-modeline-time-minute)         ; 每1分钟更新一次时间分钟信息
-(run-at-time "0 sec" 43200 'update-modeline-calendar-day)        ; 每12小时更新一次日历月份信息
-(run-at-time "0 sec" 86400 'update-modeline-calendar-month)      ; 每24小时更新一次日历月份信息
-(run-at-time "0 sec" 120   'update-modeline-battery-percentage)  ; 每2分钟更新一次电池信息
-(run-at-time "0 sec" 86400 'update-modeline-distribution)        ; 每1天更新一次发行版信息
-(run-at-time "0 sec" 86400 'update-modeline-disk-usage)          ; 每1天更新一次磁盘使用量信息
-(run-at-time "0 sec" 15    'update-modeline-cpu-temperature)     ; 每15秒更新一次CPU温度信息
-(run-at-time "0 sec" 15    'update-modeline-ram-usage)           ; 每15秒更新一次内存使用量信息
-(run-at-time "0 sec" 43200 'update-modeline-pacman-packages)     ; 每12小时更新一次包总数信息
-(run-at-time "0 sec" 1800  'update-modeline-weather-situation)   ; 每30分钟更新一次当前天气信息
-(run-at-time "0 sec" 43200 'update-modeline-calendar-week)       ; 每12小时更新一次当前星期信息
-(run-at-time "0 sec" 1800  'update-modeline-agenda-file-tasks)   ; 每30分钟更新一次tasks任务信息
-(run-at-time "0 sec" 86400 'update-modeline-emacs-uptime)        ; 每24小时更新一次累计使用总时长
+(run-at-time "0 sec" 180   'kivnn/update-modeline-time-hour)           ; 每3分钟更新一次时间小时信息
+(run-at-time "0 sec" 60    'kivnn/update-modeline-time-minute)         ; 每1分钟更新一次时间分钟信息
+(run-at-time "0 sec" 43200 'kivnn/update-modeline-calendar-day)        ; 每12小时更新一次日历月份信息
+(run-at-time "0 sec" 86400 'kivnn/update-modeline-calendar-month)      ; 每24小时更新一次日历月份信息
+(run-at-time "0 sec" 120   'kivnn/update-modeline-battery-percentage)  ; 每2分钟更新一次电池信息
+(run-at-time "0 sec" 86400 'kivnn/update-modeline-distribution)        ; 每1天更新一次发行版信息
+(run-at-time "0 sec" 86400 'kivnn/update-modeline-disk-usage)          ; 每1天更新一次磁盘使用量信息
+(run-at-time "0 sec" 15    'kivnn/update-modeline-cpu-temperature)     ; 每15秒更新一次CPU温度信息
+(run-at-time "0 sec" 15    'kivnn/update-modeline-ram-usage)           ; 每15秒更新一次内存使用量信息
+(run-at-time "0 sec" 43200 'kivnn/update-modeline-pacman-packages)     ; 每12小时更新一次包总数信息
+(run-at-time "0 sec" 1800  'kivnn/update-modeline-weather-situation)   ; 每30分钟更新一次当前天气信息
+(run-at-time "0 sec" 43200 'kivnn/update-modeline-calendar-week)       ; 每12小时更新一次当前星期信息
+(run-at-time "0 sec" 1800  'kivnn/update-modeline-agenda-file-tasks)   ; 每30分钟更新一次tasks任务信息
+(run-at-time "0 sec" 86400 'kivnn/update-modeline-emacs-uptime)        ; 每24小时更新一次累计使用总时长
 
 
 ;; ========================================
 ;; 关于状态栏
 ;; ========================================
-(defun update-modeline-with-all-scripts ()
+(defun kivnn/update-modeline-with-all-scripts ()
   "显示状态栏除议程数量之外的信息"
   (setq global-mode-string
         (list "   󰃯 " ;
@@ -195,7 +195,7 @@
 ;; ========================================
 ;; 设置不同的信息更新定时器
 ;; ========================================
-(run-at-time "0 sec" 60    'update-modeline-with-all-scripts)    ; 每60秒更新一次状态栏除议程数量之外的信息
+(run-at-time "0 sec" 60    'kivnn/update-modeline-with-all-scripts)    ; 每60秒更新一次状态栏除议程数量之外的信息
 
 
 (provide 'ui-modeline-bar)

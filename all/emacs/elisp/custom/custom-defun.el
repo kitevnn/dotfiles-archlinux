@@ -68,13 +68,14 @@
   "在org-mode里添加可能需要的LaTeX Header来成功导出pdf文档"
   (interactive)
   (goto-char (point-min))
-  (insert "#+LATEX_HEADER: \\usepackage[usenames]{color}\n")
-  (insert "#+LATEX_HEADER: \\usepackage{amsmath}\n")
-  (insert "#+LATEX_HEADER: \\usepackage{esint}\n")
-  (insert "#+LATEX_HEADER: \\usepackage{fontspec}\n")
-  (insert "#+LATEX_HEADER: \\setsansfont{Noto Sans CJK TC}\n")
-  (insert "#+LATEX_HEADER: \\setmainfont{Noto Serif CJK TC}\n")
-  (insert "#+LATEX_HEADER: xelatex\n\n"))
+  (progn
+    (insert "#+LATEX_HEADER: \\usepackage[usenames]{color}\n")
+    (insert "#+LATEX_HEADER: \\usepackage{amsmath}\n")
+    (insert "#+LATEX_HEADER: \\usepackage{esint}\n")
+    (insert "#+LATEX_HEADER: \\usepackage{fontspec}\n")
+    (insert "#+LATEX_HEADER: \\setsansfont{Noto Sans CJK TC}\n")
+    (insert "#+LATEX_HEADER: \\setmainfont{Noto Serif CJK TC}\n")
+    (insert "#+LATEX_HEADER: xelatex\n\n")))
 (eval-after-load 'org
   '(define-key org-mode-map (kbd "C-z C-x C-e") 'kivnn/org-add-latex-header))
 
@@ -164,16 +165,16 @@
    '(vertico-group-title      ((t (:background "#37474f" :foreground "#ffffff"))))                        ; 组标题
    '(vertico-posframe         ((t (:background "#ffffff" :foreground "#37474f"))))                        ; child frame
    '(vertico-current          ((t (:background "#b5ffd1" :foreground "#37474f")))))                       ; 当前条目
-  ;; 亮色org-keyword-faces
-  (setq org-todo-keyword-faces
-        '(("TODO"  . (:foreground "#ffffff" :background "#37474f"))
-          ("WAIT"  . (:foreground "#673ab7" :background "#ffffff"))
-          ("DOING" . (:foreground "#673ab7" :background "#ffffff"))
-          ("DONE"  . (:foreground "#cfd8dc" :background "#ffffff")))))                                    ; 亮色org-keyword-faces
   ;; 亮色logo图                                                                                           
   (setq dashboard-startup-banner
         (concat user-emacs-directory directory-emacs-archive "dashboard-zoom-out-light.png"))             ; 启用亮色logo图
   (dashboard-refresh-buffer)
+  ;; 亮色org-todo-keyword-faces
+  (setq org-todo-keyword-faces
+        '(("TODO"  . (:foreground "#ffffff" :background "#37474f"))
+          ("WAIT"  . (:foreground "#673ab7" :background "#ffffff"))
+          ("DOING" . (:foreground "#673ab7" :background "#ffffff"))
+          ("DONE"  . (:foreground "#cfd8dc" :background "#ffffff")))))                                    ; 亮色org-todo-keyword-faces
   ;; 亮色isearch                                                                                           
   (custom-set-faces                                                                                        
    '(isearch-fail             ((t (:foreground "#37474f" :background "#ffffff")))))                       ; 未匹配的字符串高亮
@@ -224,16 +225,16 @@
    '(vertico-group-title      ((t (:background "#64fbc8" :foreground "#191919"))))                        ; 组标题
    '(vertico-posframe         ((t (:background "#191919" :foreground "#3bb1df"))))                        ; child frame
    '(vertico-current          ((t (:background "#444444" :foreground "#67fbc8")))))                       ; 当前条目
-  ;; 暗色org-keyword-faces
-  (setq org-todo-keyword-faces
-        '(("TODO"  . (:foreground "#191919" :background "#64fbc8"))
-          ("WAIT"  . (:foreground "#1277a7" :background "#191919"))
-          ("DOING" . (:foreground "#3bb1df" :background "#191919"))
-          ("DONE"  . (:foreground "#444444" :background "#191919"))))                                     ; 暗色org-keyword-faces
   ;; 暗色logo图
   (setq dashboard-startup-banner
         (concat user-emacs-directory directory-emacs-archive "dashboard-zoom-out-dark.png"))              ; 启用暗色logo图
   (dashboard-refresh-buffer)
+  ;; 暗色org-todo-keyword-faces
+  (setq org-todo-keyword-faces
+        '(("TODO"  . (:foreground "#191919" :background "#64fbc8"))
+          ("WAIT"  . (:foreground "#1277a7" :background "#191919"))
+          ("DOING" . (:foreground "#3bb1df" :background "#191919"))
+          ("DONE"  . (:foreground "#444444" :background "#191919"))))                                     ; 暗色org-todo-keyword-faces
   ;; 暗色isearch
   (custom-set-faces
    '(isearch-fail             ((t (:foreground "#ffffff" :background "#191919")))))                       ; 未匹配的字符串高亮
@@ -404,7 +405,7 @@
 (defun kivnn/update-modeline-output-agenda-tasks ()
   "手动更新议程任务信息 TODO: a DOING: b WAIT: c"
   (interactive)
-  (update-modeline-output-agenda-file-tasks))
+  (kivnn/update-modeline-output-agenda-file-tasks))
 
 
 ;; =======================================
@@ -472,9 +473,9 @@
   "手动更新modeline上的已有信息"
   (interactive)
   ;; 更新变量数据
-  (update-modeline-agenda-file-tasks)  
+  (kivnn/update-modeline-agenda-file-tasks)  
   ;; 更新modeline信息
-  (update-modeline-with-all-scripts))
+  (kivnn/update-modeline-with-all-scripts))
 
 
 ;; =======================================
