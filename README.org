@@ -33,14 +33,14 @@
 
 在 [[file:org/dotfiles.org][dotfiles.org]] 通过 ~M-x org-babel-tangle~ 管理 
 
-** 有趣的实现
+** 🔑 有趣的实现
 
-*** GNU Emacs总使用时长
+*** 1. GNU Emacs总使用时长
 
-从 ~2025年 01月 25日 星期六 16:48:09 CST~ 开始累计
+从 ~2025年 01月 26日 星期日 13:55:28 CST~ 重新开始累计
 
 #+begin_quote
-Accompanying With GNU Emacs: 3 hours, 19 minutes, 0 seconds
+Accompanying With GNU Emacs: 0 hours, 3 minutes, 36 seconds
 #+end_quote
 
 实现过程(展示代码，从而来证明我自己并没有乱写时间上去，因为每次的时间都依赖于 ~(emacs-uptime)~ 此el函数来获取)
@@ -51,11 +51,13 @@ Accompanying With GNU Emacs: 3 hours, 19 minutes, 0 seconds
 
   # 基本路径配置
   user="une"
-  path=".config/emacs/archive"
+  path1=".config/emacs/archive"
+  path2=".config/emacs/elisp/site-lisp/sh"
   filename="uptime"
 
   # 存储文件路径
-  file="/home/${user}/${path}/${filename}"
+  file1="/home/${user}/${path1}/${filename}"
+  file2="/home/${user}/${path2}/${filename}"
 
   # 初始化总时间
   total_seconds=0
@@ -83,7 +85,7 @@ Accompanying With GNU Emacs: 3 hours, 19 minutes, 0 seconds
     # 将时间转换为秒
     total_seconds=$((total_seconds + hours * 3600 + minutes * 60 + seconds))
 
-  done < "$file"
+  done < "$file1"
 
   # 可选：将秒数转换为小时:分钟:秒 格式
   total_hours=$((total_seconds / 3600))
@@ -91,7 +93,8 @@ Accompanying With GNU Emacs: 3 hours, 19 minutes, 0 seconds
   remaining_seconds=$((total_seconds % 60))
 
   # 输出总时间
-  echo "Accompanying With GNU Emacs: $total_hours hours, $remaining_minutes minutes, $remaining_seconds seconds" 
+  echo "Accompanying With GNU Emacs: $total_hours hours, $remaining_minutes minutes, $remaining_seconds seconds"
+  echo "Accompanying With GNU Emacs: $total_hours hours, $remaining_minutes minutes, $remaining_seconds seconds" > "$file2"  
 #+end_src
 
 *elisp方面*
@@ -104,35 +107,42 @@ Accompanying With GNU Emacs: 3 hours, 19 minutes, 0 seconds
   ;; =======================================
   ;; 手动更新已使用的GNU Emacs累加时长 (~/.config/emacs/elisp/custom/custom-defun.el)
   ;; =======================================
-(defun my-save-emacs-uptime ()
-  "通过添加hooks的方式，在每次退出Emacs后，自动将emacs-uptime保存到指定的 uptime 文件"
-  (let ((uptime (emacs-uptime)))
-    (with-temp-buffer
-      (insert (format "Uptime: %s\n" uptime))
-      (append-to-file (point-min) (point-max)  (concat user-emacs-directory directory-emacs-archive "uptime")))))
+  (defun my-save-emacs-uptime ()
+    "通过设置钩子hooks，在每次退出Emacs后，自动保存emacs-uptime数据到指定文件内"
+    (let ((uptime (emacs-uptime)))
+      (with-temp-buffer
+        (insert (format "Uptime: %s\n" uptime))
+        (append-to-file (point-min) (point-max)  (concat user-emacs-directory directory-emacs-archive "uptime")))))
 
-(defun my-sumize-emacs-uptime ()
-  "通过添加hooks的方式，在每次退出Emacs后，自动地对指定的 uptime 文件求和时长"
-  (let ((uptime-file (concat user-emacs-directory directory-emacs-archive "uptime")))
+  (defun my-show-emacs-uptime ()
+    "通过site-lisp的sh脚本实现，获取Emacs的累计使用总时长"
+    (interactive)
     (let ((uptime-output
            (string-trim (shell-command-to-string
                          (concat user-emacs-directory directory-site-lisp "calculate-uptime.sh")))))
-      (with-temp-buffer
-        (insert (format "%s\n" uptime-output))
-        (append-to-file (point-min) (point-max) uptime-file)))))
+      (insert uptime-output)))
 
-(defun my-show-emacs-uptime ()
-  "获得最新的 calculate-uptime.sh 的输出"
-  (interactive)
-  (let ((uptime-output
-         (string-trim (shell-command-to-string
-                       (concat user-emacs-directory directory-site-lisp "calculate-uptime.sh")))))
-    (insert uptime-output)))
 
   ;; =======================================
   ;; 更新 calculate-uptime.sh 脚本输出的钩子 (~/.config/emacs/elisp/hooks/hooks-hook.el)
   ;; =======================================
-  (add-hook 'kill-emacs-hook 'my-sumize-emacs-uptime)                          ; 再相加总累计时间到 my-accompany-with-emacs-uptime 变量上
-  (add-hook 'kill-emacs-hook 'my-save-emacs-uptime)                            ; 在退出Emacs时保存当前uptime
-  (add-hook 'kill-emacs-hook 'my-sumize-emacs-uptime)                          ; 再相加总累计时间到 my-accompany-with-emacs-uptime 变量上
+  (add-hook 'kill-emacs-hook 'my-save-emacs-uptime)                            ; 在退出Emacs时保存当前uptime  
 #+end_src
+
+*改进思路*
+
+当前必须退出后1个Emacs进程后，才能统计本次的累计使用总时长，这是因为保存了的是逐渐递增的emacs-uptime，而非增量
+
++ 保存的是增量emacs-uptime-DELTA，而不是逐渐递增的emacs-uptime
+
+  #+begin_quote
+  抽象一个根据 ~(emacs-uptime)~ 的变量，作为增量时间 ~(defvar emacs-uptime-delta "")~
+
+  使得每次执行函数 ~my-save-emacs-uptime~ 后
+
+  能模仿emacs-uptime的字符串(如Uptime: 1 hours, 55 minutes, 33 seconds)
+
+  保存到指定的文件中
+  #+end_quote
+
+

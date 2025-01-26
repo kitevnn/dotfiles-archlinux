@@ -45,6 +45,4 @@ remaining_seconds=$((total_seconds % 60))
 
 # 输出总时间
 echo "Accompanying With GNU Emacs: $total_hours hours, $remaining_minutes minutes, $remaining_seconds seconds"
-
 echo "Accompanying With GNU Emacs: $total_hours hours, $remaining_minutes minutes, $remaining_seconds seconds" > "$file2"
-

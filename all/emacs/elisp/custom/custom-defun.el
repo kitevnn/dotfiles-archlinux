@@ -477,27 +477,17 @@
 
 
 ;; =======================================
-;; 手动更新已使用的GNU Emacs累加时长
+;; 关于GNU Emacs累计使用总时长
 ;; =======================================
 (defun my-save-emacs-uptime ()
-  "通过添加hooks的方式，在每次退出Emacs后，自动将emacs-uptime保存到指定的 uptime 文件"
+  "通过设置钩子hooks，在每次退出Emacs后，自动保存emacs-uptime数据到指定文件内"
   (let ((uptime (emacs-uptime)))
     (with-temp-buffer
       (insert (format "Uptime: %s\n" uptime))
       (append-to-file (point-min) (point-max)  (concat user-emacs-directory directory-emacs-archive "uptime")))))
 
-(defun my-sumize-emacs-uptime ()
-  "通过添加hooks的方式，在每次退出Emacs后，自动地对指定的 uptime 文件求和时长"
-  (let ((uptime-file (concat user-emacs-directory directory-emacs-archive "uptime")))
-    (let ((uptime-output
-           (string-trim (shell-command-to-string
-                         (concat user-emacs-directory directory-site-lisp "calculate-uptime.sh")))))
-      (with-temp-buffer
-        (insert (format "%s\n" uptime-output))
-        (append-to-file (point-min) (point-max) uptime-file)))))
-
 (defun my-show-emacs-uptime ()
-  "获得最新的 calculate-uptime.sh 的输出"
+  "通过site-lisp的sh脚本实现，获取Emacs的累计使用总时长"
   (interactive)
   (let ((uptime-output
          (string-trim (shell-command-to-string

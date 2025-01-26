@@ -37,9 +37,7 @@
 ;; ========================================
 ;; GNU Emacs相关
 ;; ========================================
-(add-hook 'kill-emacs-hook 'my-sumize-emacs-uptime)                          ; 再相加总累计时间到 my-accompany-with-emacs-uptime 变量上
 (add-hook 'kill-emacs-hook 'my-save-emacs-uptime)                            ; 在退出Emacs时保存当前uptime
-(add-hook 'kill-emacs-hook 'my-sumize-emacs-uptime)                          ; 再相加总累计时间到 my-accompany-with-emacs-uptime 变量上
 
 
 (provide 'hooks-hook)
