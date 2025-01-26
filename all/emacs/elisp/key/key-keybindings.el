@@ -21,8 +21,8 @@
 ;; ========================================
 ;; 关于theme
 ;; ========================================
-(global-set-key (kbd "C-z C-t C-1")                      'my-load-theme-light)                       ; 切换为亮色light主题
-(global-set-key (kbd "C-z C-t C-2")                      'my-load-theme-dark)                        ; 切换为暗色dark主题
+(global-set-key (kbd "C-z C-t C-1")                      'kivnn/load-theme-light)                    ; 切换为亮色light主题
+(global-set-key (kbd "C-z C-t C-2")                      'kivnn/load-theme-dark)                     ; 切换为暗色dark主题
 
 
 ;; ========================================
@@ -50,10 +50,10 @@
 ;; ========================================
 ;; 关于调整窗口
 ;; ========================================
-(global-set-key (kbd "C-z C-w C-p")                      'my-resize-top-five-unit)                    ; 当前窗口向上调整5个单位
-(global-set-key (kbd "C-z C-w C-n")                      'my-resize-bottom-five-unit)                 ; 当前窗口向下调整5个单位
-(global-set-key (kbd "C-z C-w C-b")                      'my-resize-left-five-unit)                   ; 当前窗口向左调整5个单位
-(global-set-key (kbd "C-z C-w C-f")                      'my-resize-right-five-unit)                  ; 当前窗口向右调整5个单位
+(global-set-key (kbd "C-z C-w C-p")                      'kivnn/resize-top-five-unit)                 ; 当前窗口向上调整5个单位
+(global-set-key (kbd "C-z C-w C-n")                      'kivnn/resize-bottom-five-unit)              ; 当前窗口向下调整5个单位
+(global-set-key (kbd "C-z C-w C-b")                      'kivnn/resize-left-five-unit)                ; 当前窗口向左调整5个单位
+(global-set-key (kbd "C-z C-w C-f")                      'kivnn/resize-right-five-unit)               ; 当前窗口向右调整5个单位
 
 
 ;; ========================================
@@ -72,8 +72,8 @@
 ;; ========================================
 ;; 关于移动光标
 ;; ========================================
-(global-set-key (kbd "M-n")                              'my-move-next-five-lines)                    ; 光标向下移动5行
-(global-set-key (kbd "M-p")                              'my-move-prev-five-lines)                    ; 光标向上移动5行
+(global-set-key (kbd "M-n")                              'kivnn/move-next-five-lines)                 ; 光标向下移动5行
+(global-set-key (kbd "M-p")                              'kivnn/move-prev-five-lines)                 ; 光标向上移动5行
 
 
 ;; ========================================
@@ -86,7 +86,7 @@
 ;; ========================================
 ;; 关于编辑增强
 ;; ========================================
-(global-set-key (kbd "C-=")                              'my-duplicate-line)                          ; 复制当前行到下一行并保持光标水平位置不变
+(global-set-key (kbd "C-=")                              'kivnn/duplicate-line)                       ; 复制当前行到下一行并保持光标水平位置不变
 (global-set-key (kbd "C-z C-z C-\-")                     'consult-line)                               ; consult版C-s搜索
 (global-set-key (kbd "C-z C-z C-\=")                     'consult-ripgrep)                            ; consult版rg搜索
 (global-set-key (kbd "C-z C-z C-e")                      'embark-act)                                 ; embark版action行动
@@ -97,12 +97,12 @@
 ;; 关于org-mode
 ;; ========================================
 (define-key org-mode-map (kbd "C-z C-x C-0")             'valign-mode)                                ; 切换valign-mode
-(define-key org-mode-map (kbd "C-c C-x C-v")             'my-toggle-inline-images-with-valign)        ; 用 C-c C-x C-v 避免valign-mode造成的对齐卡顿来预览图片
-(define-key org-mode-map (kbd "C-z C-z C-l")             'my-render-equation-utf8)                    ; 用 C-z C-z C-l 进行utf-8的 \[\] 上下文范围的公式渲染
-(define-key org-mode-map (kbd "C-z C-x C-f")             'my-jump-the-ending-of-the-equation)         ; 当光标在\[\]上下文时，光标跳转到\[\]的\[
-(define-key org-mode-map (kbd "C-z C-x C-b")             'my-jump-the-beginning-of-the-equation)      ; 当光标在\[\]上下文时，光标跳转到\[\]的\]
-(define-key org-mode-map (kbd "C-z C-x C-n")             'my-jump-the-next-equation)                  ; 当光标在\[\]上下文时，光标跳转到下一个\[\]
-(define-key org-mode-map (kbd "C-z C-x C-p")             'my-jump-the-previous-equation)              ; 当光标在\[\]上下文时，光标跳转到上一个\[\]
+(define-key org-mode-map (kbd "C-c C-x C-v")             'kivnn/toggle-inline-images-with-valign)     ; 用 C-c C-x C-v 避免valign-mode造成的对齐卡顿来预览图片
+(define-key org-mode-map (kbd "C-z C-z C-l")             'kivnn/render-equation-utf8)                 ; 用 C-z C-z C-l 进行utf-8的 \[\] 上下文范围的公式渲染
+(define-key org-mode-map (kbd "C-z C-x C-f")             'kivnn/jump-the-ending-of-the-equation)      ; 当光标在\[\]上下文时，光标跳转到\[\]的\[
+(define-key org-mode-map (kbd "C-z C-x C-b")             'kivnn/jump-the-beginning-of-the-equation)   ; 当光标在\[\]上下文时，光标跳转到\[\]的\]
+(define-key org-mode-map (kbd "C-z C-x C-n")             'kivnn/jump-the-next-equation)               ; 当光标在\[\]上下文时，光标跳转到下一个\[\]
+(define-key org-mode-map (kbd "C-z C-x C-p")             'kivnn/jump-the-previous-equation)           ; 当光标在\[\]上下文时，光标跳转到上一个\[\]
 (define-key org-mode-map (kbd "C-z C-x C-\[")            'org-previous-item)                          ; 跳转到上一个 (1) 2. 3) 的小标题
 (define-key org-mode-map (kbd "C-z C-x C-\]")            'org-next-item)                              ; 跳转到下一个 (1) 2. 3) 的小标题
 (global-set-key          (kbd "C-z C-z C-\\")            'org-agenda)                                 ; 打开org议题界面
@@ -114,10 +114,10 @@
 (define-key org-mode-map (kbd "C-z C-a C-j")             'org-todo)                                   ; 切换todo/done/etc.标题文字
 (define-key org-mode-map (kbd "C-z C-a C-t")             'org-set-tags-command)                       ; 打上特征标签
 (define-key org-mode-map (kbd "C-z C-a C-0")             'org-archive-subtree)                        ; 删除subtree并保存至同目录下的org-archive文件内
-(define-key org-mode-map (kbd "C-z C-a C-\m")            'my-update-modeline-all-information)         ; 手动更新modeline上的已有信息
-(define-key org-mode-map (kbd "C-z C-a C-w")             'my-org-agenda-change-headline-to-wait)      ; 将当前任务状态改为WAIT
-(define-key org-mode-map (kbd "C-z C-a C-i")             'my-org-agenda-change-headline-to-doing)     ; 将当前任务状态改为DOING
-(define-key org-mode-map (kbd "C-z C-a C-d")             'my-org-agenda-change-headline-to-done)      ; 将当前任务状态改为DONE
+(define-key org-mode-map (kbd "C-z C-a C-\m")            'kivnn/update-modeline-all-information)      ; 手动更新modeline上的已有信息
+(define-key org-mode-map (kbd "C-z C-a C-w")             'kivnn/org-agenda-change-headline-to-wait)   ; 将当前任务状态改为WAIT
+(define-key org-mode-map (kbd "C-z C-a C-i")             'kivnn/org-agenda-change-headline-to-doing)  ; 将当前任务状态改为DOING
+(define-key org-mode-map (kbd "C-z C-a C-d")             'kivnn/org-agenda-change-headline-to-done)   ; 将当前任务状态改为DONE
 (global-unset-key (kbd "C-,"))                                                                        ; 屏蔽C-, (原功能: 直接进入org-agenda-files)
 (global-set-key (kbd "C-z C-a C-,")                      'org-cycle-agenda-files)                     ; 直接进入org-agenda-files
 
@@ -140,8 +140,8 @@
 (define-key pdf-view-mode-map (kbd "a")                  'pdf-view-previous-page-command)             ; PDFView向前翻页
 (define-key pdf-view-mode-map (kbd "s")                  'pdf-view-scroll-up-or-next-page)            ; PDFView向下滚动
 (define-key pdf-view-mode-map (kbd "w")                  'pdf-view-scroll-down-or-previous-page)      ; PDFView向上滚动
-(define-key pdf-view-mode-map (kbd "t")                  'my-move-prev-ten-pages)                     ; PDFView向前翻10页
-(define-key pdf-view-mode-map (kbd "b")                  'my-move-next-ten-pages)                     ; PDFView向后翻10页
+(define-key pdf-view-mode-map (kbd "t")                  'kivnn/move-prev-ten-pages)                  ; PDFView向前翻10页
+(define-key pdf-view-mode-map (kbd "b")                  'kivnn/move-next-ten-pages)                  ; PDFView向后翻10页
 (require 'pdf-annot)
 (define-key pdf-annot-minor-mode-map (kbd "C-c C-a C-0") 'pdf-annot-delete)                           ; PDFView删除批注
 (define-key pdf-annot-minor-mode-map (kbd "C-c C-a C-1") 'pdf-annot-add-highlight-markup-annotation)  ; PDFView高亮
@@ -177,7 +177,7 @@
 ;; ========================================
 ;; 关于GNU Emacs
 ;; ========================================
-(define-key org-mode-map (kbd "C-z C-z C-\.")            'my-show-emacs-uptime)                       ; 累计使用GNU Emacs的总时长(site-lisp的bash实现)
+(define-key org-mode-map (kbd "C-z C-z C-\.")            'kivnn/show-emacs-uptime)                    ; 累计使用GNU Emacs的总时长(site-lisp的bash实现)
 
 
 (provide 'key-keybindings)

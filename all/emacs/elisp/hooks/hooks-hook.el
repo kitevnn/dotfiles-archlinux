@@ -13,7 +13,7 @@
 ;; 完成初始化后的钩子hook
 ;; ========================================
 (add-hook 'after-init-hook (lambda () 
-                             (my-close-scratch-and-messages-buffer)
+                             (kivnn/close-scratch-and-messages-buffer)
                              (dashboard-open)))                              ; 初始化钩子
 
 
@@ -29,15 +29,15 @@
 (add-hook 'LaTeX-mode-hook #'tree-sitter-mode)                               ; 在LaTeX-mode使用ts
 (add-hook 'org-mode-hook
           (lambda ()
-            (my-org-table-with-cdlatex)
-            (add-hook 'post-command-hook 'my-org-table-with-cdlatex)))       ; 仅在org-table上下文范围内使用cdlatex的TAB来补全来防止单元格内容不会因org-cycle而被新插入的字符org-self-insert-command而覆盖
-(add-hook 'pdf-view-mode-hook 'my-pdf-view-mode-hook-with-yas)               ; 在PDFView里禁用yasnippet
+            (kivnn/org-table-with-cdlatex)
+            (add-hook 'post-command-hook 'kivnn/org-table-with-cdlatex)))    ; 仅在org-table上下文范围内使用cdlatex的TAB来补全来防止单元格内容不会因org-cycle而被新插入的字符org-self-insert-command而覆盖
+(add-hook 'pdf-view-mode-hook 'kivnn/pdf-view-mode-hook-with-yas)            ; 在PDFView里禁用yasnippet
 
 
 ;; ========================================
 ;; GNU Emacs相关
 ;; ========================================
-(add-hook 'kill-emacs-hook 'my-save-emacs-uptime)                            ; 在退出Emacs时保存当前uptime
+(add-hook 'kill-emacs-hook 'kivnn/save-emacs-uptime)                         ; 在退出Emacs时保存当前uptime
 
 
 (provide 'hooks-hook)

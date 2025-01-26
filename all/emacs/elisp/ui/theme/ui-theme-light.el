@@ -89,8 +89,8 @@
  '(org-todo                 ((t (:background "#ffffff" :foreground "#673ab7"))))                        ; 议程状态
  '(org-upcoming-deadline    ((t (:background "#ffffff" :foreground "#673ab7"))))                        ; 即将过期的
  '(org-default              ((t (:background "#ffffff" :foreground "#37474f"))))                        ; 剩余议程
- '(org-special-keyword      ((t (                      :foreground "#cfd8dc"))))                        ; 控制SCHEDULE与DEADLINE
- '(org-date                 ((t (                      :foreground "#cfd8dc")))))                       ; 控制SCHEDULE与DEADLINE的日期时间
+ '(org-special-keyword      ((t (                      :foreground "#a5acaf"))))                        ; 控制SCHEDULE与DEADLINE
+ '(org-date                 ((t (                      :foreground "#a5acaf")))))                       ; 控制SCHEDULE与DEADLINE的日期时间
 
 ;; ========================================
 ;; 亮色isearch

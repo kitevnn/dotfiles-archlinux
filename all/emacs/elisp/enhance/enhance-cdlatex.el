@@ -31,7 +31,7 @@
       ("ae" "" "\\underset{ ? }{\\overset{   }{\\Longleftrightarrow}} " cdlatex-position-cursor nil nil t)
       ("al" "" "\\underset{ ? }{\\overset{   }{\\Longleftarrow}} " cdlatex-position-cursor nil nil t)
       ("ar" "" "\\underset{ ? }{\\overset{   }{\\Longrightarrow}} " cdlatex-position-cursor nil nil t)
-      ("R" "" "\\Re?" cdlatex-position-cursor nil nil t)
+      ("RR" "" "\\Re?" cdlatex-position-cursor nil nil t)
       ("to" "" "{? \\to }" cdlatex-position-cursor nil nil t)
       ("liml" "" "\\lim_{? \\to } " cdlatex-position-cursor nil nil t)      
       ("intl" "" "\\int_{?}^{} \\mathrm{d} " cdlatex-position-cursor nil nil t)
@@ -47,37 +47,50 @@
           (33 ("\\neq" "" ""))
           (46 ("\\cdot" "\\cdots"))
           (97 ("\\alpha" "" "\\ast"))
-          (39 ("" "" "`"))
           (109 ("\\mu" "" "\\lim"))))
 
 
 ;; ========================================
 ;; cdlatex的括号匹配
 ;; ========================================
-(defun custom-insert-inline-OCDL ()
-  (interactive)
-  (insert "\\[ ")
-  (save-excursion (insert " \\]")))
-(eval-after-load 'org
-  '(define-key org-cdlatex-mode-map (kbd "$")   'custom-insert-inline-OCDL))
-(defun custom-insert-bra-OCDL ()
+(defun kivnn/insert-inline-OCDL (prefix)
+  (interactive "P")
+  (if prefix      
+      (insert "$")
+    (insert "\\[ ")
+    (save-excursion
+      (insert " \\]"))))
+(eval-after-load 'org  
+  '(define-key org-cdlatex-mode-map (kbd "$") 'kivnn/insert-inline-OCDL))
+
+(defun kivnn/insert-bra-OCDL ()
   (interactive)
   (insert "(")
   (save-excursion (insert ")")))
 (eval-after-load 'org
-   '(define-key org-cdlatex-mode-map (kbd "(")   'custom-insert-bra-OCDL))
-(defun custom-insert-sq-bra-OCDL ()
+  '(define-key org-cdlatex-mode-map (kbd "(")   'kivnn/insert-bra-OCDL))
+
+(defun kivnn/insert-sq-bra-OCDL ()
   (interactive)
   (insert "[")
   (save-excursion (insert "]")))
 (eval-after-load 'org
-   '(define-key org-cdlatex-mode-map (kbd "[")   'custom-insert-sq-bra-OCDL))
-(defun custom-insert-curly-bra-OCDL ()
+  '(define-key org-cdlatex-mode-map (kbd "[")   'kivnn/insert-sq-bra-OCDL))
+
+(defun kivnn/insert-curly-bra-OCDL ()
   (interactive)
   (insert "{")
   (save-excursion (insert "}")))
 (eval-after-load 'org
-   '(define-key org-cdlatex-mode-map (kbd "{")   'custom-insert-curly-bra-OCDL))
+   '(define-key org-cdlatex-mode-map (kbd "{")   'kivnn/insert-curly-bra-OCDL))
+
+(defun kivnn/insert-backquote-OCDL (prefix)
+  (interactive "P")
+  (if prefix      
+      (insert "`")
+    (cdlatex-math-symbol)))
+(eval-after-load 'org
+  '(define-key org-cdlatex-mode-map (kbd "`")   'kivnn/insert-backquote-OCDL))
 
 
 (provide 'enhance-cdlatex)
