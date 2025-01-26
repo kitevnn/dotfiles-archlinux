@@ -35,7 +35,7 @@
       ("to" "" "{? \\to }" cdlatex-position-cursor nil nil t)
       ("liml" "" "\\lim_{? \\to } " cdlatex-position-cursor nil nil t)      
       ("intl" "" "\\int_{?}^{} \\mathrm{d} " cdlatex-position-cursor nil nil t)
-      ("iintl" "" "\\iint ? \\mathrm{d} " cdlatex-position-cursor nil nil t)
+      ("iintl" "" "\\iint_{?} \\mathrm{d} " cdlatex-position-cursor nil nil t)
       ("inf" "" "\\infty?" cdlatex-position-cursor nil nil t)
       ("app" "" "\\approx?" cdlatex-position-cursor nil nil t))))
 
