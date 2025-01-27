@@ -32,12 +32,12 @@
         },
         {
             "type": "uptime",
-            "key": "󰅐",
+            "key": "",
             "keyColor": "blue"
         },
         {
             "type": "packages",
-            "key": "󰏖",
+            "key": "",
             "keyColor": "blue"
         },
         {
