@@ -497,4 +497,18 @@
     (insert uptime-output)))
 
 
+;; =======================================
+;; 关于GNU Emacs累计使用总时长
+;; =======================================
+(defun kivnn/smart-backward-kill-word (arg)
+  "抽象C-<BS>的关于kill-ring的默认行为"
+  (interactive "P")
+  (if arg
+    (backward-kill-word 1)
+    (save-excursion
+      (let ((start (point)))
+        (backward-word)
+        (delete-region (point) start)))))
+
+
 (provide 'custom-defun)

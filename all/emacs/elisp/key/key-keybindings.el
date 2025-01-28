@@ -91,6 +91,7 @@
 (global-set-key (kbd "C-z C-z C-\=")                     'consult-ripgrep)                            ; consult版rg搜索
 (global-set-key (kbd "C-z C-z C-e")                      'embark-act)                                 ; embark版action行动
 (global-set-key (kbd "C-z C-x C-h")                      'embark-prefix-help-command)                 ; embark版help帮助
+(global-set-key (kbd "C-<backspace>")                    'kivnn/smart-backward-kill-word)             ; 抽象C-<BS>的关于kill-ring的默认行为
 
 
 ;; ========================================

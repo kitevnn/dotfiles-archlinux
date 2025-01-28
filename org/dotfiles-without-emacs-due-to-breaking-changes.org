@@ -57,17 +57,11 @@
          📁 note
             🔧 note-auctex.el
             🔧 note-orgmode.el
-            🔧 note-orgroam.el      
-         📁 ui
-            📁 decorate
-               🔧 ui-decorate-dashboard.el
-            📁 font
-               🔧 ui-font-sauce.el      
-            📁 icon
-               🔧 ui-icon-nerdfont.el      
-            📁 modeline
-               🔧 ui-modeline-bar.el
+            🔧 note-orgroam.el
+         📁 site-lisp
+            📁 sh
                🔧 battery-percentage.sh
+               🔧 calculate-uptime.sh
                🔧 calendar-day.sh
                🔧 calendar-month.sh
                🔧 calendar-week.sh
@@ -79,6 +73,15 @@
                🔧 time-hour.sh
                🔧 time-minute.sh
                🔧 weather-situation.sh                  
+         📁 ui
+            📁 decorate
+               🔧 ui-decorate-dashboard.el
+            📁 font
+               🔧 ui-font-sauce.el      
+            📁 icon
+               🔧 ui-icon-nerdfont.el      
+            📁 modeline
+               🔧 ui-modeline-bar.el
             📁 theme
                🔧 ui-theme-dark.el
                🔧 ui-theme-light.el         
@@ -357,13 +360,90 @@ fcitx5全家桶配置
 
 
 **** (3) GNU Emacs
+***** 文件结构
+#+begin_quote
+🔧 init.el
+📁 elisp
+   📁 basic
+      🔧 basic-elpa.el
+      🔧 basic-file.el      
+      🔧 basic-init.el
+      🔧 basic-mode.el
+      🔧 basic-path.el      
+   📁 custom
+      🔧 custom-defun.el
+   📁 enhance
+      🔧 enhance-cdlatex.el
+      🔧 enhance-deadgrep.el
+      🔧 enhance-dirvish.el
+      🔧 enhance-history.el
+      🔧 enhance-indentline.el
+      🔧 enhance-magit.el
+      🔧 enhance-minibuffer.el
+      🔧 enhance-pdftools.el
+      🔧 enhance-restart.el
+      🔧 enhance-smartparens.el
+      🔧 enhance-tabs.el
+      🔧 enhance-term.el
+      🔧 enhance-unre.el            
+   📁 hooks
+      🔧 hooks-hook.el               
+   📁 im
+      🔧 im-telega.el                  
+   📁 key
+      🔧 key-keybindings.el                     
+   📁 note
+      🔧 note-auctex.el
+      🔧 note-orgmode.el
+      🔧 note-orgroam.el
+   📁 site-lisp
+      📁 sh
+         🔧 battery-percentage.sh
+         🔧 calculate-uptime.sh
+         🔧 calendar-day.sh
+         🔧 calendar-month.sh
+         🔧 calendar-week.sh
+         🔧 cpu-temperature.sh
+         🔧 disk-usage.sh
+         🔧 distribution.sh
+         🔧 pacman-packages.sh
+         🔧 ram-usage.sh
+         🔧 time-hour.sh
+         🔧 time-minute.sh
+         🔧 weather-situation.sh                  
+   📁 ui
+      📁 decorate
+         🔧 ui-decorate-dashboard.el
+      📁 font
+         🔧 ui-font-sauce.el      
+      📁 icon
+         🔧 ui-icon-nerdfont.el      
+      📁 modeline
+         🔧 ui-modeline-bar.el
+      📁 theme
+         🔧 ui-theme-dark.el
+         🔧 ui-theme-light.el         
+   📁 zprogramming
+      📁 cmp
+         🔧 zprogramming-cmp-corfu.el
+      📁 lsp
+         🔧 zprogramming-lsp-eglot.el
+      📁 mode
+         🔧 zprogramming-mode-cmake.el
+      📁 snips
+         🔧 zprogramming-snips-yasnippet.el
+      📁 ts
+         🔧 zprogramming-ts-treesitter.el      
+#+end_quote
 
-暂时不使用 ~dotfiles.org~ 因为最近有 *大量* 的 ~破坏性更新 - breaking changes~
 
-虽然我自己知道org-mode确实是有 ~org-babel-detangle~ 与 ~org-babel-tangle~ 函数，但此 ~dotfiles.org~ 直到现在因个人任务安排，故暂无测试用例
 
-详细内容还请移步到 ~all/emacs/~ 并下载最新源码获取安装。请见谅。
 
+***** 文件配置
+
+还是请您移步到 ~all/emacs~ 下，获取最新的配置文件，因为近期还是有大量的破坏性更新 ~breaking changes~
+
+请见谅
 
 **** (4) fastfetch
 
