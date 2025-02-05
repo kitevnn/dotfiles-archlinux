@@ -360,57 +360,31 @@
           (search-forward "\\]" nil t))
       (message "No such equation, please check again..."))))
 
-(defun kivnn/inside-escaped-bracket-pair-p ()
-  "判断公式块\[ \]的谓词"
-  (let ((thing (thing-at-point 'line t)))
-    (and thing
-         (string-match-p "\\[.*\\]" thing))))
-
-(defun kivnn/jump-the-previous-equation-formatting ()
-  "光标跳转到上一个公式块前的格式化"
-  (interactive)
-  (if (kivnn/inside-escaped-bracket-pair-p)
-      (search-backward "\\[" nil t)))
-
-(defun kivnn/jump-the-next-equation-formatting ()
-  "光标跳转到下一个公式块前的格式化"
-  (interactive)
-  (if (kivnn/inside-escaped-bracket-pair-p)
-      (search-forward "\\]" nil t)))
-
 (defun kivnn/jump-the-previous-equation ()
   "当光标在公式块\[ \]时，跳转到此上一个公式块的\[ \]"
   (interactive)
-  (kivnn/jump-the-previous-equation-formatting)
-  (if (kivnn/inside-escaped-bracket-pair-p)
-      (progn
-        (forward-char 2)
-        (search-backward "\\[" nil t))
-    (message "no previous equation, please check again...")))
+  (call-interactively 'kivnn/jump-the-beginning-of-the-equation nil)
+  (forward-char 3)
+  (call-interactively 'kivnn/jump-the-beginning-of-the-equation nil)
+  (keyboard-quit))
 
 (defun kivnn/jump-the-next-equation ()
   "当光标在公式块\[ \]时，跳转到此下一个公式块的\[ \]"
   (interactive)
-  (kivnn/jump-the-next-equation-formatting)
-  (if (kivnn/inside-escaped-bracket-pair-p)
-      (progn
-        (backward-char 2)
-        (search-forward "\\]" nil t))
-    (message "no next equation, please check again...")))
+  (call-interactively 'kivnn/jump-the-ending-of-the-equation nil)
+  (backward-char 3)
+  (call-interactively 'kivnn/jump-the-ending-of-the-equation nil)
+  (keyboard-quit))
 
 
 ;; =======================================
-;; 手动更新议程任务信息
+;; 议程任务信息
 ;; =======================================
 (defun kivnn/update-modeline-output-agenda-tasks ()
   "手动更新议程任务信息 TODO: a DOING: b WAIT: c"
   (interactive)
   (kivnn/update-modeline-output-agenda-file-tasks))
 
-
-;; =======================================
-;; 快速更改议程任务信息
-;; =======================================
 (defun kivnn/org-agenda-change-headline-to-done ()
   "将当前任务状态改为DONE"
   (interactive)
