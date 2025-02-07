@@ -385,59 +385,37 @@
   (interactive)
   (kivnn/update-modeline-output-agenda-file-tasks))
 
-(defun kivnn/org-agenda-change-headline-to-done ()
-  "将当前任务状态改为DONE"
-  (interactive)
+(defun kivnn/org-agenda-change-headline-to-what (what)
+  "将当前任务状态改为特定状态"
   (if (org-at-heading-p)
       (progn
         (org-beginning-of-line)
         (forward-word)
         (save-excursion
           (delete-region (point) (progn (backward-word) (point)))
-          (insert "DONE")))
+          (insert what)))
     (progn
       (org-previous-visible-heading 1)
       (org-beginning-of-line)
       (forward-word)
       (save-excursion
         (delete-region (point) (progn (backward-word) (point)))
-        (insert "DONE")))))
+        (insert what)))))
+
+(defun kivnn/org-agenda-change-headline-to-done ()
+  "将当前任务状态改为DONE"
+  (interactive)
+  (kivnn/org-agenda-change-headline-to-what "DONE"))
 
 (defun kivnn/org-agenda-change-headline-to-doing ()
   "将当前任务状态改为DOING"
   (interactive)
-  (if (org-at-heading-p)
-      (progn
-        (org-beginning-of-line)
-        (forward-word)
-        (save-excursion
-          (delete-region (point) (progn (backward-word) (point)))
-          (insert "DOING")))
-    (progn
-      (org-previous-visible-heading 1)
-      (org-beginning-of-line)
-      (forward-word)
-      (save-excursion
-        (delete-region (point) (progn (backward-word) (point)))
-        (insert "WAIT")))))
-
+  (kivnn/org-agenda-change-headline-to-what "DOING"))
+  
 (defun kivnn/org-agenda-change-headline-to-wait ()
   "将当前任务状态改为WAIT"
   (interactive)
-  (if (org-at-heading-p)
-      (progn
-        (org-beginning-of-line)
-        (forward-word)
-        (save-excursion
-          (delete-region (point) (progn (backward-word) (point)))
-          (insert "WAIT")))
-    (progn
-      (org-previous-visible-heading 1)
-      (org-beginning-of-line)
-      (forward-word)
-      (save-excursion
-          (delete-region (point) (progn (backward-word) (point)))
-          (insert "WAIT")))))
+  (kivnn/org-agenda-change-headline-to-what "WAIT"))
 
 
 ;; =======================================
