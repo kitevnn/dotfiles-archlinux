@@ -16,6 +16,8 @@
 (global-set-key (kbd "C-z C-b C-p")                      'previous-buffer)                           ; 跳转到上一个全局buffer
 (global-set-key (kbd "C-z C-b C-b")                      'centaur-tabs-backward)                     ; 跳转到上一个局部buffer
 (global-set-key (kbd "C-z C-b C-f")                      'centaur-tabs-forward)                      ; 跳转到下一个局部buffer
+(global-set-key (kbd "C-z C-b C-\[")                     'previous-buffer)                           ; 跳转到上一个停留的buffer
+(global-set-key (kbd "C-z C-b C-\]")                     'next-buffer)                               ; 跳转到下一个停留的buffer
 
 
 ;; ========================================
