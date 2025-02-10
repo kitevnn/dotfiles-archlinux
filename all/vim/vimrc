@@ -27,33 +27,9 @@ set autochdir
 set textwidth=500
 set conceallevel=0
 set jumpoptions=stack
+set number
 syntax on
 autocmd FileType json set conceallevel=0
-" set tabstop=2
-" set softtabstop=2
-" set shiftwidth=2
-" set autoindent
-" set indentexpr=
-" set foldmethod=indent
-
-" 
-" colorscheme
-" 
-nnoremap <leader><leader>n :colorscheme habamax<CR>
-nnoremap <leader><leader>d :colorscheme delek<CR>
-colorscheme habamax
-
-set cursorline
-set cursorlineopt=number
-autocmd ColorScheme * highlight CursorLineNr cterm=bold term=bold gui=bold
-highlight LineNr ctermfg=238
-:set number
-:augroup numbertoggle
-:   autocmd!
-:   autocmd BufEnter, FocusGained, InsertLeave, WinEnter * if &nu && mode() != "i" | set rnu | endif
-:   autocmd BufLeave, FocusLost, InsertEnter, WinLeave * if &nu | set nornu | endif
-:augroup END
-highlight CursorLineNr ctermfg=179
 
 " 
 " keymapping
@@ -74,7 +50,7 @@ map <down> :res +5<CR>
 map <up> :res -5<CR>
 map <right> :vertical resize -5<CR>
 map <left> :vertical resize +5<CR>
-nnoremap <leader>R :source ~/.vimrc<CR>
+nnoremap <leader>r :source ~/.config/vim/vimrc<CR>
 nnoremap [w :execute 'move -1-'. v:count1<CR>
 nnoremap ]w :execute 'move +'. v:count1<CR>
 vmap <leader>S y/<C-R>"<CR>
@@ -85,6 +61,7 @@ nnoremap M :Lexplore<CR><C-w>l<CR>
 inoremap <C-e> <C-k>
 nnoremap <leader>md :h digraph-table<CR>
 cnoremap <expr> %% getcmdtype()==':'?expand('%:h').'/':'%%'
+nnoremap <leader>f :echo synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name')<CR>
 
 " 
 " macros
@@ -101,6 +78,62 @@ if has("patch-8.1.1564")
 else
   set signcolumn=yes
 endif
+
+"
+" theme
+"
+hi clear
+syntax reset
+set background=dark
+set t_Co=256
+
+" fundamental
+hi Comment       ctermfg=243
+hi String        ctermfg=75 
+hi Number        ctermfg=75
+hi Constant      ctermfg=75 
+hi Identifier    ctermfg=81
+hi Conditional   ctermfg=177
+hi Repeat        ctermfg=75 
+hi Label         ctermfg=12 
+hi Structure     ctermfg=75 
+hi Title         ctermfg=176
+hi Statement     ctermfg=210
+hi Search        ctermfg=237 ctermbg=81
+hi Type          ctermfg=81
+
+" vim-script     
+hi vimMapLhs     ctermfg=210
+hi vimMapRhs     ctermfg=181
+hi vimSetEqual   ctermfg=210
+hi vimUsrCmd     ctermfg=210
+hi vimIsCommand  ctermfg=210
+hi Special       ctermfg=75
+
+" pop-up-menu    
+hi Pmenu         ctermfg=81  ctermbg=237
+hi PmenuSel      ctermfg=237 ctermbg=81
+hi PmenuSbar     ctermfg=81  ctermbg=237
+hi PmenuThumb    ctermfg=237 ctermbg=81
+
+" hl-line
+set cursorline
+set cursorlineopt=number
+autocmd ColorScheme * highlight CursorLineNr cterm=bold term=bold gui=bold
+hi  LineNr       ctermfg=238
+hi! link CursorLineNr PreProc
+
+" tab-line
+hi TabLine       ctermfg=NONE ctermbg=NONE term=underline cterm=underline 
+
+" lisp
+hi  lispSymbol   ctermfg=81
+hi  lispAtomList ctermfg=181
+
+" netrw
+hi  Directory    ctermfg=75
+hi  netrwPlain   ctermfg=210
+
 
 " 
 " plugin
