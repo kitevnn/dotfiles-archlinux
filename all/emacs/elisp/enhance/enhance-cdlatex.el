@@ -31,7 +31,7 @@
       ("or" "" "\\overrightarrow{?} " cdlatex-position-cursor nil t t)
       ("ii" "" "\\textit{?} " cdlatex-position-cursor nil t t)
       ("bb" "" "\\textbf{?} " cdlatex-position-cursor nil t t)
-      ("te" "" "\\text{?} " cdlatex-position-cursor nil t t)
+      ("tt" "" "\\text{?} " cdlatex-position-cursor nil t t)
       ("dd" "" "\\mathrm{d} ?" cdlatex-position-cursor nil t t)
       ("Bb" "" "\\Box ?" cdlatex-position-cursor nil t t)
       ("xl" "" "\\xleftarrow[?]{} " cdlatex-position-cursor nil nil t)      
