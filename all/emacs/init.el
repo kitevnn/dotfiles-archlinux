@@ -67,12 +67,34 @@
    '(auctex bliss-theme cdlatex centaur-tabs cmake-mode corfu dashboard deadgrep
             dirvish eat embark-consult highlight-indent-guides magit marginalia
             nano-theme nerd-icons-corfu nerd-icons-dired nerd-icons-ibuffer
-            orderless org org-roam-ui pdf-tools pkg-info posframe
-            rainbow-identifiers restart-emacs smartparens telega
-            tree-sitter-langs valign vertico vertico-posframe yasnippet-snippets)))
+            orderless org-roam-ui pdf-tools rainbow-identifiers restart-emacs
+            smartparens telega tree-sitter-langs valign vertico-posframe
+            yasnippet-snippets)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(corfu-border ((t (:background "#37474f"))))
+ '(corfu-current ((t (:background "#cfd8dc" :foreground "#37474f"))))
+ '(corfu-default ((t (:background "#ffffff"))))
+ '(dirvish-hl-line ((t (:background "#cfd8dc" :foreground "#37474f"))))
+ '(isearch-fail ((t (:foreground "#37474f" :background "#ffffff"))))
+ '(org-agenda-current-time ((t (:background "#ffffff" :foreground "#673ab7"))))
+ '(org-agenda-date ((t (:background "#ffffff" :foreground "#673ab7"))))
+ '(org-agenda-date-today ((t (:background "#cfd8dc" :foreground "#37474f"))))
+ '(org-agenda-structure ((t (:background "#37474f" :foreground "#ffffff"))))
+ '(org-date ((t (:foreground "#a5acaf"))))
+ '(org-default ((t (:background "#ffffff" :foreground "#37474f"))))
+ '(org-imminent-deadline ((t (:background "#ffffff" :foreground "#37474f"))))
+ '(org-scheduled-previously ((t (:background "#ffffff" :foreground "#cfd8dc"))))
+ '(org-scheduled-today ((t (:background "#ffffff" :foreground "#000000"))))
+ '(org-special-keyword ((t (:foreground "#a5acaf"))))
+ '(org-time-grid ((t (:background "#ffffff" :foreground "#37474f"))))
+ '(org-todo ((t (:background "#ffffff" :foreground "#673ab7"))))
+ '(org-upcoming-deadline ((t (:background "#ffffff" :foreground "#673ab7"))))
+ '(region ((t (:background "#eceff1"))))
+ '(vertico-current ((t (:background "#b5ffd1"))))
+ '(vertico-group-separator ((t (:background "#37474f" :foreground "#ffffff"))))
+ '(vertico-group-title ((t (:background "#37474f" :foreground "#ffffff"))))
+ '(vertico-posframe ((t (:background "#ffffff" :foreground "#37474f")))))
