@@ -57,8 +57,8 @@
   (setq cdlatex-math-symbol-alist
         '((112 ("" "\\pi"))
           (33 ("\\neq" "" ""))
-          (46 ("\\cdot" "\\cdots"))
-          (97 ("\\alpha" "" "\\ast"))
+          (46 ("\\cdot" "\\cdots" "\\ast"))
+          (97 ("\\alpha" ""))
           (109 ("\\mu" "" "\\lim"))))
 
 
