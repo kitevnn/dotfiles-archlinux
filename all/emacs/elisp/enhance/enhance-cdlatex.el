@@ -18,6 +18,8 @@
     '(("Bm" "" "\\begin{Bmatrix}  ? \\end{Bmatrix}" cdlatex-position-cursor nil nil t)
       ("vm" "" "\\begin{vmatrix}  ? \\end{vmatrix}" cdlatex-position-cursor nil nil t)
       ("bm" "" "\\begin{bmatrix}  ? \\end{bmatrix}" cdlatex-position-cursor nil nil t)
+      ("1a2" "" "? \\\\  " cdlatex-position-cursor nil nil t)
+      ("2a1" "" "? &  " cdlatex-position-cursor nil nil t)
       ("2a2" "" "? &  \\\\  &  " cdlatex-position-cursor nil nil t)
       ("2a3" "" "? &  \\\\  &  \\\\  &  " cdlatex-position-cursor nil nil t)
       ("3a2" "" "? &  &  \\\\  &  &  " cdlatex-position-cursor nil nil t)
