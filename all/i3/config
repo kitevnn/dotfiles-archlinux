@@ -12,10 +12,15 @@ exec_always fcitx5
 exec_always picom --backend glx
 exec setxkbmap -option "ctrl:nocaps"
 set $refresh_i3status killall -SIGUSR1 i3status
-exec emacs
+exec emacs-31.0.50
 
 # feh壁纸
 exec --no-startup-id feh --bg-fill "/home/une/.wallpaper/20220518085627.jpg"
+
+# eDP-1笔记本屏幕
+exec --no-startup-id xrandr --output eDP-1 --off
+# HDMI-1外接显示器
+exec --no-startup-id xrandr --output HDMI-1 --auto
 
 # 鼠标绑定
 # + 通过Super_L + Mouse_L，来拖动floating window到别的位置
@@ -32,7 +37,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+O exec alacritty
 bindsym $mod+BackSpace kill
 bindsym $mod+I exec firefox
-bindsym $mod+G exec emacs
+bindsym $mod+G exec emacs-31.0.50
 bindsym $mod+L exec rofi -show window
 bindsym $mod+M exec rofi -show drun
 bindsym $mod+A exec spectacle
