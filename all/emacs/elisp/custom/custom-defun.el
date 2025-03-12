@@ -449,4 +449,21 @@
     (insert uptime-output)))
 
 
+;; =======================================
+;; 关于模拟vim的f(find char)
+;; from GPT 4o
+;; =======================================
+(defun kivnn/expand-region-like-vim-find-char ()
+  "在选区模式下，不改变左边界，只改变选区右边界，来扩展选区"
+  (interactive)
+  (when (use-region-p)
+    (let ((start (region-beginning))
+          (end (region-end))
+          (char (read-char "Find char: ")))
+      (deactivate-mark)
+      (goto-char end)
+      (search-forward (string char) nil t)
+      (set-mark start))))
+
+
 (provide 'custom-defun)
