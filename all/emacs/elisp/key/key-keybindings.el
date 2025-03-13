@@ -16,8 +16,8 @@
 (global-set-key (kbd "C-z C-b C-p")                      'previous-buffer)                           ; 跳转到上一个全局buffer
 (global-set-key (kbd "C-z C-b C-b")                      'centaur-tabs-backward)                     ; 跳转到上一个局部buffer
 (global-set-key (kbd "C-z C-b C-f")                      'centaur-tabs-forward)                      ; 跳转到下一个局部buffer
-(global-set-key (kbd "C-z C-b C-\[")                     'previous-buffer)                           ; 跳转到上一个停留的buffer
-(global-set-key (kbd "C-z C-b C-\]")                     'next-buffer)                               ; 跳转到下一个停留的buffer
+(global-set-key (kbd "C-z C-b C-\,")                     'previous-buffer)                           ; 跳转到上一个停留的buffer
+(global-set-key (kbd "C-z C-b C-\.")                     'next-buffer)                               ; 跳转到下一个停留的buffer
 
 
 ;; ========================================
@@ -109,8 +109,8 @@
 (define-key org-mode-map (kbd "C-z C-x C-b")             'kivnn/jump-the-beginning-of-the-equation)   ; 当光标在\[\]上下文时，光标跳转到\[\]的\]
 (define-key org-mode-map (kbd "C-z C-x C-n")             'kivnn/jump-the-next-equation)               ; 当光标在\[\]上下文时，光标跳转到下一个\[\]
 (define-key org-mode-map (kbd "C-z C-x C-p")             'kivnn/jump-the-previous-equation)           ; 当光标在\[\]上下文时，光标跳转到上一个\[\]
-(define-key org-mode-map (kbd "C-z C-x C-\[")            'org-previous-item)                          ; 跳转到上一个 (1) 2. 3) 的小标题
-(define-key org-mode-map (kbd "C-z C-x C-\]")            'org-next-item)                              ; 跳转到下一个 (1) 2. 3) 的小标题
+(define-key org-mode-map (kbd "C-z C-x C-,")             'org-previous-item)                          ; 跳转到上一个 (1) 2. 3) 的小标题
+(define-key org-mode-map (kbd "C-z C-x C-.")             'org-next-item)                              ; 跳转到下一个 (1) 2. 3) 的小标题
 (global-set-key          (kbd "C-z C-z C-\\")            'org-agenda)                                 ; 打开org议题界面
 (global-set-key          (kbd "C-z C-a C-\\")            'org-agenda)                                 ; 打开org议题界面
 (define-key org-mode-map (kbd "C-z C-a C-\[")            'org-schedule)                               ; 添加org议题的起始时间
