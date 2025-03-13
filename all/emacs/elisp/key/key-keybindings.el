@@ -47,7 +47,7 @@
 (global-set-key (kbd "C-z C-z C-c")                      'set-mark-command)                           ; 进入单行选区
 (global-set-key (kbd "C-z C-x C-c")                      'set-mark-command)                           ; 进入单行选区
 (global-set-key (kbd "C-c SPC")                          'rectangle-mark-mode)                        ; 进入矩形选区
-(global-set-key (kbd "C-z C-z C-s")                      'kivnn/expand-region-like-vim-find-char)
+(global-set-key (kbd "C-z C-z C-s")                      'kivnn/expand-region-like-vim-find-char)     ; 在选区模式下模拟一次vim的f(find char)行为
 
 
 ;; ========================================
@@ -70,6 +70,9 @@
 ;; ========================================
 (global-set-key (kbd "C-z C-z C-d")                      'dirvish-side)                               ; 左侧打开dirvish
 (global-set-key (kbd "C-z C-z C-0")                      'dirvish)                                    ; 全局打开dirvish
+(define-key dired-mode-map (kbd "C-z C-z C-u")           'dired-undo)                                 ; 在dirvish里撤回上次操作
+(define-key dired-mode-map "."                           'dired-create-empty-file)                    ; 在dirvish里创建空文件
+(define-key dired-mode-map ","                           'dired-clean-directory)                      ; 在dirvish里创建新目录
 
 
 ;; ========================================
