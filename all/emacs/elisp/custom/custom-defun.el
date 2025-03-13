@@ -466,4 +466,14 @@
       (set-mark start))))
 
 
+;; =======================================
+;; 关于telega字体大小
+;; from GPT 4o
+;; =======================================
+(defun kivnn/telega-buffer-face-height ()
+  "调整telega的字体大小为1.3倍"
+  (setq buffer-face-mode-face '(:height 1.3))
+  (buffer-face-mode))
+
+
 (provide 'custom-defun)
