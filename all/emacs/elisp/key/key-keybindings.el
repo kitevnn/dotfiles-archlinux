@@ -205,13 +205,17 @@
 ;; =======================================
 ;; 关于音乐播放器
 ;; =======================================
-(with-eval-after-load 'emms
-  (define-key emms-playlist-mode-map (kbd "R")         'emms-toggle-repeat-track)       ; 音乐循环播放
-  (define-key emms-playlist-mode-map (kbd "Q")         'emms-stop)                      ; 停止所有音乐的播放
-  (define-key emms-playlist-mode-map (kbd "S")         'emms-show)                      ; 展示当前所播放的音乐(可设置成modeline信息)
-  (define-key emms-playlist-mode-map (kbd "s")         'emms-playlist-mode-play-smart)  ; 从头播放当前音乐
-  (define-key emms-playlist-mode-map (kbd "f")         nil)                             ; 原功能emms-show
-  (define-key emms-playlist-mode-map (kbd "r")         nil))                            ; 原功能emms-random
+(require 'emms)
+(global-set-key (kbd "C-z C-\m C-\m")                  'emms)                                         ; 打开音乐播放器
+(global-set-key (kbd "C-z C-\m C-d")                   'emms-play-directory)                          ; 播放特定目录的音乐
+(define-key emms-playlist-mode-map   (kbd "R")         'emms-toggle-repeat-track)                     ; 音乐循环播放
+(define-key emms-playlist-mode-map   (kbd "Q")         'emms-stop)                                    ; 停止所有音乐的播放
+(define-key emms-playlist-mode-map   (kbd "S")         'emms-show)                                    ; 展示当前所播放的音乐(可设置成modeline信息)
+(define-key emms-playlist-mode-map   (kbd "s")         'emms-playlist-mode-play-smart)                ; 从头播放当前音乐
+(define-key emms-playlist-mode-map   (kbd "f")         nil)                                           ; 原功能emms-show
+(define-key emms-playlist-mode-map   (kbd "r")         nil)                                           ; 原功能emms-random
+(define-key emms-playlist-mode-map   (kbd "+")         nil)                                           ; 原功能emms-volume-raise
+(define-key emms-playlist-mode-map   (kbd "=")         'emms-volume-raise)                            ; 增加mpv的音量
 
 
 ;; ========================================
