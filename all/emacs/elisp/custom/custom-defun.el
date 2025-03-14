@@ -489,4 +489,22 @@
     (delete-frame)))
 
 
+;; =======================================
+;; 关于个人提交信息模板
+;; =======================================
+(defun kivnn/magit-commit-template ()
+  "个人提交信息模板: 第1次询问标题，第2次询问子项数量"
+  (interactive)
+  (let* ((software (read-string "what's been changed: "))
+         (item-count (read-number "the count of items 1 by defualt): " 1))
+         (commit-msg (concat "更新了 " software " 配置文件\n\n"
+                             (mapconcat (lambda (_) "+") (make-list item-count "+") "\n\n"))))
+    (insert commit-msg)
+    (beginning-of-buffer)
+    (beginning-of-visual-line)
+    (next-line)
+    (forward-char 2)
+    (insert " ")))
+
+
 (provide 'custom-defun)

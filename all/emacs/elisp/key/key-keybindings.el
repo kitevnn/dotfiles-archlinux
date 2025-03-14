@@ -190,6 +190,12 @@
 
 
 ;; ========================================
+;; 关于magit
+;; ========================================
+(define-key text-mode-map (kbd "C-z C-\m C-1")           'kivnn/magit-commit-template)                ; 个人提交信息模板
+
+
+;; ========================================
 ;; 关于GNU Emacs
 ;; ========================================
 (define-key org-mode-map (kbd "C-z C-z C-\.")            'kivnn/show-emacs-uptime)                    ; 累计使用GNU Emacs的总时长(site-lisp的bash实现)
