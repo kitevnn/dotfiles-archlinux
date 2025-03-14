@@ -4,15 +4,6 @@
 
 
 ;; =======================================
-;; 切换主题
-;; =======================================
-(defun kivnn/toggle-light-theme ()
-  "切换主题到nano-light"
-  (lambda () (interactive)    
-    (load-theme     'nano-light t)))
-
-
-;; =======================================
 ;; 光标移动
 ;; =======================================
 (defun kivnn/move-next-five-lines ()
@@ -498,13 +489,12 @@
   (let* ((software (read-string "what's been changed: "))
          (item-count (read-number "the count of items 1 by defualt): " 1))
          (commit-msg (concat "更新了 " software " 配置文件\n\n"
-                             (mapconcat (lambda (_) "+") (make-list item-count "+") "\n\n"))))
+                             (mapconcat (lambda (_) "+ ") (make-list item-count "+ ") "\n\n"))))
     (insert commit-msg)
     (beginning-of-buffer)
     (beginning-of-visual-line)
-    (next-line)
-    (forward-char 2)
-    (insert " ")))
+    (next-line 2)
+    (end-of-visual-line)))
 
 
 (provide 'custom-defun)

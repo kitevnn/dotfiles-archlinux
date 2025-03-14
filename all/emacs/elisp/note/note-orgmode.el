@@ -41,7 +41,7 @@
                                       \\usepackage{amsmath}
                                       \\pagestyle{empty}"
                        :latex-compiler ("xelatex -interaction nonstopmode -output-directory %o %f")
-                       :image-converter ("convert -density 90 %f %O")))
+                       :image-converter ("convert -density 90 -background '#FFFFFF' -flatten -quality 100 %f %O")))
 
 
 ;; ========================================
@@ -49,6 +49,17 @@
 ;; ========================================
 (setq org-todo-keywords
       '((sequence "TODO" "DOING" "WAIT" "DONE" "MY")))
+
+
+;; ========================================
+;; 设置latex-fragment的默认背景颜色
+;; ========================================
+(setq org-format-latex-options
+      `(:foreground default
+                    :background "#FFFFFF"                 
+                    :html-foreground default
+                    :html-background default
+                    :matchers ("\\[")))
 
 
 (provide 'note-orgmode)
