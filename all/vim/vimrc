@@ -1,11 +1,12 @@
 " 
 " init
 " 
+let g:status_line = ""
 let g:current_time = strftime("󰥔 %H:%M ")
 let g:current_os = "󰣇 ArchLinux"
 let g:current_battery = "   " . trim(system("upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage | awk '{print $2}'")) . " "
 hi status_time_hl term=standout ctermfg=224 ctermbg=100
-set statusline=%#status_time_hl#\ %=%{g:current_time}\%{g:current_os}\%{g:current_battery}
+set statusline=%#status_time_hl#\ %{g:status_line}\%=%{g:current_time}\%{g:current_os}\%{g:current_battery}
 
 
 " 
