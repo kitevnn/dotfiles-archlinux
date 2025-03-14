@@ -486,8 +486,8 @@
 (defun kivnn/magit-commit-template ()
   "个人提交信息模板: 第1次询问标题，第2次询问子项数量"
   (interactive)
-  (let* ((software (read-string "what's been changed: "))
-         (item-count (read-number "the count of items 1 by defualt): " 1))
+  (let* ((software (read-string "what's been changed (GNU Emacs by default): " "GNU Emacs"))
+         (item-count (read-number "the count of items (1 by default): " 1))
          (commit-msg (concat "更新了 " software " 配置文件\n\n"
                              (mapconcat (lambda (_) "+ ") (make-list item-count "+ ") "\n\n"))))
     (insert commit-msg)
