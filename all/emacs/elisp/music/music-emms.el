@@ -7,9 +7,16 @@
   :config
   (require 'emms-setup)
   (emms-all)
-  (setq emms-player-list '(emms-player-mpv)) ; 用 mpv 播放
-  (setq emms-source-file-default-directory "~/音乐/") ; 默认音乐目录
-  (setq emms-info-asynchronously t))  ; 异步获取音乐信息
+  ;; mpv 音乐播放器
+  (setq emms-player-list '(emms-player-mpv))
+  (setq emms-source-file-default-directory directory-music)
+  (setq emms-info-asynchronously t))
+
+
+;; ========================================
+;; 切换到主界面emms
+;; ========================================
+(advice-add 'emms-play-directory :after (lambda (&rest _) (emms)))
 
 
 (provide 'music-emms)

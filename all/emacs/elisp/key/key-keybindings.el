@@ -202,6 +202,18 @@
 (global-set-key (kbd "C-z C-z C-j")                      'kivnn/goto-match-paren)                     ; 括号匹配
 
 
+;; =======================================
+;; 关于音乐播放器
+;; =======================================
+(with-eval-after-load 'emms
+  (define-key emms-playlist-mode-map (kbd "R")         'emms-toggle-repeat-track)       ; 音乐循环播放
+  (define-key emms-playlist-mode-map (kbd "Q")         'emms-stop)                      ; 停止所有音乐的播放
+  (define-key emms-playlist-mode-map (kbd "S")         'emms-show)                      ; 展示当前所播放的音乐(可设置成modeline信息)
+  (define-key emms-playlist-mode-map (kbd "s")         'emms-playlist-mode-play-smart)  ; 从头播放当前音乐
+  (define-key emms-playlist-mode-map (kbd "f")         nil)                             ; 原功能emms-show
+  (define-key emms-playlist-mode-map (kbd "r")         nil))                            ; 原功能emms-random
+
+
 ;; ========================================
 ;; 关于GNU Emacs
 ;; ========================================

@@ -12,6 +12,7 @@
 (defvar directory-site-lisp               "elisp/site-lisp/sh/"                           "[目录]: GNU Emacs配置文件路径的modeline部分")
 (defvar directory-org-roam-directory      "~/桌面/back/archlinux/org/GTD/roam/"           "[目录]: org-roam的保存目录")
 (defvar directory-emacs-archive           "archive/"                                      "[目录]: emacs-archive的保存目录")
+(defvar directory-music                   "~/音乐/"                                       "[目录]: music的保存目录")
 
 
 ;; =======================================
