@@ -22,6 +22,14 @@
 
 
 ;; ========================================
+;; 关于buffer
+;; ========================================
+(global-set-key (kbd "C-z C-f C-c")                      'clone-frame)                               ; 克隆复制一个当前的frame
+(global-set-key (kbd "C-z C-f C-d")                      'kivnn/delete-frame-or-other)               ; 删除管理frame
+(global-set-key (kbd "C-z C-f C-n")                      'other-frame)                               ; 切换显示到下一个frame
+
+
+;; ========================================
 ;; 关于theme
 ;; ========================================
 (global-set-key (kbd "C-z C-t C-1")                      'kivnn/load-theme-light)                    ; 切换为亮色light主题

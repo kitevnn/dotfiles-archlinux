@@ -478,4 +478,15 @@
   (buffer-face-mode))
 
 
+;; =======================================
+;; 关于frame删除管理
+;; =======================================
+(defun kivnn/delete-frame-or-other ()
+  "通过 C-u + key 来只保留当前 frame，通过 key 来只关闭当前 frame"
+  (interactive)
+  (if current-prefix-arg
+      (delete-other-frames)
+    (delete-frame)))
+
+
 (provide 'custom-defun)
