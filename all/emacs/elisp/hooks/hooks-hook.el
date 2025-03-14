@@ -15,7 +15,8 @@
 (add-hook 'after-init-hook (lambda ()                                                            
                              (kivnn/close-scratch-and-messages-buffer)                           
                              (dashboard-open)
-                             (kivnn/update-modeline-all-information)))                           ; 初始化钩子
+                             (kivnn/update-modeline-with-all-scripts)))                          ; 初始化钩子
+
 
 
 ;; ========================================                                                      
