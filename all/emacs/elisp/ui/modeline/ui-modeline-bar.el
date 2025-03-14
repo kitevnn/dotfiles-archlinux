@@ -132,6 +132,23 @@
                  (concat user-emacs-directory directory-site-lisp "calculate-uptime.sh")))))
           (if (string-match "Accompanying With GNU Emacs: \\([0-9]+\\) hours, \\([0-9]+\\) minutes, \\([0-9]+\\) seconds" uptime-text)
               (format "%sh %sm" (match-string 1 uptime-text) (match-string 2 uptime-text))))))
+;; ========================================
+;; 音乐播放器
+;; ========================================
+(defun kivnn/update-modeline-play-music ()
+  "获取当前正在播放的音乐文件名"
+  (interactive)
+  (defun kivnn/format-emms-mode-line ()
+    "格式化 emms-mode-line-string 来提取音乐纯文件名"
+    (when (stringp emms-mode-line-string)
+      ;; 去掉属性
+      (let* ((clean-str (substring-no-properties emms-mode-line-string)))
+        (when (string-match ".*/\\([^/]+\\) ]" clean-str)
+          (setq emms-mode-line-string
+                ;; 去掉后缀 ".mp3"
+                (replace-regexp-in-string "\\.mp3$" "" (match-string 1 clean-str)))))))
+  ;; 确保每次播放新音乐时都更新 mode-line
+  (add-hook 'emms-player-started-hook #'kivnn/format-emms-mode-line))
 
 
 ;; ========================================
@@ -151,6 +168,7 @@
 (run-at-time "0 sec" 43200 'kivnn/update-modeline-calendar-week)       ; 每12小时更新一次当前星期信息
 (run-at-time "0 sec" 1800  'kivnn/update-modeline-agenda-file-tasks)   ; 每30分钟更新一次tasks任务信息
 (run-at-time "0 sec" 86400 'kivnn/update-modeline-emacs-uptime)        ; 每24小时更新一次累计使用总时长
+(run-at-time "0 sec" 30    'kivnn/update-modeline-play-music)          ; 每30秒更新一次当前正在播放的音乐名
 
 
 ;; ========================================
@@ -189,7 +207,10 @@
               "-  "
               modeline-agenda-file-name
               "   Acc "
-              modeline-emacs-uptime)))
+              modeline-emacs-uptime
+              "  󰎆 M "
+              emms-mode-line-string
+              emms-playing-time-string)))
 
 
 ;; ========================================

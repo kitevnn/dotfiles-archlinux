@@ -206,8 +206,8 @@
 ;; 关于音乐播放器
 ;; =======================================
 (require 'emms)
-(global-set-key (kbd "C-z C-\m C-\m")                  'emms)                                         ; 打开音乐播放器
-(global-set-key (kbd "C-z C-\m C-d")                   'emms-play-directory)                          ; 播放特定目录的音乐
+(global-set-key (kbd "C-z C-z C-\m")                   'emms)                                         ; 打开音乐播放器
+(global-set-key (kbd "C-z C-z C-,")                    'emms-play-directory)                          ; 播放特定目录的音乐
 (define-key emms-playlist-mode-map   (kbd "R")         'emms-toggle-repeat-track)                     ; 音乐循环播放
 (define-key emms-playlist-mode-map   (kbd "Q")         'emms-stop)                                    ; 停止所有音乐的播放
 (define-key emms-playlist-mode-map   (kbd "S")         'emms-show)                                    ; 展示当前所播放的音乐(可设置成modeline信息)
@@ -221,7 +221,7 @@
 ;; ========================================
 ;; 关于GNU Emacs
 ;; ========================================
-(define-key org-mode-map (kbd "C-z C-z C-\.")            'kivnn/show-emacs-uptime)                    ; 累计使用GNU Emacs的总时长(site-lisp的bash实现)
+(define-key org-mode-map (kbd "C-z C-z C-\.")          'kivnn/show-emacs-uptime)                      ; 累计使用GNU Emacs的总时长(site-lisp的bash实现)
 
 
 (provide 'key-keybindings)
