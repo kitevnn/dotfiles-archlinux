@@ -206,8 +206,7 @@
               "   Acc "
               modeline-emacs-uptime
               "  󰎆 M "
-              emms-mode-line-string
-              emms-playing-time-string)))
+              emms-mode-line-string)))
 
 
 ;; ========================================
