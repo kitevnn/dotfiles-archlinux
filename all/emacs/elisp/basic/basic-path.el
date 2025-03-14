@@ -86,6 +86,12 @@
 (add-to-list 'load-path
              (expand-file-name 
               (concat user-emacs-directory "site-lisp/sh")))
+;; =======================================
+;; 关于音乐播放器
+;; =======================================
+(add-to-list 'load-path
+             (expand-file-name 
+              (concat user-emacs-directory "elisp/music")))
 
 
 (provide 'basic-path)
