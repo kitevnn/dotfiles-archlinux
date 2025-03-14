@@ -14,9 +14,12 @@
 
 
 ;; ========================================
-;; 切换到主界面emms
+;; 切换到主界面emms，并立刻在起初停止播放
 ;; ========================================
-(advice-add 'emms-play-directory :after (lambda (&rest _) (emms)))
+(advice-add 'emms-play-directory :after
+            (lambda (&rest _)
+              (emms)
+              (run-at-time 0.5 nil #'emms-pause)))
 
 
 (provide 'music-emms)
