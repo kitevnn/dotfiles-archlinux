@@ -154,122 +154,124 @@
   "切换为亮色light主题"
   (interactive)
   ;; 亮色初始化
-  (disable-theme 'bliss)                                                                                  ; 关闭暗色主题
-  (load-theme 'nano-light)                                                                                ; 启用亮色主题
-  ;; 亮色tab                                                                                              
-  (custom-set-faces                                                                                       
-   '(tab-line                 ((t (:background "#ffffff")))))                                             ; 标签项
+  (disable-theme 'bliss)
+  (load-theme 'nano-light)
+  ;; 亮色tab
+  (dolist (face-attr '((tab-line :background "#ffffff")))
+    (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 亮色vertico                                                                                           
-  (custom-set-faces                                                                                        
-   '(vertico-group-separator  ((t (:background "#37474f" :foreground "#ffffff"))))                        ; 组分隔线
-   '(vertico-group-title      ((t (:background "#37474f" :foreground "#ffffff"))))                        ; 组标题
-   '(vertico-posframe         ((t (:background "#ffffff" :foreground "#37474f"))))                        ; child frame
-   '(vertico-current          ((t (:background "#b5ffd1" :foreground "#37474f")))))                       ; 当前条目
+  (dolist (face-attr '((vertico-group-separator  :background "#37474f" :foreground "#ffffff")
+                       (vertico-group-title      :background "#37474f" :foreground "#ffffff")
+                       (vertico-posframe         :background "#ffffff" :foreground "#37474f")
+                       (vertico-current          :background "#b5ffd1" :foreground "#37474f")))
+    (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 亮色logo图                                                                                           
   (setq dashboard-startup-banner
-        (concat user-emacs-directory directory-emacs-archive "dashboard-zoom-out-light.png"))             ; 启用亮色logo图
+        (concat user-emacs-directory directory-emacs-archive "dashboard-zoom-out-light.png"))
   (dashboard-refresh-buffer)
   ;; 亮色org-todo-keyword-faces
   (setq org-todo-keyword-faces
         '(("TODO"  . (:foreground "#ffffff" :background "#37474f"))
           ("WAIT"  . (:foreground "#673ab7" :background "#ffffff"))
           ("DOING" . (:foreground "#673ab7" :background "#ffffff"))
-          ("DONE"  . (:foreground "#cfd8dc" :background "#ffffff")))))                                    ; 亮色org-todo-keyword-faces
+          ("DONE"  . (:foreground "#cfd8dc" :background "#ffffff"))))
   ;; 亮色isearch                                                                                           
-  (custom-set-faces                                                                                        
-   '(isearch-fail             ((t (:foreground "#37474f" :background "#ffffff")))))                       ; 未匹配的字符串高亮
+  (dolist (face-attr '((isearch-fail :foreground "#37474f" :background "#ffffff")))
+    (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 亮色agenda                                                                                           
-  (custom-set-faces                                                                                       
-   '(org-agenda-structure     ((t (:background "#37474f" :foreground "#ffffff"))))                        ; 结构信息
-   '(org-agenda-date          ((t (:background "#ffffff" :foreground "#673ab7"))))                        ; 星期信息 
-   '(org-agenda-date-today    ((t (:background "#cfd8dc" :foreground "#37474f"))))                        ; 今天时间
-   '(org-agenda-current-time  ((t (:background "#ffffff" :foreground "#673ab7"))))                        ; 当前时间 
-   '(org-time-grid            ((t (:background "#ffffff" :foreground "#37474f"))))                        ; 时间刻度线
-   '(org-scheduled-today      ((t (:background "#ffffff" :foreground "#000000"))))                        ; 今天的安排 
-   '(org-imminent-deadline    ((t (:background "#ffffff" :foreground "#37474f"))))                        ; 即将到期的议程
-   '(org-scheduled-previously ((t (:background "#ffffff" :foreground "#cfd8dc"))))                        ; 先前完成或先前未完成的议程
-   '(org-todo                 ((t (:background "#ffffff" :foreground "#673ab7"))))                        ; 议程状态
-   '(org-upcoming-deadline    ((t (:background "#ffffff" :foreground "#673ab7"))))                        ; 即将过期的
-   '(org-default              ((t (:background "#ffffff" :foreground "#37474f"))))                        ; 剩余议程
-   '(org-special-keyword      ((t (                      :foreground "#a5acaf"))))                        ; 控制SCHEDULE与DEADLINE
-   '(org-date                 ((t (                      :foreground "#a5acaf")))))                       ; 控制SCHEDULE与DEADLINE的日期时间  
-  (custom-set-faces                                                                                       
-   '(region                   ((t (:background "#eceff1")))))                                             ; 选区
-  ;; 亮色corfu                                                                                            
+  (dolist (face-attr '((org-agenda-structure     :background "#37474f" :foreground "#ffffff")
+                       (org-agenda-date          :background "#ffffff" :foreground "#673ab7")
+                       (org-agenda-date-today    :background "#cfd8dc" :foreground "#37474f")
+                       (org-agenda-current-time  :background "#ffffff" :foreground "#673ab7")
+                       (org-time-grid            :background "#ffffff" :foreground "#37474f")
+                       (org-scheduled-today      :background "#ffffff" :foreground "#000000")
+                       (org-imminent-deadline    :background "#ffffff" :foreground "#37474f")
+                       (org-scheduled-previously :background "#ffffff" :foreground "#cfd8dc")
+                       (org-todo                 :background "#ffffff" :foreground "#673ab7")
+                       (org-upcoming-deadline    :background "#ffffff" :foreground "#673ab7")
+                       (org-default              :background "#ffffff" :foreground "#37474f")
+                       (org-special-keyword                            :foreground "#a5acaf")
+                       (org-date                                       :foreground "#a5acaf")))
+    (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
+  ;; 亮色region
+  (dolist (face-attr '((region  :background "#eceff1")))
+    (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
+  ;; 亮色corfu
   (with-eval-after-load 'corfu                                                                            
-    (custom-set-faces                                                                                     
-     '(corfu-default          ((t (:background "#ffffff"))))                                              ; 补全窗口背景
-     '(corfu-border           ((t (:background "#37474f"))))                                              ; 补全窗口边框
-     '(corfu-current          ((t (:background "#cfd8dc" :foreground "#37474f"))))))                      ; 补全窗口当前条目
-  ;; 亮色dirvish                                                                                    
+    (dolist (face-attr '((corfu-default :background "#ffffff")
+                         (corfu-border  :background "#37474f")
+                         (corfu-current :background "#cfd8dc"  :foreground "#37474f")))
+      (apply #'set-face-attribute (car face-attr) nil (cdr face-attr))))
+  ;; 亮色dirvish
   (with-eval-after-load 'dirvish                                                                    
-    (custom-set-faces                                                                               
-     '(dirvish-hl-line        ((t (:background "#cfd8dc" :foreground "#37474f"))))))                      ; 侧边文件管理器高亮  
+    (dolist (face-attr '((dirvish-hl-line :background "#cfd8dc" :foreground "#37474f")))
+      (apply #'set-face-attribute (car face-attr) nil (cdr face-attr))))
+  ;; 亮色telega
   (with-eval-after-load 'telega
-    '(telega-msg-heading      ((t (:background "#ffffff"))))                                              ; 消息标题颜色
-    '(help-key-binding        ((t (:background "#ffffff" :foreground "#673ab7" :height 90 :box nil)))))   ; 提示帮助颜色
-
+    (dolist (face-attr '((telega-msg-heading  :background "#ffffff" )
+                         (help-key-binding    :background "#ffffff" :foreground "#673ab7" :height 90 :box nil )))
+      (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))))
 
 (defun kivnn/load-theme-dark ()
   "切换为暗色dark主题"
   (interactive)
   ;; 暗色初始化  
-  (disable-theme 'nano-light)                                                                             ; 关闭亮色主题
-  (load-theme 'bliss)                                                                                     ; 启用暗色主题
+  (disable-theme 'nano-light)
+  (load-theme 'bliss)
   ;; 暗色tab
-  (custom-set-faces
-   '(tab-line                 ((t (:background "#191919")))))                                             ; 标签项
+  (dolist (face-attr '((tab-line   :background "#191919" )))
+    (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 暗色vertico
-  (custom-set-faces   
-   '(vertico-group-separator  ((t (:background "#64fbc8" :foreground "#191919"))))                        ; 组分隔线
-   '(vertico-group-title      ((t (:background "#64fbc8" :foreground "#191919"))))                        ; 组标题
-   '(vertico-posframe         ((t (:background "#191919" :foreground "#3bb1df"))))                        ; child frame
-   '(vertico-current          ((t (:background "#444444" :foreground "#67fbc8")))))                       ; 当前条目
+  (dolist (face-attr '((vertico-group-separator :background "#64fbc8" :foreground "#191919")
+                       (vertico-group-title     :background "#64fbc8" :foreground "#191919")
+                       (vertico-posframe        :background "#191919" :foreground "#3bb1df")
+                       (vertico-current         :background "#444444" :foreground "#67fbc8")))
+    (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 暗色logo图
   (setq dashboard-startup-banner
-        (concat user-emacs-directory directory-emacs-archive "dashboard-zoom-out-dark.png"))              ; 启用暗色logo图
+        (concat user-emacs-directory directory-emacs-archive "dashboard-zoom-out-dark.png"))
   (dashboard-refresh-buffer)
   ;; 暗色org-todo-keyword-faces
   (setq org-todo-keyword-faces
         '(("TODO"  . (:foreground "#191919" :background "#64fbc8"))
           ("WAIT"  . (:foreground "#1277a7" :background "#191919"))
           ("DOING" . (:foreground "#3bb1df" :background "#191919"))
-          ("DONE"  . (:foreground "#444444" :background "#191919"))))                                     ; 暗色org-todo-keyword-faces
+          ("DONE"  . (:foreground "#444444" :background "#191919"))))
   ;; 暗色isearch
-  (custom-set-faces
-   '(isearch-fail             ((t (:foreground "#ffffff" :background "#191919")))))                       ; 未匹配的字符串高亮
+  (dolist (face-attr '((isearch-fail :foreground "#ffffff" :background "#191919")))
+    (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 暗色agenda
-  (custom-set-faces
-   '(org-agenda-structure     ((t (:background "#64fbc8" :foreground "#444444"))))                        ; 结构信息
-   '(org-agenda-date          ((t (:background "#191919" :foreground "#64fbc8"))))                        ; 星期信息 
-   '(org-agenda-date-today    ((t (:background "#444444" :foreground "#64fbc8"))))                        ; 今天时间
-   '(org-agenda-current-time  ((t (:background "#444444" :foreground "#64fbc8"))))                        ; 当前时间
-   '(org-time-grid            ((t (:background "#191919" :foreground "#3bb1df"))))                        ; 时间刻度线
-   '(org-scheduled-today      ((t (:background "#191919" :foreground "#ffffff"))))                        ; 今天的安排 
-   '(org-imminent-deadline    ((t (:background "#191919" :foreground "#3bb1df"))))                        ; 即将到期的议程
-   '(org-scheduled-previously ((t (:background "#191919" :foreground "#444444"))))                        ; 先前完成或先前未完成的议程
-   '(org-todo                 ((t (:background "#191919" :foreground "#1277a7"))))                        ; 议程状态
-   '(org-upcoming-deadline    ((t (:background "#191919" :foreground "#64fbc8"))))                        ; 即将过期的
-   '(org-default              ((t (:background "#191919" :foreground "#1277a7"))))                        ; 剩余议程
-   '(org-special-keyword      ((t (                      :foreground "#1277a7"))))                        ; SCHEDULE与DEADLINE   
-   '(org-date                 ((t (                      :foreground "#1277a7")))))                       ; SCHEDULE与DEADLINE的日期时间
-  ;; 暗色set-mark
-  (custom-set-faces
-   '(region                   ((t (:background "#3bb1df" :foreground "#444444")))))                       ; 选区
+  (dolist (face-attr '((org-agenda-structure     :background "#64fbc8" :foreground "#444444")
+                       (org-agenda-date          :background "#191919" :foreground "#64fbc8")
+                       (org-agenda-date-today    :background "#444444" :foreground "#64fbc8")
+                       (org-agenda-current-time  :background "#444444" :foreground "#64fbc8")
+                       (org-time-grid            :background "#191919" :foreground "#3bb1df")
+                       (org-scheduled-today      :background "#191919" :foreground "#ffffff")
+                       (org-imminent-deadline    :background "#191919" :foreground "#3bb1df")
+                       (org-scheduled-previously :background "#191919" :foreground "#444444")
+                       (org-todo                 :background "#191919" :foreground "#1277a7")
+                       (org-upcoming-deadline    :background "#191919" :foreground "#64fbc8")
+                       (org-default              :background "#191919" :foreground "#1277a7")
+                       (org-special-keyword                            :foreground "#1277a7")
+                       (org-date                                       :foreground "#1277a7")))
+    (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
+  ;; 暗色region
+  (dolist (face-attr '((region  :background "#3bb1df" :foreground "#444444")))
+    (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   (with-eval-after-load 'telega
-    (custom-set-faces     
-     '(telega-msg-heading     ((t (:background "#191919"))))                                              ; 消息标题颜色
-     '(help-key-binding       ((t (:background "#191919" :foreground "#64fbc8" :height 90 :box nil))))))  ; 提示帮助颜色
-  ;; 暗色corfu                                                                       
+    (dolist (face-attr '((telega-msg-heading   :background "#191919" )
+                         (help-key-binding     :background "#191919" :foreground "#64fbc8" :height 90 :box nil )))
+      (apply #'set-face-attribute (car face-attr) nil (cdr face-attr))))
+  ;; 暗色corfu
   (with-eval-after-load 'corfu                                                       
-    (custom-set-faces                                                                
-     '(corfu-default          ((t (:background "#191919" :foreground "#3bb1df"))))                        ; 补全窗口背景
-     '(corfu-border           ((t (:background "#37474f"))))                                              ; 补全窗口边框
-     '(corfu-current          ((t (:background "#444444" :foreground "#64fbc8"))))))                      ; 补全窗口当前条目
+    (dolist (face-attr '((corfu-default        :background "#191919" :foreground "#3bb1df" )
+                         (corfu-border         :background "#37474f" )
+                         (corfu-current        :background "#444444" :foreground "#64fbc8" )))
+      (apply #'set-face-attribute (car face-attr) nil (cdr face-attr))))
   ;; 暗色dirvish
   (with-eval-after-load 'dirvish
-    (custom-set-faces
-     '(dirvish-hl-line        ((t (:background "#444444" :foreground "#64fbc8")))))))                     ; 侧边文件管理器高亮
+    (dolist (face-attr '((dirvish-hl-line       :background "#444444" :foreground "#64fbc8")))
+      (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))))
 
 
 ;; =======================================
