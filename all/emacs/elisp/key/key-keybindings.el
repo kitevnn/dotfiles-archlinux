@@ -196,6 +196,12 @@
 (define-key text-mode-map (kbd "C-z C-z C-2")            'kivnn/magit-commit-template)                ; 个人提交信息模板
 
 
+;; =======================================
+;; 关于括号匹配parentheses
+;; =======================================
+(global-set-key (kbd "C-z C-z C-j")                      'kivnn/goto-match-paren)                     ; 括号匹配
+
+
 ;; ========================================
 ;; 关于GNU Emacs
 ;; ========================================

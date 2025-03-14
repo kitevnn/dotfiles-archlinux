@@ -497,4 +497,20 @@
     (end-of-visual-line)))
 
 
+;; =======================================
+;; 关于括号匹配parentheses
+;; =======================================
+(defun kivnn/goto-match-paren (arg)
+  "括号匹配parentheses"
+  (interactive "P")
+  (cond
+    ;; 括号匹配: () [] {}
+   ((eq (char-after) ?\() (forward-sexp 1))
+   ((eq (char-after) ?\[) (forward-sexp 1))
+   ((eq (char-after) ?\{) (forward-sexp 1))
+   ((eq (char-before) ?\)) (backward-sexp 1))
+   ((eq (char-before) ?\]) (backward-sexp 1))
+   ((eq (char-before) ?\}) (backward-sexp 1))))
+
+
 (provide 'custom-defun)
