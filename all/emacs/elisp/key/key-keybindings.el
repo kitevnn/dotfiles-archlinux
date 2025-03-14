@@ -196,6 +196,14 @@
 (define-key text-mode-map (kbd "C-z C-z C-2")            'kivnn/magit-commit-template)                ; 个人提交信息模板
 
 
+;; ========================================
+;; 关于进程process
+;; ========================================
+(require 'telega)
+(define-key telega-chat-mode-map       (kbd "M-n")       'kivnn/move-next-five-lines)                 ; 光标向下移动5行
+(define-key telega-chat-mode-map       (kbd "M-p")       'kivnn/move-prev-five-lines)                 ; 光标向上移动5行
+
+
 ;; =======================================
 ;; 关于括号匹配parentheses
 ;; =======================================
@@ -216,6 +224,8 @@
 (define-key emms-playlist-mode-map   (kbd "r")         nil)                                           ; 原功能emms-random
 (define-key emms-playlist-mode-map   (kbd "+")         nil)                                           ; 原功能emms-volume-raise
 (define-key emms-playlist-mode-map   (kbd "=")         'emms-volume-raise)                            ; 增加mpv的音量
+(define-key emms-playlist-mode-map   (kbd "M-n")       'kivnn/move-next-five-lines)                   ; 光标向下移动5行
+(define-key emms-playlist-mode-map   (kbd "M-p")       'kivnn/move-prev-five-lines)                   ; 光标向上移动5行
 
 
 ;; ========================================
