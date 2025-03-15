@@ -48,4 +48,10 @@
 (add-hook 'telega-chat-mode-hook                        'kivnn/telega-buffer-face-height)        ; 调整telega的聊天界面字体大小为1.3倍
 
 
+;; ========================================
+;; theme相关
+;; ========================================
+(add-hook 'after-init-hook                              'kivnn/load-theme-light)                 ; 保证最开始打开时一定是亮色主题
+
+
 (provide 'hooks-hook)
