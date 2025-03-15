@@ -520,12 +520,13 @@
   "Seek sixty seconds forward."
   (lambda ()
   (when emms-player-playing-p
-    (emms-player-seek 60)))
+    (emms-player-seek 60))))
 (defun emms-seek-backward-minute ()
   "Seek sixty seconds backward."
+  (lambda ()
   (interactive)
   (when emms-player-playing-p
-    (emms-player-seek (- 60))))
+    (emms-player-seek (- 60)))))
 
 
 (provide 'custom-defun)
