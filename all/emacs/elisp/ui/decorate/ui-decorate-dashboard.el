@@ -21,25 +21,9 @@
   ;; ========================================
   (setq dashboard-set-navigator t)
   (setq dashboard-navigator-buttons
-        `(
-          (
-           ;; Recent Files
-           (,
-            "  最近 R" ""
-            (lambda (&rest _) (consult-recent-file))
-            nil "")
-
-           ;; Bookmarks
-           (,
-            "  书签 B" ""
-            (lambda (&rest _) (bookmark-bmenu-list))
-            nil "")
-
-           ;; Agenda
-           (,
-            "󱇘  议程 A" ""
-            (lambda (&rest _) (org-agenda))
-            nil ""))))
+        `(((,"  最近 R" "" (lambda (&rest _) (consult-recent-file)) nil "")  ; Recent Files
+           (,"  书签 B" "" (lambda (&rest _) (bookmark-bmenu-list)) nil "")  ; Bookmarks
+           (,"󱇘  议程 A" "" (lambda (&rest _) (org-agenda)) nil ""))))  ; Agenda
 
   ;; ========================================
   ;; 设置要展示的dashboard信息
