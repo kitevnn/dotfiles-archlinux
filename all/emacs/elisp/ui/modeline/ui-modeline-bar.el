@@ -164,35 +164,50 @@
 
 
 ;; ========================================
-;; 关于状态栏
+;; 关于modeline
 ;; ========================================
 (defun kivnn/update-modeline-with-all-scripts ()
-  "显示状态栏除议程数量之外的信息"
+  "显示modeline信息"
   (setq global-mode-string
-        (list "   󰃯 " ;
-              modeline-calendar-month
-              modeline-calendar-day
-              "  "                           
-              modeline-time-hour
-              ":"
-              modeline-time-minute
-              "  "
-              (format "󰄒 TODO %d " modeline-agenda-todo-count)
-              (format "󱞿 DOING %d " modeline-agenda-doing-count)
-              (format "󰝕 WAIT %d " modeline-agenda-wait-count)
-              "-  "
-              modeline-agenda-file-name
-              "   ."
-              modeline-battery-percentage
-              "  "
-              modeline-cpu-temperature
-              "°C"
-              " 󰄨 "
-              modeline-ram-usage             
-              "   Acc "
-              modeline-emacs-uptime
-              "  󰎆 M "
-              emms-mode-line-string)))
+        (list
+         "  "
+         (format "󰄒 TODO %d " modeline-agenda-todo-count)
+         (format "󱞿 DOING %d " modeline-agenda-doing-count)
+         (format "󰝕 WAIT %d " modeline-agenda-wait-count)
+         "-  "
+         modeline-agenda-file-name))
+  (setq-default mode-line-format
+                '("%e"
+                  mode-line-mule-info
+                  mode-line-client
+                  mode-line-modified
+                  mode-line-remote
+                  mode-line-frame-identification
+                  mode-line-buffer-identification
+                  "   "
+                  mode-line-position
+                  (vc-mode vc-mode)
+                  "  "
+                  mode-line-modes
+                  modeline-calendar-month
+                  modeline-calendar-day
+                  "  "                           
+                  modeline-time-hour
+                  ":"
+                  modeline-time-minute
+                  "   ."
+                  modeline-battery-percentage
+                  "  "
+                  modeline-cpu-temperature
+                  "°C"
+                  " 󰄨 "
+                  modeline-ram-usage             
+                  global-mode-string
+                  mode-line-format-right-align
+                  "   Acc "
+                  modeline-emacs-uptime
+                  "  󰎆 M "
+                  emms-mode-line-string)))
 
 
 ;; ========================================
