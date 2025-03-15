@@ -235,6 +235,13 @@
 (define-key emms-playlist-mode-map   (kbd "M-p")       'kivnn/move-prev-five-lines)                   ; 光标向上移动5行
 
 
+;; =======================================
+;; 关于face
+;; =======================================
+(global-set-key (kbd "C-z C-z C-/")                    'describe-text-properties)                     ; 展示光标所在行的所有face名称
+
+
+
 ;; ========================================
 ;; 关于GNU Emacs
 ;; ========================================
