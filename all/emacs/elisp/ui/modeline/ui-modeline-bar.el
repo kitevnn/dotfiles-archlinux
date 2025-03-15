@@ -195,13 +195,14 @@
                   modeline-time-hour
                   ":"
                   modeline-time-minute
-                  "   ."
+                  "    ."
                   modeline-battery-percentage
                   "  "
                   modeline-cpu-temperature
                   "°C"
                   " 󰄨 "
                   modeline-ram-usage             
+                  " "
                   global-mode-string
                   mode-line-format-right-align
                   "   Acc "
