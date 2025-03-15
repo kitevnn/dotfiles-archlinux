@@ -238,7 +238,7 @@
 ;; =======================================
 ;; 关于face
 ;; =======================================
-(global-set-key (kbd "C-z C-z C-/")                    'describe-text-properties)                     ; 展示光标所在行的所有face名称
+(global-set-key (kbd "C-z C-z C-/")                    'kivnn/describe-faces-at-point)                ; 展示光标所在行的所有face名称及属性
 
 
 

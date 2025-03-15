@@ -598,4 +598,21 @@
     (emms-player-seek (- 60)))))
 
 
+;; =======================================
+;; 关于face
+;; =======================================
+(defun kivnn/describe-faces-at-point ()
+  "显示光标所在行的所有face名称及属性"
+  (interactive)
+  (let ((faces ()))
+    (save-excursion
+      (beginning-of-line)
+      (while (not (eolp))
+        (let ((face (get-text-property (point) 'face)))
+          (when face
+            (add-to-list 'faces face)))
+        (forward-char)))
+    (message "current-face: %s" faces)))
+
+
 (provide 'custom-defun)
