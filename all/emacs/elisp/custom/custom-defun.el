@@ -513,4 +513,19 @@
    ((eq (char-before) ?\}) (backward-sexp 1))))
 
 
+;; =======================================
+;; 关于音乐前进后退emms
+;; =======================================
+(defun emms-seek-forward-minute ()
+  "Seek sixty seconds forward."
+  (lambda ()
+  (when emms-player-playing-p
+    (emms-player-seek 60)))
+(defun emms-seek-backward-minute ()
+  "Seek sixty seconds backward."
+  (interactive)
+  (when emms-player-playing-p
+    (emms-player-seek (- 60))))
+
+
 (provide 'custom-defun)
