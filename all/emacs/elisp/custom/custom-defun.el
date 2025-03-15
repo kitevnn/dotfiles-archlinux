@@ -644,6 +644,7 @@
         (insert (format "📦 合计包: %s\n" modeline-pacman-packages))
         (insert (format "⚡ 电量: %s\n" modeline-battery-percentage))
         (insert (format "🌡️ 处理器温度: %s°C \n" modeline-cpu-temperature))
+        (insert (format "📟 内存: %s \n" modeline-ram-usage))
         (insert (format  "👥 陪伴时间: %s\n" modeline-emacs-uptime))
         (insert (format  "🎧 正在播放: %s\n" emms-mode-line-string))
         (insert (format "⌛ 时间：%s\n" (format-time-string "%H:%M")))        

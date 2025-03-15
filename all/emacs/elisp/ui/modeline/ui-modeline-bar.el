@@ -152,15 +152,20 @@
 ;; ========================================
 ;; 定期更新变量数据
 ;; ========================================
-(run-at-time "0 sec" 180   'kivnn/update-modeline-time-hour)           ; 每3分钟更新一次时间小时信息
-(run-at-time "0 sec" 60    'kivnn/update-modeline-time-minute)         ; 每1分钟更新一次时间分钟信息
-(run-at-time "0 sec" 43200 'kivnn/update-modeline-calendar-day)        ; 每12小时更新一次日历月份信息
 (run-at-time "0 sec" 86400 'kivnn/update-modeline-calendar-month)      ; 每24小时更新一次日历月份信息
+(run-at-time "0 sec" 43200 'kivnn/update-modeline-calendar-day)        ; 每12小时更新一次日历月份信息
+(run-at-time "0 sec" 43200 'kivnn/update-modeline-calendar-week)       ; 每12小时更新一次当前星期信息
+(run-at-time "0 sec" 1800  'kivnn/update-modeline-weather-situation)   ; 每30分钟更新一次当前天气信息
+(run-at-time "0 sec" 86400 'kivnn/update-modeline-distribution)        ; 每1天更新一次发行版信息
+(run-at-time "0 sec" 86400 'kivnn/update-modeline-disk-usage)          ; 每1天更新一次磁盘使用量信息
+(run-at-time "0 sec" 43200 'kivnn/update-modeline-pacman-packages)     ; 每12小时更新一次包总数信息
 (run-at-time "0 sec" 120   'kivnn/update-modeline-battery-percentage)  ; 每2分钟更新一次电池信息
 (run-at-time "0 sec" 15    'kivnn/update-modeline-cpu-temperature)     ; 每15秒更新一次CPU温度信息
 (run-at-time "0 sec" 15    'kivnn/update-modeline-ram-usage)           ; 每15秒更新一次内存使用量信息
-(run-at-time "0 sec" 1800  'kivnn/update-modeline-agenda-file-tasks)   ; 每30分钟更新一次tasks任务信息
 (run-at-time "0 sec" 86400 'kivnn/update-modeline-emacs-uptime)        ; 每24小时更新一次累计使用总时长
+(run-at-time "0 sec" 180   'kivnn/update-modeline-time-hour)           ; 每3分钟更新一次时间小时信息
+(run-at-time "0 sec" 60    'kivnn/update-modeline-time-minute)         ; 每1分钟更新一次时间分钟信息
+(run-at-time "0 sec" 1800  'kivnn/update-modeline-agenda-file-tasks)   ; 每30分钟更新一次tasks任务信息
 
 
 ;; ========================================
