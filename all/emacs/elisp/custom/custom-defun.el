@@ -206,6 +206,35 @@
     (dolist (face-attr '((telega-msg-heading  :background "#ffffff" )
                          (help-key-binding    :background "#ffffff" :foreground "#673ab7" :height 90 :box nil )))
       (apply #'set-face-attribute (car face-attr) nil (cdr face-attr))))
+  ;; 亮色magit
+  (with-eval-after-load 'magit
+    (dolist (face-attr '(;; 一级界面
+                         (magit-hash                                                  :foreground "#673ab7" :box nil)
+                         (magit-log-author                                            :foreground "#ffab91")
+                         (magit-log-date                                              :foreground "#37474f")
+                         (magit-branch-current                                        :foreground "#673ab7" :box nil)
+                         (magit-branch-remote                                         :foreground "#673ab7" :box nil)
+                         (magit-section-heading                 :background "#ffffff" :foreground "#37474f")           
+                         (magit-section-highlight               :background "#fafafa" :foreground "#37474f")
+                         ;; 日志界面
+                         (magit-diff-hunk-heading               :background "#ffffff" :foreground "#37474f")
+                         (magit-diff-hunk-heading-highlight     :background "#ffffff" :foreground "#37474f")
+                         (magit-diff-added                      :background "#ffffff" :foreground "#673ab7")
+                         (magit-diff-added-highlight            :background "#ffffff" :foreground "#673ab7")
+                         (magit-diff-removed                    :background "#ffffff" :foreground "#ffab91")
+                         (magit-diff-removed-highlight          :background "#ffffff" :foreground "#ffab91")
+                         (magit-diff-context                    :background "#ffffff" :foreground "#90a4ae")
+                         (magit-diff-context-highlight          :background "#ffffff" :foreground "#37474f")
+                         ;; 细节差异                            
+                         (magit-diff-file-heading               :background "#ffffff" :foreground "#ffab91" :box t)
+                         (magit-diff-file-heading-highlight     :background "#ffffff" :foreground "#ffab91" :box t)
+                         (magit-diffstat-added                  :background "#ffffff" :foreground "#673ab7")
+                         (magit-diffstat-removed                :background "#ffffff" :foreground "#ffab91")
+                         (magit-filename                        :background "#ffffff" :foreground "#673ab7")
+                         ;; 整体差异
+                         (magit-diff-revision-summary           :background "#37474f" :foreground "#ffffff")
+                         (magit-diff-revision-summary-highlight :background "#37474f" :foreground "#ffffff")))
+      (apply #'set-face-attribute (car face-attr) nil (cdr face-attr))))  
   (previous-buffer))
 
 (defun kivnn/load-theme-dark ()
@@ -276,30 +305,31 @@
   ;; 暗色magit
   (with-eval-after-load 'magit
     (dolist (face-attr '(;; 一级界面
-                         (magit-hash                                              :foreground "#3bb1df" :box nil )
+                         (magit-hash                                              :foreground "#3bb1df" :box nil)
                          (magit-log-author                                        :foreground "#64fbc8")
                          (magit-log-date                                          :foreground "#3bb1df")
                          (magit-branch-current                                    :foreground "#1277a7" :box nil)
+                         (magit-branch-remote                                     :foreground "#1277a7" :box nil)
                          (magit-section-heading             :background "#191919" :foreground "#3bb1df")
-                         (magit-section-highlight           :background "#191919" :foreground "#3bb1df")
-                         ;; 日志界面                   
-                         (magit-diff-hunk-heading           :background "#3bb1df" :foreground "#191919")
-                         (magit-diff-hunk-heading-highlight :background "#3bb1df" :foreground "#191919")
-                         (magit-diff-added                  :background "#191919" :foreground "#64fbc8")                            
-                         (magit-diff-base-highlight         :background "#191919" :foreground "#64fbc8")                   
-                         (magit-diff-added-highlight        :background "#191919" :foreground "#3bb1df")                  
-                         (magit-diff-base                   :background "#191919" :foreground "#3bb1df")                             
-                         (magit-diff-context-highlight      :background "#191919" :foreground "#3bb1df")                                       
-                         (magit-diff-context                :background "#191919" :foreground "#3bb1df")                         
+                         (magit-section-highlight           :background "#191919" :foreground "#64fbc8")
+                         ;; 日志界面
+                         (magit-diff-hunk-heading           :background "#191919" :foreground "#3bb1df")
+                         (magit-diff-hunk-heading-highlight :background "#191919" :foreground "#3bb1df")
+                         (magit-diff-added                  :background "#191919" :foreground "#3bb1df")
+                         (magit-diff-added-highlight        :background "#191919" :foreground "#3bb1df")
                          (magit-diff-removed                :background "#191919" :foreground "#64fbc8")
                          (magit-diff-removed-highlight      :background "#191919" :foreground "#64fbc8")
-                         ;; 比较差异
-                         (magit-diff-file-heading           :background "#191919" :foreground "#64fbc8")             
-                         (magit-diff-file-heading-highlight :background "#191919" :foreground "#64fbc8")   
-                         (magit-diff-file-heading-selection :background "#191919" :foreground "#64fbc8")   
-                         (magit-diffstat-added              :background "#191919" :foreground "#3bb1df")                
-                         (magit-diffstat-removed            :background "#191919" :foreground "#64fbc8")                                      
-                         (magit-filename                    :background "#191919" :foreground "#64fbc8" :box t)))
+                         (magit-diff-context                :background "#191919" :foreground "#3bb1df")
+                         (magit-diff-context-highlight      :background "#191919" :foreground "#3bb1df")
+                         ;; 细节差异
+                         (magit-diff-file-heading           :background "#191919" :foreground "#64fbc8" :box t)
+                         (magit-diff-file-heading-highlight :background "#191919" :foreground "#64fbc8" :box t)
+                         (magit-diffstat-added              :background "#191919" :foreground "#3bb1df")
+                         (magit-diffstat-removed            :background "#191919" :foreground "#64fbc8")
+                         (magit-filename                    :background "#191919" :foreground "#3bb1df")
+                         ;; 整体差异
+                         (magit-diff-revision-summary  :background "#3bb1df" :foreground "#191919")
+                         (magit-diff-revision-summary-highlight   :background "#3bb1df" :foreground "#191919")))
       (apply #'set-face-attribute (car face-attr) nil (cdr face-attr))))
   (previous-buffer))
 
