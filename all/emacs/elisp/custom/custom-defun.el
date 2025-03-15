@@ -148,13 +148,13 @@
   (disable-theme 'bliss)
   (load-theme 'nano-light)
   ;; 亮色tab
-  (dolist (face-attr '((tab-line :background "#ffffff")))
+  (dolist (face-attr '((tab-line                                :background "#ffffff")))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 亮色vertico                                                                                           
-  (dolist (face-attr '((vertico-group-separator  :background "#37474f" :foreground "#ffffff")
-                       (vertico-group-title      :background "#37474f" :foreground "#ffffff")
-                       (vertico-posframe         :background "#ffffff" :foreground "#37474f")
-                       (vertico-current          :background "#b5ffd1" :foreground "#37474f")))
+  (dolist (face-attr '((vertico-group-separator                 :background "#37474f" :foreground "#ffffff")
+                       (vertico-group-title                     :background "#37474f" :foreground "#ffffff")
+                       (vertico-posframe                        :background "#ffffff" :foreground "#37474f")
+                       (vertico-current                         :background "#b5ffd1" :foreground "#37474f")))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 亮色logo图                                                                                           
   (setq dashboard-startup-banner
@@ -162,49 +162,53 @@
   (dashboard-refresh-buffer)
   ;; 亮色org-todo-keyword-faces
   (setq org-todo-keyword-faces
-        '(("TODO"  . (:foreground "#ffffff" :background "#37474f"))
-          ("WAIT"  . (:foreground "#673ab7" :background "#ffffff"))
-          ("DOING" . (:foreground "#673ab7" :background "#ffffff"))
-          ("DONE"  . (:foreground "#cfd8dc" :background "#ffffff"))))
+        '(("TODO"  . (:background "#37474f" :foreground "#ffffff"))
+          ("WAIT"  . (:background "#ffffff" :foreground "#673ab7"))
+          ("DOING" . (:background "#ffffff" :foreground "#673ab7"))
+          ("DONE"  . (:background "#ffffff" :foreground "#cfd8dc"))))
   ;; 亮色isearch                                                                                           
-  (dolist (face-attr '((isearch-fail :foreground "#37474f" :background "#ffffff")))
+  (dolist (face-attr '((isearch-fail                            :background "#ffffff" :foreground "#37474f")))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 亮色agenda                                                                                           
-  (dolist (face-attr '((org-agenda-structure     :background "#37474f" :foreground "#ffffff")
-                       (org-agenda-date          :background "#ffffff" :foreground "#673ab7")
-                       (org-agenda-date-today    :background "#cfd8dc" :foreground "#37474f")
-                       (org-agenda-current-time  :background "#ffffff" :foreground "#673ab7")
-                       (org-time-grid            :background "#ffffff" :foreground "#37474f")
-                       (org-scheduled-today      :background "#ffffff" :foreground "#000000")
-                       (org-imminent-deadline    :background "#ffffff" :foreground "#37474f")
-                       (org-scheduled-previously :background "#ffffff" :foreground "#cfd8dc")
-                       (org-todo                 :background "#ffffff" :foreground "#673ab7")
-                       (org-upcoming-deadline    :background "#ffffff" :foreground "#673ab7")
-                       (org-default              :background "#ffffff" :foreground "#37474f")
-                       (org-special-keyword                            :foreground "#a5acaf")
-                       (org-date                                       :foreground "#a5acaf")))
+  (dolist (face-attr '((org-agenda-structure                    :background "#37474f" :foreground "#ffffff")
+                       (org-agenda-date                         :background "#ffffff" :foreground "#673ab7")
+                       (org-agenda-date-today                   :background "#cfd8dc" :foreground "#37474f")
+                       (org-agenda-current-time                 :background "#ffffff" :foreground "#673ab7")
+                       (org-time-grid                           :background "#ffffff" :foreground "#37474f")
+                       (org-scheduled-today                     :background "#ffffff" :foreground "#000000")
+                       (org-imminent-deadline                   :background "#ffffff" :foreground "#37474f")
+                       (org-scheduled-previously                :background "#ffffff" :foreground "#cfd8dc")
+                       (org-todo                                :background "#ffffff" :foreground "#673ab7")
+                       (org-upcoming-deadline                   :background "#ffffff" :foreground "#673ab7")
+                       (org-default                             :background "#ffffff" :foreground "#37474f")
+                       (org-special-keyword                                           :foreground "#a5acaf")
+                       (org-date                                                      :foreground "#a5acaf")))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 亮色region
-  (dolist (face-attr '((region  :background "#eceff1")))
+  (dolist (face-attr '((region                                  :background "#eceff1")))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 亮色emms
-  (dolist (face-attr '((emms-playlist-selected-face :background "#37474f" :foreground "#ffffff")
-                       (emms-playlist-track-face                          :foreground "#673ab7")))
+  (dolist (face-attr '((emms-playlist-selected-face             :background "#37474f" :foreground "#ffffff")
+                       (emms-playlist-track-face                                      :foreground "#673ab7")))
+    (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
+  ;; 亮色bracket
+  (dolist (face-attr '((show-paren-match                        :background "#37474f" :foreground "#ffffff" :weight bold)
+                       (show-paren-mismatch                     :background "#673ab7" :foreground "#ffffff" :weight bold)))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 亮色corfu
   (with-eval-after-load 'corfu                                                                            
-    (dolist (face-attr '((corfu-default :background "#ffffff")
-                         (corfu-border  :background "#37474f")
-                         (corfu-current :background "#cfd8dc"  :foreground "#37474f")))
+    (dolist (face-attr '((corfu-default                         :background "#ffffff")
+                         (corfu-border                          :background "#37474f")
+                         (corfu-current                         :background "#cfd8dc" :foreground "#37474f")))
       (apply #'set-face-attribute (car face-attr) nil (cdr face-attr))))
   ;; 亮色dirvish
   (with-eval-after-load 'dirvish                                                                    
-    (dolist (face-attr '((dirvish-hl-line :background "#cfd8dc" :foreground "#37474f")))
+    (dolist (face-attr '((dirvish-hl-line                       :background "#cfd8dc" :foreground "#37474f")))
       (apply #'set-face-attribute (car face-attr) nil (cdr face-attr))))
   ;; 亮色telega
   (with-eval-after-load 'telega
-    (dolist (face-attr '((telega-msg-heading  :background "#ffffff" )
-                         (help-key-binding    :background "#ffffff" :foreground "#673ab7" :height 90 :box nil )))
+    (dolist (face-attr '((telega-msg-heading                    :background "#ffffff")
+                         (help-key-binding                      :background "#ffffff" :foreground "#673ab7" :height 90 :box nil)))
       (apply #'set-face-attribute (car face-attr) nil (cdr face-attr))))
   ;; 亮色magit
   (with-eval-after-load 'magit
@@ -234,7 +238,7 @@
                          ;; 整体差异
                          (magit-diff-revision-summary           :background "#37474f" :foreground "#ffffff")
                          (magit-diff-revision-summary-highlight :background "#37474f" :foreground "#ffffff")))
-      (apply #'set-face-attribute (car face-attr) nil (cdr face-attr))))  
+      (apply #'set-face-attribute (car face-attr) nil (cdr face-attr))))
   (previous-buffer))
 
 (defun kivnn/load-theme-dark ()
@@ -244,13 +248,13 @@
   (disable-theme 'nano-light)
   (load-theme 'bliss)
   ;; 暗色tab
-  (dolist (face-attr '((tab-line   :background "#191919" )))
+  (dolist (face-attr '((tab-line                                :background "#191919" )))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 暗色vertico
-  (dolist (face-attr '((vertico-group-separator :background "#64fbc8" :foreground "#191919")
-                       (vertico-group-title     :background "#64fbc8" :foreground "#191919")
-                       (vertico-posframe        :background "#191919" :foreground "#3bb1df")
-                       (vertico-current         :background "#444444" :foreground "#67fbc8")))
+  (dolist (face-attr '((vertico-group-separator                 :background "#64fbc8" :foreground "#191919")
+                       (vertico-group-title                     :background "#64fbc8" :foreground "#191919")
+                       (vertico-posframe                        :background "#191919" :foreground "#3bb1df")
+                       (vertico-current                         :background "#444444" :foreground "#67fbc8")))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 暗色logo图
   (setq dashboard-startup-banner
@@ -258,49 +262,53 @@
   (dashboard-refresh-buffer)
   ;; 暗色org-todo-keyword-faces
   (setq org-todo-keyword-faces
-        '(("TODO"  . (:foreground "#191919" :background "#64fbc8"))
-          ("WAIT"  . (:foreground "#1277a7" :background "#191919"))
-          ("DOING" . (:foreground "#3bb1df" :background "#191919"))
-          ("DONE"  . (:foreground "#444444" :background "#191919"))))
+        '(("TODO"  . (:background "#64fbc8" :foreground "#191919"))
+          ("WAIT"  . (:background "#191919" :foreground "#1277a7"))
+          ("DOING" . (:background "#191919" :foreground "#3bb1df"))
+          ("DONE"  . (:background "#191919" :foreground "#444444"))))
   ;; 暗色isearch
-  (dolist (face-attr '((isearch-fail :foreground "#ffffff" :background "#191919")))
+  (dolist (face-attr '((isearch-fail                            :background "#191919" :foreground "#ffffff")))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 暗色agenda
-  (dolist (face-attr '((org-agenda-structure     :background "#64fbc8" :foreground "#444444")
-                       (org-agenda-date          :background "#191919" :foreground "#64fbc8")
-                       (org-agenda-date-today    :background "#444444" :foreground "#64fbc8")
-                       (org-agenda-current-time  :background "#444444" :foreground "#64fbc8")
-                       (org-time-grid            :background "#191919" :foreground "#3bb1df")
-                       (org-scheduled-today      :background "#191919" :foreground "#ffffff")
-                       (org-imminent-deadline    :background "#191919" :foreground "#3bb1df")
-                       (org-scheduled-previously :background "#191919" :foreground "#444444")
-                       (org-todo                 :background "#191919" :foreground "#1277a7")
-                       (org-upcoming-deadline    :background "#191919" :foreground "#64fbc8")
-                       (org-default              :background "#191919" :foreground "#1277a7")
-                       (org-special-keyword                            :foreground "#1277a7")
-                       (org-date                                       :foreground "#1277a7")))
+  (dolist (face-attr '((org-agenda-structure                    :background "#64fbc8" :foreground "#444444")
+                       (org-agenda-date                         :background "#191919" :foreground "#64fbc8")
+                       (org-agenda-date-today                   :background "#444444" :foreground "#64fbc8")
+                       (org-agenda-current-time                 :background "#444444" :foreground "#64fbc8")
+                       (org-time-grid                           :background "#191919" :foreground "#3bb1df")
+                       (org-scheduled-today                     :background "#191919" :foreground "#ffffff")
+                       (org-imminent-deadline                   :background "#191919" :foreground "#3bb1df")
+                       (org-scheduled-previously                :background "#191919" :foreground "#444444")
+                       (org-todo                                :background "#191919" :foreground "#1277a7")
+                       (org-upcoming-deadline                   :background "#191919" :foreground "#64fbc8")
+                       (org-default                             :background "#191919" :foreground "#1277a7")
+                       (org-special-keyword                                           :foreground "#1277a7")
+                       (org-date                                                      :foreground "#1277a7")))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 暗色region
-  (dolist (face-attr '((region  :background "#3bb1df" :foreground "#444444")))
+  (dolist (face-attr '((region                                  :background "#3bb1df" :foreground "#444444")))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 暗色emms
-  (dolist (face-attr '((emms-playlist-selected-face :background "#444444" :foreground "#64fbc8")
-                       (emms-playlist-track-face                          :foreground "#3bb1df")))
+  (dolist (face-attr '((emms-playlist-selected-face             :background "#444444" :foreground "#64fbc8")
+                       (emms-playlist-track-face                                      :foreground "#3bb1df")))
+    (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
+  ;; 暗色bracket
+  (dolist (face-attr '((show-paren-match                        :background "#3bb1df" :foreground "#191919" :weight bold)
+                       (show-paren-mismatch                     :background "#64fbc8" :foreground "#191919" :weight bold)))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 暗色corfu
   (with-eval-after-load 'corfu                                                       
-    (dolist (face-attr '((corfu-default        :background "#191919" :foreground "#3bb1df" )
-                         (corfu-border         :background "#37474f" )
-                         (corfu-current        :background "#444444" :foreground "#64fbc8" )))
+    (dolist (face-attr '((corfu-default                         :background "#191919" :foreground "#3bb1df")
+                         (corfu-border                          :background "#37474f" )
+                         (corfu-current                         :background "#444444" :foreground "#64fbc8")))
       (apply #'set-face-attribute (car face-attr) nil (cdr face-attr))))
   ;; 暗色dirvish
   (with-eval-after-load 'dirvish
-    (dolist (face-attr '((dirvish-hl-line       :background "#444444" :foreground "#64fbc8")))
+    (dolist (face-attr '((dirvish-hl-line                       :background "#444444" :foreground "#64fbc8")))
       (apply #'set-face-attribute (car face-attr) nil (cdr face-attr))))
   ;; 暗色telega
   (with-eval-after-load 'telega
-    (dolist (face-attr '((telega-msg-heading   :background "#191919" )
-                         (help-key-binding     :background "#191919" :foreground "#64fbc8" :height 90 :box nil )))
+    (dolist (face-attr '((telega-msg-heading                    :background "#191919")
+                         (help-key-binding                      :background "#191919" :foreground "#64fbc8" :height 90 :box nil)))
       (apply #'set-face-attribute (car face-attr) nil (cdr face-attr))))
   ;; 暗色magit
   (with-eval-after-load 'magit

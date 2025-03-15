@@ -189,6 +189,7 @@
                   (vc-mode vc-mode)
                   "  "
                   mode-line-modes
+                  "  "
                   modeline-calendar-month
                   modeline-calendar-day
                   "  "                           
