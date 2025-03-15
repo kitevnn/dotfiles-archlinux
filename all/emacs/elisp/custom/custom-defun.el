@@ -187,6 +187,10 @@
   ;; 亮色region
   (dolist (face-attr '((region  :background "#eceff1")))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
+  ;; 亮色emms
+  (dolist (face-attr '((emms-playlist-selected-face :background "#37474f" :foreground "#ffffff")
+                       (emms-playlist-track-face                          :foreground "#673ab7")))
+    (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 亮色corfu
   (with-eval-after-load 'corfu                                                                            
     (dolist (face-attr '((corfu-default :background "#ffffff")
@@ -249,10 +253,10 @@
   ;; 暗色region
   (dolist (face-attr '((region  :background "#3bb1df" :foreground "#444444")))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
-  (with-eval-after-load 'telega
-    (dolist (face-attr '((telega-msg-heading   :background "#191919" )
-                         (help-key-binding     :background "#191919" :foreground "#64fbc8" :height 90 :box nil )))
-      (apply #'set-face-attribute (car face-attr) nil (cdr face-attr))))
+  ;; 暗色emms
+  (dolist (face-attr '((emms-playlist-selected-face :background "#444444" :foreground "#64fbc8")
+                       (emms-playlist-track-face                          :foreground "#3bb1df")))
+    (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 暗色corfu
   (with-eval-after-load 'corfu                                                       
     (dolist (face-attr '((corfu-default        :background "#191919" :foreground "#3bb1df" )
@@ -262,6 +266,11 @@
   ;; 暗色dirvish
   (with-eval-after-load 'dirvish
     (dolist (face-attr '((dirvish-hl-line       :background "#444444" :foreground "#64fbc8")))
+      (apply #'set-face-attribute (car face-attr) nil (cdr face-attr))))
+  ;; 暗色telega
+  (with-eval-after-load 'telega
+    (dolist (face-attr '((telega-msg-heading   :background "#191919" )
+                         (help-key-binding     :background "#191919" :foreground "#64fbc8" :height 90 :box nil )))
       (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))))
 
 

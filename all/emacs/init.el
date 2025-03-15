@@ -31,6 +31,7 @@
 (require 'enhance-tabs)
 (require 'enhance-term)
 (require 'enhance-history)
+(require 'music-emms)
 (require 'ui-font-sauce)
 (require 'ui-icon-nerdfont)
 (require 'ui-theme-light)
@@ -46,7 +47,6 @@
 (require 'zprogramming-ts-treesitter)
 (require 'zprogramming-mode-cmake)
 (require 'im-telega)
-(require 'music-emms)
 (require 'key-keybindings)
 
 ;; =======================================
