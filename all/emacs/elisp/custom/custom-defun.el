@@ -618,4 +618,41 @@
     (message "current-face: %s" faces)))
 
 
+;; =======================================
+;; 关于状态仪表盘
+;; from GPT 4o
+;; =======================================
+(defun kivnn/status-monitor-update ()
+  "状态仪表盘"
+  (let ((buf (get-buffer-create "*Status Monitor*")))
+    (with-current-buffer buf
+      (let ((inhibit-read-only t)) ;; 允许修改 buffer
+        (erase-buffer)
+        (insert (format "📅 天干地支: %s%s\n" modeline-calendar-month modeline-calendar-day))
+        (insert (format "🗓️ 今天是: %s\n" modeline-calendar-week))
+        (insert (format "💨 今天温度：%s\n" modeline-weather-situation))
+        (insert (format "💻 发行版: %s\n" modeline-distribution))        
+        (insert (format "📂 磁盘已使用：%s\n" modeline-disk-usage))
+        (insert (format "📦 合计包: %s\n" modeline-pacman-packages))
+        (insert (format "⚡ 电量: %s\n" modeline-battery-percentage))
+        (insert (format "🌡️ 处理器温度: %s°C \n" modeline-cpu-temperature))
+        (insert (format  "👥 陪伴时间: %s\n" modeline-emacs-uptime))
+        (insert (format  "🎧 正在播放: %s\n" emms-mode-line-string))
+        (insert (format "⌛ 时间：%s\n" (format-time-string "%H:%M")))        
+      (setq buffer-read-only t)))))
+
+(defun kivnn/status-monitor-start ()
+  "打开状态仪表盘，并每30秒更新一次"
+  (interactive)
+  (kivnn/status-monitor-update)
+  (pop-to-buffer "*Status Monitor*")
+  (run-with-timer 1 30 #'kivnn/status-monitor-update))
+
+(defun kivnn/status-monitor-stop ()
+  "关闭状态仪表盘，并关闭更新"
+  (interactive)
+  (cancel-function-timers #'kivnn/status-monitor-update)
+  (message "状态监视已停止。"))
+
+
 (provide 'custom-defun)

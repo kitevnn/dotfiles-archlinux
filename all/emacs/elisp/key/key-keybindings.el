@@ -241,6 +241,12 @@
 (global-set-key (kbd "C-z C-z C-/")                    'kivnn/describe-faces-at-point)                ; 展示光标所在行的所有face名称及属性
 
 
+;; =======================================
+;; 关于状态仪表盘
+;; =======================================
+(global-set-key (kbd "C-z C-z C-;")                    'kivnn/status-monitor-start)                   ; 打开状态仪表盘
+(global-set-key (kbd "C-z C-z C-'")                    'kivnn/status-monitor-stop)                    ; 关闭状态仪表盘
+
 
 ;; ========================================
 ;; 关于GNU Emacs
