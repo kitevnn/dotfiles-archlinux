@@ -137,6 +137,9 @@
 (define-key org-mode-map (kbd "C-z C-a C-d")             'kivnn/org-agenda-change-headline-to-done)   ; 将当前任务状态改为DONE
 (global-unset-key (kbd "C-,"))                                                                        ; 屏蔽C-, (原功能: 直接进入org-agenda-files)
 (global-set-key (kbd "C-z C-a C-,")                      'org-cycle-agenda-files)                     ; 直接进入org-agenda-files
+(define-key org-mode-map (kbd "C-z C-o C-a")             'kivnn/org-download-clipboard-and-rename)    ; 先保存剪贴板图片再重命名图片文件名
+(define-key org-mode-map (kbd "C-z C-o C-t")             'kivnn/org-download-delete)                  ; 删除图片信息并删除图片文件
+(define-key org-mode-map (kbd "C-z C-o C-r")             'kivnn/org-download-rename-at-point)         ; 重命名图片信息并重命名图片文件
 
 
 ;; ========================================

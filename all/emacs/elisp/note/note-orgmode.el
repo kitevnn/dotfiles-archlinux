@@ -62,4 +62,13 @@
                     :matchers ("\\[")))
 
 
+;; ========================================
+;; 设置org-download
+;; ========================================
+(use-package org-download
+             :ensure t
+             :defer nil
+             :after org)
+
+
 (provide 'note-orgmode)
