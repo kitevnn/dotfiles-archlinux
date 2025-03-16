@@ -12,8 +12,7 @@
 ;; ========================================                                                      
 ;; 完成初始化后的钩子hook                                                                        
 ;; ========================================                                                      
-(add-hook 'after-init-hook (lambda ()                                                            
-                             (kivnn/close-scratch-and-messages-buffer)                           
+(add-hook 'after-init-hook (lambda ()
                              (dashboard-open)
                              (kivnn/update-modeline-with-all-scripts)))                          ; 初始化钩子
 
@@ -52,6 +51,19 @@
 ;; theme相关
 ;; ========================================
 (add-hook 'after-init-hook                              'kivnn/load-theme-light)                 ; 保证最开始打开时一定是亮色主题
+
+
+;; ========================================
+;; buffer相关
+;; ========================================
+(setq-default kivnn/kill-scratch-buffer nil)
+(add-hook 'dashboard-mode-hook
+          (lambda ()           
+            (when (get-buffer "*scratch*") (kill-buffer "*scratch*"))
+            (unless kivnn/kill-scratch-buffer
+              (when (get-buffer "*Messages*")
+                (kill-buffer "*Messages*")
+                (setq-default kivnn/kill-scratch-buffer t)))))                                   ; 保证一直关闭scratch，保证只关闭第一次Message
 
 
 (provide 'hooks-hook)

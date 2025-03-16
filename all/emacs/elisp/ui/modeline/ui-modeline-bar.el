@@ -201,7 +201,7 @@
                   modeline-time-hour
                   ":"
                   modeline-time-minute
-                  "    ."
+                  "     "
                   modeline-battery-percentage
                   "  "
                   modeline-cpu-temperature

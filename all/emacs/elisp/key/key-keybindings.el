@@ -20,10 +20,11 @@
 (global-set-key (kbd "C-z C-b C-f")                      'centaur-tabs-forward)                      ; 跳转到下一个局部buffer
 (global-set-key (kbd "C-z C-b C-\,")                     'previous-buffer)                           ; 跳转到上一个停留的buffer
 (global-set-key (kbd "C-z C-b C-\.")                     'next-buffer)                               ; 跳转到下一个停留的buffer
+(global-set-key (kbd "C-z C-b C-e")                      'view-echo-area-messages)                   ; 打开*Message*的buffer
 
 
 ;; ========================================
-;; 关于buffer
+;; 关于frame
 ;; ========================================
 (global-set-key (kbd "C-z C-f C-c")                      'clone-frame)                               ; 克隆复制一个当前的frame
 (global-set-key (kbd "C-z C-f C-d")                      'kivnn/delete-frame-or-other)               ; 删除管理frame

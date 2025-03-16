@@ -351,17 +351,6 @@
 
 
 ;; =======================================
-;; 关于保存特定的buffer
-;; =======================================
-(defun kivnn/close-scratch-and-messages-buffer ()
-  "禁用Messages与scratch"
-    (when (get-buffer "*scratch*")
-      (kill-buffer "*scratch*") 
-    (when (get-buffer "*Messages*") 
-      (kill-buffer "*Messages*"))))
-
-
-;; =======================================
 ;; 动态选择引擎来渲染
 ;; from chatGPT 4o
 ;; =======================================
