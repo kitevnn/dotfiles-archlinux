@@ -1,7 +1,7 @@
 " 
 " init
 " 
-let g:status_line = ""
+let g:status_line = ""
 let g:current_time = strftime("󰥔 %H:%M ")
 let g:current_os = "󰣇 ArchLinux"
 let g:current_battery = "   " . trim(system("upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage | awk '{print $2}'")) . " "
