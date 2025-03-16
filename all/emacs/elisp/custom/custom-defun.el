@@ -508,12 +508,14 @@
       (append-to-file (point-min) (point-max)  (concat user-emacs-directory directory-emacs-archive "uptime")))))
 
 (defun kivnn/show-emacs-uptime ()
-  "通过site-lisp的sh脚本实现，获取Emacs的累计使用总时长"
+  "通过site-lisp的sh脚本实现，获取Emacs的累计使用总时长(在org-mode下插入，在非org-mode下打印)"
   (interactive)
   (let ((uptime-output
          (string-trim (shell-command-to-string
                        (concat user-emacs-directory directory-site-lisp "calculate-uptime.sh")))))
-    (insert uptime-output)))
+    (if (derived-mode-p 'org-mode)
+        (insert uptime-output)
+      (message "%s" uptime-output))))
 
 
 ;; =======================================

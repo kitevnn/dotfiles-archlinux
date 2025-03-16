@@ -257,7 +257,7 @@
 ;; ========================================
 ;; 关于GNU Emacs
 ;; ========================================
-(define-key org-mode-map (kbd "C-z C-z C-\.")          'kivnn/show-emacs-uptime)                      ; 累计使用GNU Emacs的总时长(site-lisp的bash实现)
+(global-set-key (kbd "C-z C-z C-\.")                   'kivnn/show-emacs-uptime)                      ; 累计使用GNU Emacs的总时长(site-lisp的bash实现)
 
 
 (provide 'key-keybindings)
