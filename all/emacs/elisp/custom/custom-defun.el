@@ -169,7 +169,7 @@
   ;; 亮色isearch                                                                                           
   (dolist (face-attr '((isearch-fail                            :background "#ffffff" :foreground "#37474f")))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
-  ;; 亮色agenda                                                                                           
+  ;; 亮色org
   (dolist (face-attr '((org-agenda-structure                    :background "#37474f" :foreground "#ffffff")
                        (org-agenda-date                         :background "#ffffff" :foreground "#673ab7")
                        (org-agenda-date-today                   :background "#cfd8dc" :foreground "#37474f")
@@ -182,7 +182,11 @@
                        (org-upcoming-deadline                   :background "#ffffff" :foreground "#673ab7")
                        (org-default                             :background "#ffffff" :foreground "#37474f")
                        (org-special-keyword                                           :foreground "#a5acaf")
-                       (org-date                                                      :foreground "#a5acaf")))
+                       (org-date                                                      :foreground "#a5acaf")
+                       (org-block                               :background "#fafafa"                      )
+                       (org-table                               :background "#ffffff" :foreground "#90a4ae")
+                       (org-code                                :background "#ffffff" :foreground "#673ab7")
+                       (bold                                    :background "#ffffff" :foreground "#37474f" :weight bold)))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 亮色region
   (dolist (face-attr '((region                                  :background "#eceff1")))
@@ -254,7 +258,7 @@
   (dolist (face-attr '((vertico-group-separator                 :background "#64fbc8" :foreground "#191919")
                        (vertico-group-title                     :background "#64fbc8" :foreground "#191919")
                        (vertico-posframe                        :background "#191919" :foreground "#3bb1df")
-                       (vertico-current                         :background "#444444" :foreground "#67fbc8")))
+                       (vertico-current                         :background "#444444" :foreground "#64fbc8")))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 暗色logo图
   (setq dashboard-startup-banner
@@ -269,7 +273,7 @@
   ;; 暗色isearch
   (dolist (face-attr '((isearch-fail                            :background "#191919" :foreground "#ffffff")))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
-  ;; 暗色agenda
+  ;; 暗色org
   (dolist (face-attr '((org-agenda-structure                    :background "#64fbc8" :foreground "#444444")
                        (org-agenda-date                         :background "#191919" :foreground "#64fbc8")
                        (org-agenda-date-today                   :background "#444444" :foreground "#64fbc8")
@@ -282,7 +286,11 @@
                        (org-upcoming-deadline                   :background "#191919" :foreground "#64fbc8")
                        (org-default                             :background "#191919" :foreground "#1277a7")
                        (org-special-keyword                                           :foreground "#1277a7")
-                       (org-date                                                      :foreground "#1277a7")))
+                       (org-date                                                      :foreground "#1277a7")
+                       (org-block                               :background "#2a2a2a"                      )
+                       (org-table                               :background "#191919" :foreground "#616161")
+                       (org-code                                :background "#191919" :foreground "#3bb1df")
+                       (bold                                    :background "#191919" :foreground "#64fbc8" :weight bold)))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 暗色region
   (dolist (face-attr '((region                                  :background "#3bb1df" :foreground "#444444")))

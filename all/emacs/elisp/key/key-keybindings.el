@@ -226,6 +226,8 @@
 (define-key emms-playlist-mode-map   (kbd "]")         'emms-seek-forward)                            ; 快进10秒
 (define-key emms-playlist-mode-map   (kbd "{")         'emms-seek-backward-minute)                    ; 后退60秒
 (define-key emms-playlist-mode-map   (kbd "}")         'emms-seek-forward-minute)                     ; 快进60秒
+(define-key emms-playlist-mode-map   (kbd "C-{")       'emms-seek-backward-song)                      ; 后退180秒
+(define-key emms-playlist-mode-map   (kbd "C-}")       'emms-seek-forward-song)                       ; 快进180秒
 (define-key emms-playlist-mode-map   (kbd "f")         nil)                                           ; 原功能emms-show
 (define-key emms-playlist-mode-map   (kbd "r")         nil)                                           ; 原功能emms-random
 (define-key emms-playlist-mode-map   (kbd "+")         nil)                                           ; 原功能emms-volume-raise
