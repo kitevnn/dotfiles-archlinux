@@ -186,7 +186,6 @@
 ;; 关于进程process
 ;; ========================================
 (global-set-key (kbd "C-z C-p C-e")                      'telega)                                     ; 打开telega
-(global-set-key (kbd "C-z C-p C-d")                      'deadgrep)                                   ; 打开deapgrep
 (global-set-key (kbd "C-z C-p C-s")                      'eshell)                                     ; 开启eshell壳
 (global-set-key (kbd "C-z C-p C-t")                      'eat)                                        ; 开启eat终端模拟器
 (global-set-key (kbd "C-c C-p C-l")                      'eglot)                                      ; 开启eglot语言服务客户端
@@ -220,31 +219,44 @@
 (require 'emms)
 (global-set-key (kbd "C-z C-z C-\m")                   'emms)                                         ; 打开音乐播放器
 (global-set-key (kbd "C-z C-z C-,")                    'emms-play-directory)                          ; 播放特定目录的音乐
-(define-key emms-playlist-mode-map   (kbd "R")         'emms-toggle-repeat-track)                     ; 音乐循环播放
-(define-key emms-playlist-mode-map   (kbd "Q")         'emms-stop)                                    ; 停止所有音乐的播放
-(define-key emms-playlist-mode-map   (kbd "S")         'emms-show)                                    ; 展示当前所播放的音乐(可设置成modeline信息)
-(define-key emms-playlist-mode-map   (kbd "<SPC>")     'emms-pause)                                   ; 暂停播放/开始播放
-(define-key emms-playlist-mode-map   (kbd "s")         'emms-playlist-mode-play-smart)                ; 从头播放当前音乐
-(define-key emms-playlist-mode-map   (kbd "=")         'emms-volume-raise)                            ; 增加mpv的音量
-(define-key emms-playlist-mode-map   (kbd "[")         'emms-seek-backward)                           ; 后退10秒
-(define-key emms-playlist-mode-map   (kbd "]")         'emms-seek-forward)                            ; 快进10秒
-(define-key emms-playlist-mode-map   (kbd "{")         'emms-seek-backward-minute)                    ; 后退60秒
-(define-key emms-playlist-mode-map   (kbd "}")         'emms-seek-forward-minute)                     ; 快进60秒
-(define-key emms-playlist-mode-map   (kbd "C-{")       'emms-seek-backward-song)                      ; 后退180秒
-(define-key emms-playlist-mode-map   (kbd "C-}")       'emms-seek-forward-song)                       ; 快进180秒
-(define-key emms-playlist-mode-map   (kbd "f")         nil)                                           ; 原功能emms-show
-(define-key emms-playlist-mode-map   (kbd "r")         nil)                                           ; 原功能emms-random
-(define-key emms-playlist-mode-map   (kbd "+")         nil)                                           ; 原功能emms-volume-raise
-(define-key emms-playlist-mode-map   (kbd "<")         nil)                                           ; 原功能emms-seek-backward
-(define-key emms-playlist-mode-map   (kbd ">")         nil)                                           ; 原功能emms-seek-forward
-(define-key emms-playlist-mode-map   (kbd "M-n")       'kivnn/move-next-five-lines)                   ; 光标向下移动5行
-(define-key emms-playlist-mode-map   (kbd "M-p")       'kivnn/move-prev-five-lines)                   ; 光标向上移动5行
+(define-key emms-playlist-mode-map (kbd "R")           'emms-toggle-repeat-track)                     ; 音乐循环播放
+(define-key emms-playlist-mode-map (kbd "Q")           'emms-stop)                                    ; 停止所有音乐的播放
+(define-key emms-playlist-mode-map (kbd "S")           'emms-show)                                    ; 展示当前所播放的音乐(可设置成modeline信息)
+(define-key emms-playlist-mode-map (kbd "<SPC>")       'emms-pause)                                   ; 暂停播放/开始播放
+(define-key emms-playlist-mode-map (kbd "s")           'emms-playlist-mode-play-smart)                ; 从头播放当前音乐
+(define-key emms-playlist-mode-map (kbd "=")           'emms-volume-raise)                            ; 增加mpv的音量
+(define-key emms-playlist-mode-map (kbd "[")           'emms-seek-backward)                           ; 后退10秒
+(define-key emms-playlist-mode-map (kbd "]")           'emms-seek-forward)                            ; 快进10秒
+(define-key emms-playlist-mode-map (kbd "{")           'emms-seek-backward-minute)                    ; 后退60秒
+(define-key emms-playlist-mode-map (kbd "}")           'emms-seek-forward-minute)                     ; 快进60秒
+(define-key emms-playlist-mode-map (kbd "C-{")         'emms-seek-backward-song)                      ; 后退180秒
+(define-key emms-playlist-mode-map (kbd "C-}")         'emms-seek-forward-song)                       ; 快进180秒
+(define-key emms-playlist-mode-map (kbd "f")           nil)                                           ; 原功能emms-show
+(define-key emms-playlist-mode-map (kbd "r")           nil)                                           ; 原功能emms-random
+(define-key emms-playlist-mode-map (kbd "+")           nil)                                           ; 原功能emms-volume-raise
+(define-key emms-playlist-mode-map (kbd "<")           nil)                                           ; 原功能emms-seek-backward
+(define-key emms-playlist-mode-map (kbd ">")           nil)                                           ; 原功能emms-seek-forward
+(define-key emms-playlist-mode-map (kbd "M-n")         'kivnn/move-next-five-lines)                   ; 光标向下移动5行
+(define-key emms-playlist-mode-map (kbd "M-p")         'kivnn/move-prev-five-lines)                   ; 光标向上移动5行
 
 
 ;; =======================================
 ;; 关于face
 ;; =======================================
 (global-set-key (kbd "C-z C-z C-/")                    'kivnn/describe-faces-at-point)                ; 展示光标所在行的所有face名称及属性
+
+
+;; ========================================
+;; 关于deadgrep
+;; ========================================
+(require 'deadgrep)
+(global-set-key (kbd "C-z C-x C-r")                    'deadgrep)                                     ; 打开deapgrep
+(define-key deadgrep-mode-map (kbd "c")                'deadgrep-cycle-search-case)                   ; 大写改小写快捷键
+(define-key deadgrep-mode-map (kbd "d")                'deadgrep-directory)                           ; 大写改小写快捷键
+(define-key deadgrep-mode-map (kbd "f")                'deadgrep-cycle-files)                         ; 大写改小写快捷键
+(define-key deadgrep-mode-map (kbd "i")                'deadgrep-incremental)                         ; 大写改小写快捷键
+(define-key deadgrep-mode-map (kbd "s")                'deadgrep-search-term)                         ; 大写改小写快捷键
+(define-key deadgrep-mode-map (kbd "t")                'deadgrep-cycle-search-type)                   ; 大写改小写快捷键
 
 
 ;; =======================================

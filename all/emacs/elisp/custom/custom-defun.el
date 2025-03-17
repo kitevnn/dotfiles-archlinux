@@ -53,25 +53,6 @@
 
 
 ;; =======================================
-;; 自动添加文本
-;; =======================================
-(defun kivnn/org-add-latex-header ()
-  "在org-mode里添加可能需要的LaTeX Header来成功导出pdf文档"
-  (interactive)
-  (goto-char (point-min))
-  (progn
-    (insert "#+LATEX_HEADER: \\usepackage[usenames]{color}\n")
-    (insert "#+LATEX_HEADER: \\usepackage{amsmath}\n")
-    (insert "#+LATEX_HEADER: \\usepackage{esint}\n")
-    (insert "#+LATEX_HEADER: \\usepackage{fontspec}\n")
-    (insert "#+LATEX_HEADER: \\setsansfont{Noto Sans CJK TC}\n")
-    (insert "#+LATEX_HEADER: \\setmainfont{Noto Serif CJK TC}\n")
-    (insert "#+LATEX_HEADER: xelatex\n\n")))
-(eval-after-load 'org
-  '(define-key org-mode-map (kbd "C-z C-x C-e") 'kivnn/org-add-latex-header))
-
-
-;; =======================================
 ;; 编辑增强
 ;; from https://stackoverflow.com/a/998472
 ;; =======================================
