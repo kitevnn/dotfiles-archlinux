@@ -76,13 +76,14 @@
 ;; ========================================
 (defun kivnn/insert-inline-OCDL (prefix)
   (interactive "P")
-  (if prefix      
+  (if prefix
       (insert "$")
-    (insert "\\[ ")
+    (insert (concat variable-latex-fragment-left-bound " "))
     (save-excursion
-      (insert " \\]"))))
-(eval-after-load 'org  
-  '(define-key org-cdlatex-mode-map (kbd "$") 'kivnn/insert-inline-OCDL))
+      (insert (concat " " variable-latex-fragment-right-bound)))))
+(eval-after-load 'org
+  '(progn
+     (define-key org-cdlatex-mode-map (kbd "$") 'kivnn/insert-inline-OCDL)))
 
 (defun kivnn/insert-bra-OCDL ()
   (interactive)

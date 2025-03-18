@@ -7,7 +7,7 @@
              (expand-file-name 
               (concat user-emacs-directory "elisp/basic")))
 (require 'basic-path)
-(require 'basic-file)
+(require 'basic-vari)
 
 
 ;; =======================================

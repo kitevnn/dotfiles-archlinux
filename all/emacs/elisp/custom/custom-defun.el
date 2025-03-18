@@ -336,45 +336,45 @@
 ;; from chatGPT 4o
 ;; =======================================
 (defun kivnn/format-org-latex-preview-with-utf8 ()
-  "渲染在org-mode下渲染含有utf-8字符的equation之前的格式化准备"
+  "渲染在org-mode下渲染含有utf-8字符的LaTeX片段之前的格式化准备"
   (interactive)
-  ;; 找到 \[\] 的 \[
+  ;; 找到左边界
   (let ((thing (thing-at-point 'line t)))
-    (if (and thing (string-match "\\[.*\\]" thing))
-        (search-backward "\\[" nil t)
+    (if (and thing (string-match (concat variable-latex-fragment-left-bound ".*" variable-latex-fragment-right-bound) thing))
+        (search-backward variable-latex-fragment-left-bound nil t)
       (message "no such equation, please check again...")))
   (forward-char 2)
   (delete-all-space)
-  ;; 找到 \[\] 的 \]
+  ;; 找到右边界
   (let ((thing (thing-at-point 'line t)))
-    (if (and thing (string-match "\\[.*\\]" thing))
-        (search-forward "\\]" nil t)
+    (if (and thing (string-match (concat variable-latex-fragment-left-bound ".*" variable-latex-fragment-right-bound) thing))
+        (search-forward variable-latex-fragment-right-bound nil t)
       (message "no such equation, please check again...")))
   (backward-char 3)
   (delete-all-space))
 
 (defun kivnn/org-latex-preview-with-utf8 ()
-  "在org-mode下渲染含有utf-8字符的equation"
+  "在org-mode下渲染含有utf-8字符的LaTeX片段"
   (interactive)
   (let* ((latex-code (thing-at-point 'line t))
          (is-utf8 (and latex-code
-                       (string-match "\\[.*\\]" latex-code)
+                       (string-match (concat variable-latex-fragment-left-bound ".*" variable-latex-fragment-right-bound) latex-code)
                        (string-match-p "[^\x00-\x7F]" latex-code))))
     (if is-utf8
         ;; 如果包含 UTF-8 字符，就使用 xelatex-chinese 引擎
         (progn
           (setq org-preview-latex-default-process 'xelatex-chinese)
-          (message "目前使用了xelatex-chinese引擎渲染此equation"))
+          (message "目前使用了xelatex-chinese引擎渲染此LaTeX片段"))
       ;; 如果不包含 UTF-8 字符，就使用 dvipng、dvisvgm、imagemagick 引擎
       (setq org-preview-latex-default-process 'dvipng)                       
-      (message "目前使用了org-mode默认的dvipng、dvisvgm、imagemagick引擎渲染此equation"))
+      (message "目前使用了org-mode默认的dvipng、dvisvgm、imagemagick引擎渲染此LaTeX片段"))
     (org-latex-preview)
     ;; 每次执行完毕后都恢复为 dvipng、dvisvgm、imagemagick 引擎
     (setq org-preview-latex-default-process 'dvipng)
     (message "Creating Latex previews in section...(and recover dvipng...) done.")))
 
-(defun kivnn/render-equation-utf8 ()
-  "在org-mode下渲染含有utf-8字符的equation的组合函数"
+(defun kivnn/render-latex-fragment-utf8 ()
+  "在org-mode下渲染含有utf-8字符的LaTeX片段的组合函数"
   (interactive)
   (kivnn/format-org-latex-preview-with-utf8)
   (kivnn/org-latex-preview-with-utf8))
@@ -384,44 +384,44 @@
 ;; 在org-mode的公式上下文的光标跳转
 ;; from chatGPT 4o
 ;; =======================================
-(defun kivnn/jump-the-beginning-of-the-equation (arg)
-  "根据 prefix(C-u) 参数决定是否手动或自动进入选区模式，并跳转到公式块\[\]的\["
+(defun kivnn/jump-the-beginning-of-the-latex-fragment (arg)
+  "根据 prefix(C-u) 参数决定是否手动或自动进入选区模式，并跳转到公式片段的左边界"
   (interactive "P")
   (let ((thing (thing-at-point 'line t)))
-    (if (and thing (string-match "\\[.*\\]" thing))
+    (if (and thing (string-match (concat variable-latex-fragment-left-bound ".*" variable-latex-fragment-right-bound) thing))
         (progn
           (if arg
               (call-interactively 'set-mark-command)
             (execute-kbd-macro (kbd "C-SPC")))
-          (search-backward "\\[" nil t))
+          (search-backward variable-latex-fragment-left-bound nil t))
       (message "No such equation, please check again..."))))
 
-(defun kivnn/jump-the-ending-of-the-equation (arg)
-  "根据 prefix(C-u) 参数决定是否手动或自动进入选区模式，并跳转到公式块\[\]的\]"
+(defun kivnn/jump-the-ending-of-the-latex-fragment (arg)
+  "根据 prefix(C-u) 参数决定是否手动或自动进入选区模式，并跳转到公式片段的右边界"
   (interactive "P")
   (let ((thing (thing-at-point 'line t)))
-    (if (and thing (string-match "\\[.*\\]" thing))
+    (if (and thing (string-match (concat variable-latex-fragment-left-bound ".*" variable-latex-fragment-right-bound) thing))
         (progn
           (if arg
               (call-interactively 'set-mark-command)
             (execute-kbd-macro (kbd "C-SPC")))
-          (search-forward "\\]" nil t))
+          (search-forward variable-latex-fragment-right-bound nil t))
       (message "No such equation, please check again..."))))
 
-(defun kivnn/jump-the-previous-equation ()
-  "当光标在公式块\[ \]时，跳转到此上一个公式块的\[ \]"
+(defun kivnn/jump-the-previous-latex-fragment ()
+  "当光标在公式片段时，跳转到此上一个公式片段"
   (interactive)
-  (call-interactively 'kivnn/jump-the-beginning-of-the-equation nil)
+  (call-interactively 'kivnn/jump-the-beginning-of-the-latex-fragment nil)
   (forward-char 3)
-  (call-interactively 'kivnn/jump-the-beginning-of-the-equation nil)
+  (call-interactively 'kivnn/jump-the-beginning-of-the-latex-fragment nil)
   (keyboard-quit))
 
-(defun kivnn/jump-the-next-equation ()
-  "当光标在公式块\[ \]时，跳转到此下一个公式块的\[ \]"
+(defun kivnn/jump-the-next-latex-fragment ()
+  "当光标在公式片段时，跳转到此下一个公式片段"
   (interactive)
-  (call-interactively 'kivnn/jump-the-ending-of-the-equation nil)
+  (call-interactively 'kivnn/jump-the-ending-of-the-latex-fragment nil)
   (backward-char 3)
-  (call-interactively 'kivnn/jump-the-ending-of-the-equation nil)
+  (call-interactively 'kivnn/jump-the-ending-of-the-latex-fragment nil)
   (keyboard-quit))
 
 
