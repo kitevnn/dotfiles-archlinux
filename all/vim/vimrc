@@ -169,7 +169,7 @@ call plug#begin()
 
    " [mhinz/vim-signify]
    Plug 'mhinz/vim-signify'
-   highlight SignifySignAdd ctermfg=green cterm=NONE
+   highlight SignifySignAdd ctermfg=blue cterm=NONE
    highlight SignifySignDelete ctermfg=red cterm=NONE
    highlight SignifySignChange ctermfg=yellow cterm=NONE
    nnoremap <leader>gj <Plug>(signify-next-hunk)
