@@ -18,6 +18,7 @@
 
 | 序号 | 快捷键前缀(prefix-key) | 解释意义            |
 |------+-----------------------+--------------------|
+|    0 | ~C-z C-z~             | *<custom>*         |
 |    1 | ~C-z C-p~             | *<p>* rocess       |
 |    2 | ~C-z C-s~             | *<s>* witch window |
 |    3 | ~C-z C-t~             | *<t>* heme         |
@@ -27,11 +28,7 @@
 |    7 | ~C-z C-x~             | te *<x>* t         |
 |    8 | ~C-z C-r~             | *<r>* oam          |
 |    9 | ~C-z C-a~             | *<a>* genda        |
-|   10 | ~C-z C-z~             | *<custom>*         |
-
-** 🔧 安装一步到位
-
-在 [[file:org/dotfiles.org][dotfiles.org]] 通过 ~M-x org-babel-tangle~ 管理 
+|   10 | ~C-z C-o~             | *<o>* rg-mode      |
 
 ** 🔑 有趣的实现
 
@@ -148,3 +145,76 @@ Accompanying With GNU Emacs: 130 hours, 43 minutes, 30 seconds
   #+end_quote
 
   
+*** 2. 在modeline上展示议程信息
+
+#+begin_src elisp
+  ;; ==============================================
+  ;; 生产数据的过程
+  ;; ==============================================
+  ;; 必要的变量信息
+  (defvar file-org-agenda-files               "/home/user/directory-114514/1919810.org" "[文件]: 必须是org文件，因为需要使用org-mode")
+  (defvar modeline-agenda-todo-count 0)
+  (defvar modeline-agenda-doing-count 0)
+  (defvar modeline-agenda-wait-count 0)
+  (defvar modeline-agenda-file-name "")
+
+  ;; 设置函数
+  (defun kivnn/count-agenda-file-tasks (file-path)
+    "更新指定路径议程文件的agenda信息"
+    (interactive)
+    (setq modeline-agenda-todo-count 0)
+    (setq modeline-agenda-doing-count 0)
+    (setq modeline-agenda-wait-count 0)
+    (setq modeline-agenda-file-name (file-name-nondirectory file-path))
+    ;; 打开临时buffer
+    (with-temp-buffer
+      (insert-file-contents file-path)
+      (goto-char (point-min))
+      (while (re-search-forward org-heading-regexp nil t)
+        (let ((headline (match-string 0)))
+          (cond
+           ((string-match-p "\\*+ TODO" headline) (setq modeline-agenda-todo-count (1+ modeline-agenda-todo-count)))
+           ((string-match-p "\\*+ DOING" headline) (setq modeline-agenda-doing-count (1+ modeline-agenda-doing-count)))
+           ((string-match-p "\\*+ WAIT" headline) (setq modeline-agenda-wait-count (1+ modeline-agenda-wait-count))))))))
+
+  ;; 让上述函数只对特定指定文件生效
+  ;; 从而统计所有的 "*+ TODO、*+ DOING、*+ WAIT" 的标题数量
+  ;; 并更新到 "modeline-agenda-todo-count modeline-agenda-doing-count modeline-agenda-wait-count" 变量上
+  (defun kivnn/update-modeline-agenda-file-tasks ()
+    "统计指定文件2025.org的任务"
+    (kivnn/count-agenda-file-tasks file-org-agenda-files))
+
+
+
+  ;; ==============================================
+  ;; 展示数据的过程
+  ;; ==============================================
+  ;; 将 "modeline-agenda-todo-count modeline-agenda-doing-count modeline-agenda-wait-count" 变量设置在modeline上
+  (defun kivnn/update-modeline-with-all-scripts ()
+    "显示modeline信息"
+    (setq global-mode-string
+          (list
+           "  "
+           (format "󰄒 TODO %d " modeline-agenda-todo-count)
+           (format "󱞿 DOING %d " modeline-agenda-doing-count)
+           (format "󰝕 WAIT %d " modeline-agenda-wait-count)
+           "-  "
+           modeline-agenda-file-name))
+    (setq-default mode-line-format
+                  '("%e"
+                    ;; a lot of things                    
+                    global-mode-string
+                    ;; a lot of things
+                    )))
+
+  ;; 自动版(自动更新modeline上的信息)
+  (run-at-time "0 sec" 60    'kivnn/update-modeline-with-all-scripts)
+
+  ;; 手动版(手动更新modeline上的信息)
+  (defun kivnn/update-modeline-output-agenda-tasks ()
+    "手动更新议程任务信息 TODO: a DOING: b WAIT: c"
+    (interactive)
+    (kivnn/update-modeline-output-agenda-file-tasks))
+  ;; 设置快捷键
+  (global-set-key (kbd "C-114514")                   'kivnn/update-modeline-output-agenda-tasks)   
+#+end_src
