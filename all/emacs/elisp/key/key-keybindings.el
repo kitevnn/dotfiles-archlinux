@@ -224,11 +224,12 @@
 (define-key emms-playlist-mode-map (kbd "S")           'emms-show)                                          ; 展示当前所播放的音乐(可设置成modeline信息)
 (define-key emms-playlist-mode-map (kbd "<SPC>")       'emms-pause)                                         ; 暂停播放/开始播放
 (define-key emms-playlist-mode-map (kbd "s")           'emms-playlist-mode-play-smart)                      ; 从头播放当前音乐
+(define-key emms-playlist-mode-map (kbd "-")           'emms-volume-lower)                                  ; 降低mpv的音量
 (define-key emms-playlist-mode-map (kbd "=")           'emms-volume-raise)                                  ; 增加mpv的音量
-(define-key emms-playlist-mode-map (kbd ",")           'emms-seek-backward)                                 ; 后退10秒
 (define-key emms-playlist-mode-map (kbd ".")           'emms-seek-forward)                                  ; 快进10秒
-(define-key emms-playlist-mode-map (kbd "C-,")         'emms-seek-backward-minute)                          ; 后退60秒
-(define-key emms-playlist-mode-map (kbd "C-.")         'emms-seek-forward-minute)                           ; 快进60秒
+(define-key emms-playlist-mode-map (kbd ",")           'emms-seek-backward)                                 ; 后退10秒
+(define-key emms-playlist-mode-map (kbd "C-.")        'emms-seek-forward-minute)                           ; 快进60秒
+(define-key emms-playlist-mode-map (kbd "C-,")        'emms-seek-backward-minute)                          ; 后退60秒
 (define-key emms-playlist-mode-map (kbd "f")           nil)                                                 ; 原功能emms-show
 (define-key emms-playlist-mode-map (kbd "r")           nil)                                                 ; 原功能emms-random
 (define-key emms-playlist-mode-map (kbd "+")           nil)                                                 ; 原功能emms-volume-raise
