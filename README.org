@@ -145,7 +145,7 @@ Accompanying With GNU Emacs: 130 hours, 43 minutes, 30 seconds
   #+end_quote
 
   
-*** 2. 在modeline上展示议程信息
+*** 2. 在modeline上展示 [议程数量] 的信息
 
 *可能哪里会出现一点点错误，但大致上的逻辑就是这样*
 
