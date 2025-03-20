@@ -687,4 +687,28 @@
   (message "状态监视已停止。"))
 
 
+;; =======================================
+;; 给hooks-hook.el使用的所有钩子
+;; =======================================
+(defun kivnn/after-init-hook ()
+  "刚打开时要执行的初始化钩子"
+  (dashboard-open)
+  (kivnn/update-modeline-with-all-scripts)
+  (kivnn/load-theme-light))
+
+(defun kivnn/org-mode-hook ()
+  "仅在org-table上下文范围内使用cdlatex的TAB来补全来防止单元格内容不会因org-cycle而被新插入的字符org-self-insert-command而覆盖"
+  (kivnn/org-table-with-cdlatex)
+  (add-hook 'post-command-hook 'kivnn/org-table-with-cdlatex))
+
+(defun kivnn/dashboard-mode-hook ()
+  "保证一直关闭scratch，保证只关闭第一次Message"
+  (setq-default kivnn/kill-scratch-buffer nil)
+  (when (get-buffer "*scratch*") (kill-buffer "*scratch*"))
+  (unless kivnn/kill-scratch-buffer
+    (when (get-buffer "*Messages*")
+      (kill-buffer "*Messages*")
+      (setq-default kivnn/kill-scratch-buffer t))))
+
+
 (provide 'custom-defun)

@@ -12,10 +12,7 @@
 ;; ========================================                                                      
 ;; 完成初始化后的钩子hook                                                                        
 ;; ========================================                                                      
-(add-hook 'after-init-hook (lambda ()
-                             (dashboard-open)
-                             (kivnn/update-modeline-with-all-scripts)))                          ; 初始化钩子
-
+(add-hook 'after-init-hook                              'kivnn/after-init-hook)                  ; 初始化钩子
 
 
 ;; ========================================                                                      
@@ -27,10 +24,7 @@
 (add-hook 'LaTeX-mode-hook                              #'cdlatex-mode)                          ; 在LaTeX-mode使用OCDL(这是OCDL而不是CDL)
 (add-hook 'org-mode-hook                                #'valign-mode)                           ; 在org-mode使用valign对齐不等宽字体
 (add-hook 'LaTeX-mode-hook                              #'tree-sitter-mode)                      ; 在LaTeX-mode使用ts
-(add-hook 'org-mode-hook
-          (lambda ()
-            (kivnn/org-table-with-cdlatex)
-            (add-hook 'post-command-hook 'kivnn/org-table-with-cdlatex)))                        ; 仅在org-table上下文范围内使用cdlatex的TAB来补全来防止单元格内容不会因org-cycle而被新插入的字符org-self-insert-command而覆盖
+(add-hook 'org-mode-hook                                'kivnn/org-mode-hook)                    ; 仅在org-table上下文范围内使用cdlatex的TAB来补全来防止单元格内容不会因org-cycle而被新插入的字符org-self-insert-command而覆盖"
 (add-hook 'pdf-view-mode-hook                           'kivnn/pdf-view-mode-hook-with-yas)      ; 在PDFView里禁用yasnippet
 
 
@@ -48,22 +42,9 @@
 
 
 ;; ========================================
-;; theme相关
-;; ========================================
-(add-hook 'after-init-hook                              'kivnn/load-theme-light)                 ; 保证最开始打开时一定是亮色主题
-
-
-;; ========================================
 ;; buffer相关
 ;; ========================================
-(setq-default kivnn/kill-scratch-buffer nil)
-(add-hook 'dashboard-mode-hook
-          (lambda ()           
-            (when (get-buffer "*scratch*") (kill-buffer "*scratch*"))
-            (unless kivnn/kill-scratch-buffer
-              (when (get-buffer "*Messages*")
-                (kill-buffer "*Messages*")
-                (setq-default kivnn/kill-scratch-buffer t)))))                                   ; 保证一直关闭scratch，保证只关闭第一次Message
+(add-hook 'dashboard-mode-hook                          'kivnn/dashboard-mode-hook)              ; 保证一直关闭scratch，保证只关闭第一次Message
 
 
 (provide 'hooks-hook)
