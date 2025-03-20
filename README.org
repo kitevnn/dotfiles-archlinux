@@ -147,6 +147,8 @@ Accompanying With GNU Emacs: 130 hours, 43 minutes, 30 seconds
   
 *** 2. 在modeline上展示议程信息
 
+*可能哪里会出现一点点错误，但大致上的逻辑就是这样*
+
 #+begin_src elisp
   ;; ==============================================
   ;; 生产数据的过程
@@ -185,7 +187,6 @@ Accompanying With GNU Emacs: 130 hours, 43 minutes, 30 seconds
     (kivnn/count-agenda-file-tasks file-org-agenda-files))
 
 
-
   ;; ==============================================
   ;; 展示数据的过程
   ;; ==============================================
@@ -207,14 +208,16 @@ Accompanying With GNU Emacs: 130 hours, 43 minutes, 30 seconds
                     ;; a lot of things
                     )))
 
-  ;; 自动版(自动更新modeline上的信息)
-  (run-at-time "0 sec" 60    'kivnn/update-modeline-with-all-scripts)
+  ;; 自动版
+  (run-at-time "0 sec" 1800  'kivnn/update-modeline-agenda-file-tasks)   ; 每30分钟更新一次file-org-agenda-files变量 的指定文件的 "*+ TODO、*+ DOING、*+ WAIT" 的标题数量
 
-  ;; 手动版(手动更新modeline上的信息)
-  (defun kivnn/update-modeline-output-agenda-tasks ()
-    "手动更新议程任务信息 TODO: a DOING: b WAIT: c"
+  ;; 手动版
+  (defun kivnn/update-modeline-all-information ()
+    "手动更新状态栏上的所有信息"
     (interactive)
-    (kivnn/update-modeline-output-agenda-file-tasks))
+    (kivnn/update-modeline-agenda-file-tasks) ; 手动读取 file-org-agenda-files变量 的指定文件的 "*+ TODO、*+ DOING、*+ WAIT" 的标题数量
+    (kivnn/update-modeline-with-all-scripts)) ; 然后更新modeline状态栏
+
   ;; 设置快捷键
   (global-set-key (kbd "C-114514")                   'kivnn/update-modeline-output-agenda-tasks)   
 #+end_src

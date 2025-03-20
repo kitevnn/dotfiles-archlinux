@@ -428,11 +428,6 @@
 ;; =======================================
 ;; 议程任务信息
 ;; =======================================
-(defun kivnn/update-modeline-output-agenda-tasks ()
-  "手动更新议程任务信息 TODO: a DOING: b WAIT: c"
-  (interactive)
-  (kivnn/update-modeline-output-agenda-file-tasks))
-
 (defun kivnn/org-agenda-change-headline-to-what (what)
   "将当前任务状态改为特定状态"
   (if (org-at-heading-p)
