@@ -140,6 +140,8 @@
 (define-key org-mode-map (kbd "C-z C-o C-a")             'kivnn/org-download-clipboard-and-rename)          ; 先保存剪贴板图片再重命名图片文件名
 (define-key org-mode-map (kbd "C-z C-o C-r")             'kivnn/org-download-rename-at-point)               ; 重命名图片信息并重命名图片文件
 (define-key org-mode-map (kbd "C-z C-o C-t C-t C-t")     'kivnn/org-download-delete)                        ; 删除图片信息并删除图片文件
+(define-key org-mode-map (kbd "C-z C-x C-\-")            'org-narrow-to-element)                            ; 进行narrow收窄处理来应对LaTeX-fragment较多的情况
+(define-key org-mode-map (kbd "C-z C-x C-\=")            'widen)                                            ; 进行widen收窄处理来应对LaTeX-fragment较多的情况
 
 
 ;; ========================================
