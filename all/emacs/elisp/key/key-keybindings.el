@@ -115,7 +115,6 @@
 ;; ========================================
 (define-key org-mode-map (kbd "C-z C-x C-0")             'valign-mode)                                      ; 切换valign-mode
 (define-key org-mode-map (kbd "C-c C-x C-v")             'kivnn/toggle-inline-images-with-valign)           ; 用 C-c C-x C-v 避免valign-mode造成的对齐卡顿来预览图片
-(define-key org-mode-map (kbd "C-z C-z C-l")             'kivnn/render-latex-fragment-utf8)                 ; 用 C-z C-z C-l 进行utf-8的 \[\] 上下文范围的公式渲染
 (define-key org-mode-map (kbd "C-z C-x C-f")             'kivnn/jump-the-ending-of-the-latex-fragment)      ; 当光标在\[\]上下文时，光标跳转到\[\]的\[
 (define-key org-mode-map (kbd "C-z C-x C-b")             'kivnn/jump-the-beginning-of-the-latex-fragment)   ; 当光标在\[\]上下文时，光标跳转到\[\]的\]
 (define-key org-mode-map (kbd "C-z C-x C-n")             'kivnn/jump-the-next-latex-fragment)               ; 当光标在\[\]上下文时，光标跳转到下一个\[\]

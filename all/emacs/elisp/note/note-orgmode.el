@@ -26,22 +26,29 @@
 ;; 使用 xelatex 渲染 latex-fragment
 ;; ========================================
 (add-to-list 'org-preview-latex-process-alist
-                     '(xelatex-chinese
-                       :programs ("xelatex" "convert")
-                       :description "XeLaTeX with Chinese support dvi > png"
-                       :message "you need to install the programs: xelatex and divpng."
-                       :image-input-type "pdf"
-                       :image-output-type "png"
-                       :image-size-adjust (1.7 . 1.5)
-                       :latex-header "\\documentclass[11pt]{standalone}
-                                      \\usepackage{fontspec}
-                                      \\setmainfont{Source Han Sans CN}
-                                      \\setsansfont{Source Han Sans CN}
-                                      \\usepackage[usenames]{color}
-                                      \\usepackage{amsmath}
-                                      \\pagestyle{empty}"
-                       :latex-compiler ("xelatex -interaction nonstopmode -output-directory %o %f")
-                       :image-converter ("convert -density 90 -background '#FFFFFF' -flatten -quality 100 %f %O")))
+             '(xelatex-chinese
+               :programs ("xelatex" "pdf2svg")
+               :description "XeLaTeX with Chinese support (PDF > SVG)"
+               :message "You need to install: xelatex and pdf2svg."
+               ;; 方案: pdf 转 svg
+               :image-input-type "pdf"
+               :image-output-type "svg"
+               :image-size-adjust (1.7 . 1.5)
+               ;; 字体: 中文 Noto Sans CJK SC 1.3倍, 西文 CMU Bright 1.0倍
+               :latex-header "\\documentclass[11pt]{standalone}
+                              \\usepackage{fontspec}
+                              \\setmainfont{Noto Sans CJK SC}[Scale=1.3]
+                              \\setsansfont{CMU Bright}[Scale=1.0]
+                              \\usepackage[usenames]{color}
+                              \\usepackage{amsmath}
+                              \\usepackage{mhchem}
+                              \\usepackage{extpfeil}
+                              \\pagestyle{empty}"
+               :latex-compiler ("xelatex -interaction nonstopmode -output-directory %o %f")
+               ;; 依赖: pacman -S pdf2svg
+               :image-converter ("pdf2svg %f %O")))
+;; 永久设置org-preview-latex的默认进程为上面的xelatex-chinese
+(setq org-preview-latex-default-process 'xelatex-chinese)
 
 
 ;; ========================================

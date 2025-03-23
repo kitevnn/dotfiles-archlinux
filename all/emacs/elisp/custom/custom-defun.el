@@ -332,55 +332,6 @@
 
 
 ;; =======================================
-;; 动态选择引擎来渲染
-;; from chatGPT 4o
-;; =======================================
-(defun kivnn/format-org-latex-preview-with-utf8 ()
-  "渲染在org-mode下渲染含有utf-8字符的LaTeX片段之前的格式化准备"
-  (interactive)
-  ;; 找到左边界
-  (let ((thing (thing-at-point 'line t)))
-    (if (and thing (string-match (concat variable-latex-fragment-left-bound ".*" variable-latex-fragment-right-bound) thing))
-        (search-backward variable-latex-fragment-left-bound nil t)
-      (message "no such equation, please check again...")))
-  (forward-char 2)
-  (delete-all-space)
-  ;; 找到右边界
-  (let ((thing (thing-at-point 'line t)))
-    (if (and thing (string-match (concat variable-latex-fragment-left-bound ".*" variable-latex-fragment-right-bound) thing))
-        (search-forward variable-latex-fragment-right-bound nil t)
-      (message "no such equation, please check again...")))
-  (backward-char 3)
-  (delete-all-space))
-
-(defun kivnn/org-latex-preview-with-utf8 ()
-  "在org-mode下渲染含有utf-8字符的LaTeX片段"
-  (interactive)
-  (let* ((latex-code (thing-at-point 'line t))
-         (is-utf8 (and latex-code
-                       (string-match (concat variable-latex-fragment-left-bound ".*" variable-latex-fragment-right-bound) latex-code)
-                       (string-match-p "[^\x00-\x7F]" latex-code))))
-    (if is-utf8
-        ;; 如果包含 UTF-8 字符，就使用 xelatex-chinese 引擎
-        (progn
-          (setq org-preview-latex-default-process 'xelatex-chinese)
-          (message "目前使用了xelatex-chinese引擎渲染此LaTeX片段"))
-      ;; 如果不包含 UTF-8 字符，就使用 dvipng、dvisvgm、imagemagick 引擎
-      (setq org-preview-latex-default-process 'dvipng)                       
-      (message "目前使用了org-mode默认的dvipng、dvisvgm、imagemagick引擎渲染此LaTeX片段"))
-    (org-latex-preview)
-    ;; 每次执行完毕后都恢复为 dvipng、dvisvgm、imagemagick 引擎
-    (setq org-preview-latex-default-process 'dvipng)
-    (message "Creating Latex previews in section...(and recover dvipng...) done.")))
-
-(defun kivnn/render-latex-fragment-utf8 ()
-  "在org-mode下渲染含有utf-8字符的LaTeX片段的组合函数"
-  (interactive)
-  (kivnn/format-org-latex-preview-with-utf8)
-  (kivnn/org-latex-preview-with-utf8))
-
-
-;; =======================================
 ;; 在org-mode的公式上下文的光标跳转
 ;; from chatGPT 4o
 ;; =======================================
