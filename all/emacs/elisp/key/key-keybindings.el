@@ -108,6 +108,7 @@
 (global-set-key (kbd "C-z C-z C-\=")                     'consult-ripgrep)                                  ; consult版rg搜索
 (global-set-key (kbd "C-z C-z C-e")                      'embark-act)                                       ; embark版action行动
 (global-set-key (kbd "C-z C-x C-h")                      'embark-prefix-help-command)                       ; embark版help帮助
+(global-set-key (kbd "C-z C-x C-j")                      'kivnn/goto-match-paren)                           ; 括号匹配
 
 
 ;; ========================================
@@ -143,14 +144,14 @@
 
 
 ;; ========================================
-;; 关于org-roam
+;; 关于denote
 ;; ========================================
-(define-key org-mode-map (kbd "C-z C-r C-f")             'org-roam-node-find)                               ; 寻找笔记地图节点
-(define-key org-mode-map (kbd "C-z C-r C-a")             'org-roam-node-insert)                             ; 创建笔记地图节点
-(define-key org-mode-map (kbd "C-z C-r C-n")             'org-roam-capture)                                 ; 创建笔记地图节点
-(define-key org-mode-map (kbd "C-z C-r C-t")             'org-roam-buffer-toggle)                           ; 切换笔记地图节点
-(define-key org-mode-map (kbd "C-z C-r C-o")             'org-roam-ui-mode)                                 ; 打开笔记地图
-(define-key org-mode-map (kbd "C-z C-r C-d")             'org-roam-dailies-map)                             ; 打开日记菜单
+(define-key org-mode-map (kbd "C-z C-n C-a")             'denote)                                           ; 创建笔记
+(define-key org-mode-map (kbd "C-z C-n C-l")             'denote-link-or-create)                            ; 插入链接(插入正向笔记)
+(define-key org-mode-map (kbd "C-z C-n C-\.")            'denote-find-link)                                 ; 双链笔记进入行为
+(define-key org-mode-map (kbd "C-z C-n C-\,")            'denote-find-backlink)                             ; 双链笔记退出行为
+(define-key org-mode-map (kbd "C-z C-n C-r")             'denote-rename-file)                               ; 重命名笔记
+(define-key org-mode-map (kbd "C-z C-n C-c")             'denote-backlinks)                                 ; 看当前笔记被谁引用了(反向笔记)
 
 
 ;; ========================================
@@ -213,12 +214,6 @@
 (require 'telega)                                                                                          
 (define-key telega-chat-mode-map       (kbd "M-n")       'kivnn/move-next-five-lines)                       ; 光标向下移动5行
 (define-key telega-chat-mode-map       (kbd "M-p")       'kivnn/move-prev-five-lines)                       ; 光标向上移动5行
-
-
-;; ========================================
-;; 关于括号匹配parentheses
-;; ========================================
-(global-set-key (kbd "C-z C-z C-j")                      'kivnn/goto-match-paren)                           ; 括号匹配
 
 
 ;; ========================================
