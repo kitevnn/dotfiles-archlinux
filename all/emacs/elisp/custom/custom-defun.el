@@ -396,6 +396,15 @@
         (delete-region (point) (progn (backward-word) (point)))
         (insert what)))))
 
+(defun kivnn/org-agenda-change-headline-to-todo (&optional arg)
+  "将当前任务状态改为TODO"
+  (interactive "P")
+  (if arg
+      (kivnn/org-agenda-change-headline-to-what "TODO")
+    (progn
+      (org-beginning-of-line)
+      (insert "*** TODO "))))
+
 (defun kivnn/org-agenda-change-headline-to-done ()
   "将当前任务状态改为DONE"
   (interactive)

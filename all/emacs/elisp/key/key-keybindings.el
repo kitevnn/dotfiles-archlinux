@@ -135,6 +135,7 @@
 (define-key org-mode-map (kbd "C-z C-a C-w")             'kivnn/org-agenda-change-headline-to-wait)         ; 将当前任务状态改为WAIT
 (define-key org-mode-map (kbd "C-z C-a C-i")             'kivnn/org-agenda-change-headline-to-doing)        ; 将当前任务状态改为DOING
 (define-key org-mode-map (kbd "C-z C-a C-d")             'kivnn/org-agenda-change-headline-to-done)         ; 将当前任务状态改为DONE
+(define-key org-mode-map (kbd "C-z C-a C-a")             'kivnn/org-agenda-change-headline-to-todo)         ; 将当前任务状态改为TODO
 (global-unset-key (kbd "C-,"))                                                                              ; 屏蔽C-, (原功能: 直接进入org-agenda-files)
 (global-set-key (kbd "C-z C-a C-,")                      'org-cycle-agenda-files)                           ; 直接进入org-agenda-files
 (define-key org-mode-map (kbd "C-z C-o C-a")             'kivnn/org-download-clipboard-and-rename)          ; 先保存剪贴板图片再重命名图片文件名
@@ -148,8 +149,8 @@
 ;; ========================================
 (define-key org-mode-map (kbd "C-z C-n C-a")             'denote)                                           ; 创建笔记
 (define-key org-mode-map (kbd "C-z C-n C-l")             'denote-link-or-create)                            ; 插入链接(插入正向笔记)
-(define-key org-mode-map (kbd "C-z C-n C-\.")            'denote-find-link)                                 ; 双链笔记进入行为
 (define-key org-mode-map (kbd "C-z C-n C-\,")            'denote-find-backlink)                             ; 双链笔记退出行为
+(define-key org-mode-map (kbd "C-z C-n C-\.")            'denote-find-link)                                 ; 双链笔记进入行为
 (define-key org-mode-map (kbd "C-z C-n C-r")             'denote-rename-file)                               ; 重命名笔记
 (define-key org-mode-map (kbd "C-z C-n C-c")             'denote-backlinks)                                 ; 看当前笔记被谁引用了(反向笔记)
 
