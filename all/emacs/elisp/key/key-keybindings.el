@@ -225,15 +225,14 @@
 (global-set-key (kbd "C-z C-z C-,")                    'emms-play-directory)                                ; 播放特定目录的音乐
 (define-key emms-playlist-mode-map (kbd "R")           'emms-toggle-repeat-track)                           ; 音乐循环播放
 (define-key emms-playlist-mode-map (kbd "Q")           'emms-stop)                                          ; 停止所有音乐的播放
-(define-key emms-playlist-mode-map (kbd "S")           'emms-show)                                          ; 展示当前所播放的音乐(可设置成modeline信息)
 (define-key emms-playlist-mode-map (kbd "<SPC>")       'emms-pause)                                         ; 暂停播放/开始播放
 (define-key emms-playlist-mode-map (kbd "s")           'emms-playlist-mode-play-smart)                      ; 从头播放当前音乐
 (define-key emms-playlist-mode-map (kbd "-")           'emms-volume-lower)                                  ; 降低mpv的音量
 (define-key emms-playlist-mode-map (kbd "=")           'emms-volume-raise)                                  ; 增加mpv的音量
 (define-key emms-playlist-mode-map (kbd ".")           'emms-seek-forward)                                  ; 快进10秒
 (define-key emms-playlist-mode-map (kbd ",")           'emms-seek-backward)                                 ; 后退10秒
-(define-key emms-playlist-mode-map (kbd "C-.")        'emms-seek-forward-minute)                           ; 快进60秒
-(define-key emms-playlist-mode-map (kbd "C-,")        'emms-seek-backward-minute)                          ; 后退60秒
+(define-key emms-playlist-mode-map (kbd "C-.")         'emms-seek-forward-minute)                           ; 快进60秒
+(define-key emms-playlist-mode-map (kbd "C-,")         'emms-seek-backward-minute)                          ; 后退60秒
 (define-key emms-playlist-mode-map (kbd "f")           nil)                                                 ; 原功能emms-show
 (define-key emms-playlist-mode-map (kbd "r")           nil)                                                 ; 原功能emms-random
 (define-key emms-playlist-mode-map (kbd "+")           nil)                                                 ; 原功能emms-volume-raise
@@ -241,6 +240,15 @@
 (define-key emms-playlist-mode-map (kbd ">")           nil)                                                 ; 原功能emms-seek-forward
 (define-key emms-playlist-mode-map (kbd "M-n")         'kivnn/move-next-five-lines)                         ; 光标向下移动5行
 (define-key emms-playlist-mode-map (kbd "M-p")         'kivnn/move-prev-five-lines)                         ; 光标向上移动5行
+(global-set-key (kbd "C-z C-\m C-r")                   'emms-toggle-repeat-track)                           ; 音乐循环播放
+(global-set-key (kbd "C-z C-\m C-q")                   'emms-stop)                                          ; 停止所有音乐的播放
+(global-set-key (kbd "C-z C-\m C-p")                   'emms-pause)                                         ; 暂停播放/开始播放
+(global-set-key (kbd "C-z C-\m C-s")                   'emms-playlist-mode-play-smart)                      ; 从头播放当前音乐
+(global-set-key (kbd "C-z C-\m C-\-")                  'emms-volume-lower)                                  ; 降低mpv的音量
+(global-set-key (kbd "C-z C-\m C-\=")                  'emms-volume-raise)                                  ; 增加mpv的音量
+(global-set-key (kbd "C-z C-\m C-.")                   'emms-seek-forward-minute)                           ; 快进60秒
+(global-set-key (kbd "C-z C-\m C-,")                   'emms-seek-backward-minute)                          ; 后退60秒
+
 
 
 ;; ========================================

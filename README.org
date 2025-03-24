@@ -18,17 +18,18 @@
 
 | 序号 | 快捷键前缀(prefix-key) | 解释意义            |
 |------+-----------------------+--------------------|
-|    0 | ~C-z C-z~             | *<custom>*         |
-|    1 | ~C-z C-p~             | *<p>* rocess       |
-|    2 | ~C-z C-s~             | *<s>* witch window |
-|    3 | ~C-z C-t~             | *<t>* heme         |
-|    4 | ~C-z C-b~             | *<b>* uffer        |
-|    5 | ~C-z C-w~             | resize *<w>* indow |
-|    6 | ~C-z C-d~             | *<d>* ashboard     |
-|    7 | ~C-z C-x~             | te *<x>* t         |
-|    8 | ~C-z C-n~             | de *<n>* ote       |
-|    9 | ~C-z C-a~             | *<a>* genda        |
-|   10 | ~C-z C-o~             | *<o>* rg-mode      |
+|    1 | ~C-z C-z~             | *<custom>*         |
+|    2 | ~C-z C-p~             | *<p>* rocess       |
+|    3 | ~C-z C-s~             | *<s>* witch window |
+|    4 | ~C-z C-t~             | *<t>* heme         |
+|    5 | ~C-z C-b~             | *<b>* uffer        |
+|    6 | ~C-z C-w~             | resize *<w>* indow |
+|    7 | ~C-z C-d~             | *<d>* ashboard     |
+|    8 | ~C-z C-x~             | te *<x>* t         |
+|    9 | ~C-z C-n~             | de *<n>* ote       |
+|   10 | ~C-z C-a~             | *<a>* genda        |
+|   11 | ~C-z C-o~             | *<o>* rg-mode      |
+|   12 | ~C-z C-m~             | e *<m>* ms         |
 
 ** 🔑 有趣的实现
 
