@@ -139,8 +139,7 @@
 (define-key org-mode-map (kbd "C-z C-o C-a")             'kivnn/org-download-clipboard-and-rename)          ; 先保存剪贴板图片再重命名图片文件名
 (define-key org-mode-map (kbd "C-z C-o C-r")             'kivnn/org-download-rename-at-point)               ; 重命名图片信息并重命名图片文件
 (define-key org-mode-map (kbd "C-z C-o C-t C-t C-t")     'kivnn/org-download-delete)                        ; 删除图片信息并删除图片文件
-(define-key org-mode-map (kbd "C-z C-x C-\-")            'org-narrow-to-element)                            ; 进行narrow收窄处理来应对LaTeX-fragment较多的情况
-(define-key org-mode-map (kbd "C-z C-x C-\=")            'widen)                                            ; 进行widen收窄处理来应对LaTeX-fragment较多的情况
+(define-key org-mode-map (kbd "C-z C-o C-p")             'org-preview-html-mode)                            ; 实时预览org
 
 
 ;; ========================================
@@ -198,6 +197,14 @@
 ;; 关于magit
 ;; ========================================
 (define-key text-mode-map (kbd "C-z C-z C-2")            'kivnn/magit-commit-template)                      ; 个人提交信息模板
+
+
+;; ========================================
+;; 关于eww
+;; ========================================
+(require 'eww)                                                                                          
+(define-key eww-mode-map       (kbd "M-n")               'kivnn/move-next-five-lines)                       ; 光标向下移动5行
+(define-key eww-mode-map       (kbd "M-p")               'kivnn/move-prev-five-lines)                       ; 光标向上移动5行
 
 
 ;; ========================================

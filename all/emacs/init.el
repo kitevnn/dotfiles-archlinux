@@ -68,7 +68,7 @@
    '(auctex bliss-theme cdlatex centaur-tabs cmake-mode corfu dashboard deadgrep
             dirvish eat embark-consult emms highlight-indent-guides magit
             marginalia nano-theme nerd-icons-corfu nerd-icons-dired
-            nerd-icons-ibuffer orderless org-roam-ui pdf-tools
+            nerd-icons-ibuffer orderless org-preview-html org-roam-ui pdf-tools
             rainbow-identifiers restart-emacs smartparens telega
             tree-sitter-langs valign vertico-posframe yasnippet-snippets)))
 (custom-set-faces

@@ -79,4 +79,12 @@
              :after org)
 
 
+;; ========================================
+;; 设置org-preview-html
+;; ========================================
+(use-package org-preview-html
+             :ensure t
+             :defer t)
+
+
 (provide 'note-orgmode)
