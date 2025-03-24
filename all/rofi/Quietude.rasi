@@ -1,0 +1,95 @@
+/******************************************************************************
+ * ROFI Color theme: Quietude
+ * User: kitevnn
+ ******************************************************************************/
+
+
+/*                 */
+/* global settings */
+/*                 */
+* {
+    font: "SauceCodeProNerdFontCompleteMono Nerd Font 12";
+    scrollbar: true;
+    quietude-selected-text-shadow: #1c4b70;
+    quietude-selected:             #0a4c73;
+    quietude-box-border:           #1793d1;
+    quietude-box-background:       #333333;
+    quietude-scrollbar:            #f0f0f0;          
+    quietude-drun:                 #33a8e8;
+    quietude-black:                #333333;
+    quietude-white:                #ffffff;
+    quietude-text-color:           #eaf4ff;
+    text-color:                    @quietude-text-color;
+    background-color:              rgba ( 0, 0, 0, 0 % );
+}
+/* quietude-scrollbar: #f2f8ff, eaf4ff, fcfcfc */
+/* quietude-selected-text-shadow:  #0a4c73  */
+#window {
+    background-color: @quietude-box-background;
+    border:           3px;
+    padding:          2px;
+    border-radius:    12px;
+    border-color:     @quietude-box-border;
+}
+
+
+/*                  */
+/* element settings */
+/*                  */
+#element {
+    border:  0;
+    padding: 3px 0px 3px 18px;
+    background-color: @quietude-box-background;
+}
+#element.normal {
+    text-color:       @quietude-white;
+}    
+#element.selected {
+    text-color:       @quietude-selected;
+    background-color: @quietude-selected-text-shadow;
+}
+#element.alternate {
+    text-color:       @quietude-white;
+}
+
+
+/*                */
+/* input settings */
+/*                */
+#case-indicator {
+    spacing:    0;
+    text-color: @quietude-box-background;
+}
+#entry {
+    spacing:    0;
+    text-color: @quietude-box-background;
+}
+#prompt {
+    spacing:    0;
+    text-color: @quietude-box-background;    
+}
+#textbox-prompt-colon {
+    expand:     false;
+    str:        ":";
+    margin:     0px 0.3em 0em 0em ;
+    text-color: @quietude-black;
+}
+
+
+/*              */
+/* bar settings */
+/*               */
+#inputbar {
+    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
+}
+#inputbar {
+    spacing:    0;
+    background-color: @quietude-drun;
+    padding:    1px;
+    border-radius: 12px 12px 0px 0px;
+}
+#scrollbar {
+    background-color: @quietude-scrollbar;
+    width:         3px;
+    border-radius: 6px;
+}
