@@ -34,11 +34,11 @@
                :image-input-type "pdf"
                :image-output-type "svg"
                :image-size-adjust (1.7 . 1.5)
-               ;; 字体: 中文 Noto Sans CJK SC 1.3倍, 西文 CMU Bright 1.0倍
+               ;; 字体: 中文 Noto Sans CJK SC 1.2倍, 西文 CMU Bright 1.2倍
                :latex-header "\\documentclass[11pt]{standalone}
                               \\usepackage{fontspec}
-                              \\setmainfont{Noto Sans CJK SC}[Scale=1.3]
-                              \\setsansfont{CMU Bright}[Scale=1.0]
+                              \\setmainfont{Noto Sans CJK SC}[Scale=1.2]
+                              \\setsansfont{CMU Bright}[Scale=1.2]
                               \\usepackage[usenames]{color}
                               \\usepackage{amsmath}
                               \\usepackage{mhchem}
