@@ -142,7 +142,6 @@
 (define-key org-mode-map (kbd "C-z C-o C-r")             'kivnn/org-download-rename-at-point)               ; 重命名图片信息并重命名图片文件
 (define-key org-mode-map (kbd "C-z C-o C-t C-t C-t")     'kivnn/org-download-delete)                        ; 删除图片信息并删除图片文件
 (define-key org-mode-map (kbd "C-z C-z C-\i C-\i C-\i")  'org-preview-html-mode)                            ; 实时预览org
-(define-key org-mode-map (kbd "C-z C-x C-1")             'kivnn/insert-essential-latex-header-mhchem)       ; 插入必要的LaTeX_HEADER
 (define-key org-mode-map (kbd "C-z C-z C-l")             'kivnn/org-latex-preview)                          ; 无视fontspec包的定死字体大小的限制，强制渲染指定字体大小的LaTeX片段
 
 
