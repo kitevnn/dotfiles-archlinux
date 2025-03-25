@@ -247,7 +247,7 @@ Accompanying With GNU Emacs: 191 hours, 17 minutes, 15 seconds
   (global-set-key (kbd "C-114514")                   'kivnn/view-echo-area-messages)
 #+end_src
 
-*** 4. 含金量非常足的渲染LaTeX片段的elisp函数
+*** 4. 含金量非常足的在org-mode里渲染含中文的LaTeX片段
 
 *相当于对LaTeX的渲染程序进行了排列组合: 无视fontspec包的定死字体大小的限制，强制渲染指定字体大小9pt的LaTeX片段*
 
