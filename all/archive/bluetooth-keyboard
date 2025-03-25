@@ -1,0 +1,20 @@
+# 此 bluetoothctl 是 bluez bluez-utils 的前端工具
+# 在 pacman -S bluez bluez-utils 后就可以 systemctl start bluetooth.service 来开启这个前端工具了
+sudo systemctl restart bluetooth
+bluetoothctl
+
+# 这个<DEVICE>是比如 "00:00:FF:FF:00:00" 这样的名称，在KDE Plasma 6下使用GUI的蓝色界面，同时开着终端就能看到要连接的键盘的<DEVICE>是叫做什么名称
+remove <DEVICE>
+power off
+agent KeyboardDisplay
+default-agent
+power on
+scan on
+trust <DEVICE>
+pair <DEVICE> 
+connect <DEVICE>
+
+# 完成上述至少一次后
+sudo systemctl restart bluetooth
+bluetoothctl
+scan on
