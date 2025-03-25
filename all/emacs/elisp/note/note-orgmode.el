@@ -27,12 +27,11 @@
 ;; ========================================
 (add-to-list 'org-preview-latex-process-alist
              '(xelatex-chinese
-               :programs ("xelatex" "pdf2svg")
-               :description "XeLaTeX with Chinese support (PDF > SVG)"
-               :message "You need to install: xelatex and pdf2svg."
-               ;; 方案: pdf 转 svg
+               :programs ("xelatex" "convert")
+               :description "pdf > png"
+               :message "you need to install the programs: xelatex and dvipng."
                :image-input-type "pdf"
-               :image-output-type "svg"
+               :image-output-type "png"
                :image-size-adjust (1.7 . 1.5)
                :latex-header "\\documentclass[11pt]{standalone}
                               \\usepackage{fontspec}
@@ -44,10 +43,7 @@
                               \\usepackage{extpfeil}
                               \\pagestyle{empty}"
                :latex-compiler ("xelatex -interaction nonstopmode -output-directory %o %f")
-               ;; 依赖: pacman -S pdf2svg
-               :image-converter ("pdf2svg %f %O")))
-;; 永久设置org-preview-latex的默认进程为上面的xelatex-chinese
-(setq org-preview-latex-default-process 'xelatex-chinese)
+               :image-converter ("convert -density 90 -background '#FFFFFF' -flatten -quality 100 %f %O")))
 
 
 ;; ========================================
