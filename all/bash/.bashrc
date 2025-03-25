@@ -13,4 +13,5 @@ alias ec='emacs -nw'
 alias ff='fastfetch --load-config ~/.config/fastfetch/ff.jsonc'
 alias caps='setxkbmap -option "ctrl:nocaps"'
 alias gwe='bash /home/une/.config/emacs/archive/weather-wttr.sh'
+alias sye='bash /home/une/.config/emacs/archive/sye.sh'
 source ~/.bash_profile
