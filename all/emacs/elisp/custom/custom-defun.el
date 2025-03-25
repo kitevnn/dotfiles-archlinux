@@ -663,7 +663,7 @@
   "无视fontspec包的定死字体大小的限制，强制渲染指定字体大小的LaTeX片段(才发现这个函数含金量这么足)"
   (interactive)
   (kivnn/org-latex-preview-format)
-  (kivnn/org-latex-preview-engine))  
+  (kivnn/org-latex-preview-engine))
 
 
 ;; =======================================
