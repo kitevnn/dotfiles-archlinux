@@ -34,14 +34,13 @@
                :image-input-type "pdf"
                :image-output-type "svg"
                :image-size-adjust (1.7 . 1.5)
-               ;; 字体: 中文 Noto Sans CJK SC 1.2倍, 西文 CMU Bright 1.2倍
                :latex-header "\\documentclass[11pt]{standalone}
                               \\usepackage{fontspec}
-                              \\setmainfont{Noto Sans CJK SC}[Scale=1.2]
-                              \\setsansfont{CMU Bright}[Scale=1.2]
+                              \\setmainfont{Source Han Sans CN}
+                              \\setsansfont{Source Han Sans CN}
+                              \\setmonofont{Source Han Sans CN}
                               \\usepackage[usenames]{color}
                               \\usepackage{amsmath}
-                              \\usepackage{mhchem}
                               \\usepackage{extpfeil}
                               \\pagestyle{empty}"
                :latex-compiler ("xelatex -interaction nonstopmode -output-directory %o %f")

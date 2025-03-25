@@ -332,6 +332,20 @@
 
 
 ;; =======================================
+;; 在org-mode插入必要的latex-header
+;; =======================================
+(defun kivnn/insert-essential-latex-header-mhchem ()
+  "插入必要的LaTeX-Header来渲染片段"
+  (interactive)
+  (beginning-of-buffer)
+  (org-return 2)
+  (beginning-of-buffer)
+  (progn
+    (insert "#+LaTeX_HEADER: usepackage{mhchem}\n")
+  (org-mode-restart)))
+
+
+;; =======================================
 ;; 在org-mode的公式上下文的光标跳转
 ;; from chatGPT 4o
 ;; =======================================
@@ -663,6 +677,12 @@
     (when (get-buffer "*Messages*")
       (kill-buffer "*Messages*")
       (setq-default kivnn/kill-scratch-buffer t))))
+
+(defun kivnn/view-echo-area-messages ()
+  "设置message-log-max并打开*Message*的buffer"
+  (interactive)
+  (setq message-log-max 1000)
+  (view-echo-area-messages))
 
 
 (provide 'custom-defun)

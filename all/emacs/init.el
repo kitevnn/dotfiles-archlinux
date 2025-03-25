@@ -45,7 +45,6 @@
 (require 'zprogramming-lsp-eglot)
 (require 'zprogramming-snips-yasnippet)
 (require 'zprogramming-ts-treesitter)
-(require 'zprogramming-mode-cmake)
 (require 'im-telega)
 (require 'key-keybindings)
 
@@ -65,12 +64,13 @@
      "3001510be1be4a38508ff07633e97b810c0a52c6fa2f4c7153d22cc7596d9172"
      "e7820b899036ae7e966dcaaec29fd6b87aef253748b7de09e74fdc54407a7a02" default))
  '(package-selected-packages
-   '(auctex bliss-theme cdlatex centaur-tabs cmake-mode corfu dashboard deadgrep
-            denote dirvish eat embark-consult emms highlight-indent-guides magit
-            marginalia nano-theme nerd-icons-corfu nerd-icons-dired
-            nerd-icons-ibuffer orderless org-download org-preview-html pdf-tools
-            rainbow-identifiers restart-emacs smartparens telega
-            tree-sitter-langs valign vertico-posframe yasnippet-snippets)))
+   '(auctex bliss-theme cdlatex centaur-tabs corfu dashboard deadgrep denote
+            dirvish eat embark-consult emms highlight-indent-guides magit
+            marginalia nano-theme nerd-icons-completion nerd-icons-corfu
+            nerd-icons-dired nerd-icons-ibuffer orderless org-download
+            org-preview-html pdf-tools rainbow-identifiers restart-emacs
+            smartparens telega tree-sitter-langs valign vertico-posframe
+            yasnippet-snippets)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

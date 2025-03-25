@@ -19,5 +19,11 @@
   :defer t
   :hook (ibuffer-mode . nerd-icons-ibuffer-mode))
 
+(use-package nerd-icons-completion
+  :ensure t
+  :defer nil
+  :config
+  (nerd-icons-completion-mode))
+
 
 (provide 'ui-icon-nerdfont)

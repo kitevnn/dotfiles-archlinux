@@ -20,7 +20,7 @@
 (global-set-key (kbd "C-z C-b C-f")                      'centaur-tabs-forward)                            ; 跳转到下一个局部buffer
 (global-set-key (kbd "C-z C-b C-\,")                     'previous-buffer)                                 ; 跳转到上一个停留的buffer
 (global-set-key (kbd "C-z C-b C-\.")                     'next-buffer)                                     ; 跳转到下一个停留的buffer
-(global-set-key (kbd "C-z C-b C-e")                      'view-echo-area-messages)                         ; 打开*Message*的buffer
+(global-set-key (kbd "C-z C-b C-e")                      'kivnn/view-echo-area-messages)                   ; 打开*Message*的buffer
 
 
 ;; ========================================
@@ -142,6 +142,7 @@
 (define-key org-mode-map (kbd "C-z C-o C-r")             'kivnn/org-download-rename-at-point)               ; 重命名图片信息并重命名图片文件
 (define-key org-mode-map (kbd "C-z C-o C-t C-t C-t")     'kivnn/org-download-delete)                        ; 删除图片信息并删除图片文件
 (define-key org-mode-map (kbd "C-z C-z C-\i C-\i C-\i")  'org-preview-html-mode)                            ; 实时预览org
+(define-key org-mode-map (kbd "C-z C-x C-1")             'kivnn/insert-essential-latex-header-mhchem)       ; 插入必要的LaTeX_HEADER
 
 
 ;; ========================================
