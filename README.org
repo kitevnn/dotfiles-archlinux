@@ -222,3 +222,27 @@ Accompanying With GNU Emacs: 191 hours, 17 minutes, 15 seconds
   ;; 设置快捷键
   (global-set-key (kbd "C-114514")                   'kivnn/update-modeline-output-agenda-tasks)   
 #+end_src
+
+*** 3. 去除首次打开的 ~*Message*~ 与 ~*scratch*~
+
+#+begin_src elisp
+  (setq message-log-max nil)
+
+  (defun kivnn/dashboard-mode-hook ()
+    "保证一直关闭scratch，保证只关闭第一次Message"
+    (setq-default kivnn/kill-scratch-buffer nil)
+    (when (get-buffer "*scratch*") (kill-buffer "*scratch*"))
+    (unless kivnn/kill-scratch-buffer
+      (when (get-buffer "*Messages*")
+        (kill-buffer "*Messages*")
+        (setq-default kivnn/kill-scratch-buffer t))))
+
+  (defun kivnn/view-echo-area-messages ()
+    "设置message-log-max并打开*Message*的buffer"
+    (interactive)
+    (setq message-log-max 1000)
+    (view-echo-area-messages))
+
+  ;; 设置快捷键
+  (global-set-key (kbd "C-114514")                   'kivnn/view-echo-area-messages)
+#+end_src
