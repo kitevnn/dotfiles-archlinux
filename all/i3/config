@@ -21,6 +21,8 @@ exec --no-startup-id feh --bg-fill "/home/une/.wallpaper/20220518085627.jpg"
 exec --no-startup-id xrandr --output eDP-1 --off
 # HDMI-1外接显示器
 exec --no-startup-id xrandr --output HDMI-1 --on
+# 设置外接显示器为主工作区
+workspace 1 output HDMI-1
 
 # 鼠标绑定
 # + 通过Super_L + Mouse_L，来拖动floating window到别的位置
