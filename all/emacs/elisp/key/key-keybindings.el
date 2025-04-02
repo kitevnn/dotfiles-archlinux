@@ -222,8 +222,7 @@
 ;; 关于音乐播放器
 ;; ========================================
 (require 'emms)                                                                                            
-(global-set-key (kbd "C-z C-z C-\m")                   'emms)                                               ; 打开音乐播放器
-(global-set-key (kbd "C-z C-z C-,")                    'emms-play-directory)                                ; 播放特定目录的音乐
+(global-set-key (kbd "C-z C-z C-\m")                   'kivnn/emms-play-directory)                          ; 打开音乐播放器
 (define-key emms-playlist-mode-map (kbd "R")           'emms-toggle-repeat-track)                           ; 音乐循环播放
 (define-key emms-playlist-mode-map (kbd "Q")           'emms-stop)                                          ; 停止所有音乐的播放
 (define-key emms-playlist-mode-map (kbd "<SPC>")       'emms-pause)                                         ; 暂停播放/开始播放

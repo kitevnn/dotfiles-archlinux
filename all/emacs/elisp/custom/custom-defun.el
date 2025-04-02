@@ -540,6 +540,12 @@
   (interactive)
   (when emms-player-playing-p
     (emms-player-seek (- 60))))
+(defun kivnn/emms-play-directory ()
+  "打开emms"
+  (interactive)
+  (if current-prefix-arg
+      (call-interactively 'emms-play-directory)
+    (call-interactively 'emms)))
 
 
 ;; =======================================
