@@ -12,7 +12,7 @@
 
 
 ;; ========================================
-;; 关于输入法
+;; 关于输入法emacs-rime
 ;; ========================================
 (global-set-key (kbd "C-SPC")                            'toggle-input-method)                             ; 切换输入法
 
@@ -122,10 +122,10 @@
 ;; ========================================
 (define-key org-mode-map (kbd "C-z C-x C-0")             'valign-mode)                                     ; 切换valign-mode
 (define-key org-mode-map (kbd "C-c C-x C-v")             'kivnn/toggle-inline-images-with-valign)          ; 用 C-c C-x C-v 避免valign-mode造成的对齐卡顿来预览图片
-(define-key org-mode-map (kbd "C-z C-x C-f")             'kivnn/jump-the-ending-of-the-latex-fragment)     ; 当光标在\[\]上下文时，光标跳转到\[\]的\[
-(define-key org-mode-map (kbd "C-z C-x C-b")             'kivnn/jump-the-beginning-of-the-latex-fragment)  ; 当光标在\[\]上下文时，光标跳转到\[\]的\]
-(define-key org-mode-map (kbd "C-z C-x C-n")             'kivnn/jump-the-next-latex-fragment)              ; 当光标在\[\]上下文时，光标跳转到下一个\[\]
-(define-key org-mode-map (kbd "C-z C-x C-p")             'kivnn/jump-the-previous-latex-fragment)          ; 当光标在\[\]上下文时，光标跳转到上一个\[\]
+(define-key org-mode-map (kbd "C-z C-x C-f")             'kivnn/jump-the-ending-of-the-latex-fragment)     ; 当光标在公式块上下文时，光标跳转到公式块的左边界
+(define-key org-mode-map (kbd "C-z C-x C-b")             'kivnn/jump-the-beginning-of-the-latex-fragment)  ; 当光标在公式块上下文时，光标跳转到公式块的右边界
+(define-key org-mode-map (kbd "C-z C-x C-n")             'kivnn/jump-the-next-latex-fragment)              ; 当光标在公式块上下文时，光标跳转到下一个公式块
+(define-key org-mode-map (kbd "C-z C-x C-p")             'kivnn/jump-the-previous-latex-fragment)          ; 当光标在公式块上下文时，光标跳转到上一个公式块
 (define-key org-mode-map (kbd "C-z C-x C-,")             'org-previous-item)                               ; 跳转到上一个 (1) 2. 3) 的小标题
 (define-key org-mode-map (kbd "C-z C-x C-.")             'org-next-item)                                   ; 跳转到下一个 (1) 2. 3) 的小标题
 (global-set-key          (kbd "C-z C-z C-\\")            'org-agenda)                                      ; 打开org议题界面
