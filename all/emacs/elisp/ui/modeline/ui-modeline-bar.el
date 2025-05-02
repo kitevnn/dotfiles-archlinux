@@ -200,12 +200,7 @@
                   "  "                           
                   modeline-time-hour
                   ":"
-                  modeline-time-minute
-                  "     "
-                  modeline-battery-percentage
-                  "  "
-                  modeline-cpu-temperature
-                  "°C"
+                  modeline-time-minute            
                   " 󰄨 "
                   modeline-ram-usage             
                   " "

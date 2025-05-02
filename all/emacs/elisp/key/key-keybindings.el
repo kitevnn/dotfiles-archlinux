@@ -6,9 +6,15 @@
 ;; ========================================
 ;; 关于软屏蔽
 ;; ========================================
-(global-unset-key (kbd "C-z"))                                                                              ; 屏蔽C-z (原功能: 挂起)
-(global-unset-key (kbd "C-\\"))                                                                             ; 屏蔽C-\\ (原功能: 切换输入法)
-(global-unset-key (kbd "C-,"))                                                                              ; 屏蔽C-, (原功能: 打开org-agenda-file)
+(global-unset-key (kbd "C-z"))                                                                             ; 屏蔽C-z (原功能: 挂起)
+(global-unset-key (kbd "C-\\"))                                                                            ; 屏蔽C-\\ (原功能: 切换输入法)
+(global-unset-key (kbd "C-,"))                                                                             ; 屏蔽C-, (原功能: 打开org-agenda-file)
+
+
+;; ========================================
+;; 关于输入法
+;; ========================================
+(global-set-key (kbd "C-SPC")                            'toggle-input-method)                             ; 切换输入法
 
 
 ;; ========================================
@@ -165,7 +171,7 @@
 (define-key pdf-view-mode-map (kbd "w")                  'pdf-view-scroll-down-or-previous-page)           ; PDFView向上滚动
 (define-key pdf-view-mode-map (kbd "t")                  'kivnn/move-prev-ten-pages)                       ; PDFView向前翻10页
 (define-key pdf-view-mode-map (kbd "b")                  'kivnn/move-next-ten-pages)                       ; PDFView向后翻10页
-(require 'pdf-annot)                                                                                       
+(require 'pdf-annot)                                                                                      
 (define-key pdf-annot-minor-mode-map (kbd "C-c C-a C-0") 'pdf-annot-delete)                                ; PDFView删除批注
 (define-key pdf-annot-minor-mode-map (kbd "C-c C-a C-1") 'pdf-annot-add-highlight-markup-annotation)       ; PDFView高亮
 (define-key pdf-annot-minor-mode-map (kbd "C-c C-a C-2") 'pdf-annot-add-underline-markup-annotation)       ; PDFView下划线
@@ -213,7 +219,7 @@
 ;; ========================================
 ;; 关于进程process
 ;; ========================================
-(require 'telega)                                                                                          
+(require 'telega)                                                                                         
 (define-key telega-chat-mode-map       (kbd "M-n")       'kivnn/move-next-five-lines)                      ; 光标向下移动5行
 (define-key telega-chat-mode-map       (kbd "M-p")       'kivnn/move-prev-five-lines)                      ; 光标向上移动5行
 
@@ -221,7 +227,7 @@
 ;; ========================================
 ;; 关于音乐播放器
 ;; ========================================
-(require 'emms)                                                                                            
+(require 'emms)                                                                                           
 (global-set-key (kbd "C-z C-z C-\m")                   'kivnn/emms-play-directory)                         ; 打开音乐播放器
 (define-key emms-playlist-mode-map (kbd "R")           'emms-toggle-repeat-track)                          ; 音乐循环播放
 (define-key emms-playlist-mode-map (kbd "Q")           'emms-stop)                                         ; 停止所有音乐的播放
@@ -259,7 +265,7 @@
 ;; ========================================
 ;; 关于deadgrep
 ;; ========================================
-(require 'deadgrep)                                                                                        
+(require 'deadgrep)                                                                                       
 (global-set-key (kbd "C-z C-x C-r")                    'deadgrep)                                          ; 打开deapgrep
 (define-key deadgrep-mode-map (kbd "c")                'deadgrep-cycle-search-case)                        ; 大写改小写快捷键
 (define-key deadgrep-mode-map (kbd "d")                'deadgrep-directory)                                ; 大写改小写快捷键

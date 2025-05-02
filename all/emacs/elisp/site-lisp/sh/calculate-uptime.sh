@@ -1,14 +1,11 @@
 #!/bin/bash
 
 # 基本路径配置
-user="une"
-path1=".config/emacs/archive"
-path2=".config/emacs/elisp/site-lisp/sh"
 filename="uptime"
 
 # 存储文件路径
-file1="/home/${user}/${path1}/${filename}"
-file2="/home/${user}/${path2}/${filename}"
+file1="/root/.emacs.d/archive/${filename}"
+file2="/root/.emacs.d/elisp/site-lisp/sh/${filename}"
 
 # 初始化总时间
 total_seconds=0

@@ -139,7 +139,7 @@
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 亮色logo图                                                                                           
   (setq dashboard-startup-banner
-        (concat user-emacs-directory directory-emacs-archive "dashboard-zoom-out-light.png"))
+        (concat directory-emacs-archive "dashboard-zoom-out-light.png"))
   (dashboard-refresh-buffer)
   ;; 亮色org-todo-keyword-faces
   (setq org-todo-keyword-faces
@@ -180,6 +180,16 @@
   (dolist (face-attr '((show-paren-match                        :background "#37474f" :foreground "#ffffff" :weight bold)
                        (show-paren-mismatch                     :background "#673ab7" :foreground "#ffffff" :weight bold)))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
+  ;; 亮色emacs-rime
+  (dolist (face-attr '((rime-candidate-num-face                                       :foreground "#90a4ae" :height 90)
+                       (rime-code-face                          :background "#37474f" :foreground "#ffffff" :height 90)
+                       (rime-comment-face                                             :foreground "#374f4f" :height 90)
+                       (rime-cursor-face                        :background "#37474f" :foreground "#ffffff" :height 90)
+                       (rime-default-face                       :background "#eceff1" :foreground "#37474f" :height 90)
+                       (rime-highlight-candidate-face                                 :foreground "#673ab7" :height 90)
+                       (rime-indicator-dim-face                                       :foreground "#37474f" :height 90)
+                       (rime-preedit-face                       :background "#90a4ae" :foreground "#ffffff" :height 90)))
+    (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))                                            
   ;; 亮色corfu
   (with-eval-after-load 'corfu                                                                            
     (dolist (face-attr '((corfu-default                         :background "#ffffff")
@@ -243,7 +253,7 @@
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 暗色logo图
   (setq dashboard-startup-banner
-        (concat user-emacs-directory directory-emacs-archive "dashboard-zoom-out-dark.png"))
+        (concat directory-emacs-archive "dashboard-zoom-out-dark.png"))
   (dashboard-refresh-buffer)
   ;; 暗色org-todo-keyword-faces
   (setq org-todo-keyword-faces
@@ -283,6 +293,16 @@
   ;; 暗色bracket
   (dolist (face-attr '((show-paren-match                        :background "#3bb1df" :foreground "#191919" :weight bold)
                        (show-paren-mismatch                     :background "#64fbc8" :foreground "#191919" :weight bold)))
+    (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
+  ;; 暗色emacs-rime
+  (dolist (face-attr '((rime-candidate-num-face                                                               :foreground "#c5c8c6" :height 90)
+                       (rime-code-face                                                  :background "#444444" :foreground "#64fbc8" :height 90)
+                       (rime-comment-face                                                                     :foreground "#c5c8c6" :height 90)
+                       (rime-cursor-face                                                                      :foreground "#b5ffd1" :height 90)
+                       (rime-default-face                                               :background "#191919" :foreground "#64fbc8" :height 90)
+                       (rime-highlight-candidate-face                                                         :foreground "#ffc300" :height 90)  
+                       (rime-indicator-dim-face                                                               :foreground "#c5c8c6" :height 90)
+                       (rime-preedit-face                                               :background "#444444" :foreground "#64fbc8" :height 90)))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 暗色corfu
   (with-eval-after-load 'corfu                                                       
@@ -441,7 +461,7 @@
   (let ((uptime (emacs-uptime)))
     (with-temp-buffer
       (insert (format "Uptime: %s\n" uptime))
-      (append-to-file (point-min) (point-max)  (concat user-emacs-directory directory-emacs-archive "uptime")))))
+      (append-to-file (point-min) (point-max)  (concat directory-emacs-archive "uptime")))))
 
 (defun kivnn/show-emacs-uptime ()
   "通过site-lisp的sh脚本实现，获取Emacs的累计使用总时长(在org-mode下插入，在非org-mode下打印)"
