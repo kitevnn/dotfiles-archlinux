@@ -202,17 +202,18 @@
 ;; 关于进程process
 ;; ========================================
 (global-set-key (kbd "C-z C-p C-e")                      'telega)                                          ; 打开telega
-(global-set-key (kbd "C-z C-p C-s")                      'eshell)                                          ; 开启eshell壳
-(global-set-key (kbd "C-z C-p C-t")                      'eat)                                             ; 开启eat终端模拟器
-(global-set-key (kbd "C-c C-p C-l")                      'eglot)                                           ; 开启eglot语言服务客户端
-(global-set-key (kbd "C-c C-p C-c")                      'corfu-mode)                                      ; 开启corfu轻量补全框架
-(global-set-key (kbd "C-z C-z C-1")                      'magit)                                           ; 打开magit
+(global-set-key (kbd "C-z C-p C-s")                      'eshell)                                          ; 打开eshell壳
+(global-set-key (kbd "C-z C-p C-t")                      'eat)                                             ; 打开eat终端模拟器
+(global-set-key (kbd "C-c C-p C-l")                      'eglot)                                           ; 打开eglot语言服务客户端
+(global-set-key (kbd "C-c C-p C-c")                      'corfu-mode)                                      ; 打开corfu轻量补全框架
 
 
 ;; ========================================
 ;; 关于magit
 ;; ========================================
-(define-key text-mode-map (kbd "C-z C-z C-2")            'kivnn/magit-commit-template)                     ; 个人提交信息模板
+(global-set-key (kbd "C-z C-z C-1")                      'magit)                                           ; 打开magit
+(define-key text-mode-map (kbd "C-z C-z C-2")            'kivnn/magit-commit-template-wsl-archlinux)       ; 个人提交信息模板(WSL环境)
+(define-key text-mode-map (kbd "C-z C-z C-3")            'kivnn/magit-commit-template-archlinux)           ; 个人提交信息模板(ArchLinux环境)
 
 
 ;; ========================================

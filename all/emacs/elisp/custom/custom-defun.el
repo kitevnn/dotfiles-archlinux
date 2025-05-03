@@ -516,12 +516,25 @@
 ;; 关于个人提交信息模板
 ;; from GPT 4o
 ;; =======================================
-(defun kivnn/magit-commit-template ()
-  "个人提交信息模板: 第1次询问标题，第2次询问子项数量"
+(defun kivnn/magit-commit-template-archlinux ()
+  "个人提交信息模板: 第1次询问标题，第2次询问子项数量，在ArchLinux环境"
   (interactive)
   (let* ((software (read-string "what's been changed (GNU Emacs by default): " "GNU Emacs"))
          (item-count (read-number "the count of items (1 by default): " 1))
-         (commit-msg (concat "更新了 " software " 配置文件\n\n"
+         (commit-msg (concat "[ArchLinux环境]: " "更新了 " software " 配置文件\n\n"
+                             (mapconcat (lambda (_) "+ ") (make-list item-count "+ ") "\n\n"))))
+    (insert commit-msg)
+    (beginning-of-buffer)
+    (beginning-of-visual-line)
+    (next-line 2)
+    (end-of-visual-line)))
+
+(defun kivnn/magit-commit-template-wsl-archlinux ()
+  "个人提交信息模板: 第1次询问标题，第2次询问子项数量，在WSL-ArchLinux环境"
+  (interactive)
+  (let* ((software (read-string "what's been changed (GNU Emacs by default): " "GNU Emacs"))
+         (item-count (read-number "the count of items (1 by default): " 1))
+         (commit-msg (concat "[WSL环境]: " "更新了 " software " 配置文件\n\n"
                              (mapconcat (lambda (_) "+ ") (make-list item-count "+ ") "\n\n"))))
     (insert commit-msg)
     (beginning-of-buffer)
@@ -720,12 +733,16 @@
 ;; =======================================
 (defun kivnn/isearch-forward ()
   "打开并编辑前向搜索C-s"
-  (isearch-forward)
-  (isearch-edit-string))
+  (interactive)
+  (call-interactively 'isearch-forward)
+  (when isearch-mode
+    (isearch-edit-string)))
 (defun kivnn/isearch-backward ()
   "打开并编辑前向搜索C-r"
-  (isearch-backward)
-  (isearch-edit-string))
+  (interactive)  
+  (call-interactively 'isearch-backward)
+  (when isearch-mode
+    (isearch-edit-string)))
 
 
 ;; =======================================
