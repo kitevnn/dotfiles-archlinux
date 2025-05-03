@@ -18,6 +18,13 @@
 
 
 ;; ========================================
+;; 关于文本搜索
+;; ========================================
+(global-set-key (kbd "C-s")                              'kivnn/isearch-forward)                           ; 给emacs-rime优化使用体验的
+(global-set-key (kbd "C-r")                              'kivnn/isearch-backward)                          ; 给emacs-rime优化使用体验的
+
+
+;; ========================================
 ;; 关于buffer
 ;; ========================================
 (global-set-key (kbd "C-z C-b C-n")                      'next-buffer)                                     ; 跳转到下一个全局buffer

@@ -716,6 +716,19 @@
 
 
 ;; =======================================
+;; [WSL环境]: 给emacs-rime优化使用体验的
+;; =======================================
+(defun kivnn/isearch-forward ()
+  "打开并编辑前向搜索C-s"
+  (isearch-forward)
+  (isearch-edit-string))
+(defun kivnn/isearch-backward ()
+  "打开并编辑前向搜索C-r"
+  (isearch-backward)
+  (isearch-edit-string))
+
+
+;; =======================================
 ;; 给hooks-hook.el使用的所有钩子
 ;; =======================================
 (defun kivnn/after-init-hook ()
