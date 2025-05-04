@@ -5,7 +5,9 @@
   :ensure t
   :defer nil
   :custom
-  (default-input-method "rime"))
+  (default-input-method "rime")
+  :init
+  (setq rime-title "双 "))
 
 
 (provide 'enhance-rime)
