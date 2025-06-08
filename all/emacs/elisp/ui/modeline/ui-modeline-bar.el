@@ -182,11 +182,11 @@
                   (vc-mode vc-mode)
                   "  "
                   mode-line-modes                  
-                  "  "
+                  "   "
                   modeline-calendar-month
                   modeline-calendar-day
                   modeline-calendar-week
-                  "  "                           
+                  "   "                           
                   modeline-time-hour
                   ":"
                   modeline-time-minute            
