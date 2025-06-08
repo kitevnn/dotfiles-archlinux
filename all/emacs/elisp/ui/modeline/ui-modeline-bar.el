@@ -24,33 +24,21 @@
 ;; 关于当前日期
 ;; ========================================
 (defun kivnn/update-modeline-calendar-month ()
-  (setq modeline-calendar-month
-        (string-trim
-         (shell-command-to-string
-          (concat user-emacs-directory directory-modeline-path-suffix "calendar-month.sh")))))
+  (setq modeline-calendar-month (concat (format-time-string "%m") "月")))
 (defun kivnn/update-modeline-calendar-day ()
-  (setq modeline-calendar-day
-        (string-trim
-         (shell-command-to-string
-          (concat user-emacs-directory directory-modeline-path-suffix "calendar-day.sh")))))
+  (setq modeline-calendar-day (concat (format-time-string "%d") "日")))
 (defun kivnn/update-modeline-calendar-week ()
   (setq modeline-calendar-week
-        (string-trim
-         (shell-command-to-string
-          (concat user-emacs-directory directory-modeline-path-suffix "calendar-week.sh")))))
+        (concat "(星期" (let* ((weekday-num (string-to-number (format-time-string "%u")))
+                               (weekday-chinese "一二三四五六日"))
+                          (string (aref weekday-chinese (1- weekday-num)))) ")")))        
 ;; ========================================
 ;; 关于当前时间
 ;; ========================================
 (defun kivnn/update-modeline-time-hour ()
-  (setq modeline-time-hour
-        (string-trim
-         (shell-command-to-string
-          (concat user-emacs-directory directory-modeline-path-suffix "time-hour.sh")))))
+  (setq modeline-time-hour (format-time-string "%H")))
 (defun kivnn/update-modeline-time-minute ()
-  (setq modeline-time-minute
-        (string-trim
-         (shell-command-to-string
-          (concat user-emacs-directory directory-modeline-path-suffix "time-minute.sh")))))
+  (setq modeline-time-minute (format-time-string "%M")))
 ;; ========================================
 ;; 关于电池信息
 ;; ========================================
@@ -153,7 +141,7 @@
 ;; 定期更新变量数据
 ;; ========================================
 (run-at-time "0 sec" 86400 'kivnn/update-modeline-calendar-month)      ; 每24小时更新一次日历月份信息
-(run-at-time "0 sec" 43200 'kivnn/update-modeline-calendar-day)        ; 每12小时更新一次日历月份信息
+(run-at-time "0 sec" 43200 'kivnn/update-modeline-calendar-day)        ; 每12小时更新一次日历日数信息
 (run-at-time "0 sec" 43200 'kivnn/update-modeline-calendar-week)       ; 每12小时更新一次当前星期信息
 (run-at-time "0 sec" 1800  'kivnn/update-modeline-weather-situation)   ; 每30分钟更新一次当前天气信息
 (run-at-time "0 sec" 86400 'kivnn/update-modeline-distribution)        ; 每1天更新一次发行版信息
@@ -193,10 +181,11 @@
                   mode-line-position
                   (vc-mode vc-mode)
                   "  "
-                  mode-line-modes
-                  "  "
+                  mode-line-modes                  
+                  "  "
                   modeline-calendar-month
                   modeline-calendar-day
+                  modeline-calendar-week
                   "  "                           
                   modeline-time-hour
                   ":"
