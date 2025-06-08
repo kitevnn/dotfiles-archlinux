@@ -135,7 +135,7 @@
   (dolist (face-attr '((vertico-group-separator                 :background "#37474f" :foreground "#ffffff")
                        (vertico-group-title                     :background "#37474f" :foreground "#ffffff")
                        (vertico-posframe                        :background "#ffffff" :foreground "#37474f")
-                       (vertico-current                         :background "#b5ffd1" :foreground "#37474f")))
+                       (vertico-current                         :background "#eceff1" :foreground "#37474f")))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 亮色logo图                                                                                           
   (setq dashboard-startup-banner

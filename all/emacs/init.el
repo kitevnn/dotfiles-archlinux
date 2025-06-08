@@ -32,6 +32,7 @@
 (require 'enhance-term)
 (require 'enhance-history)
 (require 'enhance-rime)
+(require 'enhance-evil)
 (require 'music-emms)
 (require 'ui-font-sauce)
 (require 'ui-icon-nerdfont)
@@ -67,8 +68,8 @@
      "e7820b899036ae7e966dcaaec29fd6b87aef253748b7de09e74fdc54407a7a02" default))
  '(package-selected-packages
    '(auctex bliss-theme cdlatex centaur-tabs corfu dashboard deadgrep denote
-            dirvish eat eglot embark-consult emms highlight-indent-guides magit
-            marginalia nano-theme nerd-icons-completion nerd-icons-corfu
+            dirvish eat eglot embark-consult emms evil highlight-indent-guides
+            magit marginalia nano-theme nerd-icons-completion nerd-icons-corfu
             nerd-icons-dired nerd-icons-ibuffer orderless org-download
             org-preview-html pdf-tools rainbow-identifiers restart-emacs rime
             smartparens telega tree-sitter-langs valign vertico-posframe
