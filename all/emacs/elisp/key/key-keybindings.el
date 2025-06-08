@@ -274,7 +274,7 @@
 ;; 关于deadgrep
 ;; ========================================
 (require 'deadgrep)                                                                                       
-(global-set-key (kbd "C-z C-x C-r")                    'deadgrep)                                          ; 打开deapgrep
+(global-set-key (kbd "C-z C-p C-d")                    'deadgrep)                                          ; 打开deapgrep
 (define-key deadgrep-mode-map (kbd "c")                'deadgrep-cycle-search-case)                        ; 大写改小写快捷键
 (define-key deadgrep-mode-map (kbd "d")                'deadgrep-directory)                                ; 大写改小写快捷键
 (define-key deadgrep-mode-map (kbd "f")                'deadgrep-cycle-files)                              ; 大写改小写快捷键
