@@ -80,14 +80,16 @@
 ;; 编辑增强(C-y 与 C-u C-y)
 ;; from chatGPT 4o
 ;; =======================================
-(defun kivnn/yank-or-copy-line ()
-  "保留C-y原本yank的基础上，添加复制当前行，就像vim的yy一样"
-  (interactive)
-  (if current-prefix-arg
-      (progn
-        (kill-new (buffer-substring-no-properties
-                   (line-beginning-position)
-                   (line-end-position))))        
+(defun kivnn/yank-or-copy-line (arg)
+  "保证光标与C-y不变下，C-u C-y复制当前行，就像vim的yy一样"
+  (interactive "P")
+  (if arg
+      (let ((original-point (point))
+            (bol (line-beginning-position))
+            (eol (line-end-position)))
+        (kill-new (buffer-substring-no-properties bol eol))
+        (goto-char original-point)
+        (message "current line yanked."))
     (yank)))
 
 
