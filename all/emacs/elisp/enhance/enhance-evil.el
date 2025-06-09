@@ -31,7 +31,6 @@
   (define-key evil-normal-state-map (kbd "sj")              #'kivnn/evil-split-window-below)
   (define-key evil-normal-state-map (kbd "sk")              #'split-window-below)
   (define-key evil-normal-state-map (kbd "sl")              #'kivnn/evil-split-window-right)
-  (define-key evil-normal-state-map (kbd "sb")              #'ibuffer)
   (define-key evil-normal-state-map (kbd "C-w h")           #'windmove-left)
   (define-key evil-normal-state-map (kbd "C-w j")           #'windmove-down)
   (define-key evil-normal-state-map (kbd "C-w k")           #'windmove-up)
@@ -41,32 +40,77 @@
   (define-key evil-normal-state-map (kbd "<left>")          #'kivnn/resize-left-five-unit)
   (define-key evil-normal-state-map (kbd "<right>")         #'kivnn/resize-right-five-unit)
   (define-key evil-normal-state-map (kbd "/")               #'kivnn/isearch-forward)
-  (define-key evil-normal-state-map (kbd "\\ /")            #'kivnn/isearch-backward)
-  (define-key evil-normal-state-map (kbd "\\ g")            #'magit)  
-  (define-key evil-normal-state-map (kbd "\\ e")            #'telega)
-  (define-key evil-normal-state-map (kbd "\\ t")            #'eat)
+  (define-key evil-normal-state-map (kbd "SPC /")           #'kivnn/isearch-backward)
+  (define-key evil-normal-state-map (kbd "SPC g")           #'magit)
+  (define-key evil-normal-state-map (kbd "SPC e")           #'telega)
+  (define-key evil-normal-state-map (kbd "SPC t")           #'eat)
+  (define-key evil-normal-state-map (kbd "SPC b")           #'ibuffer)
   ;;; dired-map
   (with-eval-after-load 'dired
     (evil-define-key 'normal dired-mode-map
-      (kbd "a") #'dired-create-empty-file
-      (kbd "r") #'dired-do-rename
-      (kbd "m") #'dired-mark
-      (kbd "M") #'dirvish-side
-      (kbd "u") #'dired-unmark
-      (kbd "d") #'dired-do-delete
-      (kbd "h") #'dired-up-directory
-      (kbd "j") #'dired-next-line
-      (kbd "k") #'dired-previous-line
-      (kbd "l") #'dired-find-file))
+                     (kbd "a") #'dired-create-empty-file
+                     (kbd "r") #'dired-do-rename
+                     (kbd "m") #'dired-mark
+                     (kbd "M") #'dirvish-side
+                     (kbd "u") #'dired-unmark
+                     (kbd "d") #'dired-do-delete
+                     (kbd "h") #'dired-up-directory
+                     (kbd "j") #'dired-next-line
+                     (kbd "k") #'dired-previous-line
+                     (kbd "l") #'dired-find-file))
+    ;;; org-mode  
   (with-eval-after-load 'org
-    ;;;; 这句是关键！
-    ;; [evil环境]: 在使用evil时，如果要重新绑定org-mode的快捷键，就必须要这样设置(真的是巨坑，不知道这句之前，足足折磨了我2小时还在原地踏步)
     (evil-make-overriding-map org-mode-map 'normal)
     (evil-define-key 'normal org-mode-map
-      (kbd "\\ c l") #'org-latex-preview
-      (kbd "\\ z l") #'kivnn/org-latex-preview)
+                     ;; about te<x>t
+                     (kbd "SPC x v") #'kivnn/toggle-inline-images-with-valign
+                     (kbd "SPC x c") #'org-latex-preview
+                     (kbd "SPC x z") #'kivnn/org-latex-preview
+                     (kbd "SPC x b") #'kivnn/jump-the-beginning-of-the-latex-fragment
+                     (kbd "SPC x f") #'kivnn/jump-the-ending-of-the-latex-fragment
+                     (kbd "SPC x n") #'kivnn/jump-the-next-latex-fragment
+                     (kbd "SPC x p") #'kivnn/jump-the-previous-latex-fragment
+                     (kbd "SPC x ,") #'org-previous-item
+                     (kbd "SPC x .") #'org-next-item
+                     (kbd "SPC x 0") #'valign-mode
+                     ;; about <a>genda
+                     (kbd "SPC a t") #'kivnn/org-agenda-change-headline-to-todo
+                     (kbd "SPC a d") #'kivnn/org-agenda-change-headline-to-done
+                     (kbd "SPC a i") #'kivnn/org-agenda-change-headline-to-doing
+                     (kbd "SPC a w") #'kivnn/org-agenda-change-headline-to-wait
+                     (kbd "SPC a j") #'org-todo
+                     (kbd "SPC a -") #'org-timestamp-inactive
+                     (kbd "SPC a 0") #'org-archive-subtree
+                     (kbd "SPC a =") #'org-timestamp
+                     (kbd "SPC a [") #'org-schedule
+                     (kbd "SPC a ]") #'org-deadline
+                     ;; about de<n>ote
+                     (kbd "SPC n a") #'denote
+                     (kbd "SPC n c") #'denote-backlinks
+                     (kbd "SPC n l") #'denote-link-or-create
+                     (kbd "SPC n r") #'denote-rename-file
+                     (kbd "SPC n ,") #'denote-find-backlink
+                     (kbd "SPC n .") #'denote-find-link)
     (evil-define-key 'insert org-mode-map
-      (kbd "$") #'kivnn/insert-inline-OCDL)))
+                     (kbd "$") #'kivnn/insert-inline-OCDL))
+  ;;; ibuffer-mode
+  (setq evil-emacs-state-modes (delq 'ibuffer-mode evil-emacs-state-modes))  
+  (with-eval-after-load 'ibuffer
+    (evil-make-overriding-map org-mode-map 'normal)    
+    (evil-define-key 'normal ibuffer-mode-map
+                     ;; vim-motion
+                     (kbd "h") #'evil-backward-char
+                     (kbd "j") #'evil-next-line
+                     (kbd "k") #'evil-previous-line
+                     (kbd "l") #'evil-forward-char                     
+                     (kbd "v") #'evil-visual-char
+                     ;; emacs-style
+                     (kbd "C-f") #'evil-forward-char
+                     (kbd "C-b") #'evil-backward-char
+                     (kbd "C-n") #'evil-next-line
+                     (kbd "C-p") #'evil-previous-line)))
+  ;;; minibuffer-mode
+  
 
 
 (provide 'enhance-evil)

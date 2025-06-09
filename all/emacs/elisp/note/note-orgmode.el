@@ -25,6 +25,10 @@
 ;; ========================================
 ;; 使用 xelatex 渲染 latex-fragment
 ;; ========================================
+(defvar custom-org-image-converter
+  (format "convert -density %d -background %s -flatten -quality 100 %%f %%O"
+          variable-ui-fonts-size
+          variable-latex-fragment-background))
 (add-to-list 'org-preview-latex-process-alist
              '(xelatex-chinese
                :programs ("xelatex" "convert")
@@ -43,7 +47,7 @@
                               \\usepackage{extpfeil}
                               \\pagestyle{empty}"
                :latex-compiler ("xelatex -interaction nonstopmode -output-directory %o %f")
-               :image-converter ("convert -density 90 -background '#FFFFFF' -flatten -quality 100 %f %O")))
+               :image-converter (custom-org-image-converter)))
 
 
 ;; ========================================

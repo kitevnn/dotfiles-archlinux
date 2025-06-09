@@ -24,8 +24,11 @@
 ;; =======================================
 ;; 关于variable变量
 ;; =======================================
+(defvar variable-ui-fonts-size              130                                             "[变量]: 默认的字体大小")
 (defvar variable-latex-fragment-left-bound  "\\\("                                          "[变量]: latex-fragment的左边界")
 (defvar variable-latex-fragment-right-bound "\\\)"                                          "[变量]: latex-fragment的右边界")
+(defvar variable-latex-fragment-background "#FFFFFF"                                        "[变量]: 默认的公式背景")
 
 
 (provide 'basic-vari)
+
