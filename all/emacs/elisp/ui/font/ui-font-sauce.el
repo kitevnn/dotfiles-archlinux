@@ -13,6 +13,15 @@
 
 
 ;; ========================================
+;; modeline字体设置
+;; ========================================
+(set-face-attribute 'mode-line nil
+                    :height (- variable-ui-fonts-size 30)
+                    :width 'semi-expanded
+                    :family "SauceCodeProNerdFontCompleteMono Nerd Font")
+
+
+;; ========================================
 ;; centaur-tabs字体设置
 ;; ========================================
 (centaur-tabs-change-fonts "SauceCodeProNerdFontCompleteMono Nerd Font" variable-ui-fonts-size)

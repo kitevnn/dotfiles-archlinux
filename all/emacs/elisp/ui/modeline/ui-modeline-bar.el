@@ -206,10 +206,10 @@
                  ;; 左对齐
                  '(:eval mode-line-mule-info)
                  '(:eval mode-line-remote mode-line-modified)
-                 " "
+                 "  "
                  '(:eval mode-line-buffer-identification)
                  '(:eval (when vc-mode vc-mode))
-                 "  "
+                 "   "
                  '(:eval (format "%s" modeline-calendar-month))
                  '(:eval (format "%s" modeline-calendar-day))                                   
                  "("

@@ -806,5 +806,9 @@
   (setq message-log-max 1000)
   (view-echo-area-messages))
 
+(defun kivnn/text-scale-decrease ()
+  "缩小文本尺寸显示"
+  (text-scale-decrease 1))
+
 
 (provide 'custom-defun)
