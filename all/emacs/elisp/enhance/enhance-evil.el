@@ -44,6 +44,7 @@
     (kbd "SPC /")   #'kivnn/isearch-backward
     (kbd "SPC ,")   #'previous-buffer
     (kbd "SPC .")   #'next-buffer
+    (kbd "SPC m")   #'kivnn/update-modeline-all-information
     (kbd "C-f")     #'evil-forward-char
     (kbd "C-b")     #'evil-backward-char
     (kbd "C-n")     #'evil-next-line

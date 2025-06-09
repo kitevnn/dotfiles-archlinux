@@ -178,17 +178,15 @@
 ;; 关于modeline
 ;; ========================================
 (defun kivnn/update-modeline-with-all-scripts ()
-  "手动搓出modeline信息"
-
-  ;;; ALL L3信息
+  "手动搓出modeline信息"  
+  ;;; 变量modeline信息放外边setq
   (setq kivnn/mode-line-position
         '(:eval
-          (let ((percent (format-mode-line "%p"))
-                (line (format-mode-line "%l"))
-                (col (format-mode-line "%c")))
-            (format "%s,%s(%s)" line col percent))))
-  
-  ;;; agenda数量信息
+          (let* ((percent (format-mode-line "%p"))
+                 (line (format-mode-line "%l"))
+                 (col (format-mode-line "%c"))
+                 (safe-percent (replace-regexp-in-string "%" "%%" percent)))
+            (format "%s,%s(%s)" line col safe-percent))))
   (setq kivnn/mode-line-agenda-info
         (list
          " "
@@ -196,11 +194,8 @@
          (format "󱞿 DOING %d " modeline-agenda-doing-count)
          (format "󰝕 WAIT %d " modeline-agenda-wait-count)
          "-  "
-         modeline-agenda-file-name))
-  
-  ;; ========================================
-  ;; 到了真正要设置的地方
-  ;; ========================================  
+         modeline-agenda-file-name))  
+  ;;; 常量modeline信息放里面setq-default  
   (setq-default mode-line-format
                 (list
                  ;; 左对齐
