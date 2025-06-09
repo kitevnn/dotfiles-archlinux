@@ -40,8 +40,8 @@
     (kbd "<down>")    #'kivnn/resppize-bottom-five-unit
     (kbd "<left>")    #'kivnn/resize-left-five-unit
     (kbd "<right>")   #'kivnn/resize-right-five-unit
-    (kbd "/")         #'kivnn/isearch-forward
-    (kbd "SPC /")     #'kivnn/isearch-backward
+    (kbd "SPC /")     #'kivnn/isearch-forward
+    (kbd "SPC SPC /") #'kivnn/isearch-backward
     (kbd "SPC ,")     #'previous-buffer
     (kbd "SPC .")     #'next-buffer
     (kbd "SPC m")     #'kivnn/update-modeline-all-information
@@ -81,8 +81,8 @@
     (define-key evil-normal-state-map (kbd "<down>")          #'kivnn/resppize-bottom-five-unit)
     (define-key evil-normal-state-map (kbd "<left>")          #'kivnn/resize-left-five-unit)
     (define-key evil-normal-state-map (kbd "<right>")         #'kivnn/resize-right-five-unit)
-    (define-key evil-normal-state-map (kbd "/")               #'kivnn/isearch-forward)
-    (define-key evil-normal-state-map (kbd "SPC /")           #'kivnn/isearch-backward)
+    (define-key evil-normal-state-map (kbd "SPC /")           #'kivnn/isearch-forward)
+    (define-key evil-normal-state-map (kbd "SPC SPC /")       #'kivnn/isearch-backward)
     (define-key evil-normal-state-map (kbd "SPC ,")           #'previous-buffer)
     (define-key evil-normal-state-map (kbd "SPC .")           #'next-buffer))
 
