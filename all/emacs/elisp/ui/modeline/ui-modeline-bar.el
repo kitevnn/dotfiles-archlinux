@@ -180,6 +180,10 @@
 (defun kivnn/update-modeline-with-all-scripts ()
   "手动搓出modeline信息"  
   ;;; 变量modeline信息放外边setq
+  (setq kivnn/mode-line-modified
+        '(:eval (cond (buffer-read-only "%")
+                      ((buffer-modified-p) "*")
+                      (t "-"))))
   (setq kivnn/mode-line-position
         '(:eval
           (let* ((percent (format-mode-line "%p"))
@@ -200,7 +204,7 @@
                 (list
                  ;; 左对齐
                  '(:eval mode-line-mule-info)
-                 '(:eval mode-line-remote mode-line-modified)
+                 '(:eval kivnn/mode-line-modified)
                  "  "
                  '(:eval mode-line-buffer-identification)
                  '(:eval (when vc-mode vc-mode))

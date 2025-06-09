@@ -18,37 +18,38 @@
 (defun kivnn/set-general-keybindings (state keymap)
   "设置基本通用风格的个人快捷键模板"
   (evil-define-key state keymap
-    (kbd "h")       #'evil-backward-char
-    (kbd "j")       #'evil-next-line
-    (kbd "k")       #'evil-previous-line
-    (kbd "l")       #'evil-forward-char
-    (kbd "S")       #'save-buffer
-    (kbd "s")       nil
-    (kbd "J")       #'kivnn/move-next-five-lines
-    (kbd "K")       #'kivnn/move-prev-five-lines
-    (kbd "M")       #'dirvish-side
-    (kbd "Q")       #'delete-window
-    (kbd "sh")      #'split-window-right
-    (kbd "sj")      #'kivnn/evil-split-window-below
-    (kbd "sk")      #'split-window-below
-    (kbd "sl")      #'kivnn/evil-split-window-right
-    (kbd "C-w h")   #'windmove-left
-    (kbd "C-w j")   #'windmove-down
-    (kbd "C-w k")   #'windmove-up
-    (kbd "C-w l")   #'windmove-right
-    (kbd "<up>")    #'kivnn/resize-top-five-unit
-    (kbd "<down>")  #'kivnn/resppize-bottom-five-unit
-    (kbd "<left>")  #'kivnn/resize-left-five-unit
-    (kbd "<right>") #'kivnn/resize-right-five-unit
-    (kbd "/")       #'kivnn/isearch-forward
-    (kbd "SPC /")   #'kivnn/isearch-backward
-    (kbd "SPC ,")   #'previous-buffer
-    (kbd "SPC .")   #'next-buffer
-    (kbd "SPC m")   #'kivnn/update-modeline-all-information
-    (kbd "C-f")     #'evil-forward-char
-    (kbd "C-b")     #'evil-backward-char
-    (kbd "C-n")     #'evil-next-line
-    (kbd "C-p")     #'evil-previous-line))
+    (kbd "h")         #'evil-backward-char
+    (kbd "j")         #'evil-next-line
+    (kbd "k")         #'evil-previous-line
+    (kbd "l")         #'evil-forward-char
+    (kbd "S")         #'save-buffer
+    (kbd "s")         nil
+    (kbd "J")         #'kivnn/move-next-five-lines
+    (kbd "K")         #'kivnn/move-prev-five-lines
+    (kbd "M")         #'dirvish-side
+    (kbd "Q")         #'delete-window
+    (kbd "sh")        #'split-window-right
+    (kbd "sj")        #'kivnn/evil-split-window-below
+    (kbd "sk")        #'split-window-below
+    (kbd "sl")        #'kivnn/evil-split-window-right
+    (kbd "C-w h")     #'windmove-left
+    (kbd "C-w j")     #'windmove-down
+    (kbd "C-w k")     #'windmove-up
+    (kbd "C-w l")     #'windmove-right
+    (kbd "<up>")      #'kivnn/resize-top-five-unit
+    (kbd "<down>")    #'kivnn/resppize-bottom-five-unit
+    (kbd "<left>")    #'kivnn/resize-left-five-unit
+    (kbd "<right>")   #'kivnn/resize-right-five-unit
+    (kbd "/")         #'kivnn/isearch-forward
+    (kbd "SPC /")     #'kivnn/isearch-backward
+    (kbd "SPC ,")     #'previous-buffer
+    (kbd "SPC .")     #'next-buffer
+    (kbd "SPC m")     #'kivnn/update-modeline-all-information
+    (kbd "SPC SPC q") #'evil-mode
+    (kbd "C-f")       #'evil-forward-char
+    (kbd "C-b")       #'evil-backward-char
+    (kbd "C-n")       #'evil-next-line
+    (kbd "C-p")       #'evil-previous-line))
 
 
 ;; ========================================
@@ -162,6 +163,7 @@
   ;;; dashboard-mode
   ;;; ========================================
   (with-eval-after-load 'dashboard
+    (kivnn/set-general-keybindings 'normal dashboard-mode-map)
     (evil-define-key 'normal dashboard-mode-map
       (kbd "SPC SPC r") #'consult-recent-file
       (kbd "SPC SPC b") #'bookmark-bmenu-list
