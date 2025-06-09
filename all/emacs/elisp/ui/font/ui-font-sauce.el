@@ -50,14 +50,20 @@
                 (variable-pitch nil :family "Source Han Sans CN"                         :height ,(+ variable-ui-fonts-size 20))
                 (fixed-pitch nil    :family "SauceCodeProNerdFontCompleteMono Nerd Font" :height ,(+ variable-ui-fonts-size 20)))))
 
+(defun kivnn/set-minibuffer-mode-font ()
+  "在特定的minibuffer-mode设置字体"  
+  (setq-local face-remapping-alist
+              `((default            :family "Source Han Sans CN"                         :height ,variable-ui-fonts-size))))
+
 
 ;; ========================================
 ;; 特定mode字体钩子
 ;; ========================================
-(add-hook 'org-mode-hook         #'kivnn/set-mode-font)          ; org-mode
-(add-hook 'emms-mode-hook        #'kivnn/set-mode-font)          ; emms-mode
-(add-hook 'telega-root-mode-hook #'kivnn/set-telega-mode-font)   ; telega-root-mode
-(add-hook 'telega-chat-mode-hook #'kivnn/set-telega-mode-font)   ; telega-chat-mode
+(add-hook 'org-mode-hook         #'kivnn/set-mode-font)             ; org-mode
+(add-hook 'emms-mode-hook        #'kivnn/set-mode-font)             ; emms-mode
+(add-hook 'telega-root-mode-hook #'kivnn/set-telega-mode-font)      ; telega-root-mode
+(add-hook 'telega-chat-mode-hook #'kivnn/set-telega-mode-font)      ; telega-chat-mode
+(add-hook 'minibuffer-mode-hook  #'kivnn/set-minibuffer-mode-font)  ; minibuffer-mode
 
 
 (provide 'ui-font-sauce)
