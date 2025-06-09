@@ -53,7 +53,7 @@
 
 
 ;; =======================================
-;; 编辑增强
+;; 编辑增强(重复上一行，并保持光标在原位置不变)
 ;; from https://stackoverflow.com/a/998472
 ;; =======================================
 (defun kivnn/duplicate-line (arg)
@@ -74,6 +74,21 @@
           (setq count (1- count))))      
       (setq buffer-undo-list (cons (cons eol (point)) buffer-undo-list))))
   (next-line arg))
+
+
+;; =======================================
+;; 编辑增强(C-y 与 C-u C-y)
+;; from chatGPT 4o
+;; =======================================
+(defun kivnn/yank-or-copy-line ()
+  "保留C-y原本yank的基础上，添加复制当前行，就像vim的yy一样"
+  (interactive)
+  (if current-prefix-arg
+      (progn
+        (kill-new (buffer-substring-no-properties
+                   (line-beginning-position)
+                   (line-end-position))))        
+    (yank)))
 
 
 ;; =======================================
@@ -181,15 +196,16 @@
                        (show-paren-mismatch                     :background "#673ab7" :foreground "#ffffff" :weight bold)))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 亮色emacs-rime
-  (dolist (face-attr '((rime-candidate-num-face                                       :foreground "#90a4ae" :height variable-ui-fonts-size)
-                       (rime-code-face                          :background "#37474f" :foreground "#ffffff" :height variable-ui-fonts-size)
-                       (rime-comment-face                                             :foreground "#374f4f" :height variable-ui-fonts-size)
-                       (rime-cursor-face                        :background "#37474f" :foreground "#ffffff" :height variable-ui-fonts-size)
-                       (rime-default-face                       :background "#eceff1" :foreground "#37474f" :height variable-ui-fonts-size)
-                       (rime-highlight-candidate-face                                 :foreground "#673ab7" :height variable-ui-fonts-size)
-                       (rime-indicator-dim-face                                       :foreground "#37474f" :height variable-ui-fonts-size)
-                       (rime-preedit-face                       :background "#90a4ae" :foreground "#ffffff" :height variable-ui-fonts-size)))
-    (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))                                            
+  (dolist (face-attr
+           `((rime-candidate-num-face                                                 :foreground "#90a4ae" :height ,variable-ui-fonts-size)
+             (rime-code-face                                    :background "#37474f" :foreground "#ffffff" :height ,variable-ui-fonts-size)
+             (rime-comment-face                                                       :foreground "#374f4f" :height ,variable-ui-fonts-size)
+             (rime-cursor-face                                  :background "#37474f" :foreground "#ffffff" :height ,variable-ui-fonts-size)
+             (rime-default-face                                 :background "#eceff1" :foreground "#37474f" :height ,variable-ui-fonts-size)
+             (rime-highlight-candidate-face                                           :foreground "#673ab7" :height ,variable-ui-fonts-size)
+             (rime-indicator-dim-face                                                 :foreground "#37474f" :height ,variable-ui-fonts-size)
+             (rime-preedit-face                                 :background "#90a4ae" :foreground "#ffffff" :height ,variable-ui-fonts-size)))
+    (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 亮色corfu
   (with-eval-after-load 'corfu                                                                            
     (dolist (face-attr '((corfu-default                         :background "#ffffff")
@@ -200,10 +216,11 @@
   (with-eval-after-load 'dirvish                                                                    
     (dolist (face-attr '((dirvish-hl-line                       :background "#cfd8dc" :foreground "#37474f")))
       (apply #'set-face-attribute (car face-attr) nil (cdr face-attr))))
-  ;; 亮色telega
+  ;; 亮色telega  
   (with-eval-after-load 'telega
-    (dolist (face-attr '((telega-msg-heading                    :background "#ffffff")
-                         (help-key-binding                      :background "#ffffff" :foreground "#673ab7" :height 90 :box nil)))
+    (dolist (face-attr
+             `((telega-msg-heading                              :background "#ffffff")
+               (help-key-binding                                :background "#ffffff" :foreground "#673ab7" :height ,variable-ui-fonts-size :box nil)))
       (apply #'set-face-attribute (car face-attr) nil (cdr face-attr))))
   ;; 亮色magit
   (with-eval-after-load 'magit
@@ -295,14 +312,16 @@
                        (show-paren-mismatch                     :background "#64fbc8" :foreground "#191919" :weight bold)))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 暗色emacs-rime
-  (dolist (face-attr '((rime-candidate-num-face                                                               :foreground "#c5c8c6" :height variable-ui-fonts-size)
-                       (rime-code-face                                                  :background "#444444" :foreground "#64fbc8" :height variable-ui-fonts-size)
-                       (rime-comment-face                                                                     :foreground "#c5c8c6" :height variable-ui-fonts-size)
-                       (rime-cursor-face                                                                      :foreground "#b5ffd1" :height variable-ui-fonts-size)
-                       (rime-default-face                                               :background "#191919" :foreground "#64fbc8" :height variable-ui-fonts-size)
-                       (rime-highlight-candidate-face                                                         :foreground "#ffc300" :height variable-ui-fonts-size)  
-                       (rime-indicator-dim-face                                                               :foreground "#c5c8c6" :height variable-ui-fonts-size)
-                       (rime-preedit-face                                               :background "#444444" :foreground "#64fbc8" :height variable-ui-fonts-size)))
+  ;; 亮色emacs-rime
+  (dolist (face-attr
+           `((rime-candidate-num-face                                                 :foreground "#c5c8c6" :height ,variable-ui-fonts-size)
+             (rime-code-face                                    :background "#444444" :foreground "#64fbc8" :height ,variable-ui-fonts-size)             
+             (rime-comment-face                                                       :foreground "#c5c8c6" :height ,variable-ui-fonts-size)             
+             (rime-cursor-face                                                        :foreground "#b5ffd1" :height ,variable-ui-fonts-size)             
+             (rime-default-face                                 :background "#191919" :foreground "#64fbc8" :height ,variable-ui-fonts-size)             
+             (rime-highlight-candidate-face                                           :foreground "#ffc300" :height ,variable-ui-fonts-size)             
+             (rime-indicator-dim-face                                                 :foreground "#c5c8c6" :height ,variable-ui-fonts-size)             
+             (rime-preedit-face                                 :background "#444444" :foreground "#64fbc8" :height ,variable-ui-fonts-size)))             
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 暗色corfu
   (with-eval-after-load 'corfu                                                       
@@ -316,8 +335,9 @@
       (apply #'set-face-attribute (car face-attr) nil (cdr face-attr))))
   ;; 暗色telega
   (with-eval-after-load 'telega
-    (dolist (face-attr '((telega-msg-heading                    :background "#191919")
-                         (help-key-binding                      :background "#191919" :foreground "#64fbc8" :height 90 :box nil)))
+    (dolist (face-attr
+             `((telega-msg-heading                              :background "#191919")
+               (help-key-binding                                :background "#191919" :foreground "#64fbc8" :height ,variable-ui-fonts-size :box nil)))
       (apply #'set-face-attribute (car face-attr) nil (cdr face-attr))))
   ;; 暗色magit
   (with-eval-after-load 'magit
@@ -602,6 +622,7 @@
 
 ;; =======================================
 ;; 关于org-download
+;; from GPT 4o
 ;; =======================================
 (defun kivnn/set-org-download-dir ()
   "将org-download剪贴板图片保存在当前org所在目录的png/下"

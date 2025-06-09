@@ -117,6 +117,7 @@
 ;; 关于编辑增强
 ;; ========================================
 (global-set-key (kbd "C-=")                              'kivnn/duplicate-line)                            ; 复制当前行到下一行并保持光标水平位置不变
+(global-set-key (kbd "C-y")                              'kivnn/yank-or-copy-line)                         ; 保留C-y原本yank的基础上，添加复制当前行，就像vim的yy一样
 (global-set-key (kbd "C-z C-z C-\-")                     'consult-line)                                    ; consult版C-s搜索
 (global-set-key (kbd "C-z C-z C-\=")                     'consult-ripgrep)                                 ; consult版rg搜索
 (global-set-key (kbd "C-z C-z C-e")                      'embark-act)                                      ; embark版action行动

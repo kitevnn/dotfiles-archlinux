@@ -10,6 +10,7 @@
                     :width 'semi-expanded
                     :font "SauceCodeProNerdFontCompleteMono Nerd Font")
 
+
 ;; ========================================
 ;; 设置buffer的字体
 ;; ========================================
