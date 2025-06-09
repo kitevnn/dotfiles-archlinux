@@ -34,8 +34,8 @@
 ;; ========================================
 ;; 特定mode字体设置
 ;; ========================================
-; 设置 variable-pitch 字体（用于 org-mode 等可变宽场景）
-; 设置 fixed-pitch（等宽，用于代码块）
+; 设置 variable-pitch 字体 (用于 org-mode 等可变宽场景)
+; 设置 fixed-pitch (等宽，用于代码块)
 (defun kivnn/set-mode-font ()
   "在特定的mode设置字体"
   (setq-local face-remapping-alist
