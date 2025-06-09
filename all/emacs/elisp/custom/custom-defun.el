@@ -717,6 +717,13 @@
 ;; 关于状态仪表盘
 ;; from GPT 4o
 ;; =======================================
+(defvar modeline-modes "")
+(defun kivnn/update-modeline-modes ()
+  "定时更新模式信息，并显示在仪表盘上"
+  (setq modeline-modes
+        (format-mode-line mode-line-modes)))
+(run-at-time "0 sec" 180 'kivnn/update-modeline-modes)
+
 (defun kivnn/status-monitor-update ()
   "状态仪表盘"
   (let ((buf (get-buffer-create "*Status Monitor*")))
@@ -732,8 +739,9 @@
         (insert (format "📟 内存: %s \n" modeline-ram-usage))
         (insert (format "👥 陪伴时间: %s\n" modeline-emacs-uptime))
         (insert (format "🎧 正在播放: %s\n" emms-mode-line-string))
-        (insert (format "⌛ 时间：%s\n" (format-time-string "%H:%M")))        
-      (setq buffer-read-only t)))))
+        (insert (format "⌛ 时间：%s\n" (format-time-string "%H:%M")))
+        (insert (format "💼 模式信息: %s\n" modeline-modes))        
+        (setq buffer-read-only t)))))
 
 (defun kivnn/status-monitor-start ()
   "打开状态仪表盘，并每30秒更新一次"

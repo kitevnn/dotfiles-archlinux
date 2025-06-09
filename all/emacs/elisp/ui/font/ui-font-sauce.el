@@ -2,8 +2,9 @@
 ;; 字体设置 ui-font-sauce.el
 ;; ========================================
 
+
 ;; ========================================
-;; 全局默认字体设置
+;; 全局字体设置
 ;; ========================================
 (set-face-attribute 'default nil 
                     :height variable-ui-fonts-size
@@ -11,15 +12,14 @@
                     :font "SauceCodeProNerdFontCompleteMono Nerd Font")
 
 
-
 ;; ========================================
-;; 设置centaur-tabs的字体
+;; centaur-tabs字体设置
 ;; ========================================
 (centaur-tabs-change-fonts "SauceCodeProNerdFontCompleteMono Nerd Font" variable-ui-fonts-size)
 
 
 ;; ========================================
-;; 设置特定mode的字体
+;; 特定mode字体设置
 ;; ========================================
 ; 设置 variable-pitch 字体（用于 org-mode 等可变宽场景）
 ; 设置 fixed-pitch（等宽，用于代码块）
@@ -39,12 +39,12 @@
 
 
 ;; ========================================
-;; 设置特定mode的字体
+;; 特定mode字体钩子
 ;; ========================================
-(add-hook 'org-mode-hook #'kivnn/set-mode-font)                ; org-mode
-(add-hook 'emms-mode-hook #'kivnn/set-mode-font)               ; emms-mode
-(add-hook 'telega-root-mode-hook #'kivnn/set-telega-mode-font) ; telega-root-mode
-(add-hook 'telega-chat-mode-hook #'kivnn/set-telega-mode-font) ; telega-chat-mode
+(add-hook 'org-mode-hook         #'kivnn/set-mode-font)          ; org-mode
+(add-hook 'emms-mode-hook        #'kivnn/set-mode-font)          ; emms-mode
+(add-hook 'telega-root-mode-hook #'kivnn/set-telega-mode-font)   ; telega-root-mode
+(add-hook 'telega-chat-mode-hook #'kivnn/set-telega-mode-font)   ; telega-chat-mode
 
 
 (provide 'ui-font-sauce)

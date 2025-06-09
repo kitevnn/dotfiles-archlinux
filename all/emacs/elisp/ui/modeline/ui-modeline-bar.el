@@ -29,9 +29,9 @@
   (setq modeline-calendar-day (concat (format-time-string "%d") "日")))
 (defun kivnn/update-modeline-calendar-week ()
   (setq modeline-calendar-week
-        (concat "(星期" (let* ((weekday-num (string-to-number (format-time-string "%u")))
-                               (weekday-chinese "一二三四五六日"))
-                          (string (aref weekday-chinese (1- weekday-num)))) ")")))        
+        (concat "星期" (let* ((weekday-num (string-to-number (format-time-string "%u")))
+                              (weekday-chinese "一二三四五六日"))
+                         (string (aref weekday-chinese (1- weekday-num)))))))
 ;; ========================================
 ;; 关于当前时间
 ;; ========================================
@@ -135,6 +135,13 @@
               (replace-regexp-in-string "\\.mp3$" "" (match-string 1 clean-str)))))))
 (add-hook 'emms-player-started-hook #'kivnn/format-emms-mode-line)
 (add-hook 'emms-player-started-hook #'kivnn/update-modeline-all-information :append)
+;; ========================================
+;; 模式信息
+;; ========================================
+(defun kivnn/update-modeline-modes ()
+  "定时更新模式信息，并只显示在仪表盘上"
+  (setq modeline-modes
+        (format-mode-line mode-line-modes)))
 
 
 ;; ========================================
@@ -163,7 +170,7 @@
   "显示modeline信息"
   (setq global-mode-string
         (list
-         "  "
+         " "
          (format "󰄒 TODO %d " modeline-agenda-todo-count)
          (format "󱞿 DOING %d " modeline-agenda-doing-count)
          (format "󰝕 WAIT %d " modeline-agenda-wait-count)
@@ -180,12 +187,12 @@
                   "   "
                   mode-line-position
                   (vc-mode vc-mode)
-                  "  "
-                  mode-line-modes                  
-                  "   "
+                  " "
                   modeline-calendar-month
                   modeline-calendar-day
+                  "("
                   modeline-calendar-week
+                  ")"
                   "   "                           
                   modeline-time-hour
                   ":"
