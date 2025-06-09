@@ -18,6 +18,7 @@
 (defvar modeline-agenda-wait-count 0)
 (defvar modeline-agenda-file-name "")
 (defvar modeline-emacs-uptime "")
+(defvar modeline-keybinding-style " emacs-style")
 
 
 ;; ========================================
@@ -142,6 +143,16 @@
   "定时更新模式信息，并只显示在仪表盘上"
   (setq modeline-modes
         (format-mode-line mode-line-modes)))
+;; ========================================
+;; 按键风格
+;; ========================================
+(setq evil-mode-line-format nil)
+(defun kivnn/update-modeline-style-based-on-evil-mode (&rest _)
+  "监听根据 evil-mode 的状态，即时更新 kivnn/current-style 变量"
+  (setq modeline-keybinding-style
+        (if evil-mode " vim-motion" " emacs-style"))
+  (force-mode-line-update))
+(advice-add 'evil-mode :after #'kivnn/update-modeline-style-based-on-evil-mode)
 
 
 ;; ========================================
@@ -167,8 +178,18 @@
 ;; 关于modeline
 ;; ========================================
 (defun kivnn/update-modeline-with-all-scripts ()
-  "显示modeline信息"
-  (setq global-mode-string
+  "手动搓出modeline信息"
+
+  ;;; ALL L3信息
+  (setq kivnn/mode-line-position
+        '(:eval
+          (let ((percent (format-mode-line "%p"))
+                (line (format-mode-line "%l"))
+                (col (format-mode-line "%c")))
+            (format "%s,%s(%s)" line col percent))))
+  
+  ;;; agenda数量信息
+  (setq kivnn/mode-line-agenda-info
         (list
          " "
          (format "󰄒 TODO %d " modeline-agenda-todo-count)
@@ -176,37 +197,42 @@
          (format "󰝕 WAIT %d " modeline-agenda-wait-count)
          "-  "
          modeline-agenda-file-name))
+  
+  ;; ========================================
+  ;; 到了真正要设置的地方
+  ;; ========================================  
   (setq-default mode-line-format
-                '("%e"
-                  mode-line-mule-info
-                  mode-line-client
-                  mode-line-modified
-                  mode-line-remote
-                  mode-line-frame-identification
-                  mode-line-buffer-identification
-                  "   "
-                  mode-line-position
-                  (vc-mode vc-mode)
-                  " "
-                  modeline-calendar-month
-                  modeline-calendar-day
-                  "("
-                  modeline-calendar-week
-                  ")"
-                  "   "                           
-                  modeline-time-hour
-                  ":"
-                  modeline-time-minute            
-                  " 󰄨 "
-                  modeline-ram-usage             
-                  " "
-                  global-mode-string
-                  mode-line-format-right-align
-                  "   Acc "
-                  modeline-emacs-uptime
-                  "  󰎆 M "
-                  emms-mode-line-string
-                  emms-playing-time-string)))
+                (list
+                 ;; 左对齐
+                 '(:eval mode-line-mule-info)
+                 '(:eval mode-line-remote mode-line-modified)
+                 " "
+                 '(:eval mode-line-buffer-identification)
+                 '(:eval (when vc-mode vc-mode))
+                 "  "
+                 '(:eval (format "%s" modeline-calendar-month))
+                 '(:eval (format "%s" modeline-calendar-day))                                   
+                 "("
+                 '(:eval (format "%s" modeline-calendar-week))
+                 ")"
+                 "   "
+                 '(:eval (format "%s" modeline-time-hour))                  
+                 ":"
+                 '(:eval (format "%s" modeline-time-minute))
+                 " 󰄨 "
+                 '(:eval (format "%s" modeline-ram-usage))
+                 " "
+                 '(:eval kivnn/mode-line-agenda-info)                 
+                 ;; 右对齐                 
+                 'mode-line-format-right-align
+                 '(:eval (format "%s" modeline-keybinding-style))      
+                 "   Acc "
+                 '(:eval (format "%s" modeline-emacs-uptime))
+                 "  󰽉 "
+                 '(:eval kivnn/mode-line-position)                 
+                 "  󰎆 M "
+                 '(:eval (format "%s" emms-mode-line-string))
+                 '(:eval (format "%s" emms-playing-time-string)))))
 
 
 ;; ========================================
