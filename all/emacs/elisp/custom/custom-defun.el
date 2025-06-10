@@ -211,6 +211,11 @@
   ;; 亮色trailing-whitespace
   (dolist (face-attr '((trailing-whitespace :background "#eceff1")))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
+  ;; 亮色modeline
+  (dolist (face-attr
+           `((mode-line :height ,(- variable-ui-fonts-size 30) :width 'semi-expanded :family "SauceCodeProNerdFontCompleteMono Nerd Font")
+             (mode-line-inactive :height ,(- variable-ui-fonts-size 30) :width 'semi-expanded :family "SauceCodeProNerdFontCompleteMono Nerd Font")))
+    (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 亮色corfu
   (with-eval-after-load 'corfu
     (dolist (face-attr '((corfu-default                         :background "#ffffff")
@@ -330,6 +335,11 @@
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 暗色trailing-whitespace
   (dolist (face-attr '((trailing-whitespace :background "#444444")))
+    (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
+  ;; 暗色modeline
+  (dolist (face-attr
+           `((mode-line :height ,(- variable-ui-fonts-size 30) :width 'semi-expanded :family "SauceCodeProNerdFontCompleteMono Nerd Font")
+             (mode-line-inactive :height ,(- variable-ui-fonts-size 30) :width 'semi-expanded :family "SauceCodeProNerdFontCompleteMono Nerd Font")))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 暗色corfu
   (with-eval-after-load 'corfu
@@ -814,6 +824,7 @@
 
 (defun kivnn/text-scale-decrease ()
   "缩小文本尺寸显示"
+  (text-scale-increase 0)
   (text-scale-decrease 1))
 
 (defun kivnn/show-trailing-whitespace ()

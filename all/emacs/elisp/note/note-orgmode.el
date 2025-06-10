@@ -21,33 +21,11 @@
   :ensure t
   :defer nil)
 
-
 ;; ========================================
-;; 使用 xelatex 渲染 latex-fragment
+;; org-preview-latex-process-alist 自定义引擎
 ;; ========================================
-(defvar custom-org-image-converter
-  (format "convert -density %d -background %s -flatten -quality 100 %%f %%O"
-          variable-ui-fonts-size
-          variable-latex-fragment-background))
-(add-to-list 'org-preview-latex-process-alist
-             '(xelatex-chinese
-               :programs ("xelatex" "convert")
-               :description "pdf > png"
-               :message "you need to install the programs: xelatex and dvipng."
-               :image-input-type "pdf"
-               :image-output-type "png"
-               :image-size-adjust (1.7 . 1.5)
-               :latex-header "\\documentclass[11pt]{standalone}
-                              \\usepackage{fontspec}
-                              \\setmainfont{Source Han Sans CN}
-                              \\setsansfont{Source Han Sans CN}
-                              \\setmonofont{Source Han Sans CN}
-                              \\usepackage[usenames]{color}
-                              \\usepackage{amsmath}
-                              \\usepackage{extpfeil}
-                              \\pagestyle{empty}"
-               :latex-compiler ("xelatex -interaction nonstopmode -output-directory %o %f")
-               :image-converter (custom-org-image-converter)))
+(require 'latex-process-dvipng)
+(require 'latex-process-xelatex-chinese)
 
 
 ;; ========================================
@@ -58,32 +36,21 @@
 
 
 ;; ========================================
-;; 设置latex-fragment的默认背景颜色
-;; ========================================
-(setq org-format-latex-options
-      `(:foreground default
-                    :background "#FFFFFF"
-                    :html-foreground default
-                    :html-background default
-                    :matchers ("\\[")))
-
-
-;; ========================================
 ;; 设置org-download
 ;; ========================================
 ;; 依赖xclip，同时截图工具如(spectacle)必须设置为复制截图到剪贴板或按下C-c来复制
 (use-package org-download
-             :ensure t
-             :defer nil
-             :after org)
+  :ensure t
+  :defer nil
+  :after org)
 
 
 ;; ========================================
 ;; 设置org-preview-html
 ;; ========================================
 (use-package org-preview-html
-             :ensure t
-             :defer t)
+  :ensure t
+  :defer t)
 
 
 (provide 'note-orgmode)
