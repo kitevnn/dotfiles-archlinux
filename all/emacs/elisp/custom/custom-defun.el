@@ -160,10 +160,10 @@
   (dashboard-refresh-buffer)
   ;; 亮色org-todo-keyword-faces
   (setq org-todo-keyword-faces
-        '(("TODO"  . (:background "#37474f" :foreground "#ffffff"))
-          ("WAIT"  . (:background "#ffffff" :foreground "#673ab7"))
-          ("DOING" . (:background "#ffffff" :foreground "#673ab7"))
-          ("DONE"  . (:background "#ffffff" :foreground "#cfd8dc"))))
+        '(("TODO"  . (                                          :background "#37474f" :foreground "#ffffff"))
+          ("WAIT"  . (                                          :background "#ffffff" :foreground "#673ab7"))
+          ("DOING" . (                                          :background "#ffffff" :foreground "#673ab7"))
+          ("DONE"  . (                                          :background "#ffffff" :foreground "#cfd8dc"))))
   ;; 亮色isearch
   (dolist (face-attr '((isearch-fail                            :background "#ffffff" :foreground "#37474f")))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
@@ -209,16 +209,19 @@
              (rime-preedit-face                                 :background "#90a4ae" :foreground "#ffffff" :height ,variable-ui-fonts-size)))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 亮色trailing-whitespace
-  (dolist (face-attr '((trailing-whitespace :background "#eceff1")))
+  (dolist (face-attr '((trailing-whitespace                     :background "#eceff1")))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 亮色modeline
   (dolist (face-attr
-           `((mode-line :height ,(- variable-ui-fonts-size 30) :family "SauceCodeProNerdFontCompleteMono Nerd Font")
-             (mode-line-inactive :height ,(- variable-ui-fonts-size 30) :family "SauceCodeProNerdFontCompleteMono Nerd Font")))
+           `((mode-line                                                  :family variable-ui-fonts-sauce    :height ,(- variable-ui-fonts-size 30))
+             (mode-line-inactive                                         :family variable-ui-fonts-sauce    :height ,(- variable-ui-fonts-size 30))))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 亮色child-frame-border
   (dolist (face-attr '((child-frame-border                      :background "#37474f")
                        (internal-border                         :background "#37474f")))
+    (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
+  ;; 亮色minibuffer-prompt
+  (dolist (face-attr `((minibuffer-prompt                                :family  ,variable-ui-fonts-source :height ,variable-ui-fonts-size )))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 亮色corfu
   (with-eval-after-load 'corfu
@@ -288,10 +291,10 @@
   (dashboard-refresh-buffer)
   ;; 暗色org-todo-keyword-faces
   (setq org-todo-keyword-faces
-        '(("TODO"  . (:background "#64fbc8" :foreground "#191919"))
-          ("WAIT"  . (:background "#191919" :foreground "#1277a7"))
-          ("DOING" . (:background "#191919" :foreground "#3bb1df"))
-          ("DONE"  . (:background "#191919" :foreground "#444444"))))
+        '(("TODO"  . (                                          :background "#64fbc8" :foreground "#191919"))
+          ("WAIT"  . (                                          :background "#191919" :foreground "#1277a7"))
+          ("DOING" . (                                          :background "#191919" :foreground "#3bb1df"))
+          ("DONE"  . (                                          :background "#191919" :foreground "#444444"))))
   ;; 暗色isearch
   (dolist (face-attr '((isearch-fail                            :background "#191919" :foreground "#ffffff")))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
@@ -338,16 +341,19 @@
              (rime-preedit-face                                 :background "#444444" :foreground "#64fbc8" :height ,variable-ui-fonts-size)))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 暗色trailing-whitespace
-  (dolist (face-attr '((trailing-whitespace :background "#444444")))
+  (dolist (face-attr '((trailing-whitespace                     :background "#444444")))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 暗色modeline
   (dolist (face-attr
-           `((mode-line :height ,(- variable-ui-fonts-size 30) :family "SauceCodeProNerdFontCompleteMono Nerd Font")
-             (mode-line-inactive :height ,(- variable-ui-fonts-size 30) :family "SauceCodeProNerdFontCompleteMono Nerd Font")))
+           `((mode-line                                                  :family ,variable-ui-fonts-sauce   :height ,(- variable-ui-fonts-size 30))
+             (mode-line-inactive                                         :family ,variable-ui-fonts-sauce   :height ,(- variable-ui-fonts-size 30))))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 暗色child-frame-border
   (dolist (face-attr '((child-frame-border                      :background "#3bb1df")
                        (internal-border                         :background "#3bb1df")))
+    (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
+  ;; 暗色minibuffer-prompt
+  (dolist (face-attr `((minibuffer-prompt                                :family ,variable-ui-fonts-source  :height ,variable-ui-fonts-size)))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 暗色corfu
   (with-eval-after-load 'corfu

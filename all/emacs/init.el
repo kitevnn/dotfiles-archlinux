@@ -34,7 +34,7 @@
 (require 'enhance-rime)
 (require 'enhance-evil)
 (require 'music-emms)
-(require 'ui-font-sauce)
+(require 'ui-font-sauce-source)
 (require 'ui-icon-nerdfont)
 (require 'ui-theme-light)
 (require 'ui-theme-dark)

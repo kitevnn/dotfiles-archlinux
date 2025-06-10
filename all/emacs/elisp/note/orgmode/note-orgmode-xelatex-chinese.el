@@ -19,9 +19,9 @@
                               \\usepackage{extpfeil}
                               \\pagestyle{empty}"
           variable-latex-fragment-documentclass-base
-          variable-latex-fragment-font-family
-          variable-latex-fragment-font-family
-          variable-latex-fragment-font-family))
+          variable-ui-fonts-source
+          variable-ui-fonts-source
+          variable-ui-fonts-source))
 
 ;; 设置xelatex编译器的从pdf生成到png的行为
 (defvar xelatex-chinese-latex-compiler
