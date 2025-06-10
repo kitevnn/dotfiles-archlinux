@@ -38,14 +38,14 @@
 (defun kivnn/set-telega-mode-font ()
   "在特定的telega-mode设置字体"
   (setq-local face-remapping-alist
-              `((default            :family variable-ui-fonts-sauce  :height ,(+ variable-ui-fonts-size 20))
-                (variable-pitch nil :family variable-ui-fonts-source :height ,(+ variable-ui-fonts-size 20))
-                (fixed-pitch nil    :family variable-ui-fonts-sauce  :height ,(+ variable-ui-fonts-size 20)))))
+              `((default            :family ,variable-ui-fonts-sauce  :height ,(+ variable-ui-fonts-size 20))
+                (variable-pitch nil :family ,variable-ui-fonts-source :height ,(+ variable-ui-fonts-size 20))
+                (fixed-pitch nil    :family ,variable-ui-fonts-sauce  :height ,(+ variable-ui-fonts-size 20)))))
 
 (defun kivnn/set-minibuffer-help-mode-font ()
   "在默认的mode设置字体"
   (setq-local face-remapping-alist
-              `((default            :family variable-ui-fonts-source :height ,variable-ui-fonts-size))))
+              `((default            :family ,variable-ui-fonts-source :height ,variable-ui-fonts-size))))
 
 
 ;; ========================================
