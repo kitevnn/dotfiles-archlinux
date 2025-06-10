@@ -113,10 +113,10 @@
 ;; =======================================
 (defun kivnn/org-table-with-cdlatex ()
   (when (and (derived-mode-p 'org-mode) (not (minibufferp)))
-  (if (org-at-table-p)
-      (progn
-        (local-set-key (kbd "TAB")     'cdlatex-tab)
-        (local-set-key (kbd "C-l")     'org-table-next-field))
+    (if (org-at-table-p)
+        (progn
+          (local-set-key (kbd "TAB")     'cdlatex-tab)
+          (local-set-key (kbd "C-l")     'org-table-next-field))
       (local-set-key (kbd "TAB")       'org-cycle))))
 
 
@@ -213,8 +213,12 @@
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 亮色modeline
   (dolist (face-attr
-           `((mode-line :height ,(- variable-ui-fonts-size 30) :width 'semi-expanded :family "SauceCodeProNerdFontCompleteMono Nerd Font")
-             (mode-line-inactive :height ,(- variable-ui-fonts-size 30) :width 'semi-expanded :family "SauceCodeProNerdFontCompleteMono Nerd Font")))
+           `((mode-line :height ,(- variable-ui-fonts-size 30) :family "SauceCodeProNerdFontCompleteMono Nerd Font")
+             (mode-line-inactive :height ,(- variable-ui-fonts-size 30) :family "SauceCodeProNerdFontCompleteMono Nerd Font")))
+    (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
+  ;; 亮色child-frame-border
+  (dolist (face-attr '((child-frame-border                      :background "#37474f")
+                       (internal-border                         :background "#37474f")))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 亮色corfu
   (with-eval-after-load 'corfu
@@ -338,8 +342,12 @@
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 暗色modeline
   (dolist (face-attr
-           `((mode-line :height ,(- variable-ui-fonts-size 30) :width 'semi-expanded :family "SauceCodeProNerdFontCompleteMono Nerd Font")
-             (mode-line-inactive :height ,(- variable-ui-fonts-size 30) :width 'semi-expanded :family "SauceCodeProNerdFontCompleteMono Nerd Font")))
+           `((mode-line :height ,(- variable-ui-fonts-size 30) :family "SauceCodeProNerdFontCompleteMono Nerd Font")
+             (mode-line-inactive :height ,(- variable-ui-fonts-size 30) :family "SauceCodeProNerdFontCompleteMono Nerd Font")))
+    (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
+  ;; 暗色child-frame-border
+  (dolist (face-attr '((child-frame-border                      :background "#3bb1df")
+                       (internal-border                         :background "#3bb1df")))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 暗色corfu
   (with-eval-after-load 'corfu
@@ -589,7 +597,7 @@
   "括号匹配parentheses"
   (interactive "P")
   (cond
-    ;; 括号匹配: () [] {}
+   ;; 括号匹配: () [] {}
    ((eq (char-after) ?\() (forward-sexp 1))
    ((eq (char-after) ?\[) (forward-sexp 1))
    ((eq (char-after) ?\{) (forward-sexp 1))

@@ -8,15 +8,12 @@
 ;; ========================================
 (set-face-attribute 'default nil
                     :height variable-ui-fonts-size
-                    :width 'semi-expanded
                     :font "SauceCodeProNerdFontCompleteMono Nerd Font")
 (set-face-attribute 'mode-line nil
                     :height (- variable-ui-fonts-size 30)
-                    :width 'semi-expanded
                     :family "SauceCodeProNerdFontCompleteMono Nerd Font")
 (set-face-attribute 'mode-line-inactive nil
                     :height (- variable-ui-fonts-size 30)
-                    :width 'semi-expanded
                     :family "SauceCodeProNerdFontCompleteMono Nerd Font")
 
 

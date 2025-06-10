@@ -13,13 +13,13 @@
 ;; =======================================
 (add-to-list 'load-path
              (expand-file-name
-               (concat user-emacs-directory "elisp/custom")))
+              (concat user-emacs-directory "elisp/custom")))
 ;; =======================================
 ;; 关于体验增强路径
 ;; =======================================
 (add-to-list 'load-path
              (expand-file-name
-               (concat user-emacs-directory "elisp/enhance")))
+              (concat user-emacs-directory "elisp/enhance")))
 ;; =======================================
 ;; 关于ui路径
 ;; =======================================
@@ -31,7 +31,7 @@
               (concat user-emacs-directory "elisp/ui/icon")))
 (add-to-list 'load-path
              (expand-file-name
-               (concat user-emacs-directory "elisp/ui/theme")))
+              (concat user-emacs-directory "elisp/ui/theme")))
 (add-to-list 'load-path
              (expand-file-name
               (concat user-emacs-directory "elisp/ui/decorate")))
@@ -43,19 +43,25 @@
 ;; =======================================
 (add-to-list 'load-path
              (expand-file-name
-               (concat user-emacs-directory "elisp/note")))
+              (concat user-emacs-directory "elisp/note/orgmode")))
+(add-to-list 'load-path
+             (expand-file-name
+              (concat user-emacs-directory "elisp/note/auctex")))
+(add-to-list 'load-path
+             (expand-file-name
+              (concat user-emacs-directory "elisp/note/denote")))
 ;; =======================================
 ;; 关于编程路径
 ;; =======================================
 (add-to-list 'load-path
              (expand-file-name
-               (concat user-emacs-directory "elisp/zprogramming/cmp")))
+              (concat user-emacs-directory "elisp/zprogramming/cmp")))
 (add-to-list 'load-path
              (expand-file-name
               (concat user-emacs-directory "elisp/zprogramming/lsp")))
 (add-to-list 'load-path
              (expand-file-name
-               (concat user-emacs-directory "elisp/zprogramming/snips")))
+              (concat user-emacs-directory "elisp/zprogramming/snips")))
 (add-to-list 'load-path
              (expand-file-name
               (concat user-emacs-directory "elisp/zprogramming/ts")))
