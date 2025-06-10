@@ -53,9 +53,9 @@
 
 
 ;; =======================================
-;; 编辑增强(重复上一行，并保持光标在原位置不变)
-;; from https://stackoverflow.com/a/998472
+;; 编辑增强
 ;; =======================================
+;; (重复上一行，并保持光标在原位置不变，from SOF/a/998472)
 (defun kivnn/duplicate-line (arg)
   "重复上一行，并保持光标在原位置不变"
   (interactive "*p")
@@ -75,11 +75,7 @@
       (setq buffer-undo-list (cons (cons eol (point)) buffer-undo-list))))
   (next-line arg))
 
-
-;; =======================================
-;; 编辑增强(C-y 与 C-u C-y)
-;; from chatGPT 4o
-;; =======================================
+;; 编辑增强(C-y 与 C-u C-y, from chatGPT 4o)
 (defun kivnn/yank-or-copy-line (arg)
   "保证光标与C-y不变下，C-u C-y复制当前行，就像vim的yy一样"
   (interactive "P")
@@ -91,6 +87,18 @@
         (goto-char original-point)
         (message "current line yanked."))
     (yank)))
+
+;; 编辑增强(查看*Message*)
+(defun kivnn/view-echo-area-messages ()
+  "设置message-log-max并打开*Message*的buffer"
+  (interactive)
+  (setq message-log-max 1000)
+  (view-echo-area-messages))
+
+;; 编辑增强(查看尾随空格trailing-whitespace)
+(defun kivnn/show-trailing-whitespace ()
+  "显示尾随空格"
+  (setq show-trailing-whitespace t))
 
 
 ;; =======================================
@@ -816,7 +824,7 @@
   (kivnn/update-modeline-with-all-scripts)
   (kivnn/load-theme-light))
 
-(defun kivnn/org-mode-hook ()
+(defun kivnn/org-mode-table-tab-hook ()
   "仅在org-table上下文范围内使用cdlatex的TAB来补全来防止单元格内容不会因org-cycle而被新插入的字符org-self-insert-command而覆盖"
   (kivnn/org-table-with-cdlatex)
   (add-hook 'post-command-hook 'kivnn/org-table-with-cdlatex))
@@ -830,20 +838,10 @@
       (kill-buffer "*Messages*")
       (setq-default kivnn/kill-scratch-buffer t))))
 
-(defun kivnn/view-echo-area-messages ()
-  "设置message-log-max并打开*Message*的buffer"
-  (interactive)
-  (setq message-log-max 1000)
-  (view-echo-area-messages))
-
-(defun kivnn/text-scale-decrease ()
+(defun kivnn/text-scale-decrease-hook ()
   "缩小文本尺寸显示"
   (text-scale-increase 0)
   (text-scale-decrease 1))
-
-(defun kivnn/show-trailing-whitespace ()
-  "显示尾随空格"
-  (setq show-trailing-whitespace t))
 
 
 (provide 'custom-defun)

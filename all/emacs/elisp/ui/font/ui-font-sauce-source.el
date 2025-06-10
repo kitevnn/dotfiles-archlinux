@@ -42,7 +42,7 @@
                 (variable-pitch nil :family ,variable-ui-fonts-source :height ,(+ variable-ui-fonts-size 20))
                 (fixed-pitch nil    :family ,variable-ui-fonts-sauce  :height ,(+ variable-ui-fonts-size 20)))))
 
-(defun kivnn/set-minibuffer-help-mode-font ()
+(defun kivnn/set-minibuffer-mode-font ()
   "在默认的mode设置字体"
   (setq-local face-remapping-alist
               `((default            :family ,variable-ui-fonts-source :height ,variable-ui-fonts-size))))
@@ -54,9 +54,8 @@
 (add-hook 'org-mode-hook         #'kivnn/set-org-emms-mode-font)         ; org-mode
 (add-hook 'emms-mode-hook        #'kivnn/set-org-emms-mode-font)         ; emms-mode
 (add-hook 'telega-root-mode-hook #'kivnn/set-telega-mode-font)           ; telega-root-mode
-(add-hook 'telega-chat-mode-hook #'kivnn/set-minibuffer-help-mode-font)  ; telega-chat-mode
-(add-hook 'minibuffer-mode-hook  #'kivnn/set-minibuffer-help-mode-font)  ; minibuffer-mode
-(add-hook 'help-mode-hook        #'kivnn/set-minibuffer-help-mode-font)  ; help-mode
+(add-hook 'telega-chat-mode-hook #'kivnn/set-telega-mode-font)           ; telega-chat-mode
+(add-hook 'minibuffer-mode-hook  #'kivnn/set-minibuffer-mode-font)       ; minibuffer-mode
 
 
 (provide 'ui-font-sauce-source)

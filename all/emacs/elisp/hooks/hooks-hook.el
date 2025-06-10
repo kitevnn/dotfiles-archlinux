@@ -9,10 +9,11 @@
 (add-hook 'prog-mode                                    'hs-minor-mode)                          ; 折叠展开
 (add-hook 'prog-mode-hook                               #'kivnn/show-trailing-whitespace)        ; 尾随空格
 (add-hook 'emacs-lisp-mode-hook                         #'kivnn/show-trailing-whitespace)        ; 尾随空格
-(add-hook 'emacs-lisp-mode-hook                         #'kivnn/text-scale-decrease)             ; 缩小文本尺寸显示
-(add-hook 'magit-status-mode-hook                       #'kivnn/text-scale-decrease)             ; 缩小文本尺寸显示
-(add-hook 'magit-diff-mode-hook                         #'kivnn/text-scale-decrease)             ; 缩小文本尺寸显示
-(add-hook 'dired-mode-hook                              #'kivnn/text-scale-decrease)             ; 缩小文本尺寸显示
+(add-hook 'emacs-lisp-mode-hook                         #'kivnn/text-scale-decrease-hook)        ; 缩小文本尺寸显示
+(add-hook 'magit-status-mode-hook                       #'kivnn/text-scale-decrease-hook)        ; 缩小文本尺寸显示
+(add-hook 'magit-diff-mode-hook                         #'kivnn/text-scale-decrease-hook)        ; 缩小文本尺寸显示
+(add-hook 'dired-mode-hook                              #'kivnn/text-scale-decrease-hook)        ; 缩小文本尺寸显示
+(add-hook 'org-mode-hook                                #'kivnn/text-scale-decrease-hook)        ; 缩小文本尺寸显示
 
 
 ;; ========================================
@@ -27,7 +28,7 @@
 (add-hook 'text-mode-hook                               'turn-on-visual-line-mode)               ; 单行文本超出一定长度后自动虚拟换行显示(类似于set wrap)
 (add-hook 'org-mode-hook                                #'org-cdlatex-mode)                      ; 在org-mode使用OCDL(这是OCDL而不是CDL)
 (add-hook 'org-mode-hook                                #'valign-mode)                           ; 在org-mode使用valign对齐不等宽字体
-(add-hook 'org-mode-hook                                'kivnn/org-mode-hook)                    ; 仅在org-table上下文范围内使用cdlatex的TAB来补全来防止单元格内容不会因org-cycle而被新插入的字符org-self-insert-command而覆盖"
+(add-hook 'org-mode-hook                                'kivnn/org-mode-table-tab-hook)          ; 仅在org-table上下文范围内使用cdlatex的TAB来补全来防止单元格内容不会因org-cycle而被新插入的字符org-self-insert-command而覆盖"
 (add-hook 'TeX-after-compilation-finished-functions     #'TeX-revert-document-buffer)            ; AUCTeX(14.0.3.2024-03-17)
 (add-hook 'LaTeX-mode-hook                              #'cdlatex-mode)                          ; 在LaTeX-mode使用OCDL(这是OCDL而不是CDL)
 (add-hook 'LaTeX-mode-hook                              #'tree-sitter-mode)                      ; 在LaTeX-mode使用ts
