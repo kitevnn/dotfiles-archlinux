@@ -214,7 +214,7 @@
              (rime-default-face                                 :background "#eceff1" :foreground "#37474f" :height ,variable-ui-fonts-size)
              (rime-highlight-candidate-face                                           :foreground "#673ab7" :height ,variable-ui-fonts-size)
              (rime-indicator-dim-face                                                 :foreground "#37474f" :height ,variable-ui-fonts-size)
-             (rime-preedit-face                                 :background "#90a4ae" :foreground "#ffffff" :height ,variable-ui-fonts-size)))
+             (rime-preedit-face                                 :background "#90a4ae" :foreground "#ffffff" :height ,(- variable-ui-fonts-size 20))))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 亮色trailing-whitespace
   (dolist (face-attr '((trailing-whitespace                     :background "#eceff1")))
@@ -337,7 +337,6 @@
                        (show-paren-mismatch                     :background "#64fbc8" :foreground "#191919" :weight bold)))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 暗色emacs-rime
-  ;; 亮色emacs-rime
   (dolist (face-attr
            `((rime-candidate-num-face                                                 :foreground "#c5c8c6" :height ,variable-ui-fonts-size)
              (rime-code-face                                    :background "#444444" :foreground "#64fbc8" :height ,variable-ui-fonts-size)
@@ -346,7 +345,7 @@
              (rime-default-face                                 :background "#191919" :foreground "#64fbc8" :height ,variable-ui-fonts-size)
              (rime-highlight-candidate-face                                           :foreground "#ffc300" :height ,variable-ui-fonts-size)
              (rime-indicator-dim-face                                                 :foreground "#c5c8c6" :height ,variable-ui-fonts-size)
-             (rime-preedit-face                                 :background "#444444" :foreground "#64fbc8" :height ,variable-ui-fonts-size)))
+             (rime-preedit-face                                 :background "#444444" :foreground "#64fbc8" :height ,(- variable-ui-fonts-size 20))))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 暗色trailing-whitespace
   (dolist (face-attr '((trailing-whitespace                     :background "#444444")))
@@ -837,11 +836,6 @@
     (when (get-buffer "*Messages*")
       (kill-buffer "*Messages*")
       (setq-default kivnn/kill-scratch-buffer t))))
-
-(defun kivnn/text-scale-decrease-hook ()
-  "缩小文本尺寸显示"
-  (text-scale-increase 0)
-  (text-scale-decrease 1))
 
 
 (provide 'custom-defun)
