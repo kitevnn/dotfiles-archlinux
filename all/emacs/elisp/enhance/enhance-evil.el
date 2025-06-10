@@ -90,12 +90,12 @@
   (define-key evil-normal-state-map (kbd "SPC e")           #'telega)
   (define-key evil-normal-state-map (kbd "SPC t")           #'eat)
   (define-key evil-normal-state-map (kbd "SPC b")           #'ibuffer)
-  
+
   ;;; ========================================
   ;;; dired-map
   ;;; ========================================
   (with-eval-after-load 'dired
-    (kivnn/set-general-keybindings 'normal dired-mode-map)    
+    (kivnn/set-general-keybindings 'normal dired-mode-map)
     (evil-define-key 'normal dired-mode-map
       (kbd "a") #'dired-create-empty-file
       (kbd "r") #'dired-do-rename
@@ -107,13 +107,13 @@
       (kbd "j") #'dired-next-line
       (kbd "k") #'dired-previous-line
       (kbd "l") #'dired-find-file))
-  
+
     ;;; ========================================
     ;;; org-mode
     ;;; ========================================
   (with-eval-after-load 'org
     (evil-make-overriding-map org-mode-map 'normal)
-    (kivnn/set-general-keybindings 'normal org-mode-map)    
+    (kivnn/set-general-keybindings 'normal org-mode-map)
     (evil-define-key 'normal org-mode-map
       ;; about te<x>t
       (kbd "SPC x v") #'kivnn/toggle-inline-images-with-valign
@@ -149,16 +149,16 @@
       (kbd "SPC 3") #'kivnn/magit-commit-template-archlinux)
     (evil-define-key 'insert org-mode-map
       (kbd "$") #'kivnn/insert-inline-OCDL))
-  
+
   ;;; ========================================
   ;;; ibuffer-mode
   ;;; ========================================
   (with-eval-after-load 'ibuffer
-    (setq evil-emacs-state-modes (delq 'ibuffer-mode evil-emacs-state-modes))      
+    (setq evil-emacs-state-modes (delq 'ibuffer-mode evil-emacs-state-modes))
     (evil-make-overriding-map ibuffer-mode-map 'normal)
     (kivnn/set-general-keybindings 'normal ibuffer-mode-map))
   ;; [可选项] (evil-define-key 'normal ibuffer-mode-map (kbd "") nil)
-  
+
   ;;; ========================================
   ;;; dashboard-mode
   ;;; ========================================
@@ -168,12 +168,12 @@
       (kbd "SPC SPC r") #'consult-recent-file
       (kbd "SPC SPC b") #'bookmark-bmenu-list
       (kbd "SPC SPC a") #'org-agenda-list))
-  
+
   ;;; ========================================
   ;;; org-agenda-mode
-  ;;; ========================================  
+  ;;; ========================================
   (with-eval-after-load 'org-agenda
-    (setq evil-emacs-state-modes (delq 'org-agenda-mode evil-emacs-state-modes))      
+    (setq evil-emacs-state-modes (delq 'org-agenda-mode evil-emacs-state-modes))
     (evil-make-overriding-map org-agenda-mode-map 'normal)
     (kivnn/set-general-keybindings 'normal org-agenda-mode-map)))
   ;; [可选项] (evil-define-key 'normal org-agenda-mode-map (kbd "") nil)

@@ -4,7 +4,7 @@
 (use-package auctex
   :ensure t
   :defer t
-  
+
   :init
   ;; ========================================
   ;; AUCTeX相关

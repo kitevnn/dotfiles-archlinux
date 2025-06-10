@@ -58,20 +58,20 @@
 ;; =======================================
 (defun kivnn/duplicate-line (arg)
   "重复上一行，并保持光标在原位置不变"
-  (interactive "*p")  
+  (interactive "*p")
   (setq buffer-undo-list (cons (point) buffer-undo-list))
   (let ((bol (save-excursion (beginning-of-line) (point)))
         eol)
-    (save-excursion            
+    (save-excursion
       (end-of-line)
       (setq eol (point))
       (let ((line (buffer-substring bol eol))
             (buffer-undo-list t)
             (count arg))
-        (while (> count 0)          
+        (while (> count 0)
           (newline)
           (insert line)
-          (setq count (1- count))))      
+          (setq count (1- count))))
       (setq buffer-undo-list (cons (cons eol (point)) buffer-undo-list))))
   (next-line arg))
 
@@ -148,13 +148,13 @@
   ;; 亮色tab
   (dolist (face-attr '((tab-line                                :background "#ffffff")))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
-  ;; 亮色vertico                                                                                           
+  ;; 亮色vertico
   (dolist (face-attr '((vertico-group-separator                 :background "#37474f" :foreground "#ffffff")
                        (vertico-group-title                     :background "#37474f" :foreground "#ffffff")
                        (vertico-posframe                        :background "#ffffff" :foreground "#37474f")
                        (vertico-current                         :background "#eceff1" :foreground "#37474f")))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
-  ;; 亮色logo图                                                                                           
+  ;; 亮色logo图
   (setq dashboard-startup-banner
         (concat directory-emacs-archive "dashboard-zoom-out-light.png"))
   (dashboard-refresh-buffer)
@@ -164,7 +164,7 @@
           ("WAIT"  . (:background "#ffffff" :foreground "#673ab7"))
           ("DOING" . (:background "#ffffff" :foreground "#673ab7"))
           ("DONE"  . (:background "#ffffff" :foreground "#cfd8dc"))))
-  ;; 亮色isearch                                                                                           
+  ;; 亮色isearch
   (dolist (face-attr '((isearch-fail                            :background "#ffffff" :foreground "#37474f")))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 亮色org
@@ -208,17 +208,20 @@
              (rime-indicator-dim-face                                                 :foreground "#37474f" :height ,variable-ui-fonts-size)
              (rime-preedit-face                                 :background "#90a4ae" :foreground "#ffffff" :height ,variable-ui-fonts-size)))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
+  ;; 亮色trailing-whitespace
+  (dolist (face-attr '((trailing-whitespace :background "#eceff1")))
+    (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 亮色corfu
-  (with-eval-after-load 'corfu                                                                            
+  (with-eval-after-load 'corfu
     (dolist (face-attr '((corfu-default                         :background "#ffffff")
                          (corfu-border                          :background "#37474f")
                          (corfu-current                         :background "#cfd8dc" :foreground "#37474f")))
       (apply #'set-face-attribute (car face-attr) nil (cdr face-attr))))
   ;; 亮色dirvish
-  (with-eval-after-load 'dirvish                                                                    
+  (with-eval-after-load 'dirvish
     (dolist (face-attr '((dirvish-hl-line                       :background "#cfd8dc" :foreground "#37474f")))
       (apply #'set-face-attribute (car face-attr) nil (cdr face-attr))))
-  ;; 亮色telega  
+  ;; 亮色telega
   (with-eval-after-load 'telega
     (dolist (face-attr
              `((telega-msg-heading                              :background "#ffffff")
@@ -232,7 +235,7 @@
                          (magit-log-date                                              :foreground "#37474f")
                          (magit-branch-current                                        :foreground "#673ab7" :box nil)
                          (magit-branch-remote                                         :foreground "#673ab7" :box nil)
-                         (magit-section-heading                 :background "#ffffff" :foreground "#37474f")           
+                         (magit-section-heading                 :background "#ffffff" :foreground "#37474f")
                          (magit-section-highlight               :background "#fafafa" :foreground "#37474f")
                          ;; 日志界面
                          (magit-diff-hunk-heading               :background "#ffffff" :foreground "#37474f")
@@ -243,7 +246,7 @@
                          (magit-diff-removed-highlight          :background "#ffffff" :foreground "#ffab91")
                          (magit-diff-context                    :background "#ffffff" :foreground "#90a4ae")
                          (magit-diff-context-highlight          :background "#ffffff" :foreground "#37474f")
-                         ;; 细节差异                            
+                         ;; 细节差异
                          (magit-diff-file-heading               :background "#ffffff" :foreground "#ffab91" :box t)
                          (magit-diff-file-heading-highlight     :background "#ffffff" :foreground "#ffab91" :box t)
                          (magit-diffstat-added                  :background "#ffffff" :foreground "#673ab7")
@@ -258,7 +261,7 @@
 (defun kivnn/load-theme-dark ()
   "切换为暗色dark主题"
   (interactive)
-  ;; 暗色初始化  
+  ;; 暗色初始化
   (disable-theme 'nano-light)
   (load-theme 'bliss)
   ;; 暗色tab
@@ -317,16 +320,19 @@
   ;; 亮色emacs-rime
   (dolist (face-attr
            `((rime-candidate-num-face                                                 :foreground "#c5c8c6" :height ,variable-ui-fonts-size)
-             (rime-code-face                                    :background "#444444" :foreground "#64fbc8" :height ,variable-ui-fonts-size)             
-             (rime-comment-face                                                       :foreground "#c5c8c6" :height ,variable-ui-fonts-size)             
-             (rime-cursor-face                                                        :foreground "#b5ffd1" :height ,variable-ui-fonts-size)             
-             (rime-default-face                                 :background "#191919" :foreground "#64fbc8" :height ,variable-ui-fonts-size)             
-             (rime-highlight-candidate-face                                           :foreground "#ffc300" :height ,variable-ui-fonts-size)             
-             (rime-indicator-dim-face                                                 :foreground "#c5c8c6" :height ,variable-ui-fonts-size)             
-             (rime-preedit-face                                 :background "#444444" :foreground "#64fbc8" :height ,variable-ui-fonts-size)))             
+             (rime-code-face                                    :background "#444444" :foreground "#64fbc8" :height ,variable-ui-fonts-size)
+             (rime-comment-face                                                       :foreground "#c5c8c6" :height ,variable-ui-fonts-size)
+             (rime-cursor-face                                                        :foreground "#b5ffd1" :height ,variable-ui-fonts-size)
+             (rime-default-face                                 :background "#191919" :foreground "#64fbc8" :height ,variable-ui-fonts-size)
+             (rime-highlight-candidate-face                                           :foreground "#ffc300" :height ,variable-ui-fonts-size)
+             (rime-indicator-dim-face                                                 :foreground "#c5c8c6" :height ,variable-ui-fonts-size)
+             (rime-preedit-face                                 :background "#444444" :foreground "#64fbc8" :height ,variable-ui-fonts-size)))
+    (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
+  ;; 暗色trailing-whitespace
+  (dolist (face-attr '((trailing-whitespace :background "#191919")))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 暗色corfu
-  (with-eval-after-load 'corfu                                                       
+  (with-eval-after-load 'corfu
     (dolist (face-attr '((corfu-default                         :background "#191919" :foreground "#3bb1df")
                          (corfu-border                          :background "#37474f" )
                          (corfu-current                         :background "#444444" :foreground "#64fbc8")))
@@ -351,7 +357,7 @@
                          (magit-branch-remote                                         :foreground "#1277a7" :box nil)
                          (magit-section-heading                 :background "#191919" :foreground "#3bb1df")
                          (magit-section-highlight               :background "#191919" :foreground "#64fbc8")
-                         ;; 日志界面                            
+                         ;; 日志界面
                          (magit-diff-hunk-heading               :background "#191919" :foreground "#3bb1df")
                          (magit-diff-hunk-heading-highlight     :background "#191919" :foreground "#3bb1df")
                          (magit-diff-added                      :background "#191919" :foreground "#3bb1df")
@@ -360,7 +366,7 @@
                          (magit-diff-removed-highlight          :background "#191919" :foreground "#64fbc8")
                          (magit-diff-context                    :background "#191919" :foreground "#3bb1df")
                          (magit-diff-context-highlight          :background "#191919" :foreground "#3bb1df")
-                         ;; 细节差异                            
+                         ;; 细节差异
                          (magit-diff-file-heading               :background "#191919" :foreground "#64fbc8" :box t)
                          (magit-diff-file-heading-highlight     :background "#191919" :foreground "#64fbc8" :box t)
                          (magit-diffstat-added                  :background "#191919" :foreground "#3bb1df")
@@ -456,7 +462,7 @@
   "将当前任务状态改为DOING"
   (interactive)
   (kivnn/org-agenda-change-headline-to-what "DOING"))
-  
+
 (defun kivnn/org-agenda-change-headline-to-wait ()
   "将当前任务状态改为WAIT"
   (interactive)
@@ -470,7 +476,7 @@
   "手动更新modeline上的已有信息"
   (interactive)
   ;; 更新变量数据
-  (kivnn/update-modeline-agenda-file-tasks)  
+  (kivnn/update-modeline-agenda-file-tasks)
   ;; 更新modeline信息
   (kivnn/update-modeline-with-all-scripts))
 
@@ -735,14 +741,14 @@
         (insert (format "📅 天干地支: %s%s\n" modeline-calendar-month modeline-calendar-day))
         (insert (format "🗓️ 今天是: %s\n" modeline-calendar-week))
         (insert (format "💨 今天温度：%s\n" modeline-weather-situation))
-        (insert (format "💻 发行版: %s\n" modeline-distribution))        
+        (insert (format "💻 发行版: %s\n" modeline-distribution))
         (insert (format "📂 磁盘已使用：%s\n" modeline-disk-usage))
         (insert (format "📦 合计包: %s\n" modeline-pacman-packages))
         (insert (format "📟 内存: %s \n" modeline-ram-usage))
         (insert (format "👥 陪伴时间: %s\n" modeline-emacs-uptime))
         (insert (format "🎧 正在播放: %s\n" emms-mode-line-string))
         (insert (format "⌛ 时间：%s\n" (format-time-string "%H:%M")))
-        (insert (format "💼 模式信息: %s\n" modeline-modes))        
+        (insert (format "💼 模式信息: %s\n" modeline-modes))
         (setq buffer-read-only t)))))
 
 (defun kivnn/status-monitor-start ()
@@ -771,7 +777,7 @@
     (isearch-edit-string)))
 (defun kivnn/isearch-backward ()
   "打开并编辑前向搜索C-r"
-  (interactive)  
+  (interactive)
   (call-interactively 'isearch-backward)
   (when isearch-mode
     (isearch-edit-string)))
@@ -809,6 +815,10 @@
 (defun kivnn/text-scale-decrease ()
   "缩小文本尺寸显示"
   (text-scale-decrease 1))
+
+(defun kivnn/show-trailing-whitespace ()
+  "显示尾随空格"
+  (setq show-trailing-whitespace t))
 
 
 (provide 'custom-defun)

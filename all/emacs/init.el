@@ -1,19 +1,19 @@
 ;; =======================================
-;; 
+;;
 ;; 路径加载
-;; 
+;;
 ;; =======================================
 (add-to-list 'load-path
-             (expand-file-name 
+             (expand-file-name
               (concat user-emacs-directory "elisp/basic")))
 (require 'basic-path)
 (require 'basic-vari)
 
 
 ;; =======================================
-;; 
+;;
 ;; 模块加载
-;; 
+;;
 ;; =======================================
 (require 'custom-defun)
 (require 'basic-elpa)
@@ -52,9 +52,9 @@
 (require 'key-keybindings)
 
 ;; =======================================
-;; 
+;;
 ;; 钩子加载
-;; 
+;;
 ;; =======================================
 (require 'hooks-hook)
 (custom-set-variables

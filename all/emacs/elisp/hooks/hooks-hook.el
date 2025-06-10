@@ -6,10 +6,13 @@
 ;; ========================================
 ;; 编程类钩子hook
 ;; ========================================
-(add-hook 'prog-mode 'hs-minor-mode)                                                             ; 折叠展开
+(add-hook 'prog-mode                                    'hs-minor-mode)                          ; 折叠展开
+(add-hook 'prog-mode-hook                               #'kivnn/show-trailing-whitespace)        ; 尾随空格
+(add-hook 'emacs-lisp-mode-hook                         #'kivnn/show-trailing-whitespace)        ; 尾随空格
 (add-hook 'emacs-lisp-mode-hook                         #'kivnn/text-scale-decrease)             ; 缩小文本尺寸显示
 (add-hook 'magit-status-mode-hook                       #'kivnn/text-scale-decrease)             ; 缩小文本尺寸显示
 (add-hook 'magit-diff-mode-hook                         #'kivnn/text-scale-decrease)             ; 缩小文本尺寸显示
+(add-hook 'dired-mode-hook                              #'kivnn/text-scale-decrease)             ; 缩小文本尺寸显示
 
 
 ;; ========================================

@@ -4,13 +4,13 @@
 (use-package org
   :ensure t
   :defer nil)
- 
+
 
 ;; ========================================
 ;; org-babel(C-c ') 能加载 LaTeX
 ;; ========================================
-(org-babel-do-load-languages 
-  'org-babel-load-languages 
+(org-babel-do-load-languages
+  'org-babel-load-languages
   '((latex . t)))
 
 
@@ -62,7 +62,7 @@
 ;; ========================================
 (setq org-format-latex-options
       `(:foreground default
-                    :background "#FFFFFF"                 
+                    :background "#FFFFFF"
                     :html-foreground default
                     :html-background default
                     :matchers ("\\[")))

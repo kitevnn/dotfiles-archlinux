@@ -42,7 +42,7 @@
                                     dashboard-insert-newline
                                     dashboard-insert-newline))
     ;; 开启最近文件功能，并设置为最多100个最近文件
-    (recentf-mode 1)    
+    (recentf-mode 1)
     (setq recentf-max-saved-items 100)
     (dashboard-open))
 

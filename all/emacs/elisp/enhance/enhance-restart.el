@@ -1,5 +1,5 @@
 ;; =======================================
-;; 重启GNU Emacs enhance-restart.el 
+;; 重启GNU Emacs enhance-restart.el
 ;; =======================================
 (use-package restart-emacs
   :ensure t

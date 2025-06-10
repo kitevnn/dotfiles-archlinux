@@ -58,7 +58,7 @@
 ;; =======================================
 ;; 自定义恢复文件配置(Auto saving...done)
 ;; =======================================
-(setq backup-directory-alist 
+(setq backup-directory-alist
       `(("." . ,directory-backup-directory-alist)))                   ; 统一设置恢复文件的保存目录，而不污染当前同级目录
 (setq backup-by-copying t)                                            ; 设置保存形式
 (setq delete-old-versions t

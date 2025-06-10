@@ -44,7 +44,7 @@
 ;; 关于电池信息
 ;; ========================================
 (defun kivnn/update-modeline-battery-percentage ()
-  (setq modeline-battery-percentage 
+  (setq modeline-battery-percentage
         (string-trim
          (shell-command-to-string
           (concat user-emacs-directory directory-modeline-path-suffix "battery-percentage.sh")))))
@@ -52,12 +52,12 @@
 ;; 关于发行版信息
 ;; ========================================
 (defun kivnn/update-modeline-distribution ()
-  (setq modeline-distribution 
+  (setq modeline-distribution
         (string-trim
          (shell-command-to-string
           (concat user-emacs-directory directory-modeline-path-suffix "distribution.sh")))))
 (defun kivnn/update-modeline-pacman-packages ()
-  (setq modeline-pacman-packages 
+  (setq modeline-pacman-packages
         (string-trim
          (shell-command-to-string
           (concat user-emacs-directory directory-modeline-path-suffix "pacman-packages.sh")))))
@@ -65,17 +65,17 @@
 ;; 关于使用率
 ;; ========================================
 (defun kivnn/update-modeline-disk-usage ()
-  (setq modeline-disk-usage 
+  (setq modeline-disk-usage
         (string-trim
          (shell-command-to-string
           (concat user-emacs-directory directory-modeline-path-suffix "disk-usage.sh")))))
 (defun kivnn/update-modeline-cpu-temperature ()
-  (setq modeline-cpu-temperature 
+  (setq modeline-cpu-temperature
         (string-trim
          (shell-command-to-string
           (concat user-emacs-directory directory-modeline-path-suffix "cpu-temperature.sh")))))
 (defun kivnn/update-modeline-ram-usage ()
-  (setq modeline-ram-usage 
+  (setq modeline-ram-usage
         (string-trim
          (shell-command-to-string
           (concat user-emacs-directory directory-modeline-path-suffix "ram-usage.sh")))))
@@ -83,7 +83,7 @@
 ;; 关于当地天气
 ;; ========================================
 (defun kivnn/update-modeline-weather-situation ()
-  (setq modeline-weather-situation 
+  (setq modeline-weather-situation
         (string-trim
          (shell-command-to-string
           (concat user-emacs-directory directory-modeline-path-suffix "weather-situation.sh")))))
@@ -178,7 +178,7 @@
 ;; 关于modeline
 ;; ========================================
 (defun kivnn/update-modeline-with-all-scripts ()
-  "手动搓出modeline信息"  
+  "手动搓出modeline信息"
   ;;; 变量modeline信息放外边setq
   (setq kivnn/mode-line-modified
         '(:eval (cond (buffer-read-only "%")
@@ -198,8 +198,8 @@
          (format "󱞿 DOING %d " modeline-agenda-doing-count)
          (format "󰝕 WAIT %d " modeline-agenda-wait-count)
          "-  "
-         modeline-agenda-file-name))  
-  ;;; 常量modeline信息放里面setq-default  
+         modeline-agenda-file-name))
+  ;;; 常量modeline信息放里面setq-default
   (setq-default mode-line-format
                 (list
                  ;; 左对齐
@@ -210,25 +210,25 @@
                  '(:eval (when vc-mode vc-mode))
                  "   "
                  '(:eval (format "%s" modeline-calendar-month))
-                 '(:eval (format "%s" modeline-calendar-day))                                   
+                 '(:eval (format "%s" modeline-calendar-day))
                  "("
                  '(:eval (format "%s" modeline-calendar-week))
                  ")"
                  "   "
-                 '(:eval (format "%s" modeline-time-hour))                  
+                 '(:eval (format "%s" modeline-time-hour))
                  ":"
                  '(:eval (format "%s" modeline-time-minute))
                  " 󰄨 "
                  '(:eval (format "%s" modeline-ram-usage))
                  " "
-                 '(:eval kivnn/mode-line-agenda-info)                 
-                 ;; 右对齐                 
+                 '(:eval kivnn/mode-line-agenda-info)
+                 ;; 右对齐
                  'mode-line-format-right-align
-                 '(:eval (format "%s" modeline-keybinding-style))      
+                 '(:eval (format "%s" modeline-keybinding-style))
                  "   Acc "
                  '(:eval (format "%s" modeline-emacs-uptime))
                  "  󰽉 "
-                 '(:eval kivnn/mode-line-position)                 
+                 '(:eval kivnn/mode-line-position)
                  "  󰎆 M "
                  '(:eval (format "%s" emms-mode-line-string))
                  '(:eval (format "%s" emms-playing-time-string)))))

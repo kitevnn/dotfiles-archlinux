@@ -1,5 +1,5 @@
 ;; =======================================
-;; 静态语法抽象树 zprogramming-ts-treesitter.el 
+;; 静态语法抽象树 zprogramming-ts-treesitter.el
 ;; =======================================
 (use-package tree-sitter
              :ensure t

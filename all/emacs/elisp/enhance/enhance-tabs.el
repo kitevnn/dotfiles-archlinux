@@ -1,5 +1,5 @@
 ;; =======================================
-;; 标签页 enhance-tabs.el 
+;; 标签页 enhance-tabs.el
 ;; =======================================
 (use-package centaur-tabs
   :ensure t
@@ -7,7 +7,7 @@
   :demand
   :config
   (centaur-tabs-mode t)
-  :init 
+  :init
   (setq centaur-tabs-style "box"
         centaur-tabs-height 9
         centaur-tabs-set-icons t

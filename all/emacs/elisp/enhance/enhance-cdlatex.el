@@ -7,7 +7,7 @@
   :after tex-site
   :bind (:map cdlatex-mode-map
               ("<tab>" . cdlatex-tab))
-  :init 
+  :init
   (setq cdlatex-paired-parens "")
   (setq cdlatex-use-dollar-to-ensure-math nil)
 
@@ -127,7 +127,7 @@
 
 (defun kivnn/insert-backquote-OCDL (prefix)
   (interactive "P")
-  (if prefix      
+  (if prefix
       (insert "`")
     (cdlatex-math-symbol)))
 (eval-after-load 'org
