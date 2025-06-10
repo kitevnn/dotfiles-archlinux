@@ -65,6 +65,7 @@
 (add-hook 'magit-status-mode-hook #'kivnn/set-sauce)
 (add-hook 'magit-diff-mode-hook #'kivnn/set-sauce)
 (add-hook 'dired-mode-hook   #'kivnn/set-sauce)
+(add-hook 'html-mode-hook   #'kivnn/set-sauce)
 
 
 (provide 'ui-font-sauce-source)
