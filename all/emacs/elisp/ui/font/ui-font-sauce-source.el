@@ -43,7 +43,7 @@
                 (fixed-pitch nil    :family ,variable-ui-fonts-sauce   :height ,(+ variable-ui-fonts-size 20)))))
 
 (defun kivnn/set-sauce ()
-  "设置sauce字体"
+  "设置sauce字体(small)"
   (setq-local face-remapping-alist
               `((default            :family ,variable-ui-fonts-sauce :height ,(- variable-ui-fonts-size 20)))))
 
@@ -56,16 +56,15 @@
 ;; ========================================
 ;; 特定mode字体钩子
 ;; ========================================
-(add-hook 'org-mode-hook         #'kivnn/set-sauce-source-sauce)
-(add-hook 'emms-mode-hook        #'kivnn/set-sauce-source-sauce)
-(add-hook 'telega-root-mode-hook #'kivnn/set-source-source-sauce)
-(add-hook 'telega-chat-mode-hook #'kivnn/set-source-source-sauce)
-(add-hook 'minibuffer-mode-hook  #'kivnn/set-source)
-(add-hook 'emacs-lisp-mode-hook  #'kivnn/set-sauce)
-(add-hook 'magit-status-mode-hook #'kivnn/set-sauce)
-(add-hook 'magit-diff-mode-hook #'kivnn/set-sauce)
-(add-hook 'dired-mode-hook   #'kivnn/set-sauce)
-(add-hook 'html-mode-hook   #'kivnn/set-sauce)
+(add-hook 'org-mode-hook           #'kivnn/set-sauce-source-sauce)
+(add-hook 'emms-mode-hook          #'kivnn/set-sauce-source-sauce)
+(add-hook 'telega-root-mode-hook   #'kivnn/set-source-source-sauce)
+(add-hook 'telega-chat-mode-hook   #'kivnn/set-source-source-sauce)
+(add-hook 'emacs-lisp-mode-hook    #'kivnn/set-sauce)
+(add-hook 'magit-status-mode-hook  #'kivnn/set-sauce)
+(add-hook 'magit-diff-mode-hook    #'kivnn/set-sauce)
+(add-hook 'dired-mode-hook         #'kivnn/set-sauce)
+(add-hook 'html-mode-hook          #'kivnn/set-sauce)
 
 
 (provide 'ui-font-sauce-source)

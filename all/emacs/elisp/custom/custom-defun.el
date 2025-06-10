@@ -221,15 +221,15 @@
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 亮色modeline
   (dolist (face-attr
-           `((mode-line                                                  :family variable-ui-fonts-sauce    :height ,(- variable-ui-fonts-size 30))
-             (mode-line-inactive                                         :family variable-ui-fonts-sauce    :height ,(- variable-ui-fonts-size 30))))
+           `((mode-line                                                  :family ,variable-ui-fonts-sauce   :height ,(- variable-ui-fonts-size 30))
+             (mode-line-inactive                                         :family ,variable-ui-fonts-sauce   :height ,(- variable-ui-fonts-size 30))))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 亮色child-frame-border
   (dolist (face-attr '((child-frame-border                      :background "#37474f")
                        (internal-border                         :background "#37474f")))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 亮色minibuffer-prompt
-  (dolist (face-attr `((minibuffer-prompt                                :family  ,variable-ui-fonts-source :height ,variable-ui-fonts-size )))
+  (dolist (face-attr `((minibuffer-prompt                                :family ,variable-ui-fonts-sauce   :height ,variable-ui-fonts-size)))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 亮色corfu
   (with-eval-after-load 'corfu
@@ -360,7 +360,7 @@
                        (internal-border                         :background "#3bb1df")))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 暗色minibuffer-prompt
-  (dolist (face-attr `((minibuffer-prompt                                :family ,variable-ui-fonts-source  :height ,variable-ui-fonts-size)))
+  (dolist (face-attr `((minibuffer-prompt                                :family ,variable-ui-fonts-sauce   :height ,variable-ui-fonts-size)))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 暗色corfu
   (with-eval-after-load 'corfu
