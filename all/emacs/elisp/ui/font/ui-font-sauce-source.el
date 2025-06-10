@@ -33,7 +33,9 @@
   (setq-local face-remapping-alist
               `((default            :family ,variable-ui-fonts-sauce   :height ,variable-ui-fonts-size)
                 (variable-pitch nil :family ,variable-ui-fonts-source  :height ,variable-ui-fonts-size)
-                (fixed-pitch nil    :family ,variable-ui-fonts-sauce   :height ,variable-ui-fonts-size))))
+                (fixed-pitch nil    :family ,variable-ui-fonts-sauce   :height ,variable-ui-fonts-size)))
+  (text-scale-increase 0)
+  (text-scale-decrease 1))
 
 (defun kivnn/set-telega-mode-font ()
   "在特定的telega-mode设置字体"
