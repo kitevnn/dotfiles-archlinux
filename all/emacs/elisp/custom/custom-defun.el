@@ -329,7 +329,7 @@
              (rime-preedit-face                                 :background "#444444" :foreground "#64fbc8" :height ,variable-ui-fonts-size)))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 暗色trailing-whitespace
-  (dolist (face-attr '((trailing-whitespace :background "#191919")))
+  (dolist (face-attr '((trailing-whitespace :background "#444444")))
     (apply #'set-face-attribute (car face-attr) nil (cdr face-attr)))
   ;; 暗色corfu
   (with-eval-after-load 'corfu
