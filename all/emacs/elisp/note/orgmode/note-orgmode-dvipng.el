@@ -1,7 +1,7 @@
 ;; ========================================
 ;; note-orgmode-dvipng.el 自定义dvipng引擎
 ;; ========================================
-;; 设置调整图片大小
+;; 设置dvipng的调整图片大小
 (defvar dvipng-image-size-adjust
   (read (format "(%f . %f)"
                 variable-latex-fragment-adjust-width
@@ -37,7 +37,7 @@
 ;; 设置imagemagick转换图片程序从png到更进一步的png的行为
 (defvar dvipng-transparent-image-converter
   (concat
-   "magick"                               ; imagemagick(也就是convert v7.0)建议名称使用magick而不是convert，可以在convert --help看到建议信息
+   "convert"                              ; convert也就是imagemagick
    " "
    (format "-density %d"                  ; 控制像素密度
          variable-ui-fonts-size)
@@ -65,7 +65,7 @@
 ;; 添加自己的
 (setq org-preview-latex-process-alist
       `((dvipng
-        :programs ("latex" "dvipng" "magick")
+        :programs ("latex" "dvipng" "convert")
         :description "dvi > png"
         :message "you need to install the programs: latex and dvipng."
         :image-input-type "dvi"

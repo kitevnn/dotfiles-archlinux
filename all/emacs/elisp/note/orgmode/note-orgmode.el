@@ -25,7 +25,7 @@
 ;; org-preview-latex-process-alist 自定义引擎
 ;; ========================================
 (require 'note-orgmode-dvipng)
-;(require 'note-orgmode-xelatex-chinese)
+(require 'note-orgmode-xelatex-chinese)
 
 
 ;; ========================================
