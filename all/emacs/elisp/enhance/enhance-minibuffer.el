@@ -43,4 +43,5 @@
 (setq vertico-posframe-height 11)
 (setq vertico-posframe-width 150)
 
+
 (provide 'enhance-minibuffer)
