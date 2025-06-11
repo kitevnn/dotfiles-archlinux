@@ -84,8 +84,8 @@
     (define-key evil-normal-state-map (kbd "SPC /")           #'kivnn/isearch-forward)
     (define-key evil-normal-state-map (kbd "SPC SPC /")       #'kivnn/isearch-backward)
     (define-key evil-normal-state-map (kbd "SPC ,")           #'previous-buffer)
-    (define-key evil-normal-state-map (kbd "SPC .")           #'next-buffer))
-
+    (define-key evil-normal-state-map (kbd "SPC .")           #'next-buffer)
+  (define-key evil-normal-state-map (kbd "SPC o")           #'delete-trailing-whitespace))
   (define-key evil-normal-state-map (kbd "SPC g")           #'magit)
   (define-key evil-normal-state-map (kbd "SPC e")           #'telega)
   (define-key evil-normal-state-map (kbd "SPC t")           #'eat)
@@ -177,7 +177,6 @@
     (evil-make-overriding-map org-agenda-mode-map 'normal)
     (kivnn/set-general-keybindings 'normal org-agenda-mode-map)))
   ;; [可选项] (evil-define-key 'normal org-agenda-mode-map (kbd "") nil)
-
 
 
 (provide 'enhance-evil)
