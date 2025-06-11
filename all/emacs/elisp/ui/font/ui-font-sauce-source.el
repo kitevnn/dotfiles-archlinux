@@ -45,12 +45,12 @@
 (defun kivnn/set-sauce-small ()
   "设置sauce字体(small)"
   (setq-local face-remapping-alist
-              `((default            :family ,variable-ui-fonts-sauce :height ,(- variable-ui-fonts-size 20)))))
+              `((default            :family ,variable-ui-fonts-sauce   :height ,(- variable-ui-fonts-size 20)))))
 
 (defun kivnn/set-source ()
   "设置source字体"
   (setq-local face-remapping-alist
-              `((default            :family ,variable-ui-fonts-source :height ,variable-ui-fonts-size))))
+              `((default            :family ,variable-ui-fonts-source  :height ,variable-ui-fonts-size))))
 
 
 ;; ========================================
@@ -66,6 +66,7 @@
 (add-hook 'dired-mode-hook         #'kivnn/set-sauce-small)
 (add-hook 'html-mode-hook          #'kivnn/set-sauce-small)
 (add-hook 'text-mode-hook          #'kivnn/set-sauce-small)
+(add-hook 'minibuffer-mode-hook    #'kivnn/set-sauce-small)
 
 
 (provide 'ui-font-sauce-source)
